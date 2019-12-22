@@ -1,0 +1,20 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Vladimir Logachev, @title</title>
+        <title>Vladimir Logachev</title>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="@routes.Assets.versioned("images/icons/apple-touch-icon.png")" />
+        <link rel="icon" type="image/png" href="@routes.Assets.versioned("images/icons/avicon-32x32.png")" sizes="32x32" />
+        <link rel="icon" type="image/png" href="@routes.Assets.versioned("images/icons/favicon-16x16.png")" sizes="16x16" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Oswald:700" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/reset.css")" />
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/main.css")" />
+        <meta name="theme-color" content="#000000" />
+    </head>
+    <body class="app">
+        @content
+    </body>
+</html>

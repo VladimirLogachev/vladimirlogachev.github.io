@@ -1,0 +1,33 @@
+@(items: List[model.Item])
+
+<div class="items-list">
+<div>
+  <ul>
+  @for(item <- items){
+    <li>
+      <img class="item-img" src="@routes.Assets.versioned("images/content/items/")@item.imgFileName" alt="@item.name" />
+      <h3>@item.name</h3>
+      <div class="links">
+        @for(link <- item.links){
+          <a href="@link.url" target="_blank">@link.name</a>
+        }
+      </div>
+      @for(line <- item.description.split("\n")) {<p>@line</p>}
+      @if(item.team.nonEmpty) {
+        <ul class="team">
+          <li class="teammate"><strong>Team:</strong></li>
+          @for(teamMate <- item.team){
+            <li class="teammate"><a href="@teamMate.url" target="_blank">
+            <img src="https://avatars2.githubusercontent.com/u/@teamMate.githubUserId?s=100" />
+            @teamMate.name</a>,
+            </li>
+          }
+          <li class="teammate">and Me.</li>
+        </ul>
+      }
+
+    </li>
+  }
+  </ul>
+</div>
+</div>

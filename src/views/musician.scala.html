@@ -1,0 +1,14 @@
+@(items: List[model.Item], bookshelf: List[model.Book])
+
+@main("musician") {
+
+@nav{
+  <p><strong>Musician</strong>, also <a href="/programmer">a programmer</a></p>
+  <h4>Looking for people to play with.</h4>
+  <p>Location: Nsk, Ru.</p>
+}
+
+@itemsList(items)
+@booksList(bookshelf)
+
+}

@@ -1,0 +1,20 @@
+@(items: List[model.Item], bookshelf: List[model.Book])
+
+@main("programmer") {
+
+@nav{
+  
+  <p><strong>Programmer</strong>, also <a href="/musician">a musician</a></p>
+  <p>Available only for some non-commercial collaboration and pair programming.</p>
+  <p>
+    <img src="@routes.Assets.versioned("images/content/logos/scala.png")" alt="Scala" />
+    <img src="@routes.Assets.versioned("images/content/logos/js.png")" alt="JavaScript" />
+    <img src="@routes.Assets.versioned("images/content/logos/react.png")" alt="React" />
+  </p>
+  <p><a href="mailto:doit@@keemail.me">doit@@keemail.me</a></p>
+}
+
+@itemsList(items)
+@booksList(bookshelf)
+
+}

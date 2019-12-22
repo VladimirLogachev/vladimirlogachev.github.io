@@ -1,0 +1,15 @@
+@(bookshelf: List[model.Book])
+
+<div class="books-list">
+  <div>
+    <h2>My bookshelf</h2>
+    <ul>
+    @for(book <- bookshelf){
+      <li class="book">
+        <a href="@book.url" target="_blank"><span class="title">@book.title</span></a> by @book.author
+        <span class="skill">@book.skills</span>
+      </li>
+    }
+    </ul>
+  </div>
+</div>
