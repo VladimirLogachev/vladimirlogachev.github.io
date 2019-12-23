@@ -3,7 +3,7 @@ module Main exposing (main)
 import Html exposing (text)
 
 main =
-    text "Vladimir Logachev... testing changes 6"
+    text "Vladimir Logachev... testing changes 7"
 
 
 -- # Routes
