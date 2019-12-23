@@ -14,7 +14,7 @@ jobs:
       - name: Set up elm
         uses: justgook/setup-elm@v1
       - name: Elm Make
-        run: elm make src/Main.elm
+        run: elm make --optimize src/Main.elm
       - name: Move files
         run: |
           mkdir ./public
