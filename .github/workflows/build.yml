@@ -13,17 +13,15 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up elm
         uses: justgook/setup-elm@v1
-      - name: Elm Make
-        run: elm make --optimize src/Main.elm
       - name: Move files
-        run: |
-          mkdir ./public
-          mv ./index.html ./public/
+        run: mv "./src/static" "./build"
+      - name: Elm Make
+        run: elm make --optimize --output="./build/bundle.js" src/Main.elm
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.7.0-1
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: master
-          PUBLISH_DIR: ./public
+          PUBLISH_DIR: ./build
         with:
           emptyCommits: false
