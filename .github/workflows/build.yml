@@ -15,16 +15,15 @@ jobs:
         uses: justgook/setup-elm@v1
       - name: Elm Make
         run: elm make src/Main.elm
-      # - name: Select files to commit
-      #   run: |
-      #     mkdir ./public
-      #     mv ./index.html ./public/
+      - name: Move files
+        run: |
+          mkdir ./public
+          mv ./index.html ./public/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.7.0-1
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          PUBLISH_BRANCH: somebranch
-          PUBLISH_DIR: .
-          # PUBLISH_DIR: ./public
+          PUBLISH_BRANCH: master
+          PUBLISH_DIR: ./public
         with:
           emptyCommits: false
