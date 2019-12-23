@@ -1,21 +1,18 @@
 # portfolio site
 
-SBT 1.0.2 + Scala 2.12.2 + **Play 2.6.7**
+## local dev
 
-## Heroku
+### required 
 
-- set `APPLICATION_SECRET` in app's settings.
-- Then just deploy it.
+- node 10
+- `elm`
+- `elm-live` (npm, global)
 
-## Local dev
+### optional
 
-- install sbt
-- run `sbt`
-  - `compile`
-  - `stage`
-  - `test`
-  - `run`
+- `elm-format`
 
-## Todo
+### run
 
-- DB
+- `bash localdev.sh` - reloads on changes in elm files. Requires manual re-run when changing assets.
+
