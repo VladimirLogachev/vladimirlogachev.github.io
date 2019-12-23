@@ -15,19 +15,15 @@ jobs:
         uses: justgook/setup-elm@v1
       - name: Elm Make
         run: elm make src/Main.elm
-      - name: Remove sources
+      - name: Select files to commit
         run: |
-          rm -rf src
-          rm -rf elm-stuff
-          rm -rf .github
-          rm -f .gitignore
-          rm -f README.md
-          rm -f elm.json
+          mkdir ./public
+          mv ./index.html ./public/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: somebranch
-          PUBLISH_DIR: .
+          PUBLISH_DIR: ./public
         with:
           emptyCommits: false
