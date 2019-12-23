@@ -1,1 +1,0 @@
-# vladimirlogachev.github.io
