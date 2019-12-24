@@ -1,6 +1,7 @@
 module Main exposing (main)
 
 import Html exposing (..)
+import Dataset exposing (..)
 import Html.Attributes exposing (..)
 
 
