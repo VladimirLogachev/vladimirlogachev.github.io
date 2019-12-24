@@ -34,6 +34,7 @@ a:hover {
   transition: color .3s ease;
 }
 
+/* TODO: what the div? refactor! */
 .nav > div > * {
   padding-top: .5em;
 }
@@ -47,31 +48,45 @@ a:hover {
 .nav h1 {
   color: #fff;
 }
-    
+
+/* TODO: what the div? refactor! */
 .nav > div {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.nav img {
+.nav a + a {
+  margin-left: .5em;
+}
+
+.nav .icons {
+  display: flex;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.nav .icon {
   max-height: 24px;
 }
 
-.nav img + img {
+.nav .icon + .icon {
   margin-left: .5em;
 }
 
 .team {
   margin-top: .5em;
 }
+
 .teammate {
   display: inline;
   font-size: 1em;
   vertical-align: baseline;
 } 
+
 .teammate  + .teammate {
   margin-left: .3em;
 }
+
 .teammate a img {
   max-height: 1em;
   border-radius: 3px;
@@ -97,12 +112,6 @@ a:hover {
 }
 .book > * + * {
   margin-left: .5em;
-}
-.book a {
-  text-decoration: underline;
-}
-.book .title {
-  color: #111;
 }
 
 
@@ -156,6 +165,6 @@ a:hover {
   margin-bottom: .4em;
 }
 
-.skill {
+.topic {
   color: rgba(45, 45, 45, 0.4);
 }
