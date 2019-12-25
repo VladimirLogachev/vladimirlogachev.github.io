@@ -42,7 +42,7 @@ developerIntro =
             ]
         , p [] [ text "Fullstack developer" ]
         , p [] [ text "Chief Enthusiast in ", a [ href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ], text " — FP reading group, meetups, collaborations" ]
-        , p [] [ text "Available for hire, collaboration and pair programming." ]
+        , p [] [ text "Available for hiring, collaboration and pair programming." ]
         , p [ class "intro-links" ]
             [ a [ href "https://github.com/VladimirLogachev" ] [ text "github" ]
             , a [ href "mailto:doit@keemail.me" ] [ text "mail" ]

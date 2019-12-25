@@ -166,7 +166,7 @@ projects =
       The translation was initiated by Maxim Filippov and stopped at 60%.
       Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
         [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
-        , Link "Origial book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
+        , Link "Original book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
         ]
         (Just "mostly_adequate_guide_fp_ru.png")
         (Team
