@@ -51,7 +51,19 @@ bookshelf =
 
 projects : List Project
 projects =
-    [ 
+    [ Project "Translation of the Mostly Adequate Guide"
+        """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
+      The translation was initiated by Maxim Filippov and stopped at 60%.
+      Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
+        [ Link "Book contents" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md" ]
+        (Just "mostly_adequate_guide_fp_ru.png")
+        (Team
+            [ TeamMate "Maxim Filippov" (GitHubUserpic { githubUserId = 860283 }) "https://github.com/maksimf"
+            , TeamMate "Sakayama" (GitHubUserpic { githubUserId = 44540001 }) "https://github.com/Sakayama"
+            , TeamMate "other contributors" NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
+            ]
+        )
+
     --     Project "Captain Million"
     --     """An unfinished fullstack app, warehouse management system.
     --   Made in collaboration with people from Chingu community.
@@ -66,7 +78,7 @@ projects =
     --         , TeamMate "Maxim Karabashev" 19782461 "https://github.com/mkarabashev"
     --         ]
     --     )
-     Project
+    , Project
         "#FACFAF. Quick reference guide"
         "A small book about Curtis Mayfield «Black Keys» Open F# guitar tuning."
         [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
@@ -85,9 +97,9 @@ projects =
         ]
         (Just "lionbot.jpg")
         (Team
-            [ TeamMate "Michael Blood" 12065896 "https://github.com/michaelblood"
-            , TeamMate "Josh Sanders" 19422930 "https://github.com/Josh5231"
-            , TeamMate "Alex McLeod" 24363605 "https://github.com/AlexMcLeod01"
+            [ TeamMate "Michael Blood" (GitHubUserpic { githubUserId = 12065896 }) "https://github.com/michaelblood"
+            , TeamMate "Josh Sanders" (GitHubUserpic { githubUserId = 19422930 }) "https://github.com/Josh5231"
+            , TeamMate "Alex McLeod" (GitHubUserpic { githubUserId = 24363605 }) "https://github.com/AlexMcLeod01"
             ]
         )
     ]

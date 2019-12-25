@@ -12,6 +12,8 @@ type Msg
     = Msg
 
 
+
+
 main : Html Msg
 main =
     div [ class "app" ]
@@ -125,8 +127,7 @@ viewTeam projectTeam =
                         (\teamMate ->
                             li [ class "teammate" ]
                                 [ a [ href teamMate.url, target "_blank" ]
-                                    [ img [ src <| "https://avatars2.githubusercontent.com/u/" ++ String.fromInt teamMate.githubUserId ++ "?s=100" ]
-                                        []
+                                    [ viewUserPic teamMate.userpic
                                     , text
                                         teamMate.name
                                     ]

@@ -1,5 +1,10 @@
 module Project exposing (..)
 
+import Html exposing (..)
+import Html.Attributes exposing (..)
+
+import Utils exposing (..)
+
 -- TODO: team :: Nel TeamMate
 
 
@@ -23,13 +28,40 @@ type alias Link =
     }
 
 
-
--- TODO: githubUserId - delete
--- type userpic = External | Github Int | twitter maybe...
+type Userpic
+    = NoPic
+    | GitHubUserpic { githubUserId : Int }
+    | DirectUrl { url : String }
 
 
 type alias TeamMate =
     { name : String
-    , githubUserId : Int
+    , userpic : Userpic
     , url : String
     }
+
+
+
+userpicCssSize =
+    16
+
+
+userpicSrcSize =
+    userpicCssSize * 3
+    
+viewUserPic : Userpic -> Html a
+viewUserPic userpic = case userpic of 
+  NoPic -> emptyHtml
+  GitHubUserpic { githubUserId } -> img
+                                        [ src <|
+                                            "https://avatars2.githubusercontent.com/u/"
+                                                ++ String.fromInt githubUserId
+                                                ++ "?s="
+                                                ++ String.fromInt userpicSrcSize
+                                                ++ "&v=4"
+                                        ]
+                                        []
+  DirectUrl { url } -> img
+                                        [ src url
+                                        ]
+                                        []
