@@ -4548,7 +4548,7 @@ var $author$project$Main$developerIntro = A2(
 			_List_Nil,
 			_List_fromArray(
 				[
-					$elm$html$Html$text('Available for hire, collaboration and pair programming.')
+					$elm$html$Html$text('Available for hiring, collaboration and pair programming.')
 				])),
 			A2(
 			$elm$html$Html$p,
@@ -4639,7 +4639,7 @@ var $author$project$Dataset$projects = _List_fromArray(
 		_List_fromArray(
 			[
 				A2($author$project$Project$Link, 'Russian translation', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md'),
-				A2($author$project$Project$Link, 'Origial book', 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
+				A2($author$project$Project$Link, 'Original book', 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
 			]),
 		$elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
 		$author$project$Project$Team(
