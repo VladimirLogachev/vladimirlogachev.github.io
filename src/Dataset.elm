@@ -3,7 +3,6 @@ module Dataset exposing (..)
 import Book exposing (..)
 import Project exposing (..)
 
-
 bookshelf : List Book
 bookshelf =
     [ Book
@@ -55,28 +54,28 @@ bookshelf =
         , url = "http://www.atomicscala.com"
         }
     , Book
-        { author = "Max P"
-        , title = "React Router course for beginners"
+        { author = "Максим Пацианский"
+        , title = "Роутинг в react-приложениях"
         , topics = REACT
-        , url = "https://www.gitbook.com/book/maxfarseer/react-router-course-ru"
+        , url = "https://maxfarseer.gitbooks.io/react-router-course-ru/content"
         }
     , Book
-        { author = "Max P"
-        , title = "Redux course for beginners"
+        { author = "Максим Пацианский"
+        , title = "React Redux курс для начинающих"
         , topics = REACT
-        , url = "https://www.gitbook.com/book/maxfarseer/redux-course-ru"
+        , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
         }
     , Book
         { author = "Robert Martin"
         , title = "Clean Code. A Handbook of Agile Software Craftsmanship"
         , topics = DEV
-        , url = "http://www.pearsoned.co.uk/bookshop/detail.asp?Project=100000000253077"
+        , url = "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM"
         }
     , Book
-        { author = "Max P"
-        , title = "React.js course for beginners"
+        { author = "Максим Пацианский"
+        , title = "React.js курс для начинающих"
         , topics = REACT
-        , url = "https://www.gitbook.com/book/maxfarseer/react-course-ru"
+        , url = "https://maxfarseer.gitbooks.io/react-course-ru-v2/content/"
         }
     , Book
         { author = "Stoyan Stefanov"
@@ -97,16 +96,10 @@ bookshelf =
         , url = "http://cw.routledge.com/textbooks/9780240824147"
         }
     , Book
-        { author = "Vlad Golovach"
-        , title = "UI design-2. The art of elephant washing"
+        { author = "Артемий Лебедев"
+        , title = "Ководство"
         , topics = DESIGN
-        , url = "http://uibook2.usethics.ru"
-        }
-    , Book
-        { author = "Artemy Lebedev"
-        , title = "Mandership. Fourth Edition"
-        , topics = DESIGN
-        , url = "https://store.artlebedev.com/books/design/theory/kovodstvo4/"
+        , url = "https://www.artlebedev.ru/kovodstvo/sections/"
         }
     , Book
         { author = "Erin Kissane"
@@ -130,7 +123,7 @@ bookshelf =
         { author = "Aspen Pittman"
         , title = "The Tube Amp Book - Deluxe Revised Edition"
         , topics = ELECTRONICS
-        , url = "https://www.halleonard.com/product/viewproduct.action?subsiteid=7&Projectid=331091"
+        , url = "https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676"
         }
     , Book
         { author = "Donald Brosnac"
