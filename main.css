@@ -120,6 +120,9 @@ a:hover {
 .book > * + * {
   margin-left: .5em;
 }
+.book .book_cover {
+  height: 120px;
+}
 
 
 
