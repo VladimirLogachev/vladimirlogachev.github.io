@@ -38,6 +38,9 @@ type Topic
     | CSS
     | DESIGN
     | DEV
+    | LEADERSHIP
+    | COMMUNICATION
+    | MANAGEMENT
 
 
 
@@ -82,3 +85,12 @@ showTopic topic =
 
         DEV ->
             "Software Development"
+
+        LEADERSHIP ->
+            "Leadership"
+
+        COMMUNICATION ->
+            "Communication"
+
+        MANAGEMENT ->
+            "Management"

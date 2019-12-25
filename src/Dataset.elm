@@ -194,6 +194,66 @@ knownBooks =
         , topics = SCALA
         , url = "https://underscore.io/books/scala-with-cats/"
         }
+    , Book
+        { author = "Vitaly Bragilevsky"
+        , title = "Haskell in Depth"
+        , topics = HASKELL
+        , url = "https://www.manning.com/books/haskell-in-depth"
+        }
+    , Book
+        { author = "Дэйв Логан, Джон Кинг, Хэли Фишер-Райт"
+        , title = "Лидер и племя"
+        , topics = LEADERSHIP
+        , url = "https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/"
+        }
+    , Book
+        { author = "Фредерик Лалу"
+        , title = "Открывая организации будущего"
+        , topics = LEADERSHIP
+        , url = "https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/"
+        }
+    , Book
+        { author = "Питер Брегман"
+        , title = "Эмоциональная смелость"
+        , topics = LEADERSHIP
+        , url = "https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/"
+        }
+    , Book
+        { author = "Джон Хеннесси"
+        , title = "Принципы лидера"
+        , topics = LEADERSHIP
+        , url = "https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/"
+        }
+    , Book
+        { author = "Ричард Пулин"
+        , title = "Школа дизайна: шрифт"
+        , topics = DESIGN
+        , url = "https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/"
+        }
+    , Book
+        { author = "Кейт Феррацци, Тал Рэз"
+        , title = "Никогда не ешьте в одиночку"
+        , topics = COMMUNICATION
+        , url = "https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/"
+        }
+    , Book
+        { author = "Джон Дорр"
+        , title = "Измеряйте самое важное"
+        , topics = MANAGEMENT
+        , url = "https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/"
+        }
+    , Book
+        { author = "Рэй Далио"
+        , title = "Принципы"
+        , topics = LEADERSHIP
+        , url = "https://www.mann-ivanov-ferber.ru/books/princzipyi/"
+        }
+    , Book
+        { author = "Ричард Пулин"
+        , title = "Школа дизайна: макет"
+        , topics = DESIGN
+        , url = "https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/"
+        }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
         |> Dict.fromList
@@ -260,7 +320,17 @@ projects =
 libraryState : Dict String BookAvaliability
 libraryState =
     Dict.fromList
-        [ ( "The Tube Amp Book - Deluxe Revised Edition", Available )
+        [ ( "Лидер и племя", GivenToSomeone )
+        , ( "Открывая организации будущего", Available )
+        , ( "Эмоциональная смелость", ComingSoon )
+        , ( "Принципы лидера", ComingSoon )
+        , ( "Школа дизайна: шрифт", ComingSoon )
+        , ( "Никогда не ешьте в одиночку", ComingSoon )
+        , ( "Измеряйте самое важное", ComingSoon )
+        , ( "Принципы", ComingSoon )
+        , ( "Школа дизайна: макет", ComingSoon )
+        , ( "Haskell in Depth", ComingSoon )
+        , ( "The Tube Amp Book - Deluxe Revised Edition", Available )
         , ( "Guitar Electronics for Musicians", Available )
         , ( "Complete Guitar Repair", Available )
         , ( "The Luthier's Handbook", Available )
