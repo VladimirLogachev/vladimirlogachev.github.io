@@ -4572,11 +4572,14 @@ var $elm$core$Basics$identity = function (x) {
 	return x;
 };
 var $author$project$Book$Book = $elm$core$Basics$identity;
+var $author$project$Book$COMMUNICATION = 9;
 var $author$project$Book$CSS = 5;
 var $author$project$Book$DESIGN = 6;
 var $author$project$Book$DEV = 7;
 var $author$project$Book$HASKELL = 2;
 var $author$project$Book$JS = 1;
+var $author$project$Book$LEADERSHIP = 8;
+var $author$project$Book$MANAGEMENT = 10;
 var $author$project$Book$MUSIC_INSTRUMENTS = 0;
 var $author$project$Book$SCALA = 3;
 var $author$project$Book$SCHEME = 4;
@@ -4810,15 +4813,37 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', a: 'Structure and Interpretation of Computer Programs', c: 4, d: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
 				{b: 'Bartosz Milewski', a: 'Category Theory for Programmers', c: 2, d: 'https://github.com/hmemcpy/milewski-ctfp-pdf'},
 				{b: 'Noel Welsh, Dave Gurnell', a: 'Essential Scala', c: 3, d: 'https://underscore.io/books/essential-scala/'},
-				{b: 'Noel Welsh, Dave Gurnell', a: 'Scala with Cats', c: 3, d: 'https://underscore.io/books/scala-with-cats/'}
+				{b: 'Noel Welsh, Dave Gurnell', a: 'Scala with Cats', c: 3, d: 'https://underscore.io/books/scala-with-cats/'},
+				{b: 'Vitaly Bragilevsky', a: 'Haskell in Depth', c: 2, d: 'https://www.manning.com/books/haskell-in-depth'},
+				{b: 'Дэйв Логан, Джон Кинг, Хэли Фишер-Райт', a: 'Лидер и племя', c: 8, d: 'https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/'},
+				{b: 'Фредерик Лалу', a: 'Открывая организации будущего', c: 8, d: 'https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/'},
+				{b: 'Питер Брегман', a: 'Эмоциональная смелость', c: 8, d: 'https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/'},
+				{b: 'Джон Хеннесси', a: 'Принципы лидера', c: 8, d: 'https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/'},
+				{b: 'Ричард Пулин', a: 'Школа дизайна: шрифт', c: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/'},
+				{b: 'Кейт Феррацци, Тал Рэз', a: 'Никогда не ешьте в одиночку', c: 9, d: 'https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/'},
+				{b: 'Джон Дорр', a: 'Измеряйте самое важное', c: 10, d: 'https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/'},
+				{b: 'Рэй Далио', a: 'Принципы', c: 8, d: 'https://www.mann-ivanov-ferber.ru/books/princzipyi/'},
+				{b: 'Ричард Пулин', a: 'Школа дизайна: макет', c: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'}
 			])));
 var $author$project$Book$BookTitle = $elm$core$Basics$identity;
 var $author$project$Dataset$learningPath = _List_fromArray(
 	['Scala with Cats', 'Essential Scala', 'Category Theory for Programmers', 'Structure and Interpretation of Computer Programs', 'Maybe Haskell', 'Design Patterns: Elements of Reusable Object-Oriented Software', 'Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'CSS: The Missing Manual', 'White Space Is Not Your Enemy', 'Ководство', 'The Elements of Content Strategy', 'Designing For Emotion', 'Responsive Web Design']);
 var $author$project$Book$Available = 0;
+var $author$project$Book$ComingSoon = 1;
+var $author$project$Book$GivenToSomeone = 2;
 var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 	_List_fromArray(
 		[
+			_Utils_Tuple2('Лидер и племя', 2),
+			_Utils_Tuple2('Открывая организации будущего', 0),
+			_Utils_Tuple2('Эмоциональная смелость', 1),
+			_Utils_Tuple2('Принципы лидера', 1),
+			_Utils_Tuple2('Школа дизайна: шрифт', 1),
+			_Utils_Tuple2('Никогда не ешьте в одиночку', 1),
+			_Utils_Tuple2('Измеряйте самое важное', 1),
+			_Utils_Tuple2('Принципы', 1),
+			_Utils_Tuple2('Школа дизайна: макет', 1),
+			_Utils_Tuple2('Haskell in Depth', 1),
 			_Utils_Tuple2('The Tube Amp Book - Deluxe Revised Edition', 0),
 			_Utils_Tuple2('Guitar Electronics for Musicians', 0),
 			_Utils_Tuple2('Complete Guitar Repair', 0),
@@ -4982,8 +5007,14 @@ var $author$project$Book$showTopic = function (topic) {
 			return 'CSS';
 		case 6:
 			return 'Design';
-		default:
+		case 7:
 			return 'Software Development';
+		case 8:
+			return 'Leadership';
+		case 9:
+			return 'Communication';
+		default:
+			return 'Management';
 	}
 };
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
