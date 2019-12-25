@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.K.A === region.P.A)
+	if (region.O.E === region.T.E)
 	{
-		return 'on line ' + region.K.A;
+		return 'on line ' + region.O.E;
 	}
-	return 'on lines ' + region.K.A + ' through ' + region.P.A;
+	return 'on lines ' + region.O.E + ' through ' + region.T.E;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.U,
-		impl.aj,
-		impl.aG,
+		impl.Y,
+		impl.an,
+		impl.aJ,
 		function() { return function() {} }
 	);
 });
@@ -2704,9 +2704,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		o: func(record.o),
-		L: record.L,
-		I: record.I
+		s: func(record.s),
+		P: record.P,
+		M: record.M
 	}
 });
 
@@ -2974,11 +2974,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.o;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.L;
+		var message = !tag ? value : tag < 3 ? value.a : value.s;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.P;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.I) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.M) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -4320,25 +4320,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.a) {
+		if (!builder.e) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.c),
+				$elm$core$Elm$JsArray$length(builder.g),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.c);
+				builder.g);
 		} else {
-			var treeLen = builder.a * $elm$core$Array$branchFactor;
+			var treeLen = builder.e * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.d) : builder.d;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.a);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.h) : builder.h;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.e);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.c) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.g) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.c);
+				builder.g);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -4351,7 +4351,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{d: nodeList, a: (len / $elm$core$Array$branchFactor) | 0, c: tail});
+					{h: nodeList, e: (len / $elm$core$Array$branchFactor) | 0, g: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -4404,10 +4404,10 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
-var $author$project$Book$Book = F4(
-	function (author, title, topics, url) {
-		return {ar: author, aI: title, aJ: topics, aK: url};
-	});
+var $elm$core$Basics$identity = function (x) {
+	return x;
+};
+var $author$project$Book$Book = $elm$core$Basics$identity;
 var $author$project$Book$CONSTRUCTION = 0;
 var $author$project$Book$CSS = 7;
 var $author$project$Book$DESIGN = 8;
@@ -4420,31 +4420,31 @@ var $author$project$Book$REACT = 6;
 var $author$project$Book$SCALA = 5;
 var $author$project$Dataset$bookshelf = _List_fromArray(
 	[
-		A4($author$project$Book$Book, 'Miran Lipovača', 'Learn You a Haskell for Great Good!', 4, 'http://learnyouahaskell.com/'),
-		A4($author$project$Book$Book, 'Professor Frisby', 'Mostly Adequate Guide to Functional Programming', 3, 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'),
-		A4($author$project$Book$Book, 'Douglas Crockford', 'JavaScript: The Good Parts', 3, 'http://shop.oreilly.com/product/9780596517748.do'),
-		A4($author$project$Book$Book, 'Luis Atencio', 'Functional Programming in JavaScript', 3, 'https://www.manning.com/books/functional-programming-in-javascript'),
-		A4($author$project$Book$Book, 'Sam Newman', 'Building Microservices', 9, 'http://shop.oreilly.com/product/0636920033158.do'),
-		A4($author$project$Book$Book, 'Alvin Alexander', 'Learning Functional Programming in Scala', 5, 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'),
-		A4($author$project$Book$Book, 'Kyle Simpson', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 3, 'https://github.com/getify/You-Dont-Know-JS'),
-		A4($author$project$Book$Book, 'Bruce Eckel, Dianne Marsh', 'Atomic Scala', 5, 'http://www.atomicscala.com'),
-		A4($author$project$Book$Book, 'Max P', 'React Router course for beginners', 6, 'https://www.gitbook.com/book/maxfarseer/react-router-course-ru'),
-		A4($author$project$Book$Book, 'Max P', 'Redux course for beginners', 6, 'https://www.gitbook.com/book/maxfarseer/redux-course-ru'),
-		A4($author$project$Book$Book, 'Robert Martin', 'Clean Code. A Handbook of Agile Software Craftsmanship', 9, 'http://www.pearsoned.co.uk/bookshop/detail.asp?Project=100000000253077'),
-		A4($author$project$Book$Book, 'Max P', 'React.js course for beginners', 6, 'https://www.gitbook.com/book/maxfarseer/react-course-ru'),
-		A4($author$project$Book$Book, 'Stoyan Stefanov', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 3, 'https://shop.oreilly.com/product/9780596806767.do'),
-		A4($author$project$Book$Book, 'David Sawyer McFarland', 'CSS: The Missing Manual, 4th Edition', 7, 'https://shop.oreilly.com/product/0636920036357.do'),
-		A4($author$project$Book$Book, 'Rebecca Hagen, Kim Golombisky', 'White Space Is Not Your Enemy: A beginner\'s guide to communicating visually through graphic, web and multimedia design', 8, 'http://cw.routledge.com/textbooks/9780240824147'),
-		A4($author$project$Book$Book, 'Vlad Golovach', 'UI design-2. The art of elephant washing', 8, 'http://uibook2.usethics.ru'),
-		A4($author$project$Book$Book, 'Artemy Lebedev', 'Mandership. Fourth Edition', 8, 'https://store.artlebedev.com/books/design/theory/kovodstvo4/'),
-		A4($author$project$Book$Book, 'Erin Kissane', 'The Elements of Content Strategy', 8, 'https://abookapart.com/products/the-elements-of-content-strategy'),
-		A4($author$project$Book$Book, 'Aarron Walter', 'Designing For Emotion', 8, 'https://abookapart.com/products/designing-for-emotion'),
-		A4($author$project$Book$Book, 'Ethan Mascotte', 'Responsive Web Design', 8, 'https://abookapart.com/products/responsive-web-design'),
-		A4($author$project$Book$Book, 'Aspen Pittman', 'The Tube Amp Book - Deluxe Revised Edition', 2, 'https://www.halleonard.com/product/viewproduct.action?subsiteid=7&Projectid=331091'),
-		A4($author$project$Book$Book, 'Donald Brosnac', 'Guitar Electronics for Musicians', 2, 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'),
-		A4($author$project$Book$Book, 'Hideo Kamimoto', 'Complete Guitar Repair', 1, 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'),
-		A4($author$project$Book$Book, 'Roger H. Siminoff', 'The Luthier\'s Handbook', 0, 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'),
-		A4($author$project$Book$Book, 'Paul Balmer (Author), Les Paul (Foreword)', 'The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul', 1, 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706')
+		{a: 'Miran Lipovača', b: 'Learn You a Haskell for Great Good!', c: 4, d: 'http://learnyouahaskell.com/'},
+		{a: 'Professor Frisby', b: 'Mostly Adequate Guide to Functional Programming', c: 3, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
+		{a: 'Douglas Crockford', b: 'JavaScript: The Good Parts', c: 3, d: 'http://shop.oreilly.com/product/9780596517748.do'},
+		{a: 'Luis Atencio', b: 'Functional Programming in JavaScript', c: 3, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
+		{a: 'Sam Newman', b: 'Building Microservices', c: 9, d: 'http://shop.oreilly.com/product/0636920033158.do'},
+		{a: 'Alvin Alexander', b: 'Learning Functional Programming in Scala', c: 5, d: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
+		{a: 'Kyle Simpson', b: 'You Don\'t Know JS (book series) 1, 2, 3, 4', c: 3, d: 'https://github.com/getify/You-Dont-Know-JS'},
+		{a: 'Bruce Eckel, Dianne Marsh', b: 'Atomic Scala', c: 5, d: 'http://www.atomicscala.com'},
+		{a: 'Max P', b: 'React Router course for beginners', c: 6, d: 'https://www.gitbook.com/book/maxfarseer/react-router-course-ru'},
+		{a: 'Max P', b: 'Redux course for beginners', c: 6, d: 'https://www.gitbook.com/book/maxfarseer/redux-course-ru'},
+		{a: 'Robert Martin', b: 'Clean Code. A Handbook of Agile Software Craftsmanship', c: 9, d: 'http://www.pearsoned.co.uk/bookshop/detail.asp?Project=100000000253077'},
+		{a: 'Max P', b: 'React.js course for beginners', c: 6, d: 'https://www.gitbook.com/book/maxfarseer/react-course-ru'},
+		{a: 'Stoyan Stefanov', b: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', c: 3, d: 'https://shop.oreilly.com/product/9780596806767.do'},
+		{a: 'David Sawyer McFarland', b: 'CSS: The Missing Manual, 4th Edition', c: 7, d: 'https://shop.oreilly.com/product/0636920036357.do'},
+		{a: 'Rebecca Hagen, Kim Golombisky', b: 'White Space Is Not Your Enemy: A beginner\'s guide to communicating visually through graphic, web and multimedia design', c: 8, d: 'http://cw.routledge.com/textbooks/9780240824147'},
+		{a: 'Vlad Golovach', b: 'UI design-2. The art of elephant washing', c: 8, d: 'http://uibook2.usethics.ru'},
+		{a: 'Artemy Lebedev', b: 'Mandership. Fourth Edition', c: 8, d: 'https://store.artlebedev.com/books/design/theory/kovodstvo4/'},
+		{a: 'Erin Kissane', b: 'The Elements of Content Strategy', c: 8, d: 'https://abookapart.com/products/the-elements-of-content-strategy'},
+		{a: 'Aarron Walter', b: 'Designing For Emotion', c: 8, d: 'https://abookapart.com/products/designing-for-emotion'},
+		{a: 'Ethan Mascotte', b: 'Responsive Web Design', c: 8, d: 'https://abookapart.com/products/responsive-web-design'},
+		{a: 'Aspen Pittman', b: 'The Tube Amp Book - Deluxe Revised Edition', c: 2, d: 'https://www.halleonard.com/product/viewproduct.action?subsiteid=7&Projectid=331091'},
+		{a: 'Donald Brosnac', b: 'Guitar Electronics for Musicians', c: 2, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
+		{a: 'Hideo Kamimoto', b: 'Complete Guitar Repair', c: 1, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
+		{a: 'Roger H. Siminoff', b: 'The Luthier\'s Handbook', c: 0, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
+		{a: 'Paul Balmer (Author), Les Paul (Foreword)', b: 'The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul', c: 1, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'}
 	]);
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -4598,20 +4598,20 @@ var $author$project$Project$GitHubUserpic = function (a) {
 };
 var $author$project$Project$Link = F2(
 	function (name, url) {
-		return {F: name, aK: url};
+		return {J: name, d: url};
 	});
 var $author$project$Project$NoPic = {$: 0};
 var $author$project$Project$OnlyMe = {$: 0};
 var $author$project$Project$Project = F5(
 	function (name, description, links, imgFileName, team) {
-		return {au: description, az: imgFileName, aB: links, F: name, aH: team};
+		return {ax: description, aC: imgFileName, aE: links, J: name, aK: team};
 	});
 var $author$project$Project$Team = function (a) {
 	return {$: 1, a: a};
 };
 var $author$project$Project$TeamMate = F3(
 	function (name, userpic, url) {
-		return {F: name, aK: url, aL: userpic};
+		return {J: name, d: url, aL: userpic};
 	});
 var $author$project$Dataset$projects = _List_fromArray(
 	[
@@ -4621,7 +4621,8 @@ var $author$project$Dataset$projects = _List_fromArray(
 		'Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation.',
 		_List_fromArray(
 			[
-				A2($author$project$Project$Link, 'Book contents', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md')
+				A2($author$project$Project$Link, 'Russian translation', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md'),
+				A2($author$project$Project$Link, 'Origial book', 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
 			]),
 		$elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
 		$author$project$Project$Team(
@@ -4631,13 +4632,13 @@ var $author$project$Dataset$projects = _List_fromArray(
 					$author$project$Project$TeamMate,
 					'Maxim Filippov',
 					$author$project$Project$GitHubUserpic(
-						{z: 860283}),
+						{D: 860283}),
 					'https://github.com/maksimf'),
 					A3(
 					$author$project$Project$TeamMate,
 					'Sakayama',
 					$author$project$Project$GitHubUserpic(
-						{z: 44540001}),
+						{D: 44540001}),
 					'https://github.com/Sakayama'),
 					A3($author$project$Project$TeamMate, 'other contributors', $author$project$Project$NoPic, 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors')
 				]))),
@@ -4671,19 +4672,19 @@ var $author$project$Dataset$projects = _List_fromArray(
 					$author$project$Project$TeamMate,
 					'Michael Blood',
 					$author$project$Project$GitHubUserpic(
-						{z: 12065896}),
+						{D: 12065896}),
 					'https://github.com/michaelblood'),
 					A3(
 					$author$project$Project$TeamMate,
 					'Josh Sanders',
 					$author$project$Project$GitHubUserpic(
-						{z: 19422930}),
+						{D: 19422930}),
 					'https://github.com/Josh5231'),
 					A3(
 					$author$project$Project$TeamMate,
 					'Alex McLeod',
 					$author$project$Project$GitHubUserpic(
-						{z: 24363605}),
+						{D: 24363605}),
 					'https://github.com/AlexMcLeod01')
 				])))
 	]);
@@ -4785,7 +4786,8 @@ var $author$project$Book$showTopic = function (topic) {
 };
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
-var $author$project$Main$viewBook = function (book) {
+var $author$project$Main$viewBook = function (_v0) {
+	var book = _v0;
 	return A2(
 		$elm$html$Html$li,
 		_List_fromArray(
@@ -4798,7 +4800,7 @@ var $author$project$Main$viewBook = function (book) {
 				$elm$html$Html$a,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$href(book.aK),
+						$elm$html$Html$Attributes$href(book.d),
 						$elm$html$Html$Attributes$target('_blank')
 					]),
 				_List_fromArray(
@@ -4811,7 +4813,7 @@ var $author$project$Main$viewBook = function (book) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text(book.aI)
+								$elm$html$Html$text(book.b)
 							]))
 					])),
 				A2(
@@ -4822,7 +4824,7 @@ var $author$project$Main$viewBook = function (book) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('by ' + book.ar)
+						$elm$html$Html$text('by ' + book.a)
 					])),
 				A2(
 				$elm$html$Html$span,
@@ -4833,7 +4835,7 @@ var $author$project$Main$viewBook = function (book) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						$author$project$Book$showTopic(book.aJ))
+						$author$project$Book$showTopic(book.c))
 					]))
 			]));
 };
@@ -4895,7 +4897,7 @@ var $author$project$Main$viewNav = function (content) {
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
 var $author$project$Main$viewProjectImage = function (project) {
-	var _v0 = project.az;
+	var _v0 = project.aC;
 	if (!_v0.$) {
 		var filename = _v0.a;
 		return A2(
@@ -4904,7 +4906,7 @@ var $author$project$Main$viewProjectImage = function (project) {
 				[
 					$elm$html$Html$Attributes$class('item-img'),
 					$elm$html$Html$Attributes$src('images/projects/' + filename),
-					$elm$html$Html$Attributes$alt(project.F)
+					$elm$html$Html$Attributes$alt(project.J)
 				]),
 			_List_Nil);
 	} else {
@@ -4918,7 +4920,7 @@ var $author$project$Project$viewUserPic = function (userpic) {
 		case 0:
 			return $author$project$Utils$emptyHtml;
 		case 1:
-			var githubUserId = userpic.a.z;
+			var githubUserId = userpic.a.D;
 			return A2(
 				$elm$html$Html$img,
 				_List_fromArray(
@@ -4928,7 +4930,7 @@ var $author$project$Project$viewUserPic = function (userpic) {
 					]),
 				_List_Nil);
 		default:
-			var url = userpic.a.aK;
+			var url = userpic.a.d;
 			return A2(
 				$elm$html$Html$img,
 				_List_fromArray(
@@ -4985,13 +4987,13 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 										$elm$html$Html$a,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$href(teamMate.aK),
+												$elm$html$Html$Attributes$href(teamMate.d),
 												$elm$html$Html$Attributes$target('_blank')
 											]),
 										_List_fromArray(
 											[
 												$author$project$Project$viewUserPic(teamMate.aL),
-												$elm$html$Html$text(teamMate.F)
+												$elm$html$Html$text(teamMate.J)
 											])),
 										$elm$html$Html$text(',')
 									]));
@@ -5024,7 +5026,7 @@ var $author$project$Main$viewProject = function (project) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.F)
+						$elm$html$Html$text(project.J)
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5034,7 +5036,7 @@ var $author$project$Main$viewProject = function (project) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.au)
+						$elm$html$Html$text(project.ax)
 					])),
 				A2(
 				$elm$html$Html$div,
@@ -5049,16 +5051,16 @@ var $author$project$Main$viewProject = function (project) {
 							$elm$html$Html$a,
 							_List_fromArray(
 								[
-									$elm$html$Html$Attributes$href(link.aK),
+									$elm$html$Html$Attributes$href(link.d),
 									$elm$html$Html$Attributes$target('_blank')
 								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text(link.F)
+									$elm$html$Html$text(link.J)
 								]));
 					},
-					project.aB)),
-				$author$project$Main$viewTeam(project.aH)
+					project.aE)),
+				$author$project$Main$viewTeam(project.aK)
 			]));
 };
 var $author$project$Main$viewProjects = function (projs) {
