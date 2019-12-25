@@ -4404,47 +4404,6 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
-var $elm$core$Basics$identity = function (x) {
-	return x;
-};
-var $author$project$Book$Book = $elm$core$Basics$identity;
-var $author$project$Book$CONSTRUCTION = 0;
-var $author$project$Book$CSS = 7;
-var $author$project$Book$DESIGN = 8;
-var $author$project$Book$DEV = 9;
-var $author$project$Book$ELECTRONICS = 2;
-var $author$project$Book$HASKELL = 4;
-var $author$project$Book$JS = 3;
-var $author$project$Book$MAINTAINANCE = 1;
-var $author$project$Book$REACT = 6;
-var $author$project$Book$SCALA = 5;
-var $author$project$Dataset$bookshelf = _List_fromArray(
-	[
-		{a: 'Miran Lipovača', b: 'Learn You a Haskell for Great Good!', c: 4, d: 'http://learnyouahaskell.com/'},
-		{a: 'Professor Frisby', b: 'Mostly Adequate Guide to Functional Programming', c: 3, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
-		{a: 'Douglas Crockford', b: 'JavaScript: The Good Parts', c: 3, d: 'http://shop.oreilly.com/product/9780596517748.do'},
-		{a: 'Luis Atencio', b: 'Functional Programming in JavaScript', c: 3, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
-		{a: 'Sam Newman', b: 'Building Microservices', c: 9, d: 'http://shop.oreilly.com/product/0636920033158.do'},
-		{a: 'Alvin Alexander', b: 'Learning Functional Programming in Scala', c: 5, d: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
-		{a: 'Kyle Simpson', b: 'You Don\'t Know JS (book series) 1, 2, 3, 4', c: 3, d: 'https://github.com/getify/You-Dont-Know-JS'},
-		{a: 'Bruce Eckel, Dianne Marsh', b: 'Atomic Scala', c: 5, d: 'http://www.atomicscala.com'},
-		{a: 'Максим Пацианский', b: 'Роутинг в react-приложениях', c: 6, d: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
-		{a: 'Максим Пацианский', b: 'React Redux курс для начинающих', c: 6, d: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
-		{a: 'Robert Martin', b: 'Clean Code. A Handbook of Agile Software Craftsmanship', c: 9, d: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
-		{a: 'Максим Пацианский', b: 'React.js курс для начинающих', c: 6, d: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
-		{a: 'Stoyan Stefanov', b: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', c: 3, d: 'https://shop.oreilly.com/product/9780596806767.do'},
-		{a: 'David Sawyer McFarland', b: 'CSS: The Missing Manual, 4th Edition', c: 7, d: 'https://shop.oreilly.com/product/0636920036357.do'},
-		{a: 'Rebecca Hagen, Kim Golombisky', b: 'White Space Is Not Your Enemy: A beginner\'s guide to communicating visually through graphic, web and multimedia design', c: 8, d: 'http://cw.routledge.com/textbooks/9780240824147'},
-		{a: 'Артемий Лебедев', b: 'Ководство', c: 8, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
-		{a: 'Erin Kissane', b: 'The Elements of Content Strategy', c: 8, d: 'https://abookapart.com/products/the-elements-of-content-strategy'},
-		{a: 'Aarron Walter', b: 'Designing For Emotion', c: 8, d: 'https://abookapart.com/products/designing-for-emotion'},
-		{a: 'Ethan Mascotte', b: 'Responsive Web Design', c: 8, d: 'https://abookapart.com/products/responsive-web-design'},
-		{a: 'Aspen Pittman', b: 'The Tube Amp Book - Deluxe Revised Edition', c: 2, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
-		{a: 'Donald Brosnac', b: 'Guitar Electronics for Musicians', c: 2, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
-		{a: 'Hideo Kamimoto', b: 'Complete Guitar Repair', c: 1, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
-		{a: 'Roger H. Siminoff', b: 'The Luthier\'s Handbook', c: 0, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
-		{a: 'Paul Balmer (Author), Les Paul (Foreword)', b: 'The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul', c: 1, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'}
-	]);
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -4609,6 +4568,249 @@ var $author$project$Main$developerIntro = A2(
 						]))
 				]))
 		]));
+var $elm$core$Basics$identity = function (x) {
+	return x;
+};
+var $author$project$Book$Book = $elm$core$Basics$identity;
+var $author$project$Book$CONSTRUCTION = 0;
+var $author$project$Book$CSS = 7;
+var $author$project$Book$DESIGN = 8;
+var $author$project$Book$DEV = 9;
+var $author$project$Book$ELECTRONICS = 2;
+var $author$project$Book$HASKELL = 4;
+var $author$project$Book$JS = 3;
+var $author$project$Book$MAINTAINANCE = 1;
+var $author$project$Book$REACT = 6;
+var $author$project$Book$SCALA = 5;
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
+var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
+var $elm$core$Dict$Black = 1;
+var $elm$core$Dict$RBNode_elm_builtin = F5(
+	function (a, b, c, d, e) {
+		return {$: -1, a: a, b: b, c: c, d: d, e: e};
+	});
+var $elm$core$Dict$Red = 0;
+var $elm$core$Dict$balance = F5(
+	function (color, key, value, left, right) {
+		if ((right.$ === -1) && (!right.a)) {
+			var _v1 = right.a;
+			var rK = right.b;
+			var rV = right.c;
+			var rLeft = right.d;
+			var rRight = right.e;
+			if ((left.$ === -1) && (!left.a)) {
+				var _v3 = left.a;
+				var lK = left.b;
+				var lV = left.c;
+				var lLeft = left.d;
+				var lRight = left.e;
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					0,
+					key,
+					value,
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
+			} else {
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					color,
+					rK,
+					rV,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
+					rRight);
+			}
+		} else {
+			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
+				var _v5 = left.a;
+				var lK = left.b;
+				var lV = left.c;
+				var _v6 = left.d;
+				var _v7 = _v6.a;
+				var llK = _v6.b;
+				var llV = _v6.c;
+				var llLeft = _v6.d;
+				var llRight = _v6.e;
+				var lRight = left.e;
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					0,
+					lK,
+					lV,
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
+			} else {
+				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
+			}
+		}
+	});
+var $elm$core$Basics$compare = _Utils_compare;
+var $elm$core$Dict$insertHelp = F3(
+	function (key, value, dict) {
+		if (dict.$ === -2) {
+			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		} else {
+			var nColor = dict.a;
+			var nKey = dict.b;
+			var nValue = dict.c;
+			var nLeft = dict.d;
+			var nRight = dict.e;
+			var _v1 = A2($elm$core$Basics$compare, key, nKey);
+			switch (_v1) {
+				case 0:
+					return A5(
+						$elm$core$Dict$balance,
+						nColor,
+						nKey,
+						nValue,
+						A3($elm$core$Dict$insertHelp, key, value, nLeft),
+						nRight);
+				case 1:
+					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
+				default:
+					return A5(
+						$elm$core$Dict$balance,
+						nColor,
+						nKey,
+						nValue,
+						nLeft,
+						A3($elm$core$Dict$insertHelp, key, value, nRight));
+			}
+		}
+	});
+var $elm$core$Dict$insert = F3(
+	function (key, value, dict) {
+		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
+		if ((_v0.$ === -1) && (!_v0.a)) {
+			var _v1 = _v0.a;
+			var k = _v0.b;
+			var v = _v0.c;
+			var l = _v0.d;
+			var r = _v0.e;
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
+		} else {
+			var x = _v0;
+			return x;
+		}
+	});
+var $elm$core$Dict$fromList = function (assocs) {
+	return A3(
+		$elm$core$List$foldl,
+		F2(
+			function (_v0, dict) {
+				var key = _v0.a;
+				var value = _v0.b;
+				return A3($elm$core$Dict$insert, key, value, dict);
+			}),
+		$elm$core$Dict$empty,
+		assocs);
+};
+var $elm$core$List$foldrHelper = F4(
+	function (fn, acc, ctr, ls) {
+		if (!ls.b) {
+			return acc;
+		} else {
+			var a = ls.a;
+			var r1 = ls.b;
+			if (!r1.b) {
+				return A2(fn, a, acc);
+			} else {
+				var b = r1.a;
+				var r2 = r1.b;
+				if (!r2.b) {
+					return A2(
+						fn,
+						a,
+						A2(fn, b, acc));
+				} else {
+					var c = r2.a;
+					var r3 = r2.b;
+					if (!r3.b) {
+						return A2(
+							fn,
+							a,
+							A2(
+								fn,
+								b,
+								A2(fn, c, acc)));
+					} else {
+						var d = r3.a;
+						var r4 = r3.b;
+						var res = (ctr > 500) ? A3(
+							$elm$core$List$foldl,
+							fn,
+							acc,
+							$elm$core$List$reverse(r4)) : A4($elm$core$List$foldrHelper, fn, acc, ctr + 1, r4);
+						return A2(
+							fn,
+							a,
+							A2(
+								fn,
+								b,
+								A2(
+									fn,
+									c,
+									A2(fn, d, res))));
+					}
+				}
+			}
+		}
+	});
+var $elm$core$List$foldr = F3(
+	function (fn, acc, ls) {
+		return A4($elm$core$List$foldrHelper, fn, acc, 0, ls);
+	});
+var $elm$core$List$map = F2(
+	function (f, xs) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, acc) {
+					return A2(
+						$elm$core$List$cons,
+						f(x),
+						acc);
+				}),
+			_List_Nil,
+			xs);
+	});
+var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
+	A2(
+		$elm$core$List$map,
+		function (book) {
+			var title = book.a;
+			return _Utils_Tuple2(title, book);
+		},
+		_List_fromArray(
+			[
+				{b: 'Miran Lipovača', a: 'Learn You a Haskell for Great Good!', c: 4, d: 'http://learnyouahaskell.com/'},
+				{b: 'Professor Frisby', a: 'Mostly Adequate Guide to Functional Programming', c: 3, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
+				{b: 'Douglas Crockford', a: 'JavaScript: The Good Parts', c: 3, d: 'http://shop.oreilly.com/product/9780596517748.do'},
+				{b: 'Luis Atencio', a: 'Functional Programming in JavaScript', c: 3, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
+				{b: 'Sam Newman', a: 'Building Microservices', c: 9, d: 'http://shop.oreilly.com/product/0636920033158.do'},
+				{b: 'Alvin Alexander', a: 'Learning Functional Programming in Scala', c: 5, d: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
+				{b: 'Kyle Simpson', a: 'You Don\'t Know JS (book series) 1, 2, 3, 4', c: 3, d: 'https://github.com/getify/You-Dont-Know-JS'},
+				{b: 'Bruce Eckel, Dianne Marsh', a: 'Atomic Scala', c: 5, d: 'http://www.atomicscala.com'},
+				{b: 'Максим Пацианский', a: 'Роутинг в react-приложениях', c: 6, d: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
+				{b: 'Максим Пацианский', a: 'React Redux курс для начинающих', c: 6, d: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
+				{b: 'Robert Martin', a: 'Clean Code. A Handbook of Agile Software Craftsmanship', c: 9, d: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
+				{b: 'Максим Пацианский', a: 'React.js курс для начинающих', c: 6, d: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
+				{b: 'Stoyan Stefanov', a: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', c: 3, d: 'https://shop.oreilly.com/product/9780596806767.do'},
+				{b: 'David Sawyer McFarland', a: 'CSS: The Missing Manual, 4th Edition', c: 7, d: 'https://shop.oreilly.com/product/0636920036357.do'},
+				{b: 'Rebecca Hagen, Kim Golombisky', a: 'White Space Is Not Your Enemy: A beginner\'s guide to communicating visually through graphic, web and multimedia design', c: 8, d: 'http://cw.routledge.com/textbooks/9780240824147'},
+				{b: 'Артемий Лебедев', a: 'Ководство', c: 8, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
+				{b: 'Erin Kissane', a: 'The Elements of Content Strategy', c: 8, d: 'https://abookapart.com/products/the-elements-of-content-strategy'},
+				{b: 'Aarron Walter', a: 'Designing For Emotion', c: 8, d: 'https://abookapart.com/products/designing-for-emotion'},
+				{b: 'Ethan Mascotte', a: 'Responsive Web Design', c: 8, d: 'https://abookapart.com/products/responsive-web-design'},
+				{b: 'Aspen Pittman', a: 'The Tube Amp Book - Deluxe Revised Edition', c: 2, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
+				{b: 'Donald Brosnac', a: 'Guitar Electronics for Musicians', c: 2, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
+				{b: 'Hideo Kamimoto', a: 'Complete Guitar Repair', c: 1, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
+				{b: 'Roger H. Siminoff', a: 'The Luthier\'s Handbook', c: 0, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
+				{b: 'Paul Balmer (Author), Les Paul (Foreword)', a: 'The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul', c: 1, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'}
+			])));
+var $author$project$Book$BookTitle = $elm$core$Basics$identity;
+var $author$project$Dataset$learningPath = _List_fromArray(
+	['Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'CSS: The Missing Manual, 4th Edition', 'White Space Is Not Your Enemy: A beginner\'s guide to communicating visually through graphic, web and multimedia design', 'Ководство', 'The Elements of Content Strategy', 'Designing For Emotion', 'Responsive Web Design']);
 var $author$project$Project$GitHubUserId = function (a) {
 	return {$: 1, a: a};
 };
@@ -4696,76 +4898,58 @@ var $author$project$Dataset$projects = _List_fromArray(
 				]))
 	}
 	]);
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $elm$core$List$foldrHelper = F4(
-	function (fn, acc, ctr, ls) {
-		if (!ls.b) {
-			return acc;
-		} else {
-			var a = ls.a;
-			var r1 = ls.b;
-			if (!r1.b) {
-				return A2(fn, a, acc);
+var $elm$core$Dict$get = F2(
+	function (targetKey, dict) {
+		get:
+		while (true) {
+			if (dict.$ === -2) {
+				return $elm$core$Maybe$Nothing;
 			} else {
-				var b = r1.a;
-				var r2 = r1.b;
-				if (!r2.b) {
-					return A2(
-						fn,
-						a,
-						A2(fn, b, acc));
-				} else {
-					var c = r2.a;
-					var r3 = r2.b;
-					if (!r3.b) {
-						return A2(
-							fn,
-							a,
-							A2(
-								fn,
-								b,
-								A2(fn, c, acc)));
-					} else {
-						var d = r3.a;
-						var r4 = r3.b;
-						var res = (ctr > 500) ? A3(
-							$elm$core$List$foldl,
-							fn,
-							acc,
-							$elm$core$List$reverse(r4)) : A4($elm$core$List$foldrHelper, fn, acc, ctr + 1, r4);
-						return A2(
-							fn,
-							a,
-							A2(
-								fn,
-								b,
-								A2(
-									fn,
-									c,
-									A2(fn, d, res))));
-					}
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
+				switch (_v1) {
+					case 0:
+						var $temp$targetKey = targetKey,
+							$temp$dict = left;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+					case 1:
+						return $elm$core$Maybe$Just(value);
+					default:
+						var $temp$targetKey = targetKey,
+							$temp$dict = right;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
 				}
 			}
 		}
 	});
-var $elm$core$List$foldr = F3(
-	function (fn, acc, ls) {
-		return A4($elm$core$List$foldrHelper, fn, acc, 0, ls);
+var $elm_community$maybe_extra$Maybe$Extra$cons = F2(
+	function (item, list) {
+		if (!item.$) {
+			var v = item.a;
+			return A2($elm$core$List$cons, v, list);
+		} else {
+			return list;
+		}
 	});
-var $elm$core$List$map = F2(
-	function (f, xs) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, acc) {
-					return A2(
-						$elm$core$List$cons,
-						f(x),
-						acc);
-				}),
-			_List_Nil,
-			xs);
+var $elm_community$maybe_extra$Maybe$Extra$values = A2($elm$core$List$foldr, $elm_community$maybe_extra$Maybe$Extra$cons, _List_Nil);
+var $author$project$Utils$getMany = F2(
+	function (dict, keys) {
+		return $elm_community$maybe_extra$Maybe$Extra$values(
+			A2(
+				$elm$core$List$map,
+				function (k) {
+					return A2($elm$core$Dict$get, k, dict);
+				},
+				keys));
 	});
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $elm$html$Html$li = _VirtualDom_node('li');
 var $author$project$Book$showTopic = function (topic) {
@@ -4821,7 +5005,7 @@ var $author$project$Main$viewBook = function (_v0) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text(book.b)
+								$elm$html$Html$text(book.a)
 							]))
 					])),
 				A2(
@@ -4832,7 +5016,7 @@ var $author$project$Main$viewBook = function (_v0) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('by ' + book.a)
+						$elm$html$Html$text('by ' + book.b)
 					])),
 				A2(
 				$elm$html$Html$span,
@@ -4847,34 +5031,47 @@ var $author$project$Main$viewBook = function (_v0) {
 					]))
 			]));
 };
-var $author$project$Main$viewBooks = function (books) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('books-list')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$h2,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Books, that I\'ve read')
-							])),
-						A2(
-						$elm$html$Html$ul,
-						_List_Nil,
-						A2($elm$core$List$map, $author$project$Main$viewBook, books))
-					]))
-			]));
-};
+var $author$project$Main$viewBooks = F2(
+	function (books, path) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('books-list')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$h2,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('Books, that I\'ve read')
+								])),
+							A2(
+							$elm$html$Html$ul,
+							_List_Nil,
+							A2(
+								$elm$core$List$map,
+								$author$project$Main$viewBook,
+								A2(
+									$author$project$Utils$getMany,
+									books,
+									A2(
+										$elm$core$List$map,
+										function (_v0) {
+											var title = _v0;
+											return title;
+										},
+										path))))
+						]))
+				]));
+	});
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $author$project$Main$viewNav = function (content) {
@@ -5108,6 +5305,6 @@ var $author$project$Main$main = A2(
 		[
 			$author$project$Main$viewNav($author$project$Main$developerIntro),
 			$author$project$Main$viewProjects($author$project$Dataset$projects),
-			$author$project$Main$viewBooks($author$project$Dataset$bookshelf)
+			A2($author$project$Main$viewBooks, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));
