@@ -1,10 +1,19 @@
 module Dataset exposing (..)
 
 import Book exposing (..)
+import Dict exposing (Dict)
 import Project exposing (..)
 
-bookshelf : List Book
-bookshelf =
+
+
+{-
+   as long as I don't use relational database for this library,
+   book title is a key. To keep things consistent, title should be never changed :D
+-}
+
+
+knownBooks : Dict String Book
+knownBooks =
     [ Book
         { author = "Miran Lipovača"
         , title = "Learn You a Haskell for Great Good!"
@@ -150,6 +159,8 @@ bookshelf =
         , url = "https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706"
         }
     ]
+        |> List.map (\((Book { title }) as book) -> ( title, book ))
+        |> Dict.fromList
 
 
 projects : List Project
@@ -203,4 +214,43 @@ projects =
                 , TeamMate "Alex McLeod" (GitHubUserId 24363605) "https://github.com/AlexMcLeod01"
                 ]
         }
+    ]
+
+
+
+{- if book is not found in states Dict, then it is not in Library :D -}
+
+
+libraryState : Dict String BookAvaliability
+libraryState =
+    Dict.fromList
+        [ ( "The Tube Amp Book - Deluxe Revised Edition", Available )
+        , ( "Guitar Electronics for Musicians", Available )
+        , ( "Complete Guitar Repair", Available )
+        , ( "The Luthier's Handbook", Available )
+        , ( "The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul", Available )
+        ]
+
+
+learningPath : List LearningMaterial
+learningPath =
+    [ BookTitle "Learn You a Haskell for Great Good!"
+    , BookTitle "Mostly Adequate Guide to Functional Programming"
+    , BookTitle "JavaScript: The Good Parts"
+    , BookTitle "Functional Programming in JavaScript"
+    , BookTitle "Building Microservices"
+    , BookTitle "Learning Functional Programming in Scala"
+    , BookTitle "You Don't Know JS (book series) 1, 2, 3, 4"
+    , BookTitle "Atomic Scala"
+    , BookTitle "Роутинг в react-приложениях"
+    , BookTitle "React Redux курс для начинающих"
+    , BookTitle "Clean Code. A Handbook of Agile Software Craftsmanship"
+    , BookTitle "React.js курс для начинающих"
+    , BookTitle "JavaScript Patterns: Build Better Applications with Coding and Design Patterns"
+    , BookTitle "CSS: The Missing Manual, 4th Edition"
+    , BookTitle "White Space Is Not Your Enemy: A beginner's guide to communicating visually through graphic, web and multimedia design"
+    , BookTitle "Ководство"
+    , BookTitle "The Elements of Content Strategy"
+    , BookTitle "Designing For Emotion"
+    , BookTitle "Responsive Web Design"
     ]

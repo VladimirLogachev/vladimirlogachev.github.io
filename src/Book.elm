@@ -10,6 +10,25 @@ type Book
         }
 
 
+type LearningMaterial
+    = BookTitle String
+
+
+
+-- | Course
+--     { url : String
+--     , certificateUrl : String
+--     , organization : String
+--     , title : String
+--     }
+
+
+type BookAvaliability
+    = Available
+    | ComingSoon
+    | GivenToSomeone
+
+
 type Topic
     = CONSTRUCTION
     | MAINTAINANCE

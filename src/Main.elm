@@ -6,7 +6,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Project exposing (..)
 import Utils exposing (..)
-
+import Dict exposing (Dict)
 
 type Msg
     = Msg
@@ -17,7 +17,7 @@ main =
     div [ class "app" ]
         [ viewNav developerIntro
         , viewProjects projects
-        , viewBooks bookshelf
+        , viewBooks knownBooks learningPath
         ]
 
 
@@ -53,15 +53,15 @@ developerIntro =
         ]
 
 
-viewBooks : List Book -> Html Msg
-viewBooks books =
+viewBooks : Dict String Book -> List LearningMaterial -> Html Msg
+viewBooks books path =
     div [ class "books-list" ]
         [ div []
             [ h2 [] [ text "Books, that I've read" ]
             , ul [] <|
-                List.map
-                    viewBook
-                    books
+                List.map viewBook <|
+                    getMany books <|
+                        List.map (\(BookTitle title) -> title) path
             ]
         ]
 
