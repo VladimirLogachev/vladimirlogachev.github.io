@@ -1,15 +1,13 @@
 module Book exposing (..)
 
 
-
-
-type alias Book =
-    { author : String
-    , title : String
-    , topics : Topic
-    , url : String
-    }
-
+type Book
+    = Book
+        { author : String
+        , title : String
+        , topics : Topic
+        , url : String
+        }
 
 
 type Topic

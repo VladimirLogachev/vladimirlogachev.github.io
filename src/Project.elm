@@ -2,8 +2,9 @@ module Project exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-
 import Utils exposing (..)
+
+
 
 -- TODO: team :: Nel TeamMate
 
@@ -41,27 +42,30 @@ type alias TeamMate =
     }
 
 
-
 userpicCssSize =
     16
 
 
 userpicSrcSize =
     userpicCssSize * 3
-    
+
+
 viewUserPic : Userpic -> Html a
-viewUserPic userpic = case userpic of 
-  NoPic -> emptyHtml
-  GitHubUserpic { githubUserId } -> img
-                                        [ src <|
-                                            "https://avatars2.githubusercontent.com/u/"
-                                                ++ String.fromInt githubUserId
-                                                ++ "?s="
-                                                ++ String.fromInt userpicSrcSize
-                                                ++ "&v=4"
-                                        ]
-                                        []
-  DirectUrl { url } -> img
-                                        [ src url
-                                        ]
-                                        []
+viewUserPic userpic =
+    case userpic of
+        NoPic ->
+            emptyHtml
+
+        GitHubUserpic { githubUserId } ->
+            img
+                [ src <|
+                    "https://avatars2.githubusercontent.com/u/"
+                        ++ String.fromInt githubUserId
+                        ++ "?s="
+                        ++ String.fromInt userpicSrcSize
+                        ++ "&v=4"
+                ]
+                []
+
+        DirectUrl { url } ->
+            img [ src url ] []

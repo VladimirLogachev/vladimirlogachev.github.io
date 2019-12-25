@@ -76,7 +76,7 @@ viewBooks books =
 
 
 viewBook : Book -> Html Msg
-viewBook book =
+viewBook (Book book) =
     li [ class "book" ]
         [ a [ href book.url, target "_blank" ]
             [ span [ class "title" ]
