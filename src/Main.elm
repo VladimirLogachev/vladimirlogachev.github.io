@@ -18,8 +18,8 @@ main =
     div [ class "app" ]
         [ viewNav developerIntro
         , viewProjects projects
-        , viewBooks knownBooks learningPath
         , viewLibrary knownBooks libraryState
+        , viewBooks knownBooks learningPath
         ]
 
 
@@ -73,11 +73,14 @@ viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
 viewLibrary books libState =
     div [ class "books-list" ]
         [ div []
-            [ h2 [] [ text "My personal offline library" ]
-            , p [] [ text "I always keep my books on my desk at my workplace." ]
-            , p [] [ text "Every person is able to borrow any book from my personal library." ]
-            , p [] [ text "This works not just for collegues, but for any person that I know in real life." ]
-            , p [] [ text "This is my culture, and I won't give it way, so just accept it." ]
+            [ h2 [] [ text "My offline library, shared" ]
+            , div [ class "description" ]
+                [ p [] [ text "I have a tradition to keep my books on my desk at my workplace." ]
+                , p [] [ text "Any person is able to borrow any book from my personal library." ]
+                , p [] [ text "This works not only for collegues, but for any person that knows me in real life." ]
+                , p [] [ text "This is my culture, it works great, it makes the world around me a better place," ]
+                , p [] [ text "and I won't give it away, so everyone should just accept it." ]
+                ]
             , libState
                 |> Dict.keys
                 |> getMany books

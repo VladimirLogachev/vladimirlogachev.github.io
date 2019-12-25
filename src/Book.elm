@@ -34,7 +34,7 @@ type Topic
     | JS
     | HASKELL
     | SCALA
-    | REACT
+    | SCHEME
     | CSS
     | DESIGN
     | DEV
@@ -49,7 +49,7 @@ devTopics =
     [ JS
     , HASKELL
     , SCALA
-    , REACT
+    , SCHEME
     , CSS
     , DESIGN
     , DEV
@@ -68,11 +68,11 @@ showTopic topic =
         HASKELL ->
             "Haskell"
 
+        SCHEME ->
+            "Scheme"
+
         SCALA ->
             "Scala"
-
-        REACT ->
-            "React"
 
         CSS ->
             "CSS"

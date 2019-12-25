@@ -63,18 +63,6 @@ knownBooks =
         , url = "http://www.atomicscala.com"
         }
     , Book
-        { author = "Максим Пацианский"
-        , title = "Роутинг в react-приложениях"
-        , topics = REACT
-        , url = "https://maxfarseer.gitbooks.io/react-router-course-ru/content"
-        }
-    , Book
-        { author = "Максим Пацианский"
-        , title = "React Redux курс для начинающих"
-        , topics = REACT
-        , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
-        }
-    , Book
         { author = "Robert Martin"
         , title = "Clean Code. A Handbook of Agile Software Craftsmanship"
         , topics = DEV
@@ -82,8 +70,20 @@ knownBooks =
         }
     , Book
         { author = "Максим Пацианский"
+        , title = "Роутинг в react-приложениях"
+        , topics = JS
+        , url = "https://maxfarseer.gitbooks.io/react-router-course-ru/content"
+        }
+    , Book
+        { author = "Максим Пацианский"
+        , title = "React Redux курс для начинающих"
+        , topics = JS
+        , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
+        }
+    , Book
+        { author = "Максим Пацианский"
         , title = "React.js курс для начинающих"
-        , topics = REACT
+        , topics = JS
         , url = "https://maxfarseer.gitbooks.io/react-course-ru-v2/content/"
         }
     , Book
@@ -94,7 +94,7 @@ knownBooks =
         }
     , Book
         { author = "David Sawyer McFarland"
-        , title = "CSS: The Missing Manual, 4th Edition"
+        , title = "CSS: The Missing Manual"
         , topics = CSS
         , url = "https://shop.oreilly.com/product/0636920036357.do"
         }
@@ -157,6 +157,42 @@ knownBooks =
         , title = "The Gibson Les Paul Handbook"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706"
+        }
+    , Book
+        { author = "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides"
+        , title = "Design Patterns: Elements of Reusable Object-Oriented Software"
+        , topics = DEV
+        , url = "https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8"
+        }
+    , Book
+        { author = "Pat Brisbin"
+        , title = "Maybe Haskell"
+        , topics = HASKELL
+        , url = "https://books.thoughtbot.com/assets/maybe-haskell.pdf"
+        }
+    , Book
+        { author = "Harold Abelson, Gerald Jay Sussman, Julie Sussman"
+        , title = "Structure and Interpretation of Computer Programs"
+        , topics = SCHEME
+        , url = "https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871"
+        }
+    , Book
+        { author = "Bartosz Milewski"
+        , title = "Category Theory for Programmers"
+        , topics = HASKELL
+        , url = "https://github.com/hmemcpy/milewski-ctfp-pdf"
+        }
+    , Book
+        { author = "Noel Welsh, Dave Gurnell"
+        , title = "Essential Scala"
+        , topics = SCALA
+        , url = "https://underscore.io/books/essential-scala/"
+        }
+    , Book
+        { author = "Noel Welsh, Dave Gurnell"
+        , title = "Scala with Cats"
+        , topics = SCALA
+        , url = "https://underscore.io/books/scala-with-cats/"
         }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
@@ -234,7 +270,13 @@ libraryState =
 
 learningPath : List LearningMaterial
 learningPath =
-    [ BookTitle "Learn You a Haskell for Great Good!"
+    [ BookTitle "Scala with Cats"
+    , BookTitle "Essential Scala"
+    , BookTitle "Category Theory for Programmers"
+    , BookTitle "Structure and Interpretation of Computer Programs"
+    , BookTitle "Maybe Haskell"
+    , BookTitle "Design Patterns: Elements of Reusable Object-Oriented Software"
+    , BookTitle "Learn You a Haskell for Great Good!"
     , BookTitle "Mostly Adequate Guide to Functional Programming"
     , BookTitle "JavaScript: The Good Parts"
     , BookTitle "Functional Programming in JavaScript"
@@ -242,12 +284,12 @@ learningPath =
     , BookTitle "Learning Functional Programming in Scala"
     , BookTitle "You Don't Know JS (book series) 1, 2, 3, 4"
     , BookTitle "Atomic Scala"
+    , BookTitle "Clean Code. A Handbook of Agile Software Craftsmanship"
     , BookTitle "Роутинг в react-приложениях"
     , BookTitle "React Redux курс для начинающих"
-    , BookTitle "Clean Code. A Handbook of Agile Software Craftsmanship"
     , BookTitle "React.js курс для начинающих"
     , BookTitle "JavaScript Patterns: Build Better Applications with Coding and Design Patterns"
-    , BookTitle "CSS: The Missing Manual, 4th Edition"
+    , BookTitle "CSS: The Missing Manual"
     , BookTitle "White Space Is Not Your Enemy"
     , BookTitle "Ководство"
     , BookTitle "The Elements of Content Strategy"
