@@ -100,7 +100,7 @@ knownBooks =
         }
     , Book
         { author = "Rebecca Hagen, Kim Golombisky"
-        , title = "White Space Is Not Your Enemy: A beginner's guide to communicating visually through graphic, web and multimedia design"
+        , title = "White Space Is Not Your Enemy"
         , topics = DESIGN
         , url = "http://cw.routledge.com/textbooks/9780240824147"
         }
@@ -154,7 +154,7 @@ knownBooks =
         }
     , Book
         { author = "Paul Balmer (Author), Les Paul (Foreword)"
-        , title = "The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul"
+        , title = "The Gibson Les Paul Handbook"
         , topics = MAINTAINANCE
         , url = "https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706"
         }
@@ -228,7 +228,7 @@ libraryState =
         , ( "Guitar Electronics for Musicians", Available )
         , ( "Complete Guitar Repair", Available )
         , ( "The Luthier's Handbook", Available )
-        , ( "The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul", Available )
+        , ( "The Gibson Les Paul Handbook", Available )
         ]
 
 
@@ -248,7 +248,7 @@ learningPath =
     , BookTitle "React.js курс для начинающих"
     , BookTitle "JavaScript Patterns: Build Better Applications with Coding and Design Patterns"
     , BookTitle "CSS: The Missing Manual, 4th Edition"
-    , BookTitle "White Space Is Not Your Enemy: A beginner's guide to communicating visually through graphic, web and multimedia design"
+    , BookTitle "White Space Is Not Your Enemy"
     , BookTitle "Ководство"
     , BookTitle "The Elements of Content Strategy"
     , BookTitle "Designing For Emotion"

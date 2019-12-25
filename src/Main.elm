@@ -2,11 +2,12 @@ module Main exposing (main)
 
 import Book exposing (..)
 import Dataset exposing (..)
+import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Project exposing (..)
 import Utils exposing (..)
-import Dict exposing (Dict)
+
 
 type Msg
     = Msg
@@ -18,6 +19,7 @@ main =
         [ viewNav developerIntro
         , viewProjects projects
         , viewBooks knownBooks learningPath
+        , viewLibrary knownBooks libraryState
         ]
 
 
@@ -54,14 +56,33 @@ developerIntro =
 
 
 viewBooks : Dict String Book -> List LearningMaterial -> Html Msg
-viewBooks books path =
+viewBooks books learnPath =
     div [ class "books-list" ]
         [ div []
-            [ h2 [] [ text "Books, that I've read" ]
-            , ul [] <|
-                List.map viewBook <|
-                    getMany books <|
-                        List.map (\(BookTitle title) -> title) path
+            [ h2 [] [ text "Books I've read" ]
+            , learnPath
+                |> List.map (\(BookTitle title) -> title)
+                |> getMany books
+                |> List.map viewBook
+                |> ul []
+            ]
+        ]
+
+
+viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
+viewLibrary books libState =
+    div [ class "books-list" ]
+        [ div []
+            [ h2 [] [ text "My personal offline library" ]
+            , p [] [ text "I always keep my books on my desk at my workplace." ]
+            , p [] [ text "Every person is able to borrow any book from my personal library." ]
+            , p [] [ text "This works not just for collegues, but for any person that I know in real life." ]
+            , p [] [ text "This is my culture, and I won't give it way, so just accept it." ]
+            , libState
+                |> Dict.keys
+                |> getMany books
+                |> List.map viewBook
+                |> ul []
             ]
         ]
 
@@ -69,14 +90,9 @@ viewBooks books path =
 viewBook : Book -> Html Msg
 viewBook (Book book) =
     li [ class "book" ]
-        [ a [ href book.url, target "_blank" ]
-            [ span [ class "title" ]
-                [ text book.title ]
-            ]
-        , span [ class "author" ]
-            [ text <| "by " ++ book.author ]
-        , span [ class "topic" ]
-            [ text <| showTopic book.topics ]
+        [ a [ href book.url, target "_blank" ] [ p [ class "title" ] [ text book.title ] ]
+        , p [ class "author" ] [ text book.author ]
+        , p [ class "topic" ] [ text <| showTopic book.topics ]
         ]
 
 
