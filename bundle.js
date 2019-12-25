@@ -4572,16 +4572,14 @@ var $elm$core$Basics$identity = function (x) {
 	return x;
 };
 var $author$project$Book$Book = $elm$core$Basics$identity;
-var $author$project$Book$CONSTRUCTION = 0;
-var $author$project$Book$CSS = 7;
-var $author$project$Book$DESIGN = 8;
-var $author$project$Book$DEV = 9;
-var $author$project$Book$ELECTRONICS = 2;
-var $author$project$Book$HASKELL = 4;
-var $author$project$Book$JS = 3;
-var $author$project$Book$MAINTAINANCE = 1;
-var $author$project$Book$REACT = 6;
-var $author$project$Book$SCALA = 5;
+var $author$project$Book$CSS = 5;
+var $author$project$Book$DESIGN = 6;
+var $author$project$Book$DEV = 7;
+var $author$project$Book$HASKELL = 2;
+var $author$project$Book$JS = 1;
+var $author$project$Book$MUSIC_INSTRUMENTS = 0;
+var $author$project$Book$SCALA = 3;
+var $author$project$Book$SCHEME = 4;
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Dict$Black = 1;
@@ -4783,34 +4781,40 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 		},
 		_List_fromArray(
 			[
-				{b: 'Miran Lipovača', a: 'Learn You a Haskell for Great Good!', c: 4, d: 'http://learnyouahaskell.com/'},
-				{b: 'Professor Frisby', a: 'Mostly Adequate Guide to Functional Programming', c: 3, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
-				{b: 'Douglas Crockford', a: 'JavaScript: The Good Parts', c: 3, d: 'http://shop.oreilly.com/product/9780596517748.do'},
-				{b: 'Luis Atencio', a: 'Functional Programming in JavaScript', c: 3, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
-				{b: 'Sam Newman', a: 'Building Microservices', c: 9, d: 'http://shop.oreilly.com/product/0636920033158.do'},
-				{b: 'Alvin Alexander', a: 'Learning Functional Programming in Scala', c: 5, d: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
-				{b: 'Kyle Simpson', a: 'You Don\'t Know JS (book series) 1, 2, 3, 4', c: 3, d: 'https://github.com/getify/You-Dont-Know-JS'},
-				{b: 'Bruce Eckel, Dianne Marsh', a: 'Atomic Scala', c: 5, d: 'http://www.atomicscala.com'},
-				{b: 'Максим Пацианский', a: 'Роутинг в react-приложениях', c: 6, d: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
-				{b: 'Максим Пацианский', a: 'React Redux курс для начинающих', c: 6, d: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
-				{b: 'Robert Martin', a: 'Clean Code. A Handbook of Agile Software Craftsmanship', c: 9, d: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
-				{b: 'Максим Пацианский', a: 'React.js курс для начинающих', c: 6, d: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
-				{b: 'Stoyan Stefanov', a: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', c: 3, d: 'https://shop.oreilly.com/product/9780596806767.do'},
-				{b: 'David Sawyer McFarland', a: 'CSS: The Missing Manual, 4th Edition', c: 7, d: 'https://shop.oreilly.com/product/0636920036357.do'},
-				{b: 'Rebecca Hagen, Kim Golombisky', a: 'White Space Is Not Your Enemy', c: 8, d: 'http://cw.routledge.com/textbooks/9780240824147'},
-				{b: 'Артемий Лебедев', a: 'Ководство', c: 8, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
-				{b: 'Erin Kissane', a: 'The Elements of Content Strategy', c: 8, d: 'https://abookapart.com/products/the-elements-of-content-strategy'},
-				{b: 'Aarron Walter', a: 'Designing For Emotion', c: 8, d: 'https://abookapart.com/products/designing-for-emotion'},
-				{b: 'Ethan Mascotte', a: 'Responsive Web Design', c: 8, d: 'https://abookapart.com/products/responsive-web-design'},
-				{b: 'Aspen Pittman', a: 'The Tube Amp Book - Deluxe Revised Edition', c: 2, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
-				{b: 'Donald Brosnac', a: 'Guitar Electronics for Musicians', c: 2, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
-				{b: 'Hideo Kamimoto', a: 'Complete Guitar Repair', c: 1, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
+				{b: 'Miran Lipovača', a: 'Learn You a Haskell for Great Good!', c: 2, d: 'http://learnyouahaskell.com/'},
+				{b: 'Professor Frisby', a: 'Mostly Adequate Guide to Functional Programming', c: 1, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
+				{b: 'Douglas Crockford', a: 'JavaScript: The Good Parts', c: 1, d: 'http://shop.oreilly.com/product/9780596517748.do'},
+				{b: 'Luis Atencio', a: 'Functional Programming in JavaScript', c: 1, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
+				{b: 'Sam Newman', a: 'Building Microservices', c: 7, d: 'http://shop.oreilly.com/product/0636920033158.do'},
+				{b: 'Alvin Alexander', a: 'Learning Functional Programming in Scala', c: 3, d: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
+				{b: 'Kyle Simpson', a: 'You Don\'t Know JS (book series) 1, 2, 3, 4', c: 1, d: 'https://github.com/getify/You-Dont-Know-JS'},
+				{b: 'Bruce Eckel, Dianne Marsh', a: 'Atomic Scala', c: 3, d: 'http://www.atomicscala.com'},
+				{b: 'Robert Martin', a: 'Clean Code. A Handbook of Agile Software Craftsmanship', c: 7, d: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
+				{b: 'Максим Пацианский', a: 'Роутинг в react-приложениях', c: 1, d: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
+				{b: 'Максим Пацианский', a: 'React Redux курс для начинающих', c: 1, d: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
+				{b: 'Максим Пацианский', a: 'React.js курс для начинающих', c: 1, d: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
+				{b: 'Stoyan Stefanov', a: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', c: 1, d: 'https://shop.oreilly.com/product/9780596806767.do'},
+				{b: 'David Sawyer McFarland', a: 'CSS: The Missing Manual', c: 5, d: 'https://shop.oreilly.com/product/0636920036357.do'},
+				{b: 'Rebecca Hagen, Kim Golombisky', a: 'White Space Is Not Your Enemy', c: 6, d: 'http://cw.routledge.com/textbooks/9780240824147'},
+				{b: 'Артемий Лебедев', a: 'Ководство', c: 6, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
+				{b: 'Erin Kissane', a: 'The Elements of Content Strategy', c: 6, d: 'https://abookapart.com/products/the-elements-of-content-strategy'},
+				{b: 'Aarron Walter', a: 'Designing For Emotion', c: 6, d: 'https://abookapart.com/products/designing-for-emotion'},
+				{b: 'Ethan Mascotte', a: 'Responsive Web Design', c: 6, d: 'https://abookapart.com/products/responsive-web-design'},
+				{b: 'Aspen Pittman', a: 'The Tube Amp Book - Deluxe Revised Edition', c: 0, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
+				{b: 'Donald Brosnac', a: 'Guitar Electronics for Musicians', c: 0, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
+				{b: 'Hideo Kamimoto', a: 'Complete Guitar Repair', c: 0, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
 				{b: 'Roger H. Siminoff', a: 'The Luthier\'s Handbook', c: 0, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
-				{b: 'Paul Balmer (Author), Les Paul (Foreword)', a: 'The Gibson Les Paul Handbook', c: 1, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'}
+				{b: 'Paul Balmer (Author), Les Paul (Foreword)', a: 'The Gibson Les Paul Handbook', c: 0, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
+				{b: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', a: 'Design Patterns: Elements of Reusable Object-Oriented Software', c: 7, d: 'https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8'},
+				{b: 'Pat Brisbin', a: 'Maybe Haskell', c: 2, d: 'https://books.thoughtbot.com/assets/maybe-haskell.pdf'},
+				{b: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', a: 'Structure and Interpretation of Computer Programs', c: 4, d: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
+				{b: 'Bartosz Milewski', a: 'Category Theory for Programmers', c: 2, d: 'https://github.com/hmemcpy/milewski-ctfp-pdf'},
+				{b: 'Noel Welsh, Dave Gurnell', a: 'Essential Scala', c: 3, d: 'https://underscore.io/books/essential-scala/'},
+				{b: 'Noel Welsh, Dave Gurnell', a: 'Scala with Cats', c: 3, d: 'https://underscore.io/books/scala-with-cats/'}
 			])));
 var $author$project$Book$BookTitle = $elm$core$Basics$identity;
 var $author$project$Dataset$learningPath = _List_fromArray(
-	['Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'CSS: The Missing Manual, 4th Edition', 'White Space Is Not Your Enemy', 'Ководство', 'The Elements of Content Strategy', 'Designing For Emotion', 'Responsive Web Design']);
+	['Scala with Cats', 'Essential Scala', 'Category Theory for Programmers', 'Structure and Interpretation of Computer Programs', 'Maybe Haskell', 'Design Patterns: Elements of Reusable Object-Oriented Software', 'Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'CSS: The Missing Manual', 'White Space Is Not Your Enemy', 'Ководство', 'The Elements of Content Strategy', 'Designing For Emotion', 'Responsive Web Design']);
 var $author$project$Book$Available = 0;
 var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 	_List_fromArray(
@@ -4965,22 +4969,18 @@ var $elm$html$Html$li = _VirtualDom_node('li');
 var $author$project$Book$showTopic = function (topic) {
 	switch (topic) {
 		case 0:
-			return 'Guitar construction';
+			return 'Music instruments';
 		case 1:
-			return 'Guitar maintainance';
-		case 2:
-			return 'Guitar electronics';
-		case 3:
 			return 'JavaScript';
-		case 4:
+		case 2:
 			return 'Haskell';
-		case 5:
+		case 4:
+			return 'Scheme';
+		case 3:
 			return 'Scala';
-		case 6:
-			return 'React';
-		case 7:
+		case 5:
 			return 'CSS';
-		case 8:
+		case 6:
 			return 'Design';
 		default:
 			return 'Software Development';
@@ -5101,35 +5101,51 @@ var $author$project$Main$viewLibrary = F2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$elm$html$Html$text('My personal offline library')
+									$elm$html$Html$text('My offline library, shared')
 								])),
 							A2(
-							$elm$html$Html$p,
-							_List_Nil,
+							$elm$html$Html$div,
 							_List_fromArray(
 								[
-									$elm$html$Html$text('I always keep my books on my desk at my workplace.')
-								])),
-							A2(
-							$elm$html$Html$p,
-							_List_Nil,
+									$elm$html$Html$Attributes$class('description')
+								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text('Every person is able to borrow any book from my personal library.')
-								])),
-							A2(
-							$elm$html$Html$p,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$elm$html$Html$text('This works not just for collegues, but for any person that I know in real life.')
-								])),
-							A2(
-							$elm$html$Html$p,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$elm$html$Html$text('This is my culture, and I won\'t give it way, so just accept it.')
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text('I have a tradition to keep my books on my desk at my workplace.')
+										])),
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text('Any person is able to borrow any book from my personal library.')
+										])),
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text('This works not only for collegues, but for any person that knows me in real life.')
+										])),
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text('This is my culture, it works great, it makes the world around me a better place,')
+										])),
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text('and I won\'t give it away, so everyone should just accept it.')
+										]))
 								])),
 							A2(
 							$elm$html$Html$ul,
@@ -5377,7 +5393,7 @@ var $author$project$Main$main = A2(
 		[
 			$author$project$Main$viewNav($author$project$Main$developerIntro),
 			$author$project$Main$viewProjects($author$project$Dataset$projects),
-			A2($author$project$Main$viewBooks, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath),
-			A2($author$project$Main$viewLibrary, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState)
+			A2($author$project$Main$viewLibrary, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState),
+			A2($author$project$Main$viewBooks, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));
