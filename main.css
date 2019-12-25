@@ -34,9 +34,16 @@ a:hover {
   transition: color .3s ease;
 }
 
-/* TODO: what the div? refactor! */
-.nav > div > * {
-  padding-top: .5em;
+.nav h1 {
+  padding-top: .8em;
+  max-width: 800px;
+  margin: 0 auto; /* refactor to flex */
+}
+
+.nav .intro {
+  padding-top: .8em;
+  max-width: 800px;
+  margin: 0 auto; /* refactor to flex */
 }
 
 .nav {
@@ -49,20 +56,20 @@ a:hover {
   color: #fff;
 }
 
-/* TODO: what the div? refactor! */
-.nav > div {
-  max-width: 800px;
-  margin: 0 auto;
+.intro-links {
+  margin-top: .8em;
 }
 
-.nav a + a {
+
+
+.intro-links a + a {
   margin-left: .5em;
 }
 
 .nav .icons {
   display: flex;
-  margin-top: .5em;
-  margin-bottom: .5em;
+  margin-top: .8em;
+  margin-bottom: .8em;
 }
 
 .nav .icon {

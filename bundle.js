@@ -4472,34 +4472,16 @@ var $elm$html$Html$Attributes$src = function (url) {
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
-var $elm$html$Html$strong = _VirtualDom_node('strong');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$developerIntro = A2(
 	$elm$html$Html$div,
-	_List_Nil,
 	_List_fromArray(
 		[
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$strong,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Fullstack developer, functional programming enthusiast.')
-						]))
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Available for collaboration and pair programming.')
-				])),
+			$elm$html$Html$Attributes$class('intro')
+		]),
+	_List_fromArray(
+		[
 			A2(
 			$elm$html$Html$p,
 			_List_fromArray(
@@ -4539,6 +4521,41 @@ var $author$project$Main$developerIntro = A2(
 			A2(
 			$elm$html$Html$p,
 			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Fullstack developer')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Chief Enthusiast in '),
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('https://fpspecialty.github.io/')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('FP Specialty')
+						])),
+					$elm$html$Html$text(' — FP reading group, meetups, collaborations')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Available for hire, collaboration and pair programming.')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('intro-links')
+				]),
 			_List_fromArray(
 				[
 					A2(
@@ -4913,6 +4930,7 @@ var $author$project$Main$viewProjectImage = function (project) {
 		return $author$project$Utils$emptyHtml;
 	}
 };
+var $elm$html$Html$strong = _VirtualDom_node('strong');
 var $author$project$Project$userpicCssSize = 16;
 var $author$project$Project$userpicSrcSize = $author$project$Project$userpicCssSize * 3;
 var $author$project$Project$viewUserPic = function (userpic) {
