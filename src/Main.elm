@@ -43,14 +43,14 @@ developerIntro =
             , img [ class "icon", src "images/logos/elm.svg", alt "Elm" ] []
             ]
         , p [] [ text "Fullstack developer" ]
-        , p [] [ text "Chief Enthusiast in ", a [ href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ], text " — FP reading group, meetups, collaborations" ]
+        , p [] [ text "Chief Enthusiast in ", a [ target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ], text " — FP reading group, meetups, collaborations" ]
         , p [] [ text "Available for hiring, collaboration and pair programming." ]
         , p [ class "intro-links" ]
-            [ a [ href "https://github.com/VladimirLogachev" ] [ text "github" ]
+            [ a [ target "_blank", href "https://github.com/VladimirLogachev" ] [ text "github" ]
             , a [ href "mailto:doit@keemail.me" ] [ text "mail" ]
-            , a [ href "https://t.me/vladimirlogachev" ] [ text "telegram" ]
-            , a [ href "http://www.linkedin.com/in/vladimirlogachev" ] [ text "linkedin" ]
-            , a [ href "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" ] [ text "cv" ]
+            , a [ target "_blank", href "https://t.me/vladimirlogachev" ] [ text "telegram" ]
+            , a [ target "_blank", href "http://www.linkedin.com/in/vladimirlogachev" ] [ text "linkedin" ]
+            , a [ target "_blank", href "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" ] [ text "cv" ]
             ]
         ]
 
@@ -90,12 +90,23 @@ viewLibrary books libState =
         ]
 
 
+
+{-
+   TODO:
+   On library: Publisher is a special link
+   On learning path: All to publisher
+-}
+
+
 viewBook : Book -> Html Msg
 viewBook (Book book) =
     li [ class "book" ]
-        [ a [ href book.url, target "_blank" ] [ p [ class "title" ] [ text book.title ] ]
-        , p [ class "author" ] [ text book.author ]
-        , p [ class "topic" ] [ text <| showTopic book.topics ]
+        [ a [ href book.url, target "_blank" ] [ img [ class "book_cover", src book.coverUrl, alt book.title ] [] ]
+        , div []
+            [ p [ class "title" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
+            , p [ class "author" ] [ text book.author ]
+            , p [ class "topic" ] [ text <| showTopic book.topics ]
+            ]
         ]
 
 

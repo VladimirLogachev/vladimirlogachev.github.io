@@ -7,6 +7,7 @@ type Book
         , title : String
         , topics : Topic
         , url : String
+        , coverUrl : String
         }
 
 
