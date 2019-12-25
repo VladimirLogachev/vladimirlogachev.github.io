@@ -30,9 +30,7 @@ type BookAvaliability
 
 
 type Topic
-    = CONSTRUCTION
-    | MAINTAINANCE
-    | ELECTRONICS
+    = MUSIC_INSTRUMENTS
     | JS
     | HASKELL
     | SCALA
@@ -61,14 +59,8 @@ devTopics =
 showTopic : Topic -> String
 showTopic topic =
     case topic of
-        CONSTRUCTION ->
-            "Guitar construction"
-
-        MAINTAINANCE ->
-            "Guitar maintainance"
-
-        ELECTRONICS ->
-            "Guitar electronics"
+        MUSIC_INSTRUMENTS ->
+            "Music instruments"
 
         JS ->
             "JavaScript"

@@ -131,31 +131,31 @@ knownBooks =
     , Book
         { author = "Aspen Pittman"
         , title = "The Tube Amp Book - Deluxe Revised Edition"
-        , topics = ELECTRONICS
+        , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676"
         }
     , Book
         { author = "Donald Brosnac"
         , title = "Guitar Electronics for Musicians"
-        , topics = ELECTRONICS
+        , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321"
         }
     , Book
         { author = "Hideo Kamimoto"
         , title = "Complete Guitar Repair"
-        , topics = MAINTAINANCE
+        , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568"
         }
     , Book
         { author = "Roger H. Siminoff"
         , title = "The Luthier's Handbook"
-        , topics = CONSTRUCTION
+        , topics = MUSIC_INSTRUMENTS
         , url = "https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook"
         }
     , Book
         { author = "Paul Balmer (Author), Les Paul (Foreword)"
         , title = "The Gibson Les Paul Handbook"
-        , topics = MAINTAINANCE
+        , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706"
         }
     ]
