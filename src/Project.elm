@@ -9,13 +9,14 @@ import Utils exposing (..)
 -- TODO: team :: Nel TeamMate
 
 
-type alias Project =
-    { name : String
-    , description : String
-    , links : List Link
-    , imgFileName : Maybe String
-    , team : ProjectTeam
-    }
+type Project
+    = Project
+        { name : String
+        , description : String
+        , links : List Link
+        , imgFileName : Maybe String
+        , team : ProjectTeam
+        }
 
 
 type ProjectTeam
@@ -31,8 +32,8 @@ type alias Link =
 
 type Userpic
     = NoPic
-    | GitHubUserpic { githubUserId : Int }
-    | DirectUrl { url : String }
+    | GitHubUserId Int
+    | DirectUrl String
 
 
 type alias TeamMate =
@@ -56,7 +57,7 @@ viewUserPic userpic =
         NoPic ->
             emptyHtml
 
-        GitHubUserpic { githubUserId } ->
+        GitHubUserId githubUserId ->
             img
                 [ src <|
                     "https://avatars2.githubusercontent.com/u/"
@@ -67,5 +68,5 @@ viewUserPic userpic =
                 ]
                 []
 
-        DirectUrl { url } ->
+        DirectUrl url ->
             img [ src url ] []

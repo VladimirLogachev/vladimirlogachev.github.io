@@ -91,10 +91,10 @@ viewProjects projs =
 
 
 viewProjectImage : Project -> Html Msg
-viewProjectImage project =
-    case project.imgFileName of
+viewProjectImage (Project { name, imgFileName }) =
+    case imgFileName of
         Just filename ->
-            img [ class "item-img", src <| "images/projects/" ++ filename, alt project.name ] []
+            img [ class "item-img", src <| "images/projects/" ++ filename, alt name ] []
 
         Nothing ->
             emptyHtml
@@ -133,13 +133,13 @@ viewTeam projectTeam =
 
 
 viewProject : Project -> Html Msg
-viewProject project =
+viewProject ((Project { name, description, team, links }) as project) =
     li []
         [ viewProjectImage project
         , h3 []
-            [ text project.name ]
-        , p [ class "description" ] [ text project.description ]
+            [ text name ]
+        , p [ class "description" ] [ text description ]
         , div [ class "links" ] <|
-            List.map (\link -> a [ href link.url, target "_blank" ] [ text link.name ]) project.links
-        , viewTeam project.team
+            List.map (\link -> a [ href link.url, target "_blank" ] [ text link.name ]) links
+        , viewTeam team
         ]

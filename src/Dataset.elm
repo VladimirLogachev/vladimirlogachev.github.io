@@ -161,42 +161,53 @@ bookshelf =
 
 projects : List Project
 projects =
-    [ Project "Translation of the Mostly Adequate Guide"
-        """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
+    [ Project
+        { name = "Translation of the Mostly Adequate Guide"
+        , description = """Russian version 
+      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
       The translation was initiated by Maxim Filippov and stopped at 60%.
-      Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
-        [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
-        , Link "Original book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
-        ]
-        (Just "mostly_adequate_guide_fp_ru.png")
-        (Team
-            [ TeamMate "Maxim Filippov" (GitHubUserpic { githubUserId = 860283 }) "https://github.com/maksimf"
-            , TeamMate "Sakayama" (GitHubUserpic { githubUserId = 44540001 }) "https://github.com/Sakayama"
-            , TeamMate "other contributors" NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
+      Then me and Sakayama joined the translation, 
+      refactored every chapter translated before us and then finished the translation."""
+        , links =
+            [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
+            , Link "Original book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
             ]
-        )
+        , imgFileName = Just "mostly_adequate_guide_fp_ru.png"
+        , team =
+            Team
+                [ TeamMate "Maxim Filippov" (GitHubUserId 860283) "https://github.com/maksimf"
+                , TeamMate "Sakayama" (GitHubUserId 44540001) "https://github.com/Sakayama"
+                , TeamMate "other contributors" NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
+                ]
+        }
     , Project
-        "#FACFAF. Quick reference guide"
-        "A small book about Curtis Mayfield «Black Keys» Open F# guitar tuning."
-        [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
-        , Link "ePub" "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
-        , Link "Read online" "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
-        ]
-        (Just "facfaf.jpg")
-        OnlyMe
-    , Project "Lion Bot"
-        """A fullstack app, bot for Slack.
-      Made in collaboration as a Build-To-Learn project (part of Chingu Cohorts workflow).
-      My work is Slack's «frontend» and app's landing page, but also I've made some contribution to the server."""
-        [ Link "Live" "http://lion-bot.herokuapp.com/"
-        , Link "GitHub" "https://github.com/gang-of-four-lions/lion-bot"
-        , Link "Chingu" "https://chingu.io/"
-        ]
-        (Just "lionbot.jpg")
-        (Team
-            [ TeamMate "Michael Blood" (GitHubUserpic { githubUserId = 12065896 }) "https://github.com/michaelblood"
-            , TeamMate "Josh Sanders" (GitHubUserpic { githubUserId = 19422930 }) "https://github.com/Josh5231"
-            , TeamMate "Alex McLeod" (GitHubUserpic { githubUserId = 24363605 }) "https://github.com/AlexMcLeod01"
+        { name = "#FACFAF. Quick reference guide"
+        , description = "A small book about Curtis Mayfield «Black Keys» Open F# guitar tuning."
+        , links =
+            [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
+            , Link "ePub" "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
+            , Link "Read online" "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
             ]
-        )
+        , imgFileName = Just "facfaf.jpg"
+        , team = OnlyMe
+        }
+    , Project
+        { name = "Lion Bot"
+        , description = """A fullstack app, bot for Slack.
+      Made in collaboration as a Build-To-Learn project (part of Chingu Cohorts workflow).
+      My work is Slack's «frontend» and app's landing page, 
+      but also I've made some contribution to the server."""
+        , links =
+            [ Link "Live" "http://lion-bot.herokuapp.com/"
+            , Link "GitHub" "https://github.com/gang-of-four-lions/lion-bot"
+            , Link "Chingu" "https://chingu.io/"
+            ]
+        , imgFileName = Just "lionbot.jpg"
+        , team =
+            Team
+                [ TeamMate "Michael Blood" (GitHubUserId 12065896) "https://github.com/michaelblood"
+                , TeamMate "Josh Sanders" (GitHubUserId 19422930) "https://github.com/Josh5231"
+                , TeamMate "Alex McLeod" (GitHubUserId 24363605) "https://github.com/AlexMcLeod01"
+                ]
+        }
     ]
