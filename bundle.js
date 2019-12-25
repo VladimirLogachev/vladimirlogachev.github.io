@@ -4797,7 +4797,7 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Максим Пацианский', a: 'React.js курс для начинающих', c: 6, d: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
 				{b: 'Stoyan Stefanov', a: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', c: 3, d: 'https://shop.oreilly.com/product/9780596806767.do'},
 				{b: 'David Sawyer McFarland', a: 'CSS: The Missing Manual, 4th Edition', c: 7, d: 'https://shop.oreilly.com/product/0636920036357.do'},
-				{b: 'Rebecca Hagen, Kim Golombisky', a: 'White Space Is Not Your Enemy: A beginner\'s guide to communicating visually through graphic, web and multimedia design', c: 8, d: 'http://cw.routledge.com/textbooks/9780240824147'},
+				{b: 'Rebecca Hagen, Kim Golombisky', a: 'White Space Is Not Your Enemy', c: 8, d: 'http://cw.routledge.com/textbooks/9780240824147'},
 				{b: 'Артемий Лебедев', a: 'Ководство', c: 8, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
 				{b: 'Erin Kissane', a: 'The Elements of Content Strategy', c: 8, d: 'https://abookapart.com/products/the-elements-of-content-strategy'},
 				{b: 'Aarron Walter', a: 'Designing For Emotion', c: 8, d: 'https://abookapart.com/products/designing-for-emotion'},
@@ -4806,11 +4806,21 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Donald Brosnac', a: 'Guitar Electronics for Musicians', c: 2, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
 				{b: 'Hideo Kamimoto', a: 'Complete Guitar Repair', c: 1, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
 				{b: 'Roger H. Siminoff', a: 'The Luthier\'s Handbook', c: 0, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
-				{b: 'Paul Balmer (Author), Les Paul (Foreword)', a: 'The Gibson Les Paul Handbook: How To Buy, Maintain, Set Up, Troubleshoot, and Modify Your Gibson and Epiphone Les Paul', c: 1, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'}
+				{b: 'Paul Balmer (Author), Les Paul (Foreword)', a: 'The Gibson Les Paul Handbook', c: 1, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'}
 			])));
 var $author$project$Book$BookTitle = $elm$core$Basics$identity;
 var $author$project$Dataset$learningPath = _List_fromArray(
-	['Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'CSS: The Missing Manual, 4th Edition', 'White Space Is Not Your Enemy: A beginner\'s guide to communicating visually through graphic, web and multimedia design', 'Ководство', 'The Elements of Content Strategy', 'Designing For Emotion', 'Responsive Web Design']);
+	['Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'CSS: The Missing Manual, 4th Edition', 'White Space Is Not Your Enemy', 'Ководство', 'The Elements of Content Strategy', 'Designing For Emotion', 'Responsive Web Design']);
+var $author$project$Book$Available = 0;
+var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
+	_List_fromArray(
+		[
+			_Utils_Tuple2('The Tube Amp Book - Deluxe Revised Edition', 0),
+			_Utils_Tuple2('Guitar Electronics for Musicians', 0),
+			_Utils_Tuple2('Complete Guitar Repair', 0),
+			_Utils_Tuple2('The Luthier\'s Handbook', 0),
+			_Utils_Tuple2('The Gibson Les Paul Handbook', 0)
+		]));
 var $author$project$Project$GitHubUserId = function (a) {
 	return {$: 1, a: a};
 };
@@ -4976,7 +4986,6 @@ var $author$project$Book$showTopic = function (topic) {
 			return 'Software Development';
 	}
 };
-var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $author$project$Main$viewBook = function (_v0) {
 	var book = _v0;
@@ -4998,7 +5007,7 @@ var $author$project$Main$viewBook = function (_v0) {
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$span,
+						$elm$html$Html$p,
 						_List_fromArray(
 							[
 								$elm$html$Html$Attributes$class('title')
@@ -5009,17 +5018,17 @@ var $author$project$Main$viewBook = function (_v0) {
 							]))
 					])),
 				A2(
-				$elm$html$Html$span,
+				$elm$html$Html$p,
 				_List_fromArray(
 					[
 						$elm$html$Html$Attributes$class('author')
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('by ' + book.b)
+						$elm$html$Html$text(book.b)
 					])),
 				A2(
-				$elm$html$Html$span,
+				$elm$html$Html$p,
 				_List_fromArray(
 					[
 						$elm$html$Html$Attributes$class('topic')
@@ -5032,7 +5041,7 @@ var $author$project$Main$viewBook = function (_v0) {
 			]));
 };
 var $author$project$Main$viewBooks = F2(
-	function (books, path) {
+	function (books, learnPath) {
 		return A2(
 			$elm$html$Html$div,
 			_List_fromArray(
@@ -5051,7 +5060,7 @@ var $author$project$Main$viewBooks = F2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$elm$html$Html$text('Books, that I\'ve read')
+									$elm$html$Html$text('Books I\'ve read')
 								])),
 							A2(
 							$elm$html$Html$ul,
@@ -5068,7 +5077,70 @@ var $author$project$Main$viewBooks = F2(
 											var title = _v0;
 											return title;
 										},
-										path))))
+										learnPath))))
+						]))
+				]));
+	});
+var $author$project$Main$viewLibrary = F2(
+	function (books, libState) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('books-list')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$h2,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('My personal offline library')
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('I always keep my books on my desk at my workplace.')
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('Every person is able to borrow any book from my personal library.')
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('This works not just for collegues, but for any person that I know in real life.')
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('This is my culture, and I won\'t give it way, so just accept it.')
+								])),
+							A2(
+							$elm$html$Html$ul,
+							_List_Nil,
+							A2(
+								$elm$core$List$map,
+								$author$project$Main$viewBook,
+								A2(
+									$author$project$Utils$getMany,
+									books,
+									$elm$core$Dict$keys(libState))))
 						]))
 				]));
 	});
@@ -5305,6 +5377,7 @@ var $author$project$Main$main = A2(
 		[
 			$author$project$Main$viewNav($author$project$Main$developerIntro),
 			$author$project$Main$viewProjects($author$project$Dataset$projects),
-			A2($author$project$Main$viewBooks, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
+			A2($author$project$Main$viewBooks, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath),
+			A2($author$project$Main$viewLibrary, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState)
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));
