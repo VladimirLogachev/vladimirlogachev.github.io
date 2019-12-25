@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.J.z === region.O.z)
+	if (region.K.A === region.P.A)
 	{
-		return 'on line ' + region.J.z;
+		return 'on line ' + region.K.A;
 	}
-	return 'on lines ' + region.J.z + ' through ' + region.O.z;
+	return 'on lines ' + region.K.A + ' through ' + region.P.A;
 }
 
 
@@ -1857,8 +1857,8 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.T,
-		impl.ai,
+		impl.U,
+		impl.aj,
 		impl.aG,
 		function() { return function() {} }
 	);
@@ -2705,8 +2705,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		o: func(record.o),
-		K: record.K,
-		H: record.H
+		L: record.L,
+		I: record.I
 	}
 });
 
@@ -2975,10 +2975,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.o;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.K;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.L;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.H) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.I) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -4406,7 +4406,7 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 };
 var $author$project$Book$Book = F4(
 	function (author, title, topics, url) {
-		return {aq: author, aI: title, aJ: topics, aK: url};
+		return {ar: author, aI: title, aJ: topics, aK: url};
 	});
 var $author$project$Book$CONSTRUCTION = 0;
 var $author$project$Book$CSS = 7;
@@ -4593,24 +4593,54 @@ var $author$project$Main$developerIntro = A2(
 						]))
 				]))
 		]));
+var $author$project$Project$GitHubUserpic = function (a) {
+	return {$: 1, a: a};
+};
 var $author$project$Project$Link = F2(
 	function (name, url) {
-		return {E: name, aK: url};
+		return {F: name, aK: url};
 	});
+var $author$project$Project$NoPic = {$: 0};
 var $author$project$Project$OnlyMe = {$: 0};
 var $author$project$Project$Project = F5(
 	function (name, description, links, imgFileName, team) {
-		return {at: description, az: imgFileName, aB: links, E: name, aH: team};
+		return {au: description, az: imgFileName, aB: links, F: name, aH: team};
 	});
 var $author$project$Project$Team = function (a) {
 	return {$: 1, a: a};
 };
 var $author$project$Project$TeamMate = F3(
-	function (name, githubUserId, url) {
-		return {ax: githubUserId, E: name, aK: url};
+	function (name, userpic, url) {
+		return {F: name, aK: url, aL: userpic};
 	});
 var $author$project$Dataset$projects = _List_fromArray(
 	[
+		A5(
+		$author$project$Project$Project,
+		'Translation of the Mostly Adequate Guide',
+		'Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation.',
+		_List_fromArray(
+			[
+				A2($author$project$Project$Link, 'Book contents', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md')
+			]),
+		$elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
+		$author$project$Project$Team(
+			_List_fromArray(
+				[
+					A3(
+					$author$project$Project$TeamMate,
+					'Maxim Filippov',
+					$author$project$Project$GitHubUserpic(
+						{z: 860283}),
+					'https://github.com/maksimf'),
+					A3(
+					$author$project$Project$TeamMate,
+					'Sakayama',
+					$author$project$Project$GitHubUserpic(
+						{z: 44540001}),
+					'https://github.com/Sakayama'),
+					A3($author$project$Project$TeamMate, 'other contributors', $author$project$Project$NoPic, 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors')
+				]))),
 		A5(
 		$author$project$Project$Project,
 		'#FACFAF. Quick reference guide',
@@ -4637,9 +4667,24 @@ var $author$project$Dataset$projects = _List_fromArray(
 		$author$project$Project$Team(
 			_List_fromArray(
 				[
-					A3($author$project$Project$TeamMate, 'Michael Blood', 12065896, 'https://github.com/michaelblood'),
-					A3($author$project$Project$TeamMate, 'Josh Sanders', 19422930, 'https://github.com/Josh5231'),
-					A3($author$project$Project$TeamMate, 'Alex McLeod', 24363605, 'https://github.com/AlexMcLeod01')
+					A3(
+					$author$project$Project$TeamMate,
+					'Michael Blood',
+					$author$project$Project$GitHubUserpic(
+						{z: 12065896}),
+					'https://github.com/michaelblood'),
+					A3(
+					$author$project$Project$TeamMate,
+					'Josh Sanders',
+					$author$project$Project$GitHubUserpic(
+						{z: 19422930}),
+					'https://github.com/Josh5231'),
+					A3(
+					$author$project$Project$TeamMate,
+					'Alex McLeod',
+					$author$project$Project$GitHubUserpic(
+						{z: 24363605}),
+					'https://github.com/AlexMcLeod01')
 				])))
 	]);
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
@@ -4777,7 +4822,7 @@ var $author$project$Main$viewBook = function (book) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('by ' + book.aq)
+						$elm$html$Html$text('by ' + book.ar)
 					])),
 				A2(
 				$elm$html$Html$span,
@@ -4859,11 +4904,38 @@ var $author$project$Main$viewProjectImage = function (project) {
 				[
 					$elm$html$Html$Attributes$class('item-img'),
 					$elm$html$Html$Attributes$src('images/projects/' + filename),
-					$elm$html$Html$Attributes$alt(project.E)
+					$elm$html$Html$Attributes$alt(project.F)
 				]),
 			_List_Nil);
 	} else {
 		return $author$project$Utils$emptyHtml;
+	}
+};
+var $author$project$Project$userpicCssSize = 16;
+var $author$project$Project$userpicSrcSize = $author$project$Project$userpicCssSize * 3;
+var $author$project$Project$viewUserPic = function (userpic) {
+	switch (userpic.$) {
+		case 0:
+			return $author$project$Utils$emptyHtml;
+		case 1:
+			var githubUserId = userpic.a.z;
+			return A2(
+				$elm$html$Html$img,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$src(
+						'https://avatars2.githubusercontent.com/u/' + ($elm$core$String$fromInt(githubUserId) + ('?s=' + ($elm$core$String$fromInt($author$project$Project$userpicSrcSize) + '&v=4'))))
+					]),
+				_List_Nil);
+		default:
+			var url = userpic.a.aK;
+			return A2(
+				$elm$html$Html$img,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$src(url)
+					]),
+				_List_Nil);
 	}
 };
 var $author$project$Main$viewTeam = function (projectTeam) {
@@ -4918,15 +4990,8 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 											]),
 										_List_fromArray(
 											[
-												A2(
-												$elm$html$Html$img,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$src(
-														'https://avatars2.githubusercontent.com/u/' + ($elm$core$String$fromInt(teamMate.ax) + '?s=100'))
-													]),
-												_List_Nil),
-												$elm$html$Html$text(teamMate.E)
+												$author$project$Project$viewUserPic(teamMate.aL),
+												$elm$html$Html$text(teamMate.F)
 											])),
 										$elm$html$Html$text(',')
 									]));
@@ -4959,7 +5024,7 @@ var $author$project$Main$viewProject = function (project) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.E)
+						$elm$html$Html$text(project.F)
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -4969,7 +5034,7 @@ var $author$project$Main$viewProject = function (project) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.at)
+						$elm$html$Html$text(project.au)
 					])),
 				A2(
 				$elm$html$Html$div,
@@ -4989,7 +5054,7 @@ var $author$project$Main$viewProject = function (project) {
 								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text(link.E)
+									$elm$html$Html$text(link.F)
 								]));
 					},
 					project.aB)),

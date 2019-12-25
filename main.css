@@ -88,7 +88,7 @@ a:hover {
 }
 
 .teammate a img {
-  max-height: 1em;
+  max-height: 16px;
   border-radius: 3px;
 }
 
