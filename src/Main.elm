@@ -12,8 +12,6 @@ type Msg
     = Msg
 
 
-
-
 main : Html Msg
 main =
     div [ class "app" ]
@@ -36,28 +34,21 @@ viewNav content =
 
 developerIntro : Html Msg
 developerIntro =
-    div []
-        [ p []
-            [ strong [] [ text "Fullstack developer, functional programming enthusiast." ]
-            ]
-        , p []
-            [ text "Available for collaboration and pair programming." ]
-        , p [ class "icons" ]
+    div [ class "intro" ]
+        [ p [ class "icons" ]
             [ img [ class "icon", src "images/logos/haskell.svg", alt "Haskell" ] []
             , img [ class "icon", src "images/logos/scala.svg", alt "Scala" ] []
             , img [ class "icon", src "images/logos/elm.svg", alt "Elm" ] []
             ]
-        , p []
-            [ a [ href "https://github.com/VladimirLogachev" ]
-                [ text "github" ]
-            , a [ href "mailto:doit@keemail.me" ]
-                [ text "mail" ]
-            , a [ href "https://t.me/vladimirlogachev" ]
-                [ text "telegram" ]
-            , a [ href "http://www.linkedin.com/in/vladimirlogachev" ]
-                [ text "linkedin" ]
-            , a [ href "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" ]
-                [ text "cv" ]
+        , p [] [ text "Fullstack developer" ]
+        , p [] [ text "Chief Enthusiast in ", a [ href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ], text " — FP reading group, meetups, collaborations" ]
+        , p [] [ text "Available for hire, collaboration and pair programming." ]
+        , p [ class "intro-links" ]
+            [ a [ href "https://github.com/VladimirLogachev" ] [ text "github" ]
+            , a [ href "mailto:doit@keemail.me" ] [ text "mail" ]
+            , a [ href "https://t.me/vladimirlogachev" ] [ text "telegram" ]
+            , a [ href "http://www.linkedin.com/in/vladimirlogachev" ] [ text "linkedin" ]
+            , a [ href "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" ] [ text "cv" ]
             ]
         ]
 
