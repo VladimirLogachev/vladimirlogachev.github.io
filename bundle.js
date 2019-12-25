@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.O.E === region.T.E)
+	if (region.Q.D === region.W.D)
 	{
-		return 'on line ' + region.O.E;
+		return 'on line ' + region.Q.D;
 	}
-	return 'on lines ' + region.O.E + ' through ' + region.T.E;
+	return 'on lines ' + region.Q.D + ' through ' + region.W.D;
 }
 
 
@@ -1857,8 +1857,8 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.Y,
-		impl.an,
+		impl.aa,
+		impl.aq,
 		impl.aJ,
 		function() { return function() {} }
 	);
@@ -2705,8 +2705,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		s: func(record.s),
-		P: record.P,
-		M: record.M
+		R: record.R,
+		O: record.O
 	}
 });
 
@@ -2975,10 +2975,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.s;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.P;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.R;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.M) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.O) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -4610,100 +4610,92 @@ var $author$project$Main$developerIntro = A2(
 						]))
 				]))
 		]));
-var $author$project$Project$GitHubUserpic = function (a) {
+var $author$project$Project$GitHubUserId = function (a) {
 	return {$: 1, a: a};
 };
 var $author$project$Project$Link = F2(
 	function (name, url) {
-		return {J: name, d: url};
+		return {M: name, d: url};
 	});
 var $author$project$Project$NoPic = {$: 0};
 var $author$project$Project$OnlyMe = {$: 0};
-var $author$project$Project$Project = F5(
-	function (name, description, links, imgFileName, team) {
-		return {ax: description, aC: imgFileName, aE: links, J: name, aK: team};
-	});
+var $author$project$Project$Project = $elm$core$Basics$identity;
 var $author$project$Project$Team = function (a) {
 	return {$: 1, a: a};
 };
 var $author$project$Project$TeamMate = F3(
 	function (name, userpic, url) {
-		return {J: name, d: url, aL: userpic};
+		return {M: name, d: url, aK: userpic};
 	});
 var $author$project$Dataset$projects = _List_fromArray(
 	[
-		A5(
-		$author$project$Project$Project,
-		'Translation of the Mostly Adequate Guide',
-		'Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation.',
-		_List_fromArray(
+		{
+		I: 'Russian version \n      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, \n      refactored every chapter translated before us and then finished the translation.',
+		J: $elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
+		K: _List_fromArray(
 			[
 				A2($author$project$Project$Link, 'Russian translation', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md'),
 				A2($author$project$Project$Link, 'Original book', 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
 			]),
-		$elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
-		$author$project$Project$Team(
+		M: 'Translation of the Mostly Adequate Guide',
+		S: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
 					$author$project$Project$TeamMate,
 					'Maxim Filippov',
-					$author$project$Project$GitHubUserpic(
-						{D: 860283}),
+					$author$project$Project$GitHubUserId(860283),
 					'https://github.com/maksimf'),
 					A3(
 					$author$project$Project$TeamMate,
 					'Sakayama',
-					$author$project$Project$GitHubUserpic(
-						{D: 44540001}),
+					$author$project$Project$GitHubUserId(44540001),
 					'https://github.com/Sakayama'),
 					A3($author$project$Project$TeamMate, 'other contributors', $author$project$Project$NoPic, 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors')
-				]))),
-		A5(
-		$author$project$Project$Project,
-		'#FACFAF. Quick reference guide',
-		'A small book about Curtis Mayfield «Black Keys» Open F# guitar tuning.',
-		_List_fromArray(
+				]))
+	},
+		{
+		I: 'A small book about Curtis Mayfield «Black Keys» Open F# guitar tuning.',
+		J: $elm$core$Maybe$Just('facfaf.jpg'),
+		K: _List_fromArray(
 			[
 				A2($author$project$Project$Link, 'PDF', 'https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf'),
 				A2($author$project$Project$Link, 'ePub', 'https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf'),
 				A2($author$project$Project$Link, 'Read online', 'https://www.gitbook.com/read/book/vladimirlogachev/facfaf')
 			]),
-		$elm$core$Maybe$Just('facfaf.jpg'),
-		$author$project$Project$OnlyMe),
-		A5(
-		$author$project$Project$Project,
-		'Lion Bot',
-		'A fullstack app, bot for Slack.\n      Made in collaboration as a Build-To-Learn project (part of Chingu Cohorts workflow).\n      My work is Slack\'s «frontend» and app\'s landing page, but also I\'ve made some contribution to the server.',
-		_List_fromArray(
+		M: '#FACFAF. Quick reference guide',
+		S: $author$project$Project$OnlyMe
+	},
+		{
+		I: 'A fullstack app, bot for Slack.\n      Made in collaboration as a Build-To-Learn project (part of Chingu Cohorts workflow).\n      My work is Slack\'s «frontend» and app\'s landing page, \n      but also I\'ve made some contribution to the server.',
+		J: $elm$core$Maybe$Just('lionbot.jpg'),
+		K: _List_fromArray(
 			[
 				A2($author$project$Project$Link, 'Live', 'http://lion-bot.herokuapp.com/'),
 				A2($author$project$Project$Link, 'GitHub', 'https://github.com/gang-of-four-lions/lion-bot'),
 				A2($author$project$Project$Link, 'Chingu', 'https://chingu.io/')
 			]),
-		$elm$core$Maybe$Just('lionbot.jpg'),
-		$author$project$Project$Team(
+		M: 'Lion Bot',
+		S: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
 					$author$project$Project$TeamMate,
 					'Michael Blood',
-					$author$project$Project$GitHubUserpic(
-						{D: 12065896}),
+					$author$project$Project$GitHubUserId(12065896),
 					'https://github.com/michaelblood'),
 					A3(
 					$author$project$Project$TeamMate,
 					'Josh Sanders',
-					$author$project$Project$GitHubUserpic(
-						{D: 19422930}),
+					$author$project$Project$GitHubUserId(19422930),
 					'https://github.com/Josh5231'),
 					A3(
 					$author$project$Project$TeamMate,
 					'Alex McLeod',
-					$author$project$Project$GitHubUserpic(
-						{D: 24363605}),
+					$author$project$Project$GitHubUserId(24363605),
 					'https://github.com/AlexMcLeod01')
-				])))
+				]))
+	}
 	]);
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$core$List$foldrHelper = F4(
@@ -4913,17 +4905,18 @@ var $author$project$Main$viewNav = function (content) {
 };
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
-var $author$project$Main$viewProjectImage = function (project) {
-	var _v0 = project.aC;
-	if (!_v0.$) {
-		var filename = _v0.a;
+var $author$project$Main$viewProjectImage = function (_v0) {
+	var name = _v0.M;
+	var imgFileName = _v0.J;
+	if (!imgFileName.$) {
+		var filename = imgFileName.a;
 		return A2(
 			$elm$html$Html$img,
 			_List_fromArray(
 				[
 					$elm$html$Html$Attributes$class('item-img'),
 					$elm$html$Html$Attributes$src('images/projects/' + filename),
-					$elm$html$Html$Attributes$alt(project.J)
+					$elm$html$Html$Attributes$alt(name)
 				]),
 			_List_Nil);
 	} else {
@@ -4938,7 +4931,7 @@ var $author$project$Project$viewUserPic = function (userpic) {
 		case 0:
 			return $author$project$Utils$emptyHtml;
 		case 1:
-			var githubUserId = userpic.a.D;
+			var githubUserId = userpic.a;
 			return A2(
 				$elm$html$Html$img,
 				_List_fromArray(
@@ -4948,7 +4941,7 @@ var $author$project$Project$viewUserPic = function (userpic) {
 					]),
 				_List_Nil);
 		default:
-			var url = userpic.a.d;
+			var url = userpic.a;
 			return A2(
 				$elm$html$Html$img,
 				_List_fromArray(
@@ -5010,8 +5003,8 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 											]),
 										_List_fromArray(
 											[
-												$author$project$Project$viewUserPic(teamMate.aL),
-												$elm$html$Html$text(teamMate.J)
+												$author$project$Project$viewUserPic(teamMate.aK),
+												$elm$html$Html$text(teamMate.M)
 											])),
 										$elm$html$Html$text(',')
 									]));
@@ -5033,6 +5026,10 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 	}
 };
 var $author$project$Main$viewProject = function (project) {
+	var name = project.M;
+	var description = project.I;
+	var team = project.S;
+	var links = project.K;
 	return A2(
 		$elm$html$Html$li,
 		_List_Nil,
@@ -5044,7 +5041,7 @@ var $author$project$Main$viewProject = function (project) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.J)
+						$elm$html$Html$text(name)
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5054,7 +5051,7 @@ var $author$project$Main$viewProject = function (project) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.ax)
+						$elm$html$Html$text(description)
 					])),
 				A2(
 				$elm$html$Html$div,
@@ -5074,11 +5071,11 @@ var $author$project$Main$viewProject = function (project) {
 								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text(link.J)
+									$elm$html$Html$text(link.M)
 								]));
 					},
-					project.aE)),
-				$author$project$Main$viewTeam(project.aK)
+					links)),
+				$author$project$Main$viewTeam(team)
 			]));
 };
 var $author$project$Main$viewProjects = function (projs) {
