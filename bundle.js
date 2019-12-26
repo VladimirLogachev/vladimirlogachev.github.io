@@ -5348,7 +5348,17 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 											]),
 										_List_fromArray(
 											[
-												$author$project$Project$viewUserPic(teamMate.aL),
+												$author$project$Project$viewUserPic(teamMate.aL)
+											])),
+										A2(
+										$elm$html$Html$a,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$href(teamMate.e),
+												$elm$html$Html$Attributes$target('_blank')
+											]),
+										_List_fromArray(
+											[
 												$elm$html$Html$text(teamMate.N)
 											])),
 										$elm$html$Html$text(',')
@@ -5365,7 +5375,7 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text('and Me.')
+									$elm$html$Html$text('and me.')
 								]))
 						]))));
 	}
