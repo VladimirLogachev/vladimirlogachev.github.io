@@ -302,6 +302,23 @@ knownBooks =
 projects : List Project
 projects =
     [ Project
+        { name = "WIP: Translation of Scala with Cats"
+        , description = """Collaboration with friends from FP Specialty."""
+        , links =
+            [ Link "WIP: Russian translation repo" "https://github.com/fpspecialty/scala-with-cats-ru"
+            , Link "Original book" "https://underscore.io/books/scala-with-cats/"
+            ]
+        , imgFileName = Just "scala-with-cats.png"
+        , team =
+            Team
+                [ 
+                TeamMate "klass-ivan" (GitHubUserId 2673108) "https://github.com/klass-ivan"
+                , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
+                , TeamMate "Vladimir Nizamutdinov" (GitHubUserId 10260495) "https://github.com/astartes91"
+                , TeamMate "other contributors" NoPic "https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors"
+                ]
+        }
+    , Project
         { name = "Translation of the Mostly Adequate Guide"
         , description = """Russian version 
       of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.

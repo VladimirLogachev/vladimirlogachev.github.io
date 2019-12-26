@@ -137,19 +137,8 @@ a:hover {
 .book {
   margin-right: 32px;
   width: 100px;
-  font-size: 10px;
+  font-size: 12px;
 }
-
-.book > * {
-  display: inline;
-  clear: none;
-  font-size: 1em;
-  vertical-align: baseline;
-}
-
-/* .book > * + * {
-  margin-left: 0.5em;
-} */
 
 .book_cover {
   max-height: 150px;

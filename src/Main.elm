@@ -16,17 +16,17 @@ type Msg
 main : Html Msg
 main =
     div [ class "app" ]
-        [ viewNav developerIntro
+        [ viewHeader viewIntro
         , viewProjects projects
         , viewLibrary knownBooks libraryState
-        , viewBooks knownBooks learningPath
+        , viewMyLearningPath knownBooks learningPath
         ]
 
 
-viewNav : Html Msg -> Html Msg
-viewNav content =
+viewHeader : Html Msg -> Html Msg
+viewHeader content =
     div [ class "nav", class "fullwidth_container" ]
-        [ div [ ]
+        [ div []
             [ h1 []
                 [ text "Vladimir Logachev" ]
             , content
@@ -34,8 +34,8 @@ viewNav content =
         ]
 
 
-developerIntro : Html Msg
-developerIntro =
+viewIntro : Html Msg
+viewIntro =
     div [ class "intro" ]
         [ p [ class "icons" ]
             [ img [ class "icon", src "images/logos/haskell.svg", alt "Haskell" ] []
@@ -55,16 +55,15 @@ developerIntro =
         ]
 
 
-viewBooks : Dict String Book -> List LearningMaterial -> Html Msg
-viewBooks books learnPath =
-    div [ class "books-list", class "fullwidth_container" ]
-        [ div []
-            [ h2 [] [ text "Books I've read" ]
-            , learnPath
-                |> List.map (\(BookTitle title) -> title)
-                |> getMany books
-                |> List.map viewBook
-                |> ul [class "books"]
+viewBook : Book -> Html Msg
+viewBook (Book book) =
+    li [ class "book" ]
+        [ a [ href book.url, target "_blank" ] [ img [ class "book_cover", src book.coverUrl, alt book.title ] [] ]
+        , div []
+            [ p [ class "author" ] [ text book.author ]
+            , p [ class "title" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
+
+            -- , p [ class "topic" ] [ text <| showTopic book.topics ]
             ]
         ]
 
@@ -85,37 +84,21 @@ viewLibrary books libState =
                 |> Dict.keys
                 |> getMany books
                 |> List.map viewBook
-                |> ul [class "books"]
+                |> ul [ class "books" ]
             ]
         ]
 
 
-
-{-
-   TODO:
-   On library: Publisher is a special link
-   On learning path: All to publisher
--}
-
-
-viewBook : Book -> Html Msg
-viewBook (Book book) =
-    li [ class "book" ]
-        [ a [ href book.url, target "_blank" ] [ img [ class "book_cover", src book.coverUrl, alt book.title ] [] ]
-        , div []
-            [ p [ class "title" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
-            , p [ class "author" ] [ text book.author ]
-            , p [ class "topic" ] [ text <| showTopic book.topics ]
-            ]
-        ]
-
-
-viewProjects : List Project -> Html Msg
-viewProjects projs =
-    div [ class "items-list", class "fullwidth_container" ]
+viewMyLearningPath : Dict String Book -> List LearningMaterial -> Html Msg
+viewMyLearningPath books learnPath =
+    div [ class "books-list", class "fullwidth_container" ]
         [ div []
-            [ ul [] <|
-                List.map viewProject projs
+            [ h2 [] [ text "My learning path" ]
+            , learnPath
+                |> List.map (\(BookTitle title) -> title)
+                |> getMany books
+                |> List.map viewBook
+                |> ul [ class "books" ]
             ]
         ]
 
@@ -138,29 +121,17 @@ viewTeam projectTeam =
 
         Team team ->
             ul [ class "team" ] <|
-                [ li [ class "teammate" ]
-                    --refactor css class: not a teammate actually, but an element of the layout.
-                    [ strong []
-                        [ text "Team:" ]
-                    ]
-                ]
+                [ li [ class "teammate" ] [ strong [] [ text "Team:" ] ] ]
                     ++ List.map
                         (\teamMate ->
                             li [ class "teammate" ]
-                                [ a [ href teamMate.url, target "_blank" ]
-                                    [ viewUserPic teamMate.userpic
-                                    ]
-                                , a [ href teamMate.url, target "_blank" ]
-                                    [ text teamMate.name
-                                    ]
-                                , text
-                                    ","
+                                [ a [ href teamMate.url, target "_blank" ] [ viewUserPic teamMate.userpic ]
+                                , a [ href teamMate.url, target "_blank" ] [ text teamMate.name ]
+                                , text ","
                                 ]
                         )
                         team
-                    ++ [ li [ class "teammate" ]
-                            [ text "and me." ]
-                       ]
+                    ++ [ li [ class "teammate" ] [ text "and me." ] ]
 
 
 viewProject : Project -> Html Msg
@@ -173,4 +144,14 @@ viewProject ((Project { name, description, team, links }) as project) =
         , div [ class "links" ] <|
             List.map (\link -> a [ href link.url, target "_blank" ] [ text link.name ]) links
         , viewTeam team
+        ]
+
+
+viewProjects : List Project -> Html Msg
+viewProjects projs =
+    div [ class "items-list", class "fullwidth_container" ]
+        [ div []
+            [ ul [] <|
+                List.map viewProject projs
+            ]
         ]
