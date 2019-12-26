@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.R.E === region.X.E)
+	if (region.S.E === region.X.E)
 	{
-		return 'on line ' + region.R.E;
+		return 'on line ' + region.S.E;
 	}
-	return 'on lines ' + region.R.E + ' through ' + region.X.E;
+	return 'on lines ' + region.S.E + ' through ' + region.X.E;
 }
 
 
@@ -2705,8 +2705,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		t: func(record.t),
-		S: record.S,
-		P: record.P
+		T: record.T,
+		Q: record.Q
 	}
 });
 
@@ -2975,10 +2975,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.t;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.S;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.T;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.P) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.Q) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -4413,167 +4413,7 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$a = _VirtualDom_node('a');
-var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
-var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$developerIntro = A2(
-	$elm$html$Html$div,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('intro')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$p,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('icons')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('icon'),
-							$elm$html$Html$Attributes$src('images/logos/haskell.svg'),
-							$elm$html$Html$Attributes$alt('Haskell')
-						]),
-					_List_Nil),
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('icon'),
-							$elm$html$Html$Attributes$src('images/logos/scala.svg'),
-							$elm$html$Html$Attributes$alt('Scala')
-						]),
-					_List_Nil),
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('icon'),
-							$elm$html$Html$Attributes$src('images/logos/elm.svg'),
-							$elm$html$Html$Attributes$alt('Elm')
-						]),
-					_List_Nil)
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Fullstack developer')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Chief Enthusiast in '),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://fpspecialty.github.io/')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('FP Specialty')
-						])),
-					$elm$html$Html$text(' — FP reading group, meetups, collaborations')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Available for hiring, collaboration and pair programming.')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('intro-links')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('github')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$href('mailto:doit@keemail.me')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('mail')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://t.me/vladimirlogachev')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('telegram')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('http://www.linkedin.com/in/vladimirlogachev')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('linkedin')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('cv')
-						]))
-				]))
-		]));
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
@@ -4861,7 +4701,7 @@ var $author$project$Project$GitHubUserId = function (a) {
 };
 var $author$project$Project$Link = F2(
 	function (name, url) {
-		return {N: name, e: url};
+		return {M: name, e: url};
 	});
 var $author$project$Project$NoPic = {$: 0};
 var $author$project$Project$OnlyMe = {$: 0};
@@ -4871,10 +4711,40 @@ var $author$project$Project$Team = function (a) {
 };
 var $author$project$Project$TeamMate = F3(
 	function (name, userpic, url) {
-		return {N: name, e: url, aL: userpic};
+		return {M: name, e: url, aL: userpic};
 	});
 var $author$project$Dataset$projects = _List_fromArray(
 	[
+		{
+		J: 'Collaboration with friends from FP Specialty.',
+		K: $elm$core$Maybe$Just('scala-with-cats.png'),
+		L: _List_fromArray(
+			[
+				A2($author$project$Project$Link, 'WIP: Russian translation repo', 'https://github.com/fpspecialty/scala-with-cats-ru'),
+				A2($author$project$Project$Link, 'Original book', 'https://underscore.io/books/scala-with-cats/')
+			]),
+		M: 'WIP: Translation of Scala with Cats',
+		N: $author$project$Project$Team(
+			_List_fromArray(
+				[
+					A3(
+					$author$project$Project$TeamMate,
+					'klass-ivan',
+					$author$project$Project$GitHubUserId(2673108),
+					'https://github.com/klass-ivan'),
+					A3(
+					$author$project$Project$TeamMate,
+					'BanyRule',
+					$author$project$Project$GitHubUserId(14077902),
+					'https://github.com/banyrule'),
+					A3(
+					$author$project$Project$TeamMate,
+					'Vladimir Nizamutdinov',
+					$author$project$Project$GitHubUserId(10260495),
+					'https://github.com/astartes91'),
+					A3($author$project$Project$TeamMate, 'other contributors', $author$project$Project$NoPic, 'https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors')
+				]))
+	},
 		{
 		J: 'Russian version \n      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, \n      refactored every chapter translated before us and then finished the translation.',
 		K: $elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
@@ -4883,8 +4753,8 @@ var $author$project$Dataset$projects = _List_fromArray(
 				A2($author$project$Project$Link, 'Russian translation', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md'),
 				A2($author$project$Project$Link, 'Original book', 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
 			]),
-		N: 'Translation of the Mostly Adequate Guide',
-		T: $author$project$Project$Team(
+		M: 'Translation of the Mostly Adequate Guide',
+		N: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
@@ -4909,8 +4779,8 @@ var $author$project$Dataset$projects = _List_fromArray(
 				A2($author$project$Project$Link, 'ePub', 'https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf'),
 				A2($author$project$Project$Link, 'Read online', 'https://www.gitbook.com/read/book/vladimirlogachev/facfaf')
 			]),
-		N: '#FACFAF. Quick reference guide',
-		T: $author$project$Project$OnlyMe
+		M: '#FACFAF. Quick reference guide',
+		N: $author$project$Project$OnlyMe
 	},
 		{
 		J: 'A fullstack app, bot for Slack.\n      Made in collaboration as a Build-To-Learn project (part of Chingu Cohorts workflow).\n      My work is Slack\'s «frontend» and app\'s landing page, \n      but also I\'ve made some contribution to the server.',
@@ -4921,8 +4791,8 @@ var $author$project$Dataset$projects = _List_fromArray(
 				A2($author$project$Project$Link, 'GitHub', 'https://github.com/gang-of-four-lions/lion-bot'),
 				A2($author$project$Project$Link, 'Chingu', 'https://chingu.io/')
 			]),
-		N: 'Lion Bot',
-		T: $author$project$Project$Team(
+		M: 'Lion Bot',
+		N: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
@@ -4943,6 +4813,193 @@ var $author$project$Dataset$projects = _List_fromArray(
 				]))
 	}
 	]);
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Main$viewHeader = function (content) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('nav'),
+				$elm$html$Html$Attributes$class('fullwidth_container')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$h1,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Vladimir Logachev')
+							])),
+						content
+					]))
+			]));
+};
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
+var $author$project$Main$viewIntro = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('intro')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('icons')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('icon'),
+							$elm$html$Html$Attributes$src('images/logos/haskell.svg'),
+							$elm$html$Html$Attributes$alt('Haskell')
+						]),
+					_List_Nil),
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('icon'),
+							$elm$html$Html$Attributes$src('images/logos/scala.svg'),
+							$elm$html$Html$Attributes$alt('Scala')
+						]),
+					_List_Nil),
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('icon'),
+							$elm$html$Html$Attributes$src('images/logos/elm.svg'),
+							$elm$html$Html$Attributes$alt('Elm')
+						]),
+					_List_Nil)
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Fullstack developer')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Chief Enthusiast in '),
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$target('_blank'),
+							$elm$html$Html$Attributes$href('https://fpspecialty.github.io/')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('FP Specialty')
+						])),
+					$elm$html$Html$text(' — FP reading group, meetups, collaborations')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Available for hiring, collaboration and pair programming.')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('intro-links')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$target('_blank'),
+							$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('github')
+						])),
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('mailto:doit@keemail.me')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('mail')
+						])),
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$target('_blank'),
+							$elm$html$Html$Attributes$href('https://t.me/vladimirlogachev')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('telegram')
+						])),
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$target('_blank'),
+							$elm$html$Html$Attributes$href('http://www.linkedin.com/in/vladimirlogachev')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('linkedin')
+						])),
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$target('_blank'),
+							$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('cv')
+						]))
+				]))
+		]));
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
@@ -4997,32 +5054,6 @@ var $author$project$Utils$getMany = F2(
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $elm$html$Html$li = _VirtualDom_node('li');
-var $author$project$Book$showTopic = function (topic) {
-	switch (topic) {
-		case 0:
-			return 'Music instruments';
-		case 1:
-			return 'JavaScript';
-		case 2:
-			return 'Haskell';
-		case 4:
-			return 'Scheme';
-		case 3:
-			return 'Scala';
-		case 5:
-			return 'CSS';
-		case 6:
-			return 'Design';
-		case 7:
-			return 'Software Development';
-		case 8:
-			return 'Leadership';
-		case 9:
-			return 'Communication';
-		default:
-			return 'Management';
-	}
-};
 var $author$project$Main$viewBook = function (_v0) {
 	var book = _v0;
 	return A2(
@@ -5061,6 +5092,16 @@ var $author$project$Main$viewBook = function (_v0) {
 						$elm$html$Html$p,
 						_List_fromArray(
 							[
+								$elm$html$Html$Attributes$class('author')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(book.b)
+							])),
+						A2(
+						$elm$html$Html$p,
+						_List_fromArray(
+							[
 								$elm$html$Html$Attributes$class('title')
 							]),
 						_List_fromArray(
@@ -5076,76 +5117,10 @@ var $author$project$Main$viewBook = function (_v0) {
 									[
 										$elm$html$Html$text(book.a)
 									]))
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('author')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text(book.b)
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('topic')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text(
-								$author$project$Book$showTopic(book.d))
 							]))
 					]))
 			]));
 };
-var $author$project$Main$viewBooks = F2(
-	function (books, learnPath) {
-		return A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('books-list'),
-					$elm$html$Html$Attributes$class('fullwidth_container')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$div,
-					_List_Nil,
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$h2,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$elm$html$Html$text('Books I\'ve read')
-								])),
-							A2(
-							$elm$html$Html$ul,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$class('books')
-								]),
-							A2(
-								$elm$core$List$map,
-								$author$project$Main$viewBook,
-								A2(
-									$author$project$Utils$getMany,
-									books,
-									A2(
-										$elm$core$List$map,
-										function (_v0) {
-											var title = _v0;
-											return title;
-										},
-										learnPath))))
-						]))
-				]));
-	});
 var $author$project$Main$viewLibrary = F2(
 	function (books, libState) {
 		return A2(
@@ -5229,37 +5204,55 @@ var $author$project$Main$viewLibrary = F2(
 						]))
 				]));
 	});
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $author$project$Main$viewNav = function (content) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('nav'),
-				$elm$html$Html$Attributes$class('fullwidth_container')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$h1,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Vladimir Logachev')
-							])),
-						content
-					]))
-			]));
-};
+var $author$project$Main$viewMyLearningPath = F2(
+	function (books, learnPath) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('books-list'),
+					$elm$html$Html$Attributes$class('fullwidth_container')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$h2,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('My learning path')
+								])),
+							A2(
+							$elm$html$Html$ul,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('books')
+								]),
+							A2(
+								$elm$core$List$map,
+								$author$project$Main$viewBook,
+								A2(
+									$author$project$Utils$getMany,
+									books,
+									A2(
+										$elm$core$List$map,
+										function (_v0) {
+											var title = _v0;
+											return title;
+										},
+										learnPath))))
+						]))
+				]));
+	});
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
 var $author$project$Main$viewProjectImage = function (_v0) {
-	var name = _v0.N;
+	var name = _v0.M;
 	var imgFileName = _v0.K;
 	if (!imgFileName.$) {
 		var filename = imgFileName.a;
@@ -5367,7 +5360,7 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 											]),
 										_List_fromArray(
 											[
-												$elm$html$Html$text(teamMate.N)
+												$elm$html$Html$text(teamMate.M)
 											])),
 										$elm$html$Html$text(',')
 									]));
@@ -5389,9 +5382,9 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 	}
 };
 var $author$project$Main$viewProject = function (project) {
-	var name = project.N;
+	var name = project.M;
 	var description = project.J;
-	var team = project.T;
+	var team = project.N;
 	var links = project.L;
 	return A2(
 		$elm$html$Html$li,
@@ -5434,7 +5427,7 @@ var $author$project$Main$viewProject = function (project) {
 								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text(link.N)
+									$elm$html$Html$text(link.M)
 								]));
 					},
 					links)),
@@ -5471,9 +5464,9 @@ var $author$project$Main$main = A2(
 		]),
 	_List_fromArray(
 		[
-			$author$project$Main$viewNav($author$project$Main$developerIntro),
+			$author$project$Main$viewHeader($author$project$Main$viewIntro),
 			$author$project$Main$viewProjects($author$project$Dataset$projects),
 			A2($author$project$Main$viewLibrary, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState),
-			A2($author$project$Main$viewBooks, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
+			A2($author$project$Main$viewMyLearningPath, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));
