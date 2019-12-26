@@ -149,8 +149,9 @@ viewTeam projectTeam =
                             li [ class "teammate" ]
                                 [ a [ href teamMate.url, target "_blank" ]
                                     [ viewUserPic teamMate.userpic
-                                    , text
-                                        teamMate.name
+                                    ]
+                                , a [ href teamMate.url, target "_blank" ]
+                                    [ text teamMate.name
                                     ]
                                 , text
                                     ","
@@ -158,7 +159,7 @@ viewTeam projectTeam =
                         )
                         team
                     ++ [ li [ class "teammate" ]
-                            [ text "and Me." ]
+                            [ text "and me." ]
                        ]
 
 
