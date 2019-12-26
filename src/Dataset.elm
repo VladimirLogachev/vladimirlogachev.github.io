@@ -110,7 +110,7 @@ knownBooks =
         , title = "CSS: The Missing Manual"
         , topics = CSS
         , url = "https://shop.oreilly.com/product/0636920036357.do"
-        , coverUrl = "https://covers.oreillystatic.com/images/0636920036357/cat.gif"
+        , coverUrl = "https://m.media-amazon.com/images/I/61wK+-BXYUL._AC_UY218_ML3_.jpg"
         }
     , Book
         { author = "Rebecca Hagen, Kim Golombisky"
@@ -173,7 +173,7 @@ knownBooks =
         , title = "The Luthier's Handbook"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook"
-        , coverUrl = "https://cdn.shopify.com/s/files/1/0955/2708/products/parts505_370x.jpg?v=1439353466"
+        , coverUrl = "https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg"
         }
     , Book
         { author = "Paul Balmer (Author), Les Paul (Foreword)"
