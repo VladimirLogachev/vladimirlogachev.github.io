@@ -4644,7 +4644,7 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Donald Brosnac', c: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', d: false, a: 'Guitar Electronics for Musicians', e: 0, f: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
 				{b: 'Hideo Kamimoto', c: 'https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg', d: false, a: 'Complete Guitar Repair', e: 0, f: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
 				{b: 'Roger H. Siminoff', c: 'https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg', d: true, a: 'The Luthier\'s Handbook', e: 0, f: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
-				{b: 'Paul Balmer (Author), Les Paul (Foreword)', c: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', d: false, a: 'The Gibson Les Paul Handbook', e: 0, f: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
+				{b: 'Paul Balmer', c: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', d: false, a: 'The Gibson Les Paul Handbook', e: 0, f: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
 				{b: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', c: 'https://images-na.ssl-images-amazon.com/images/I/51kuc0iWoKL._SX326_BO1,204,203,200_.jpg', d: false, a: 'Design Patterns: Elements of Reusable Object-Oriented Software', e: 7, f: 'https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8'},
 				{b: 'Pat Brisbin', c: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427714317l/25249192.jpg', d: false, a: 'Maybe Haskell', e: 2, f: 'https://books.thoughtbot.com/assets/maybe-haskell.pdf'},
 				{b: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', c: 'https://images-na.ssl-images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg', d: false, a: 'Structure and Interpretation of Computer Programs', e: 4, f: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
@@ -5043,6 +5043,23 @@ var $elm$core$Dict$get = F2(
 			}
 		}
 	});
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $author$project$SharedStyles$regularText = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'line-height', '1.3'),
+		A2($elm$html$Html$Attributes$style, 'margin-top', '0.4em'),
+		A2($elm$html$Html$Attributes$style, 'margin-bottom', '0.4em')
+	]);
 var $elm_community$maybe_extra$Maybe$Extra$cons = F2(
 	function (item, list) {
 		if (!item.$) {
@@ -5053,23 +5070,6 @@ var $elm_community$maybe_extra$Maybe$Extra$cons = F2(
 		}
 	});
 var $elm_community$maybe_extra$Maybe$Extra$values = A2($elm$core$List$foldr, $elm_community$maybe_extra$Maybe$Extra$cons, _List_Nil);
-var $author$project$Utils$getMany = F2(
-	function (dict, keys) {
-		return $elm_community$maybe_extra$Maybe$Extra$values(
-			A2(
-				$elm$core$List$map,
-				function (k) {
-					return A2($elm$core$Dict$get, k, dict);
-				},
-				keys));
-	});
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $author$project$SharedStyles$regularText = _List_fromArray(
-	[
-		A2($elm$html$Html$Attributes$style, 'line-height', '1.3'),
-		A2($elm$html$Html$Attributes$style, 'margin-top', '0.4em'),
-		A2($elm$html$Html$Attributes$style, 'margin-bottom', '0.4em')
-	]);
 var $author$project$SharedStyles$highlightShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px -1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 2px 2px,\n    rgba(0, 0, 0, 0.1) 0px 3px 3px, \n    #F7DC6F66 0px 0px 5px 10px');
 var $author$project$SharedStyles$regularShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
 var $author$project$Main$viewBook = function (_v0) {
@@ -5142,6 +5142,54 @@ var $author$project$Main$viewBook = function (_v0) {
 							]))
 					]))
 			]));
+};
+var $author$project$Main$viewLibraryBook = function (_v0) {
+	var b = _v0.a;
+	var availability = _v0.b;
+	var book = A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'opacity', '.5')
+			]),
+		_List_fromArray(
+			[
+				$author$project$Main$viewBook(b)
+			]));
+	switch (availability) {
+		case 0:
+			return A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$author$project$Main$viewBook(b)
+					]));
+		case 1:
+			return A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'opacity', '.5')
+					]),
+				_List_fromArray(
+					[
+						$author$project$Main$viewBook(b),
+						$elm$html$Html$text('coming soon')
+					]));
+		default:
+			return A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'opacity', '.5')
+					]),
+				_List_fromArray(
+					[
+						$author$project$Main$viewBook(b),
+						$elm$html$Html$text('coming soon')
+					]));
+	}
 };
 var $author$project$Main$viewLibrary = F2(
 	function (books, libState) {
@@ -5217,13 +5265,33 @@ var $author$project$Main$viewLibrary = F2(
 								]),
 							A2(
 								$elm$core$List$map,
-								$author$project$Main$viewBook,
-								A2(
-									$author$project$Utils$getMany,
-									books,
-									$elm$core$Dict$keys(libState))))
+								$author$project$Main$viewLibraryBook,
+								$elm_community$maybe_extra$Maybe$Extra$values(
+									A2(
+										$elm$core$List$map,
+										function (_v0) {
+											var name = _v0.a;
+											var availability = _v0.b;
+											return A2(
+												$elm$core$Maybe$map,
+												function (b) {
+													return _Utils_Tuple2(b, availability);
+												},
+												A2($elm$core$Dict$get, name, books));
+										},
+										$elm$core$Dict$toList(libState)))))
 						]))
 				]));
+	});
+var $author$project$Utils$getMany = F2(
+	function (dict, keys) {
+		return $elm_community$maybe_extra$Maybe$Extra$values(
+			A2(
+				$elm$core$List$map,
+				function (k) {
+					return A2($elm$core$Dict$get, k, dict);
+				},
+				keys));
 	});
 var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $author$project$Main$viewMyLearningPath = F2(
@@ -5308,16 +5376,6 @@ var $elm$core$List$append = F2(
 var $elm$core$List$concat = function (lists) {
 	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
 };
-var $elm$core$Maybe$map = F2(
-	function (f, maybe) {
-		if (!maybe.$) {
-			var value = maybe.a;
-			return $elm$core$Maybe$Just(
-				f(value));
-		} else {
-			return $elm$core$Maybe$Nothing;
-		}
-	});
 var $elm$core$List$tail = function (list) {
 	if (list.b) {
 		var x = list.a;
