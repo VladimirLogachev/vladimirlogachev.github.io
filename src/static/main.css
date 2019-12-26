@@ -18,8 +18,9 @@
   justify-content: center;
 }
 
-.fullwidth_container>div {
+.fullwidth_container > div {
   width: 1000px;
+  padding: 32px 16px 16px 32px;
 }
 
 h1,
@@ -67,7 +68,6 @@ a:hover {
 }
 
 .nav {
-  padding: 2em 1em 2em 1em;
   background-color: #11151b;
   color: #bbbdbd;
 }
@@ -119,13 +119,25 @@ a:hover {
   margin-right: 0.2em;
 }
 
+.library_wrapper {
+  background-color: #d2dbe0;
+}
+
+/* rename: learning path */
 .books-list {
-  padding: 2em 1em 1em 1em;
   background-color: #f5f7f8;
 }
 
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .book {
-  margin-top: 0.5em;
+  margin-right: 32px;
+  width: 100px;
+  font-size: 10px;
 }
 
 .book > * {
@@ -135,19 +147,16 @@ a:hover {
   vertical-align: baseline;
 }
 
-.book > * + * {
+/* .book > * + * {
   margin-left: 0.5em;
-}
+} */
 
 .book_cover {
-  height: 120px;
+  max-height: 150px;
+  max-width: 100px;
   border-radius: 3px;
   margin-top: 2em;
   margin-bottom: 0.6em;
-}
-
-.items-list {
-  padding: 2em 1em 1em 1em;
 }
 
 .items-list > ul {

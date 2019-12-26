@@ -64,14 +64,14 @@ viewBooks books learnPath =
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
                 |> List.map viewBook
-                |> ul []
+                |> ul [class "books"]
             ]
         ]
 
 
 viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
 viewLibrary books libState =
-    div [ class "books-list", class "fullwidth_container" ]
+    div [ class "library_wrapper", class "fullwidth_container" ]
         [ div []
             [ h2 [] [ text "My offline library, shared" ]
             , div [ class "description" ]
@@ -85,7 +85,7 @@ viewLibrary books libState =
                 |> Dict.keys
                 |> getMany books
                 |> List.map viewBook
-                |> ul []
+                |> ul [class "books"]
             ]
         ]
 

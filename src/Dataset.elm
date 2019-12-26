@@ -89,7 +89,7 @@ knownBooks =
         , title = "React Redux курс для начинающих"
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
-        , coverUrl = "http://sun9-67.userapi.com/c840028/v840028135/32fdf/b4evZGUdoOg.jpg"
+        , coverUrl = "/images/book_covers/redux.jpeg"
         }
     , Book
         { author = "Максим Пацианский"
