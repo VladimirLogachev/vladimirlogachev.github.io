@@ -4800,7 +4800,7 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Bruce Eckel, Dianne Marsh', c: 'https://static-2.gumroad.com/res/gumroad/2484219515800/asset_previews/baa9edfdda1f0636d3141c6336006e1c/original/scala_20ebook_20cover_20web.gif', a: 'Atomic Scala', d: 3, e: 'http://www.atomicscala.com'},
 				{b: 'Robert Martin', c: 'https://images-na.ssl-images-amazon.com/images/I/51d1qVhmAmL._SX373_BO1,204,203,200_.jpg', a: 'Clean Code. A Handbook of Agile Software Craftsmanship', d: 7, e: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
 				{b: 'Максим Пацианский', c: '/images/book_covers/router.png', a: 'Роутинг в react-приложениях', d: 1, e: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
-				{b: 'Максим Пацианский', c: 'http://sun9-67.userapi.com/c840028/v840028135/32fdf/b4evZGUdoOg.jpg', a: 'React Redux курс для начинающих', d: 1, e: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
+				{b: 'Максим Пацианский', c: '/images/book_covers/redux.jpeg', a: 'React Redux курс для начинающих', d: 1, e: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
 				{b: 'Максим Пацианский', c: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1484152353l/33838152._SX318_.jpg', a: 'React.js курс для начинающих', d: 1, e: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
 				{b: 'Stoyan Stefanov', c: 'https://covers.oreillystatic.com/images/9780596806767/cat.gif', a: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', d: 1, e: 'https://shop.oreilly.com/product/9780596806767.do'},
 				{b: 'David Sawyer McFarland', c: 'https://covers.oreillystatic.com/images/0636920036357/cat.gif', a: 'CSS: The Missing Manual', d: 5, e: 'https://shop.oreilly.com/product/0636920036357.do'},
@@ -5126,7 +5126,10 @@ var $author$project$Main$viewBooks = F2(
 								])),
 							A2(
 							$elm$html$Html$ul,
-							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('books')
+								]),
 							A2(
 								$elm$core$List$map,
 								$author$project$Main$viewBook,
@@ -5149,7 +5152,7 @@ var $author$project$Main$viewLibrary = F2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('books-list'),
+					$elm$html$Html$Attributes$class('library_wrapper'),
 					$elm$html$Html$Attributes$class('fullwidth_container')
 				]),
 			_List_fromArray(
@@ -5212,7 +5215,10 @@ var $author$project$Main$viewLibrary = F2(
 								])),
 							A2(
 							$elm$html$Html$ul,
-							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('books')
+								]),
 							A2(
 								$elm$core$List$map,
 								$author$project$Main$viewBook,
