@@ -25,8 +25,8 @@ main =
 
 viewNav : Html Msg -> Html Msg
 viewNav content =
-    nav [ class "nav" ]
-        [ div []
+    div [ class "nav", class "fullwidth_container" ]
+        [ div [ ]
             [ h1 []
                 [ text "Vladimir Logachev" ]
             , content
@@ -57,7 +57,7 @@ developerIntro =
 
 viewBooks : Dict String Book -> List LearningMaterial -> Html Msg
 viewBooks books learnPath =
-    div [ class "books-list" ]
+    div [ class "books-list", class "fullwidth_container" ]
         [ div []
             [ h2 [] [ text "Books I've read" ]
             , learnPath
@@ -71,7 +71,7 @@ viewBooks books learnPath =
 
 viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
 viewLibrary books libState =
-    div [ class "books-list" ]
+    div [ class "books-list", class "fullwidth_container" ]
         [ div []
             [ h2 [] [ text "My offline library, shared" ]
             , div [ class "description" ]
@@ -112,7 +112,7 @@ viewBook (Book book) =
 
 viewProjects : List Project -> Html Msg
 viewProjects projs =
-    div [ class "items-list" ]
+    div [ class "items-list", class "fullwidth_container" ]
         [ div []
             [ ul [] <|
                 List.map viewProject projs
