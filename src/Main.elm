@@ -85,6 +85,14 @@ viewIntro =
 
 viewBook : Book -> Html Msg
 viewBook (Book book) =
+    let
+        shadow =
+            if book.favorite then
+                highlightShadow
+
+            else
+                regularShadow
+    in
     section
         [ style "margin-right" "32px"
         , style "width" "100px"
@@ -92,7 +100,7 @@ viewBook (Book book) =
         ]
         [ a [ href book.url, target "_blank" ]
             [ img
-                [ coolShadow
+                [ shadow
                 , style "max-height" "150px"
                 , style "max-width" "100px"
                 , style "border-radius" "3px"
@@ -157,7 +165,7 @@ viewProjectImage (Project { name, imgFileName }) =
     case imgFileName of
         Just filename ->
             img
-                [ coolShadow
+                [ regularShadow
                 , style "max-width" "300px"
                 , style "max-height" "300px"
                 , style "border-radius" "3px"

@@ -8,6 +8,7 @@ type Book
         , topics : Topic
         , url : String
         , coverUrl : String
+        , favorite : Bool
         }
 
 

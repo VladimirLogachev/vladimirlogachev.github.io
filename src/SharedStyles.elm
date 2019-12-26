@@ -4,12 +4,20 @@ import Html exposing (Attribute)
 import Html.Attributes exposing (style)
 
 
-coolShadow : Attribute a
-coolShadow =
+regularShadow : Attribute a
+regularShadow =
     style "box-shadow" """0px -1px 1px rgba(0, 0, 0, 0.1), 
     0px 1px 1px rgba(0, 0, 0, 0.1),
     0px 2px 2px rgba(0, 0, 0, 0.1), 
     0px 3px 3px rgba(0, 0, 0, 0.1)"""
+
+highlightShadow : Attribute a
+highlightShadow =
+    style "box-shadow" """rgba(0, 0, 0, 0.1) 0px -1px 1px,
+    rgba(0, 0, 0, 0.1) 0px 1px 1px,
+    rgba(0, 0, 0, 0.1) 0px 2px 2px,
+    rgba(0, 0, 0, 0.1) 0px 3px 3px, 
+    #F7DC6F66 0px 0px 5px 10px"""
 
 
 fullwidthContainer : List (Attribute a)
