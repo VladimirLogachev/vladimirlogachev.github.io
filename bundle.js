@@ -5107,7 +5107,8 @@ var $author$project$Main$viewBooks = F2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('books-list')
+					$elm$html$Html$Attributes$class('books-list'),
+					$elm$html$Html$Attributes$class('fullwidth_container')
 				]),
 			_List_fromArray(
 				[
@@ -5148,7 +5149,8 @@ var $author$project$Main$viewLibrary = F2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('books-list')
+					$elm$html$Html$Attributes$class('books-list'),
+					$elm$html$Html$Attributes$class('fullwidth_container')
 				]),
 			_List_fromArray(
 				[
@@ -5222,13 +5224,13 @@ var $author$project$Main$viewLibrary = F2(
 				]));
 	});
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $author$project$Main$viewNav = function (content) {
 	return A2(
-		$elm$html$Html$nav,
+		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('nav')
+				$elm$html$Html$Attributes$class('nav'),
+				$elm$html$Html$Attributes$class('fullwidth_container')
 			]),
 		_List_fromArray(
 			[
@@ -5438,7 +5440,8 @@ var $author$project$Main$viewProjects = function (projs) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('items-list')
+				$elm$html$Html$Attributes$class('items-list'),
+				$elm$html$Html$Attributes$class('fullwidth_container')
 			]),
 		_List_fromArray(
 			[
