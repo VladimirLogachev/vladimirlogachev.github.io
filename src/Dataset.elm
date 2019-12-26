@@ -348,25 +348,6 @@ projects =
         , imgFileName = Just "facfaf.jpg"
         , team = OnlyMe
         }
-    , Project
-        { name = "Lion Bot"
-        , description = """A fullstack app, bot for Slack.
-      Made in collaboration as a Build-To-Learn project (part of Chingu Cohorts workflow).
-      My work is Slack's «frontend» and app's landing page, 
-      but also I've made some contribution to the server."""
-        , links =
-            [ Link "Live" "http://lion-bot.herokuapp.com/"
-            , Link "GitHub" "https://github.com/gang-of-four-lions/lion-bot"
-            , Link "Chingu" "https://chingu.io/"
-            ]
-        , imgFileName = Just "lionbot.jpg"
-        , team =
-            Team
-                [ TeamMate "Michael Blood" (GitHubUserId 12065896) "https://github.com/michaelblood"
-                , TeamMate "Josh Sanders" (GitHubUserId 19422930) "https://github.com/Josh5231"
-                , TeamMate "Alex McLeod" (GitHubUserId 24363605) "https://github.com/AlexMcLeod01"
-                ]
-        }
     ]
 
 
