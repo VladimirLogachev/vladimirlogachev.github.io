@@ -1859,7 +1859,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 		args,
 		impl.ab,
 		impl.ar,
-		impl.aK,
+		impl.aL,
 		function() { return function() {} }
 	);
 });
@@ -4404,15 +4404,6 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
-var $elm$json$Json$Encode$string = _Json_wrap;
-var $elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$core$Basics$identity = function (x) {
 	return x;
@@ -4711,7 +4702,7 @@ var $author$project$Project$Team = function (a) {
 };
 var $author$project$Project$TeamMate = F3(
 	function (name, userpic, url) {
-		return {N: name, e: url, aL: userpic};
+		return {N: name, e: url, as: userpic};
 	});
 var $author$project$Dataset$projects = _List_fromArray(
 	[
@@ -4783,27 +4774,47 @@ var $author$project$Dataset$projects = _List_fromArray(
 		T: $author$project$Project$OnlyMe
 	}
 	]);
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $author$project$SharedStyles$fullwidthContainer = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+		A2($elm$html$Html$Attributes$style, 'flex-direction', 'row'),
+		A2($elm$html$Html$Attributes$style, 'justify-content', 'center'),
+		A2($elm$html$Html$Attributes$style, 'border-bottom', '0.5px solid rgba(0, 0, 0, 0.1)')
+	]);
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$header = _VirtualDom_node('header');
+var $author$project$SharedStyles$innerContainer = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'width', '1000px'),
+		A2($elm$html$Html$Attributes$style, 'padding', '32px 16px 16px 32px')
+	]);
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$viewHeader = function (content) {
 	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('nav'),
-				$elm$html$Html$Attributes$class('fullwidth_container')
-			]),
+		$elm$html$Html$header,
+		_Utils_ap(
+			$author$project$SharedStyles$fullwidthContainer,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'background-color', '#11151b'),
+					A2($elm$html$Html$Attributes$style, 'color', '#bbbdbd')
+				])),
 		_List_fromArray(
 			[
 				A2(
 				$elm$html$Html$div,
-				_List_Nil,
+				$author$project$SharedStyles$innerContainer,
 				_List_fromArray(
 					[
 						A2(
 						$elm$html$Html$h1,
-						_List_Nil,
+						_List_fromArray(
+							[
+								A2($elm$html$Html$Attributes$style, 'color', '#fff')
+							]),
 						_List_fromArray(
 							[
 								$elm$html$Html$text('Vladimir Logachev')
@@ -4813,6 +4824,14 @@ var $author$project$Main$viewHeader = function (content) {
 			]));
 };
 var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
 var $elm$html$Html$Attributes$href = function (url) {
 	return A2(
@@ -4822,6 +4841,7 @@ var $elm$html$Html$Attributes$href = function (url) {
 };
 var $elm$html$Html$img = _VirtualDom_node('img');
 var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$section = _VirtualDom_node('section');
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
@@ -4829,147 +4849,169 @@ var $elm$html$Html$Attributes$src = function (url) {
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
-var $author$project$Main$viewIntro = A2(
-	$elm$html$Html$div,
-	_List_fromArray(
+var $author$project$Main$viewIntro = function () {
+	var link = _List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('intro')
-		]),
-	_List_fromArray(
+			$elm$html$Html$Attributes$target('_blank'),
+			A2($elm$html$Html$Attributes$style, 'margin-right', '0.5em')
+		]);
+	var icon = _List_fromArray(
 		[
-			A2(
-			$elm$html$Html$p,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('icons')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('icon'),
-							$elm$html$Html$Attributes$src('images/logos/haskell.svg'),
-							$elm$html$Html$Attributes$alt('Haskell')
-						]),
-					_List_Nil),
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('icon'),
-							$elm$html$Html$Attributes$src('images/logos/scala.svg'),
-							$elm$html$Html$Attributes$alt('Scala')
-						]),
-					_List_Nil),
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('icon'),
-							$elm$html$Html$Attributes$src('images/logos/elm.svg'),
-							$elm$html$Html$Attributes$alt('Elm')
-						]),
-					_List_Nil)
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Fullstack developer')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Chief Enthusiast in '),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://fpspecialty.github.io/')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('FP Specialty')
-						])),
-					$elm$html$Html$text(' — FP reading group, meetups, collaborations')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Available for hiring, collaboration and pair programming.')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('intro-links')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('github')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$href('mailto:doit@keemail.me')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('mail')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://t.me/vladimirlogachev')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('telegram')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('http://www.linkedin.com/in/vladimirlogachev')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('linkedin')
-						])),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$target('_blank'),
-							$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('cv')
-						]))
-				]))
-		]));
+			A2($elm$html$Html$Attributes$style, 'max-height', '24px'),
+			A2($elm$html$Html$Attributes$style, 'margin-right', '0.5em')
+		]);
+	return A2(
+		$elm$html$Html$section,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$p,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+						A2($elm$html$Html$Attributes$style, 'margin-top', '0.8em'),
+						A2($elm$html$Html$Attributes$style, 'margin-bottom', '0.8em')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$img,
+						_Utils_ap(
+							icon,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$src('images/logos/haskell.svg'),
+									$elm$html$Html$Attributes$alt('Haskell')
+								])),
+						_List_Nil),
+						A2(
+						$elm$html$Html$img,
+						_Utils_ap(
+							icon,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$src('images/logos/scala.svg'),
+									$elm$html$Html$Attributes$alt('Scala')
+								])),
+						_List_Nil),
+						A2(
+						$elm$html$Html$img,
+						_Utils_ap(
+							icon,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$src('images/logos/elm.svg'),
+									$elm$html$Html$Attributes$alt('Elm')
+								])),
+						_List_Nil)
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Fullstack developer')
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Chief Enthusiast in '),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$target('_blank'),
+								$elm$html$Html$Attributes$href('https://fpspecialty.github.io/')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('FP Specialty')
+							])),
+						$elm$html$Html$text(' — FP reading group, meetups, collaborations')
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Available for hiring, collaboration and pair programming.')
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'margin-top', '0.8em'),
+						A2($elm$html$Html$Attributes$style, 'margin-right', '0.5em')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							link,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('github')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							link,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('mailto:doit@keemail.me')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('mail')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							link,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('https://t.me/vladimirlogachev')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('telegram')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							link,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('http://www.linkedin.com/in/vladimirlogachev')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('linkedin')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							link,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('cv')
+							]))
+					]))
+			]));
+}();
+var $elm$html$Html$article = _VirtualDom_node('article');
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
@@ -5022,15 +5064,22 @@ var $author$project$Utils$getMany = F2(
 				keys));
 	});
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $elm$html$Html$ul = _VirtualDom_node('ul');
-var $elm$html$Html$li = _VirtualDom_node('li');
+var $author$project$SharedStyles$regularText = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'line-height', '1.3'),
+		A2($elm$html$Html$Attributes$style, 'margin-top', '0.4em'),
+		A2($elm$html$Html$Attributes$style, 'margin-bottom', '0.4em')
+	]);
+var $author$project$SharedStyles$coolShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
 var $author$project$Main$viewBook = function (_v0) {
 	var book = _v0;
 	return A2(
-		$elm$html$Html$li,
+		$elm$html$Html$section,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('book')
+				A2($elm$html$Html$Attributes$style, 'margin-right', '32px'),
+				A2($elm$html$Html$Attributes$style, 'width', '100px'),
+				A2($elm$html$Html$Attributes$style, 'font-size', '12px')
 			]),
 		_List_fromArray(
 			[
@@ -5047,9 +5096,13 @@ var $author$project$Main$viewBook = function (_v0) {
 						$elm$html$Html$img,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('book_cover'),
+								$author$project$SharedStyles$coolShadow,
+								A2($elm$html$Html$Attributes$style, 'max-height', '150px'),
+								A2($elm$html$Html$Attributes$style, 'max-width', '100px'),
+								A2($elm$html$Html$Attributes$style, 'border-radius', '3px'),
+								A2($elm$html$Html$Attributes$style, 'margin-top', '2em'),
 								$elm$html$Html$Attributes$src(book.c),
-								$elm$html$Html$Attributes$alt(book.a)
+								$elm$html$Html$Attributes$alt(book.b + (', ' + book.a))
 							]),
 						_List_Nil)
 					])),
@@ -5062,17 +5115,7 @@ var $author$project$Main$viewBook = function (_v0) {
 						$elm$html$Html$p,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('author')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text(book.b)
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('title')
+								A2($elm$html$Html$Attributes$style, 'margin', '.5em 0')
 							]),
 						_List_fromArray(
 							[
@@ -5087,6 +5130,13 @@ var $author$project$Main$viewBook = function (_v0) {
 									[
 										$elm$html$Html$text(book.a)
 									]))
+							])),
+						A2(
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text(book.b)
 							]))
 					]))
 			]));
@@ -5095,16 +5145,17 @@ var $author$project$Main$viewLibrary = F2(
 	function (books, libState) {
 		return A2(
 			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('library_wrapper'),
-					$elm$html$Html$Attributes$class('fullwidth_container')
-				]),
+			_Utils_ap(
+				$author$project$SharedStyles$fullwidthContainer,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'background-color', '#d2dbe0')
+					])),
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$div,
-					_List_Nil,
+					$elm$html$Html$article,
+					$author$project$SharedStyles$innerContainer,
 					_List_fromArray(
 						[
 							A2(
@@ -5116,10 +5167,7 @@ var $author$project$Main$viewLibrary = F2(
 								])),
 							A2(
 							$elm$html$Html$div,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$class('description')
-								]),
+							$author$project$SharedStyles$regularText,
 							_List_fromArray(
 								[
 									A2(
@@ -5159,10 +5207,11 @@ var $author$project$Main$viewLibrary = F2(
 										]))
 								])),
 							A2(
-							$elm$html$Html$ul,
+							$elm$html$Html$div,
 							_List_fromArray(
 								[
-									$elm$html$Html$Attributes$class('books')
+									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+									A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap')
 								]),
 							A2(
 								$elm$core$List$map,
@@ -5174,20 +5223,22 @@ var $author$project$Main$viewLibrary = F2(
 						]))
 				]));
 	});
+var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $author$project$Main$viewMyLearningPath = F2(
 	function (books, learnPath) {
 		return A2(
 			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('books-list'),
-					$elm$html$Html$Attributes$class('fullwidth_container')
-				]),
+			_Utils_ap(
+				$author$project$SharedStyles$fullwidthContainer,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'background-color', '#e3e3e3')
+					])),
 			_List_fromArray(
 				[
 					A2(
 					$elm$html$Html$div,
-					_List_Nil,
+					$author$project$SharedStyles$innerContainer,
 					_List_fromArray(
 						[
 							A2(
@@ -5201,7 +5252,9 @@ var $author$project$Main$viewMyLearningPath = F2(
 							$elm$html$Html$ul,
 							_List_fromArray(
 								[
-									$elm$html$Html$Attributes$class('books')
+									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+									A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap'),
+									A2($elm$html$Html$Attributes$style, 'align-items', 'baseline')
 								]),
 							A2(
 								$elm$core$List$map,
@@ -5230,7 +5283,10 @@ var $author$project$Main$viewProjectImage = function (_v0) {
 			$elm$html$Html$img,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('item-img'),
+					$author$project$SharedStyles$coolShadow,
+					A2($elm$html$Html$Attributes$style, 'max-width', '300px'),
+					A2($elm$html$Html$Attributes$style, 'max-height', '300px'),
+					A2($elm$html$Html$Attributes$style, 'border-radius', '3px'),
 					$elm$html$Html$Attributes$src('images/projects/' + filename),
 					$elm$html$Html$Attributes$alt(name)
 				]),
@@ -5239,7 +5295,77 @@ var $author$project$Main$viewProjectImage = function (_v0) {
 		return $author$project$Utils$emptyHtml;
 	}
 };
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
+var $elm$core$List$concat = function (lists) {
+	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
+};
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $elm$core$List$tail = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return $elm$core$Maybe$Just(xs);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $elm_community$list_extra$List$Extra$init = function (items) {
+	if (!items.b) {
+		return $elm$core$Maybe$Nothing;
+	} else {
+		var nonEmptyList = items;
+		return A2(
+			$elm$core$Maybe$map,
+			$elm$core$List$reverse,
+			$elm$core$List$tail(
+				$elm$core$List$reverse(nonEmptyList)));
+	}
+};
+var $elm_community$list_extra$List$Extra$last = function (items) {
+	last:
+	while (true) {
+		if (!items.b) {
+			return $elm$core$Maybe$Nothing;
+		} else {
+			if (!items.b.b) {
+				var x = items.a;
+				return $elm$core$Maybe$Just(x);
+			} else {
+				var rest = items.b;
+				var $temp$items = rest;
+				items = $temp$items;
+				continue last;
+			}
+		}
+	}
+};
+var $elm$html$Html$li = _VirtualDom_node('li');
 var $elm$html$Html$strong = _VirtualDom_node('strong');
+var $elm_community$maybe_extra$Maybe$Extra$toList = function (m) {
+	if (m.$ === 1) {
+		return _List_Nil;
+	} else {
+		var x = m.a;
+		return _List_fromArray(
+			[x]);
+	}
+};
 var $author$project$Project$userpicCssSize = 16;
 var $author$project$Project$userpicSrcSize = $author$project$Project$userpicCssSize * 3;
 var $author$project$Project$viewUserPic = function (userpic) {
@@ -5252,6 +5378,9 @@ var $author$project$Project$viewUserPic = function (userpic) {
 				$elm$html$Html$img,
 				_List_fromArray(
 					[
+						A2($elm$html$Html$Attributes$style, 'max-height', '20px'),
+						A2($elm$html$Html$Attributes$style, 'border-radius', '3px'),
+						A2($elm$html$Html$Attributes$style, 'margin-right', '0.2em'),
 						$elm$html$Html$Attributes$src(
 						'https://avatars2.githubusercontent.com/u/' + ($elm$core$String$fromInt(githubUserId) + ('?s=' + ($elm$core$String$fromInt($author$project$Project$userpicSrcSize) + '&v=4'))))
 					]),
@@ -5268,25 +5397,108 @@ var $author$project$Project$viewUserPic = function (userpic) {
 	}
 };
 var $author$project$Main$viewTeam = function (projectTeam) {
+	var teamStyle = _List_fromArray(
+		[
+			A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+			A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
+			A2($elm$html$Html$Attributes$style, 'margin-right', '0.5em')
+		]);
 	if (!projectTeam.$) {
 		return $author$project$Utils$emptyHtml;
 	} else {
 		var team = projectTeam.a;
+		var last = A2(
+			$elm$core$List$map,
+			function (_v2) {
+				var url = _v2.e;
+				var userpic = _v2.as;
+				var name = _v2.N;
+				return A2(
+					$elm$html$Html$li,
+					teamStyle,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$a,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'line-height', '0'),
+									$elm$html$Html$Attributes$href(url),
+									$elm$html$Html$Attributes$target('_blank')
+								]),
+							_List_fromArray(
+								[
+									$author$project$Project$viewUserPic(userpic)
+								])),
+							A2(
+							$elm$html$Html$a,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href(url),
+									$elm$html$Html$Attributes$target('_blank')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(name)
+								]))
+						]));
+			},
+			$elm_community$maybe_extra$Maybe$Extra$toList(
+				$elm_community$list_extra$List$Extra$last(team)));
+		var allButLast = A2(
+			$elm$core$List$map,
+			function (_v1) {
+				var url = _v1.e;
+				var userpic = _v1.as;
+				var name = _v1.N;
+				return A2(
+					$elm$html$Html$li,
+					teamStyle,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$a,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'line-height', '0'),
+									$elm$html$Html$Attributes$href(url),
+									$elm$html$Html$Attributes$target('_blank')
+								]),
+							_List_fromArray(
+								[
+									$author$project$Project$viewUserPic(userpic)
+								])),
+							A2(
+							$elm$html$Html$a,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href(url),
+									$elm$html$Html$Attributes$target('_blank')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(name)
+								])),
+							$elm$html$Html$text(',')
+						]));
+			},
+			$elm$core$List$concat(
+				$elm_community$maybe_extra$Maybe$Extra$toList(
+					$elm_community$list_extra$List$Extra$init(team))));
 		return A2(
 			$elm$html$Html$ul,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('team')
+					A2($elm$html$Html$Attributes$style, 'margin-top', '0.5em'),
+					A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+					A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap')
 				]),
 			_Utils_ap(
 				_List_fromArray(
 					[
 						A2(
 						$elm$html$Html$li,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('teammate')
-							]),
+						teamStyle,
 						_List_fromArray(
 							[
 								A2(
@@ -5299,56 +5511,19 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 							]))
 					]),
 				_Utils_ap(
-					A2(
-						$elm$core$List$map,
-						function (teamMate) {
-							return A2(
+					allButLast,
+					_Utils_ap(
+						last,
+						_List_fromArray(
+							[
+								A2(
 								$elm$html$Html$li,
+								teamStyle,
 								_List_fromArray(
 									[
-										$elm$html$Html$Attributes$class('teammate')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$a,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$href(teamMate.e),
-												$elm$html$Html$Attributes$target('_blank')
-											]),
-										_List_fromArray(
-											[
-												$author$project$Project$viewUserPic(teamMate.aL)
-											])),
-										A2(
-										$elm$html$Html$a,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$href(teamMate.e),
-												$elm$html$Html$Attributes$target('_blank')
-											]),
-										_List_fromArray(
-											[
-												$elm$html$Html$text(teamMate.N)
-											])),
-										$elm$html$Html$text(',')
-									]));
-						},
-						team),
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$li,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$class('teammate')
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('and me.')
-								]))
-						]))));
+										$elm$html$Html$text(' and me.')
+									]))
+							])))));
 	}
 };
 var $author$project$Main$viewProject = function (project) {
@@ -5356,71 +5531,99 @@ var $author$project$Main$viewProject = function (project) {
 	var description = project.J;
 	var team = project.T;
 	var links = project.L;
-	return A2(
-		$elm$html$Html$li,
-		_List_Nil,
+	var projectSection = $elm$html$Html$section(
 		_List_fromArray(
 			[
-				$author$project$Main$viewProjectImage(project),
-				A2(
-				$elm$html$Html$h3,
-				_List_Nil,
+				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+				A2($elm$html$Html$Attributes$style, 'margin-top', '64px'),
+				A2($elm$html$Html$Attributes$style, 'margin-bottom', '32px')
+			]));
+	var imageWrapper = $elm$html$Html$div(
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'width', '300px'),
+				A2($elm$html$Html$Attributes$style, 'flex-grow', '0'),
+				A2($elm$html$Html$Attributes$style, 'flex-shrink', '0'),
+				A2($elm$html$Html$Attributes$style, 'text-align', 'right'),
+				A2($elm$html$Html$Attributes$style, 'margin-right', '32px')
+			]));
+	var descriptionWrapper = $elm$html$Html$div(
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'flex-shrink', '1'),
+				A2($elm$html$Html$Attributes$style, 'min-width', '350px')
+			]));
+	return projectSection(
+		_List_fromArray(
+			[
+				imageWrapper(
 				_List_fromArray(
 					[
-						$elm$html$Html$text(name)
+						$author$project$Main$viewProjectImage(project)
 					])),
-				A2(
-				$elm$html$Html$p,
+				descriptionWrapper(
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('description')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text(description)
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('links')
-					]),
-				A2(
-					$elm$core$List$map,
-					function (link) {
-						return A2(
-							$elm$html$Html$a,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href(link.e),
-									$elm$html$Html$Attributes$target('_blank')
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text(link.N)
-								]));
-					},
-					links)),
-				$author$project$Main$viewTeam(team)
+						A2(
+						$elm$html$Html$h3,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text(name)
+							])),
+						A2(
+						$elm$html$Html$p,
+						$author$project$SharedStyles$regularText,
+						_List_fromArray(
+							[
+								$elm$html$Html$text(description)
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								A2($elm$html$Html$Attributes$style, 'margin-top', '0.4em'),
+								A2($elm$html$Html$Attributes$style, 'margin-bottom', '0.4em')
+							]),
+						A2(
+							$elm$core$List$map,
+							function (link) {
+								return A2(
+									$elm$html$Html$a,
+									_List_fromArray(
+										[
+											A2($elm$html$Html$Attributes$style, 'margin-right', '1em'),
+											$elm$html$Html$Attributes$href(link.e),
+											$elm$html$Html$Attributes$target('_blank')
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(link.N)
+										]));
+							},
+							links)),
+						$author$project$Main$viewTeam(team)
+					]))
 			]));
 };
 var $author$project$Main$viewProjects = function (projs) {
 	return A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('items-list'),
-				$elm$html$Html$Attributes$class('fullwidth_container')
-			]),
+		_Utils_ap(
+			$author$project$SharedStyles$fullwidthContainer,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'background-color', '#e3e3e3')
+				])),
 		_List_fromArray(
 			[
 				A2(
-				$elm$html$Html$div,
-				_List_Nil,
+				$elm$html$Html$article,
+				$author$project$SharedStyles$innerContainer,
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$ul,
+						$elm$html$Html$article,
 						_List_Nil,
 						A2($elm$core$List$map, $author$project$Main$viewProject, projs))
 					]))
@@ -5430,7 +5633,11 @@ var $author$project$Main$main = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('app')
+			A2($elm$html$Html$Attributes$style, 'background-color', '#fff'),
+			A2($elm$html$Html$Attributes$style, 'font-family', 'Lato, sans-serif'),
+			A2($elm$html$Html$Attributes$style, 'font-weight', '400'),
+			A2($elm$html$Html$Attributes$style, 'line-height', '1.1'),
+			A2($elm$html$Html$Attributes$style, 'color', '#111')
 		]),
 	_List_fromArray(
 		[
