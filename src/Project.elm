@@ -59,7 +59,10 @@ viewUserPic userpic =
 
         GitHubUserId githubUserId ->
             img
-                [ src <|
+                [ style "max-height" "20px"
+                , style "border-radius" "3px"
+                , style "margin-right" "0.2em"
+                , src <|
                     "https://avatars2.githubusercontent.com/u/"
                         ++ String.fromInt githubUserId
                         ++ "?s="

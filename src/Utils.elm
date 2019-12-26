@@ -10,7 +10,7 @@ emptyHtml =
     Html.text ""
 
 
-getMany :  Dict comparable v -> List comparable -> List v
+getMany : Dict comparable v -> List comparable -> List v
 getMany dict keys =
     keys
         |> List.map (\k -> Dict.get k dict)

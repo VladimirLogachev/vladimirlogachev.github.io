@@ -5,7 +5,10 @@ import Dataset exposing (..)
 import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import List.Extra
+import Maybe.Extra exposing (toList)
 import Project exposing (..)
+import SharedStyles exposing (..)
 import Utils exposing (..)
 
 
@@ -15,7 +18,13 @@ type Msg
 
 main : Html Msg
 main =
-    div [ class "app" ]
+    div
+        [ style "background-color" "#fff"
+        , style "font-family" "Lato, sans-serif"
+        , style "font-weight" "400"
+        , style "line-height" "1.1"
+        , style "color" "#111"
+        ]
         [ viewHeader viewIntro
         , viewProjects projects
         , viewLibrary knownBooks libraryState
@@ -25,9 +34,14 @@ main =
 
 viewHeader : Html Msg -> Html Msg
 viewHeader content =
-    div [ class "nav", class "fullwidth_container" ]
-        [ div []
-            [ h1 []
+    header
+        (fullwidthContainer
+            ++ [ style "background-color" "#11151b"
+               , style "color" "#bbbdbd"
+               ]
+        )
+        [ div innerContainer
+            [ h1 [ style "color" "#fff" ]
                 [ text "Vladimir Logachev" ]
             , content
             ]
@@ -36,44 +50,71 @@ viewHeader content =
 
 viewIntro : Html Msg
 viewIntro =
-    div [ class "intro" ]
-        [ p [ class "icons" ]
-            [ img [ class "icon", src "images/logos/haskell.svg", alt "Haskell" ] []
-            , img [ class "icon", src "images/logos/scala.svg", alt "Scala" ] []
-            , img [ class "icon", src "images/logos/elm.svg", alt "Elm" ] []
+    let
+        icon =
+            [ style "max-height" "24px", style "margin-right" "0.5em" ]
+
+        link =
+            [ target "_blank", style "margin-right" "0.5em" ]
+    in
+    section []
+        [ p
+            [ style "display" "flex"
+            , style "margin-top" "0.8em"
+            , style "margin-bottom" "0.8em"
+            ]
+            [ img (icon ++ [ src "images/logos/haskell.svg", alt "Haskell" ]) []
+            , img (icon ++ [ src "images/logos/scala.svg", alt "Scala" ]) []
+            , img (icon ++ [ src "images/logos/elm.svg", alt "Elm" ]) []
             ]
         , p [] [ text "Fullstack developer" ]
         , p [] [ text "Chief Enthusiast in ", a [ target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ], text " — FP reading group, meetups, collaborations" ]
         , p [] [ text "Available for hiring, collaboration and pair programming." ]
-        , p [ class "intro-links" ]
-            [ a [ target "_blank", href "https://github.com/VladimirLogachev" ] [ text "github" ]
-            , a [ href "mailto:doit@keemail.me" ] [ text "mail" ]
-            , a [ target "_blank", href "https://t.me/vladimirlogachev" ] [ text "telegram" ]
-            , a [ target "_blank", href "http://www.linkedin.com/in/vladimirlogachev" ] [ text "linkedin" ]
-            , a [ target "_blank", href "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" ] [ text "cv" ]
+        , p
+            [ style "margin-top" "0.8em"
+            , style "margin-right" "0.5em"
+            ]
+            [ a (link ++ [ href "https://github.com/VladimirLogachev" ]) [ text "github" ]
+            , a (link ++ [ href "mailto:doit@keemail.me" ]) [ text "mail" ]
+            , a (link ++ [ href "https://t.me/vladimirlogachev" ]) [ text "telegram" ]
+            , a (link ++ [ href "http://www.linkedin.com/in/vladimirlogachev" ]) [ text "linkedin" ]
+            , a (link ++ [ href "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" ]) [ text "cv" ]
             ]
         ]
 
 
 viewBook : Book -> Html Msg
 viewBook (Book book) =
-    li [ class "book" ]
-        [ a [ href book.url, target "_blank" ] [ img [ class "book_cover", src book.coverUrl, alt book.title ] [] ]
+    section
+        [ style "margin-right" "32px"
+        , style "width" "100px"
+        , style "font-size" "12px"
+        ]
+        [ a [ href book.url, target "_blank" ]
+            [ img
+                [ coolShadow
+                , style "max-height" "150px"
+                , style "max-width" "100px"
+                , style "border-radius" "3px"
+                , style "margin-top" "2em"
+                , src book.coverUrl
+                , alt <| book.author ++ ", " ++ book.title
+                ]
+                []
+            ]
         , div []
-            [ p [ class "author" ] [ text book.author ]
-            , p [ class "title" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
-
-            -- , p [ class "topic" ] [ text <| showTopic book.topics ]
+            [ p [ style "margin" ".5em 0" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
+            , p [] [ text book.author ]
             ]
         ]
 
 
 viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
 viewLibrary books libState =
-    div [ class "library_wrapper", class "fullwidth_container" ]
-        [ div []
+    div (fullwidthContainer ++ [ style "background-color" "#d2dbe0" ])
+        [ article innerContainer
             [ h2 [] [ text "My offline library, shared" ]
-            , div [ class "description" ]
+            , div regularText
                 [ p [] [ text "I have a tradition to keep my books on my desk at my workplace." ]
                 , p [] [ text "Any person is able to borrow any book from my personal library." ]
                 , p [] [ text "This works not only for collegues, but for any person that knows me in real life." ]
@@ -84,21 +125,29 @@ viewLibrary books libState =
                 |> Dict.keys
                 |> getMany books
                 |> List.map viewBook
-                |> ul [ class "books" ]
+                |> div
+                    [ style "display" "flex"
+                    , style "flex-wrap" "wrap"
+                    ]
             ]
         ]
 
 
 viewMyLearningPath : Dict String Book -> List LearningMaterial -> Html Msg
 viewMyLearningPath books learnPath =
-    div [ class "books-list", class "fullwidth_container" ]
-        [ div []
+    -- Best | All (with best marked)
+    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3" ])
+        [ div innerContainer
             [ h2 [] [ text "My learning path" ]
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
                 |> List.map viewBook
-                |> ul [ class "books" ]
+                |> ul
+                    [ style "display" "flex"
+                    , style "flex-wrap" "wrap"
+                    , style "align-items" "baseline"
+                    ]
             ]
         ]
 
@@ -107,7 +156,15 @@ viewProjectImage : Project -> Html Msg
 viewProjectImage (Project { name, imgFileName }) =
     case imgFileName of
         Just filename ->
-            img [ class "item-img", src <| "images/projects/" ++ filename, alt name ] []
+            img
+                [ coolShadow
+                , style "max-width" "300px"
+                , style "max-height" "300px"
+                , style "border-radius" "3px"
+                , src <| "images/projects/" ++ filename
+                , alt name
+                ]
+                []
 
         Nothing ->
             emptyHtml
@@ -115,43 +172,112 @@ viewProjectImage (Project { name, imgFileName }) =
 
 viewTeam : ProjectTeam -> Html Msg
 viewTeam projectTeam =
+    let
+        teamStyle =
+            [ style "display" "flex"
+            , style "align-items" "center"
+            , style "margin-right" "0.5em"
+            ]
+    in
     case projectTeam of
         OnlyMe ->
             emptyHtml
 
         Team team ->
-            ul [ class "team" ] <|
-                [ li [ class "teammate" ] [ strong [] [ text "Team:" ] ] ]
-                    ++ List.map
-                        (\teamMate ->
-                            li [ class "teammate" ]
-                                [ a [ href teamMate.url, target "_blank" ] [ viewUserPic teamMate.userpic ]
-                                , a [ href teamMate.url, target "_blank" ] [ text teamMate.name ]
-                                , text ","
-                                ]
-                        )
-                        team
-                    ++ [ li [ class "teammate" ] [ text "and me." ] ]
+            let
+                allButLast =
+                    team
+                        |> List.Extra.init
+                        |> toList
+                        |> List.concat
+                        |> List.map
+                            (\{ url, userpic, name } ->
+                                li teamStyle
+                                    [ a [ style "line-height" "0", href url, target "_blank" ] [ viewUserPic userpic ]
+                                    , a [ href url, target "_blank" ] [ text name ]
+                                    , text ","
+                                    ]
+                            )
+
+                last =
+                    team
+                        |> List.Extra.last
+                        |> toList
+                        |> List.map
+                            (\{ url, userpic, name } ->
+                                li teamStyle
+                                    [ a [ style "line-height" "0", href url, target "_blank" ] [ viewUserPic userpic ]
+                                    , a [ href url, target "_blank" ] [ text name ]
+                                    ]
+                            )
+            in
+            ul
+                [ style "margin-top" "0.5em"
+                , style "display" "flex"
+                , style "flex-wrap" "wrap"
+                ]
+            <|
+                [ li teamStyle [ strong [] [ text "Team:" ] ] ]
+                    ++ allButLast
+                    ++ last
+                    ++ [ li teamStyle [ text " and me." ] ]
 
 
 viewProject : Project -> Html Msg
 viewProject ((Project { name, description, team, links }) as project) =
-    li []
-        [ viewProjectImage project
-        , h3 []
-            [ text name ]
-        , p [ class "description" ] [ text description ]
-        , div [ class "links" ] <|
-            List.map (\link -> a [ href link.url, target "_blank" ] [ text link.name ]) links
-        , viewTeam team
+    let
+        projectSection =
+            section
+                [ style "display" "flex"
+                , style "margin-top" "64px"
+                , style "margin-bottom" "32px"
+                ]
+
+        imageWrapper =
+            div
+                [ style "width" "300px"
+                , style "flex-grow" "0"
+                , style "flex-shrink" "0"
+                , style "text-align" "right"
+                , style "margin-right" "32px"
+                ]
+
+        descriptionWrapper =
+            div
+                [ style "flex-shrink" "1"
+                , style "min-width" "350px"
+                ]
+    in
+    projectSection
+        [ imageWrapper [ viewProjectImage project ]
+        , descriptionWrapper
+            [ h3 []
+                [ text name ]
+            , p regularText [ text description ]
+            , div
+                [ style "margin-top" "0.4em"
+                , style "margin-bottom" "0.4em"
+                ]
+              <|
+                List.map
+                    (\link ->
+                        a
+                            [ style "margin-right" "1em"
+                            , href link.url
+                            , target "_blank"
+                            ]
+                            [ text link.name ]
+                    )
+                    links
+            , viewTeam team
+            ]
         ]
 
 
 viewProjects : List Project -> Html Msg
 viewProjects projs =
-    div [ class "items-list", class "fullwidth_container" ]
-        [ div []
-            [ ul [] <|
-                List.map viewProject projs
+    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3" ])
+        [ article innerContainer
+            [ article [] <| List.map viewProject projs
             ]
         ]
