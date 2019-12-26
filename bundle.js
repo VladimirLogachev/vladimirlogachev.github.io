@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.S.E === region.X.E)
+	if (region.R.E === region.X.E)
 	{
-		return 'on line ' + region.S.E;
+		return 'on line ' + region.R.E;
 	}
-	return 'on lines ' + region.S.E + ' through ' + region.X.E;
+	return 'on lines ' + region.R.E + ' through ' + region.X.E;
 }
 
 
@@ -2705,8 +2705,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		t: func(record.t),
-		T: record.T,
-		Q: record.Q
+		S: record.S,
+		P: record.P
 	}
 });
 
@@ -2975,10 +2975,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.t;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.T;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.S;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.Q) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.P) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -4701,7 +4701,7 @@ var $author$project$Project$GitHubUserId = function (a) {
 };
 var $author$project$Project$Link = F2(
 	function (name, url) {
-		return {M: name, e: url};
+		return {N: name, e: url};
 	});
 var $author$project$Project$NoPic = {$: 0};
 var $author$project$Project$OnlyMe = {$: 0};
@@ -4711,7 +4711,7 @@ var $author$project$Project$Team = function (a) {
 };
 var $author$project$Project$TeamMate = F3(
 	function (name, userpic, url) {
-		return {M: name, e: url, aL: userpic};
+		return {N: name, e: url, aL: userpic};
 	});
 var $author$project$Dataset$projects = _List_fromArray(
 	[
@@ -4723,8 +4723,8 @@ var $author$project$Dataset$projects = _List_fromArray(
 				A2($author$project$Project$Link, 'WIP: Russian translation repo', 'https://github.com/fpspecialty/scala-with-cats-ru'),
 				A2($author$project$Project$Link, 'Original book', 'https://underscore.io/books/scala-with-cats/')
 			]),
-		M: 'WIP: Translation of Scala with Cats',
-		N: $author$project$Project$Team(
+		N: 'WIP: Translation of Scala with Cats',
+		T: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
@@ -4753,8 +4753,8 @@ var $author$project$Dataset$projects = _List_fromArray(
 				A2($author$project$Project$Link, 'Russian translation', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md'),
 				A2($author$project$Project$Link, 'Original book', 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
 			]),
-		M: 'Translation of the Mostly Adequate Guide',
-		N: $author$project$Project$Team(
+		N: 'Translation of the Mostly Adequate Guide',
+		T: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
@@ -4779,38 +4779,8 @@ var $author$project$Dataset$projects = _List_fromArray(
 				A2($author$project$Project$Link, 'ePub', 'https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf'),
 				A2($author$project$Project$Link, 'Read online', 'https://www.gitbook.com/read/book/vladimirlogachev/facfaf')
 			]),
-		M: '#FACFAF. Quick reference guide',
-		N: $author$project$Project$OnlyMe
-	},
-		{
-		J: 'A fullstack app, bot for Slack.\n      Made in collaboration as a Build-To-Learn project (part of Chingu Cohorts workflow).\n      My work is Slack\'s «frontend» and app\'s landing page, \n      but also I\'ve made some contribution to the server.',
-		K: $elm$core$Maybe$Just('lionbot.jpg'),
-		L: _List_fromArray(
-			[
-				A2($author$project$Project$Link, 'Live', 'http://lion-bot.herokuapp.com/'),
-				A2($author$project$Project$Link, 'GitHub', 'https://github.com/gang-of-four-lions/lion-bot'),
-				A2($author$project$Project$Link, 'Chingu', 'https://chingu.io/')
-			]),
-		M: 'Lion Bot',
-		N: $author$project$Project$Team(
-			_List_fromArray(
-				[
-					A3(
-					$author$project$Project$TeamMate,
-					'Michael Blood',
-					$author$project$Project$GitHubUserId(12065896),
-					'https://github.com/michaelblood'),
-					A3(
-					$author$project$Project$TeamMate,
-					'Josh Sanders',
-					$author$project$Project$GitHubUserId(19422930),
-					'https://github.com/Josh5231'),
-					A3(
-					$author$project$Project$TeamMate,
-					'Alex McLeod',
-					$author$project$Project$GitHubUserId(24363605),
-					'https://github.com/AlexMcLeod01')
-				]))
+		N: '#FACFAF. Quick reference guide',
+		T: $author$project$Project$OnlyMe
 	}
 	]);
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
@@ -5252,7 +5222,7 @@ var $author$project$Main$viewMyLearningPath = F2(
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
 var $author$project$Main$viewProjectImage = function (_v0) {
-	var name = _v0.M;
+	var name = _v0.N;
 	var imgFileName = _v0.K;
 	if (!imgFileName.$) {
 		var filename = imgFileName.a;
@@ -5360,7 +5330,7 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 											]),
 										_List_fromArray(
 											[
-												$elm$html$Html$text(teamMate.M)
+												$elm$html$Html$text(teamMate.N)
 											])),
 										$elm$html$Html$text(',')
 									]));
@@ -5382,9 +5352,9 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 	}
 };
 var $author$project$Main$viewProject = function (project) {
-	var name = project.M;
+	var name = project.N;
 	var description = project.J;
-	var team = project.N;
+	var team = project.T;
 	var links = project.L;
 	return A2(
 		$elm$html$Html$li,
@@ -5427,7 +5397,7 @@ var $author$project$Main$viewProject = function (project) {
 								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text(link.M)
+									$elm$html$Html$text(link.N)
 								]));
 					},
 					links)),
