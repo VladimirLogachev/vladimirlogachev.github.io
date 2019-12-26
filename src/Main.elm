@@ -6,7 +6,7 @@ import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import List.Extra
-import Maybe.Extra exposing (toList)
+import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
 import SharedStyles exposing (..)
 import Utils exposing (..)
@@ -117,6 +117,23 @@ viewBook (Book book) =
         ]
 
 
+viewLibraryBook : ( Book, BookAvaliability ) -> Html Msg
+viewLibraryBook ( b, availability ) =
+    let
+        book =
+            div [ style "opacity" ".5" ] [ viewBook b ]
+    in
+    case availability of
+        Available ->
+            div [] [ viewBook b ]
+
+        ComingSoon ->
+            div [ style "opacity" ".5" ] [ viewBook b, text "coming soon" ]
+
+        GivenToSomeone ->
+            div [ style "opacity" ".5" ] [ viewBook b, text "coming soon" ]
+
+
 viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
 viewLibrary books libState =
     div (fullwidthContainer ++ [ style "background-color" "#d2dbe0" ])
@@ -130,13 +147,11 @@ viewLibrary books libState =
                 , p [] [ text "and I won't give it away, so everyone should just accept it." ]
                 ]
             , libState
-                |> Dict.keys
-                |> getMany books
-                |> List.map viewBook
-                |> div
-                    [ style "display" "flex"
-                    , style "flex-wrap" "wrap"
-                    ]
+                |> Dict.toList
+                |> List.map (\( name, availability ) -> Dict.get name books |> Maybe.map (\b -> ( b, availability )))
+                |> values
+                |> List.map viewLibraryBook
+                |> div [ style "display" "flex", style "flex-wrap" "wrap" ]
             ]
         ]
 

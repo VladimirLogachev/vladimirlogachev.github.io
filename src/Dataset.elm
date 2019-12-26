@@ -199,7 +199,7 @@ knownBooks =
         , favorite = True
         }
     , Book
-        { author = "Paul Balmer (Author), Les Paul (Foreword)"
+        { author = "Paul Balmer"
         , title = "The Gibson Les Paul Handbook"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706"
