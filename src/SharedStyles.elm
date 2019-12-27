@@ -55,4 +55,4 @@ link =
 
 
 activeLink =
-    link ++ [ style "color" "grey", disabled True, style "cursor" "default" ]
+    link ++ [ style "color" "rgb(187, 189, 189)", disabled True, style "cursor" "default" ]

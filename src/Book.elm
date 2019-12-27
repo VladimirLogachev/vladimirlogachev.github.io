@@ -52,44 +52,9 @@ type Topic
     | MANAGEMENT
     | LEADERSHIP
     | COMMUNICATION
+    | FASHION
+    | ENTREPRENEURSHIP
     | MUSIC_INSTRUMENTS
-
-
-showTopic : Topic -> String
-showTopic topic =
-    case topic of
-        MUSIC_INSTRUMENTS ->
-            "Music instruments"
-
-        JS ->
-            "JavaScript"
-
-        HASKELL ->
-            "Haskell"
-
-        SCHEME ->
-            "Scheme"
-
-        SCALA ->
-            "Scala"
-
-        CSS ->
-            "CSS"
-
-        DESIGN ->
-            "Design"
-
-        DEV ->
-            "Software Development"
-
-        LEADERSHIP ->
-            "Leadership"
-
-        COMMUNICATION ->
-            "Communication"
-
-        MANAGEMENT ->
-            "Management"
 
 
 type PersonKind
@@ -138,6 +103,12 @@ personKindFromTopic topic =
             GeneralPerson
 
         COMMUNICATION ->
+            GeneralPerson
+
+        FASHION ->
+            GeneralPerson
+
+        ENTREPRENEURSHIP ->
             GeneralPerson
 
         MUSIC_INSTRUMENTS ->

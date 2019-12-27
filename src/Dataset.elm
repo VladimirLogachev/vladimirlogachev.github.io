@@ -5,6 +5,57 @@ import Dict exposing (Dict)
 import Project exposing (..)
 
 
+projects : List Project
+projects =
+    [ Project
+        { name = "WIP: Translation of Scala with Cats"
+        , description = """Collaboration with friends from FP Specialty."""
+        , links =
+            [ Link "WIP: Russian translation repo" "https://github.com/fpspecialty/scala-with-cats-ru"
+            , Link "Original book" "https://underscore.io/books/scala-with-cats/"
+            ]
+        , imgFileName = Just "scala-with-cats.png"
+        , team =
+            Team
+                [ TeamMate "klass-ivan" (GitHubUserId 2673108) "https://github.com/klass-ivan"
+                , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
+                , TeamMate "Vladimir Nizamutdinov" (GitHubUserId 10260495) "https://github.com/astartes91"
+                , TeamMate "other contributors" NoPic "https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors"
+                ]
+        }
+    , Project
+        { name = "Translation of the Mostly Adequate Guide"
+        , description = """Russian version 
+      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
+      The translation was initiated by Maxim Filippov and stopped at 60%.
+      Then me and Sakayama joined the translation, 
+      refactored every chapter translated before us and then finished the translation."""
+        , links =
+            [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
+            , Link "Original book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
+            ]
+        , imgFileName = Just "mostly_adequate_guide_fp_ru.png"
+        , team =
+            Team
+                [ TeamMate "Maxim Filippov" (GitHubUserId 860283) "https://github.com/maksimf"
+                , TeamMate "Sakayama" (GitHubUserId 44540001) "https://github.com/Sakayama"
+                , TeamMate "other contributors" NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
+                ]
+        }
+    , Project
+        { name = "#FACFAF. Quick reference guide"
+        , description = "A small book about Curtis Mayfield «Black Keys» open F# guitar tuning."
+        , links =
+            [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
+            , Link "ePub" "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
+            , Link "Read online" "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
+            ]
+        , imgFileName = Just "facfaf.jpg"
+        , team = OnlyMe
+        }
+    ]
+
+
 
 {-
    as long as I don't use relational database for this library,
@@ -334,61 +385,33 @@ knownBooks =
         , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png"
         , favorite = False
         }
+    , Book
+        { author = "Бернхард Ретцель"
+        , title = "Джентльмен. Путеводитель по стилю и моде для мужчин"
+        , topics = FASHION
+        , url = "https://www.ozon.ru/context/detail/id/4993260/"
+        , coverUrl = "https://cdn1.ozone.ru/multimedia/c1200/1001551788.jpg"
+        , favorite = False
+        }
+    , Book
+        { author = "Максим Котин"
+        , title = "И ботаники делают бизнес 1+2"
+        , topics = ENTREPRENEURSHIP
+        , url = "https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/"
+        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/48/11448/1.00x-thumb.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Эмилио Пухоль"
+        , title = "Школа игры на шестиструнной гитаре"
+        , topics = MUSIC_INSTRUMENTS
+        , url = "https://www.chitai-gorod.ru/catalog/book/358478/"
+        , coverUrl = "https://img-gorod.ru/21/581/2158108_detail.jpg"
+        , favorite = True
+        }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
         |> Dict.fromList
-
-
-projects : List Project
-projects =
-    [ Project
-        { name = "WIP: Translation of Scala with Cats"
-        , description = """Collaboration with friends from FP Specialty."""
-        , links =
-            [ Link "WIP: Russian translation repo" "https://github.com/fpspecialty/scala-with-cats-ru"
-            , Link "Original book" "https://underscore.io/books/scala-with-cats/"
-            ]
-        , imgFileName = Just "scala-with-cats.png"
-        , team =
-            Team
-                [ 
-                TeamMate "klass-ivan" (GitHubUserId 2673108) "https://github.com/klass-ivan"
-                , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
-                , TeamMate "Vladimir Nizamutdinov" (GitHubUserId 10260495) "https://github.com/astartes91"
-                , TeamMate "other contributors" NoPic "https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors"
-                ]
-        }
-    , Project
-        { name = "Translation of the Mostly Adequate Guide"
-        , description = """Russian version 
-      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
-      The translation was initiated by Maxim Filippov and stopped at 60%.
-      Then me and Sakayama joined the translation, 
-      refactored every chapter translated before us and then finished the translation."""
-        , links =
-            [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
-            , Link "Original book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
-            ]
-        , imgFileName = Just "mostly_adequate_guide_fp_ru.png"
-        , team =
-            Team
-                [ TeamMate "Maxim Filippov" (GitHubUserId 860283) "https://github.com/maksimf"
-                , TeamMate "Sakayama" (GitHubUserId 44540001) "https://github.com/Sakayama"
-                , TeamMate "other contributors" NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
-                ]
-        }
-    , Project
-        { name = "#FACFAF. Quick reference guide"
-        , description = "A small book about Curtis Mayfield «Black Keys» open F# guitar tuning."
-        , links =
-            [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
-            , Link "ePub" "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
-            , Link "Read online" "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
-            ]
-        , imgFileName = Just "facfaf.jpg"
-        , team = OnlyMe
-        }
-    ]
 
 
 
@@ -401,8 +424,8 @@ libraryState =
         [ ( "Лидер и племя", GivenToSomeone )
         , ( "Открывая организации будущего", Available )
         , ( "Эмоциональная смелость", ComingSoon )
-        , ( "Принципы лидера", ComingSoon )
-        , ( "Школа дизайна: шрифт", ComingSoon )
+        , ( "Принципы лидера", GivenToSomeone )
+        , ( "Школа дизайна: шрифт", GivenToSomeone )
         , ( "Никогда не ешьте в одиночку", ComingSoon )
         , ( "Измеряйте самое важное", ComingSoon )
         , ( "Принципы", ComingSoon )
@@ -413,6 +436,9 @@ libraryState =
         , ( "Complete Guitar Repair", Available )
         , ( "The Luthier's Handbook", Available )
         , ( "The Gibson Les Paul Handbook", Available )
+        , ( "Джентльмен. Путеводитель по стилю и моде для мужчин", Available )
+        , ( "И ботаники делают бизнес 1+2", Available )
+        , ( "Школа игры на шестиструнной гитаре", Available )
         ]
 
 

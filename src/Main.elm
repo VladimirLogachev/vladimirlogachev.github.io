@@ -389,8 +389,7 @@ viewLibrary specific books libState =
                 [ p [] [ text "I have a tradition of storing my books on my desk in the workplace." ]
                 , p [] [ text "Any person can borrow any book from my personal library." ]
                 , p [] [ text "This applies not only to my collegues, but to any person who knows me in real life." ]
-                , p [] [ text "This is my culture, it works great, it makes the world around me a better place," ]
-                , p [] [ text "and I won't give up on it, so everyone should just accept it." ]
+                , p [] [ text "This is my culture, it works great, and I won't give up on it, so everyone should just accept it." ]
                 ]
             , p
                 [ style "margin-top" "1em" ]
