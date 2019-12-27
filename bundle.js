@@ -5465,21 +5465,21 @@ var $author$project$Main$viewLibrary = F2(
 									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$text('I have a tradition to keep my books on my desk at my workplace.')
+											$elm$html$Html$text('I have a tradition of storing my books on my desk in the workplace.')
 										])),
 									A2(
 									$elm$html$Html$p,
 									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$text('Any person is able to borrow any book from my personal library.')
+											$elm$html$Html$text('Any person can borrow any book from my personal library.')
 										])),
 									A2(
 									$elm$html$Html$p,
 									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$text('This works not only for collegues, but for any person that knows me in real life.')
+											$elm$html$Html$text('This applies not only to my collegues, but to any person who knows me in real life.')
 										])),
 									A2(
 									$elm$html$Html$p,
@@ -5493,7 +5493,7 @@ var $author$project$Main$viewLibrary = F2(
 									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$text('and I won\'t give it away, so everyone should just accept it.')
+											$elm$html$Html$text('and I won\'t give up on it, so everyone should just accept it.')
 										]))
 								])),
 							A2(
