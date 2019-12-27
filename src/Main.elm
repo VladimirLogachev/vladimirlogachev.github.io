@@ -16,16 +16,12 @@ import Utils exposing (..)
 
 type Msg
     = LearningMaterialsOnlyFavorites Bool
-
-
-type LibraryPersonFilter
-    = Everyone
-    | SpecificPerson PersonKind
+    | SetLibrarySpecific (Maybe PersonKind)
 
 
 type alias Model =
     { library :
-        { personKind : LibraryPersonFilter
+        { specific : Maybe PersonKind
         }
     , learningMaterials :
         { onlyFavorite : Bool
@@ -36,7 +32,7 @@ type alias Model =
 init : Model
 init =
     { library =
-        { personKind = Everyone
+        { specific = Nothing
         }
     , learningMaterials =
         { onlyFavorite = True
@@ -49,6 +45,9 @@ update msg model =
     case msg of
         LearningMaterialsOnlyFavorites x ->
             { model | learningMaterials = { onlyFavorite = x } }
+
+        SetLibrarySpecific x ->
+            { model | library = { specific = x } }
 
 
 main : Program () Model Msg
@@ -67,8 +66,8 @@ mainView model =
         ]
         [ viewHeader viewIntro
         , viewProjects projects
-        , viewLibrary knownBooks libraryState
-        , viewMyLearningPath model.learningMaterials knownBooks learningPath
+        , viewLibrary model.library.specific knownBooks libraryState
+        , viewMyLearningPath model.learningMaterials.onlyFavorite knownBooks learningPath
         ]
 
 
@@ -371,8 +370,18 @@ viewLibraryBook ( b, availability ) =
             viewBook { sticker = Just givenToSomeone, highlightFavorite = False, available = False } b
 
 
-viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
-viewLibrary books libState =
+viewLibrary : Maybe PersonKind -> Dict String Book -> Dict String BookAvaliability -> Html Msg
+viewLibrary specific books libState =
+    let
+        specificPredicate : Book -> Bool
+        specificPredicate (Book { topics }) =
+            case specific of
+                Just s ->
+                    s == personKindFromTopic topics
+
+                Nothing ->
+                    True
+    in
     div (fullwidthContainer ++ [ style "background-color" "#d2dbe0", id "library" ])
         [ article innerContainer
             [ h2 [] [ text "My offline library, shared" ]
@@ -383,10 +392,18 @@ viewLibrary books libState =
                 , p [] [ text "This is my culture, it works great, it makes the world around me a better place," ]
                 , p [] [ text "and I won't give up on it, so everyone should just accept it." ]
                 ]
+            , p
+                [ style "margin-top" "1em" ]
+                [ a (ifElse (specific == Nothing) activeLink link ++ [ onClick (SetLibrarySpecific Nothing) ]) [ text "All books" ]
+                , a (ifElse (specific == Just Developer) activeLink link ++ [ onClick (SetLibrarySpecific (Just Developer)) ]) [ text "For developers" ]
+                , a (ifElse (specific == Just GeneralPerson) activeLink link ++ [ onClick (SetLibrarySpecific (Just GeneralPerson)) ]) [ text "For everyone" ]
+                , a (ifElse (specific == Just Musician) activeLink link ++ [ onClick (SetLibrarySpecific (Just Musician)) ]) [ text "For musicians" ]
+                ]
             , libState
                 |> Dict.toList
                 |> List.map (\( name, availability ) -> Dict.get name books |> Maybe.map (\b -> ( b, availability )))
                 |> values
+                |> List.filter (Tuple.first >> specificPredicate)
                 |> stableSortWith bookOrdering
                 |> List.map viewLibraryBook
                 |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
@@ -394,8 +411,8 @@ viewLibrary books libState =
         ]
 
 
-viewMyLearningPath : { onlyFavorite : Bool } -> Dict String Book -> List LearningMaterial -> Html Msg
-viewMyLearningPath { onlyFavorite } books learnPath =
+viewMyLearningPath : Bool -> Dict String Book -> List LearningMaterial -> Html Msg
+viewMyLearningPath onlyFavorite books learnPath =
     div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "learning-materials" ])
         [ div innerContainer
             [ h2 [] [ text "My learning materials" ]
