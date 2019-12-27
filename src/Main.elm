@@ -1,10 +1,12 @@
 module Main exposing (main)
 
 import Book exposing (..)
+import Browser
 import Dataset exposing (..)
 import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import List.Extra exposing (stableSortWith)
 import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
@@ -13,11 +15,49 @@ import Utils exposing (..)
 
 
 type Msg
-    = Msg
+    = LearningMaterialsOnlyFavorites Bool
 
 
-main : Html Msg
+type LibraryPersonFilter
+    = Everyone
+    | SpecificPerson PersonKind
+
+
+type alias Model =
+    { library :
+        { personKind : LibraryPersonFilter
+        }
+    , learningMaterials :
+        { onlyFavorite : Bool
+        }
+    }
+
+
+init : Model
+init =
+    { library =
+        { personKind = Everyone
+        }
+    , learningMaterials =
+        { onlyFavorite = True
+        }
+    }
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        LearningMaterialsOnlyFavorites x ->
+            { model | learningMaterials = { onlyFavorite = x } }
+
+
+main : Program () Model Msg
 main =
+    Browser.sandbox { init = init, update = update, view = mainView }
+
+
+mainView : Model -> Html Msg
+mainView model =
     div
         [ style "background-color" "#fff"
         , style "font-family" "Lato, sans-serif"
@@ -28,7 +68,7 @@ main =
         [ viewHeader viewIntro
         , viewProjects projects
         , viewLibrary knownBooks libraryState
-        , viewMyLearningPath knownBooks learningPath
+        , viewMyLearningPath model.learningMaterials knownBooks learningPath
         ]
 
 
@@ -160,7 +200,7 @@ viewProject ((Project { name, description, team, links }) as project) =
         projectSection =
             section
                 [ style "display" "flex"
-                , style "margin-top" "64px"
+                , style "margin-top" "32px"
                 , style "margin-bottom" "32px"
                 ]
 
@@ -210,7 +250,7 @@ viewProjects projs =
     div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "projects" ])
         [ article innerContainer
             [ h2 [] [ text "side projects" ]
-            , article [] <| List.map viewProject projs
+            , div [] <| List.map viewProject projs
             ]
         ]
 
@@ -219,24 +259,18 @@ viewBook : { sticker : Maybe (Html Msg), highlightFavorite : Bool, available : B
 viewBook { sticker, highlightFavorite, available } (Book book) =
     let
         shadow =
-            if book.favorite && highlightFavorite && available then
+            ifElse (book.favorite && highlightFavorite && available)
                 highlightShadow
-
-            else
                 regularShadow
 
         textStyle =
-            if book.favorite && highlightFavorite && available then
+            ifElse (book.favorite && highlightFavorite && available)
                 [ highlight, style "background-color" "#F7DC6F66" ]
-
-            else
                 []
 
         availabilityStyle =
-            if available then
+            ifElse available
                 []
-
-            else
                 [ highlight, style "filter" "grayscale(1)" ]
 
         {- sticker area is placed in a bottom left corner of the book -}
@@ -360,16 +394,21 @@ viewLibrary books libState =
         ]
 
 
-viewMyLearningPath : Dict String Book -> List LearningMaterial -> Html Msg
-viewMyLearningPath books learnPath =
-    -- Best | All (with best marked)
-    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "learning-materials"])
+viewMyLearningPath : { onlyFavorite : Bool } -> Dict String Book -> List LearningMaterial -> Html Msg
+viewMyLearningPath { onlyFavorite } books learnPath =
+    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "learning-materials" ])
         [ div innerContainer
             [ h2 [] [ text "My learning materials" ]
+            , p
+                [ style "margin-top" "1em" ]
+                [ a (ifElse onlyFavorite link activeLink ++ [ onClick (LearningMaterialsOnlyFavorites False) ]) [ text "All books and courses" ]
+                , a (ifElse onlyFavorite activeLink link ++ [ onClick (LearningMaterialsOnlyFavorites True) ]) [ text "Only the best" ]
+                ]
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
-                |> List.map (viewBook { sticker = Nothing, highlightFavorite = True, available = True })
+                |> List.filter (\(Book { favorite }) -> ifElse onlyFavorite favorite True)
+                |> List.map (viewBook { sticker = Nothing, highlightFavorite = not onlyFavorite, available = True })
                 |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
             ]
         ]

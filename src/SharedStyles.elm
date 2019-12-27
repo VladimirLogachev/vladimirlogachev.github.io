@@ -1,7 +1,7 @@
 module SharedStyles exposing (..)
 
 import Html exposing (Attribute)
-import Html.Attributes exposing (style)
+import Html.Attributes exposing (style, disabled)
 
 
 regularShadow : Attribute a
@@ -38,7 +38,7 @@ fullwidthContainer =
 innerContainer : List (Attribute a)
 innerContainer =
     [ style "width" "1000px"
-    , style "padding" "32px 16px 16px 32px"
+    , style "padding" "48px 16px 48px 32px"
     ]
 
 
@@ -48,3 +48,11 @@ regularText =
     , style "margin-top" "0.4em"
     , style "margin-bottom" "0.4em"
     ]
+
+
+link =
+    [ style "margin-right" "1em", style "cursor" "pointer", style "user-select" "none" ]
+
+
+activeLink =
+    link ++ [ style "color" "grey", disabled True, style "cursor" "default" ]

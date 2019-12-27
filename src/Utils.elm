@@ -15,3 +15,11 @@ getMany dict keys =
     keys
         |> List.map (\k -> Dict.get k dict)
         |> Maybe.Extra.values
+        
+ifElse : Bool -> a -> a -> a
+ifElse b x y =
+    if b then
+        x
+
+    else
+        y
