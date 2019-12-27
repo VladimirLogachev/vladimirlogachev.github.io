@@ -207,7 +207,7 @@ viewProject ((Project { name, description, team, links }) as project) =
 
 viewProjects : List Project -> Html Msg
 viewProjects projs =
-    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3" ])
+    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "projects" ])
         [ article innerContainer
             [ h2 [] [ text "side projects" ]
             , article [] <| List.map viewProject projs
@@ -339,7 +339,7 @@ viewLibraryBook ( b, availability ) =
 
 viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
 viewLibrary books libState =
-    div (fullwidthContainer ++ [ style "background-color" "#d2dbe0" ])
+    div (fullwidthContainer ++ [ style "background-color" "#d2dbe0", id "library" ])
         [ article innerContainer
             [ h2 [] [ text "My offline library, shared" ]
             , div regularText
@@ -363,9 +363,9 @@ viewLibrary books libState =
 viewMyLearningPath : Dict String Book -> List LearningMaterial -> Html Msg
 viewMyLearningPath books learnPath =
     -- Best | All (with best marked)
-    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3" ])
+    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "learning-materials"])
         [ div innerContainer
-            [ h2 [] [ text "My learning path" ]
+            [ h2 [] [ text "My learning materials" ]
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
