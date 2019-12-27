@@ -5110,11 +5110,16 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Ричард Пулин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png', aI: false, a: 'Школа дизайна: макет', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'},
 				{b: 'Бернхард Ретцель', c: 'https://cdn1.ozone.ru/multimedia/c1200/1001551788.jpg', aI: false, a: 'Джентльмен. Путеводитель по стилю и моде для мужчин', aR: 10, d: 'https://www.ozon.ru/context/detail/id/4993260/'},
 				{b: 'Максим Котин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/48/11448/1.00x-thumb.png', aI: false, a: 'И ботаники делают бизнес 1+2', aR: 11, d: 'https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/'},
-				{b: 'Эмилио Пухоль', c: 'https://img-gorod.ru/21/581/2158108_detail.jpg', aI: true, a: 'Школа игры на шестиструнной гитаре', aR: 12, d: 'https://www.chitai-gorod.ru/catalog/book/358478/'}
+				{b: 'Эмилио Пухоль', c: 'https://img-gorod.ru/21/581/2158108_detail.jpg', aI: true, a: 'Школа игры на шестиструнной гитаре', aR: 12, d: 'https://www.chitai-gorod.ru/catalog/book/358478/'},
+				{b: 'freeCodeCamp', c: '/images/course_covers/freecodecamp.png', aI: false, a: 'Frontend Developer Specialization', aR: 4, d: 'https://www.freecodecamp.org/'},
+				{b: 'Computer Science Center', c: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', aI: true, a: 'Функциональное программирование на языке Haskell', aR: 1, d: 'https://stepik.org/course/75'},
+				{b: 'Computer Science Center', c: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', aI: true, a: 'Функциональное программирование на языке Haskell (часть 2)', aR: 1, d: 'https://stepik.org/course/693'},
+				{b: 'Tinkoff.ru', c: 'https://stepik.org/media/cache/images/courses/16243/cover_MdfnLfH/471712250971b734e490e6c554c72105.png', aI: false, a: 'Введение в Scala', aR: 2, d: 'https://stepik.org/course/16243'},
+				{b: 'Samuel Gélineau', c: 'https://covers.oreillystatic.com/images/0636920080893/lrg.jpg', aI: false, a: 'Mastering Haskell Programming', aR: 1, d: 'https://www.udemy.com/course/mastering-haskell-programming/'}
 			])));
 var $author$project$Book$BookTitle = $elm$core$Basics$identity;
 var $author$project$Dataset$learningPath = _List_fromArray(
-	['Scala with Cats', 'Essential Scala', 'Category Theory for Programmers', 'Structure and Interpretation of Computer Programs', 'Maybe Haskell', 'Design Patterns: Elements of Reusable Object-Oriented Software', 'Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'CSS: The Missing Manual', 'White Space Is Not Your Enemy', 'Ководство', 'Основы контентной стратегии', 'Эмоциональный веб-дизайн', 'Отзывчивый веб-дизайн']);
+	['Scala with Cats', 'Essential Scala', 'Category Theory for Programmers', 'Введение в Scala', 'Structure and Interpretation of Computer Programs', 'Mastering Haskell Programming', 'Функциональное программирование на языке Haskell (часть 2)', 'Функциональное программирование на языке Haskell', 'Maybe Haskell', 'Design Patterns: Elements of Reusable Object-Oriented Software', 'Learn You a Haskell for Great Good!', 'Mostly Adequate Guide to Functional Programming', 'JavaScript: The Good Parts', 'Functional Programming in JavaScript', 'Building Microservices', 'Learning Functional Programming in Scala', 'You Don\'t Know JS (book series) 1, 2, 3, 4', 'Atomic Scala', 'Clean Code. A Handbook of Agile Software Craftsmanship', 'Роутинг в react-приложениях', 'React Redux курс для начинающих', 'React.js курс для начинающих', 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', 'Frontend Developer Specialization', 'CSS: The Missing Manual', 'White Space Is Not Your Enemy', 'Ководство', 'Основы контентной стратегии', 'Эмоциональный веб-дизайн', 'Отзывчивый веб-дизайн']);
 var $author$project$Book$Available = 0;
 var $author$project$Book$ComingSoon = 1;
 var $author$project$Book$GivenToSomeone = 2;
@@ -5464,11 +5469,8 @@ var $author$project$Main$viewIntro = function () {
 					]))
 			]));
 }();
-var $author$project$Book$Developer = 0;
-var $author$project$Book$GeneralPerson = 1;
-var $author$project$Book$Musician = 2;
-var $author$project$Main$SetLibrarySpecific = function (a) {
-	return {$: 1, a: a};
+var $author$project$Main$LearningMaterialsOnlyFavorites = function (a) {
+	return {$: 0, a: a};
 };
 var $elm$json$Json$Encode$bool = _Json_wrap;
 var $elm$html$Html$Attributes$boolProperty = F2(
@@ -5493,6 +5495,306 @@ var $author$project$SharedStyles$activeLink = _Utils_ap(
 			$elm$html$Html$Attributes$disabled(true),
 			A2($elm$html$Html$Attributes$style, 'cursor', 'default')
 		]));
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var $elm$core$Dict$get = F2(
+	function (targetKey, dict) {
+		get:
+		while (true) {
+			if (dict.$ === -2) {
+				return $elm$core$Maybe$Nothing;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
+				switch (_v1) {
+					case 0:
+						var $temp$targetKey = targetKey,
+							$temp$dict = left;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+					case 1:
+						return $elm$core$Maybe$Just(value);
+					default:
+						var $temp$targetKey = targetKey,
+							$temp$dict = right;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+				}
+			}
+		}
+	});
+var $elm_community$maybe_extra$Maybe$Extra$cons = F2(
+	function (item, list) {
+		if (!item.$) {
+			var v = item.a;
+			return A2($elm$core$List$cons, v, list);
+		} else {
+			return list;
+		}
+	});
+var $elm_community$maybe_extra$Maybe$Extra$values = A2($elm$core$List$foldr, $elm_community$maybe_extra$Maybe$Extra$cons, _List_Nil);
+var $author$project$Utils$getMany = F2(
+	function (dict, keys) {
+		return $elm_community$maybe_extra$Maybe$Extra$values(
+			A2(
+				$elm$core$List$map,
+				function (k) {
+					return A2($elm$core$Dict$get, k, dict);
+				},
+				keys));
+	});
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $author$project$Utils$ifElse = F3(
+	function (b, x, y) {
+		return b ? x : y;
+	});
+var $elm$core$Basics$not = _Basics_not;
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
+var $author$project$SharedStyles$highlight = A2($elm$html$Html$Attributes$style, 'box-shadow', '#F7DC6F66 0px 0px 5px 10px');
+var $author$project$SharedStyles$highlightShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px -1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 2px 2px,\n    rgba(0, 0, 0, 0.1) 0px 3px 3px, \n    #F7DC6F66 0px 0px 5px 10px');
+var $author$project$SharedStyles$regularShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
+var $author$project$Main$viewBook = F2(
+	function (_v0, _v1) {
+		var sticker = _v0.D;
+		var highlightFavorite = _v0.B;
+		var available = _v0.z;
+		var book = _v1;
+		var textStyle = A3(
+			$author$project$Utils$ifElse,
+			book.aI && (highlightFavorite && available),
+			_List_fromArray(
+				[
+					$author$project$SharedStyles$highlight,
+					A2($elm$html$Html$Attributes$style, 'background-color', '#F7DC6F66')
+				]),
+			_List_Nil);
+		var stickerNode = function () {
+			if (!sticker.$) {
+				var x = sticker.a;
+				return A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'position', 'relative'),
+							A2($elm$html$Html$Attributes$style, 'height', '0'),
+							A2($elm$html$Html$Attributes$style, 'user-select', 'none')
+						]),
+					_List_fromArray(
+						[x]));
+			} else {
+				return $author$project$Utils$emptyHtml;
+			}
+		}();
+		var shadow = A3($author$project$Utils$ifElse, book.aI && (highlightFavorite && available), $author$project$SharedStyles$highlightShadow, $author$project$SharedStyles$regularShadow);
+		var availabilityStyle = A3(
+			$author$project$Utils$ifElse,
+			available,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$author$project$SharedStyles$highlight,
+					A2($elm$html$Html$Attributes$style, 'filter', 'grayscale(1)')
+				]));
+		return A2(
+			$elm$html$Html$section,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'margin-right', '32px'),
+					A2($elm$html$Html$Attributes$style, 'width', '100px'),
+					A2($elm$html$Html$Attributes$style, 'font-size', '12px')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href(book.d),
+							$elm$html$Html$Attributes$target('_blank')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$img,
+							_Utils_ap(
+								availabilityStyle,
+								_List_fromArray(
+									[
+										shadow,
+										A2($elm$html$Html$Attributes$style, 'max-height', '150px'),
+										A2($elm$html$Html$Attributes$style, 'max-width', '100px'),
+										A2($elm$html$Html$Attributes$style, 'border-radius', '3px'),
+										A2($elm$html$Html$Attributes$style, 'margin-top', '2em'),
+										$elm$html$Html$Attributes$src(book.c),
+										$elm$html$Html$Attributes$alt(book.b + (', ' + book.a))
+									])),
+							_List_Nil)
+						])),
+					stickerNode,
+					A2(
+					$elm$html$Html$div,
+					textStyle,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'margin', '.5em 0')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$a,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$href(book.d),
+											$elm$html$Html$Attributes$target('_blank')
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(book.a)
+										]))
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text(book.b)
+								]))
+						]))
+				]));
+	});
+var $author$project$Main$viewLearningMaterials = F3(
+	function (onlyFavorite, books, learnPath) {
+		return A2(
+			$elm$html$Html$div,
+			_Utils_ap(
+				$author$project$SharedStyles$fullwidthContainer,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'background-color', '#e3e3e3'),
+						$elm$html$Html$Attributes$id('learning-materials')
+					])),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					$author$project$SharedStyles$innerContainer,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$h2,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('My learning materials')
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'margin-top', '1em')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$a,
+									_Utils_ap(
+										A3($author$project$Utils$ifElse, onlyFavorite, $author$project$SharedStyles$link, $author$project$SharedStyles$activeLink),
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$LearningMaterialsOnlyFavorites(false))
+											])),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('All books and courses')
+										])),
+									A2(
+									$elm$html$Html$a,
+									_Utils_ap(
+										A3($author$project$Utils$ifElse, onlyFavorite, $author$project$SharedStyles$activeLink, $author$project$SharedStyles$link),
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$LearningMaterialsOnlyFavorites(true))
+											])),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('Only the best')
+										]))
+								])),
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+									A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap'),
+									A2($elm$html$Html$Attributes$style, 'align-items', 'baseline')
+								]),
+							A2(
+								$elm$core$List$map,
+								$author$project$Main$viewBook(
+									{z: true, B: !onlyFavorite, D: $elm$core$Maybe$Nothing}),
+								A2(
+									$elm$core$List$filter,
+									function (_v1) {
+										var favorite = _v1.aI;
+										return A3($author$project$Utils$ifElse, onlyFavorite, favorite, true);
+									},
+									A2(
+										$author$project$Utils$getMany,
+										books,
+										A2(
+											$elm$core$List$map,
+											function (_v0) {
+												var title = _v0;
+												return title;
+											},
+											learnPath)))))
+						]))
+				]));
+	});
+var $author$project$Book$Developer = 0;
+var $author$project$Book$GeneralPerson = 1;
+var $author$project$Book$Musician = 2;
+var $author$project$Main$SetLibrarySpecific = function (a) {
+	return {$: 1, a: a};
+};
 var $elm$html$Html$article = _VirtualDom_node('article');
 var $matthewsj$elm_ordering$Ordering$explicit = F3(
 	function (elements, x, y) {
@@ -5642,54 +5944,6 @@ var $elm$core$Basics$composeR = F3(
 		return g(
 			f(x));
 	});
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
-var $elm$core$Dict$get = F2(
-	function (targetKey, dict) {
-		get:
-		while (true) {
-			if (dict.$ === -2) {
-				return $elm$core$Maybe$Nothing;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1) {
-					case 0:
-						var $temp$targetKey = targetKey,
-							$temp$dict = left;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-					case 1:
-						return $elm$core$Maybe$Just(value);
-					default:
-						var $temp$targetKey = targetKey,
-							$temp$dict = right;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-				}
-			}
-		}
-	});
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
-var $author$project$Utils$ifElse = F3(
-	function (b, x, y) {
-		return b ? x : y;
-	});
 var $elm$core$Maybe$map = F2(
 	function (f, maybe) {
 		if (!maybe.$) {
@@ -5700,23 +5954,6 @@ var $elm$core$Maybe$map = F2(
 			return $elm$core$Maybe$Nothing;
 		}
 	});
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 0, a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var $elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'click',
-		$elm$json$Json$Decode$succeed(msg));
-};
 var $author$project$SharedStyles$regularText = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'line-height', '1.3'),
@@ -5751,16 +5988,6 @@ var $elm_community$list_extra$List$Extra$stableSortWith = F2(
 			$elm$core$Tuple$first,
 			A2($elm$core$List$sortWith, predWithIndex, listWithIndex));
 	});
-var $elm_community$maybe_extra$Maybe$Extra$cons = F2(
-	function (item, list) {
-		if (!item.$) {
-			var v = item.a;
-			return A2($elm$core$List$cons, v, list);
-		} else {
-			return list;
-		}
-	});
-var $elm_community$maybe_extra$Maybe$Extra$values = A2($elm$core$List$foldr, $elm_community$maybe_extra$Maybe$Extra$cons, _List_Nil);
 var $author$project$Main$roundSticker = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'position', 'relative'),
@@ -5775,123 +6002,6 @@ var $author$project$Main$roundSticker = _List_fromArray(
 		A2($elm$html$Html$Attributes$style, 'font-size', '12px'),
 		A2($elm$html$Html$Attributes$style, 'transform', 'rotate(-10deg)')
 	]);
-var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
-var $author$project$SharedStyles$highlight = A2($elm$html$Html$Attributes$style, 'box-shadow', '#F7DC6F66 0px 0px 5px 10px');
-var $author$project$SharedStyles$highlightShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px -1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 2px 2px,\n    rgba(0, 0, 0, 0.1) 0px 3px 3px, \n    #F7DC6F66 0px 0px 5px 10px');
-var $author$project$SharedStyles$regularShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
-var $author$project$Main$viewBook = F2(
-	function (_v0, _v1) {
-		var sticker = _v0.D;
-		var highlightFavorite = _v0.B;
-		var available = _v0.z;
-		var book = _v1;
-		var textStyle = A3(
-			$author$project$Utils$ifElse,
-			book.aI && (highlightFavorite && available),
-			_List_fromArray(
-				[
-					$author$project$SharedStyles$highlight,
-					A2($elm$html$Html$Attributes$style, 'background-color', '#F7DC6F66')
-				]),
-			_List_Nil);
-		var stickerNode = function () {
-			if (!sticker.$) {
-				var x = sticker.a;
-				return A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'position', 'relative'),
-							A2($elm$html$Html$Attributes$style, 'height', '0'),
-							A2($elm$html$Html$Attributes$style, 'user-select', 'none')
-						]),
-					_List_fromArray(
-						[x]));
-			} else {
-				return $author$project$Utils$emptyHtml;
-			}
-		}();
-		var shadow = A3($author$project$Utils$ifElse, book.aI && (highlightFavorite && available), $author$project$SharedStyles$highlightShadow, $author$project$SharedStyles$regularShadow);
-		var availabilityStyle = A3(
-			$author$project$Utils$ifElse,
-			available,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$author$project$SharedStyles$highlight,
-					A2($elm$html$Html$Attributes$style, 'filter', 'grayscale(1)')
-				]));
-		return A2(
-			$elm$html$Html$section,
-			_List_fromArray(
-				[
-					A2($elm$html$Html$Attributes$style, 'margin-right', '32px'),
-					A2($elm$html$Html$Attributes$style, 'width', '100px'),
-					A2($elm$html$Html$Attributes$style, 'font-size', '12px')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$href(book.d),
-							$elm$html$Html$Attributes$target('_blank')
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$img,
-							_Utils_ap(
-								availabilityStyle,
-								_List_fromArray(
-									[
-										shadow,
-										A2($elm$html$Html$Attributes$style, 'max-height', '150px'),
-										A2($elm$html$Html$Attributes$style, 'max-width', '100px'),
-										A2($elm$html$Html$Attributes$style, 'border-radius', '3px'),
-										A2($elm$html$Html$Attributes$style, 'margin-top', '2em'),
-										$elm$html$Html$Attributes$src(book.c),
-										$elm$html$Html$Attributes$alt(book.b + (', ' + book.a))
-									])),
-							_List_Nil)
-						])),
-					stickerNode,
-					A2(
-					$elm$html$Html$div,
-					textStyle,
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$p,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'margin', '.5em 0')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$a,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$href(book.d),
-											$elm$html$Html$Attributes$target('_blank')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text(book.a)
-										]))
-								])),
-							A2(
-							$elm$html$Html$p,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$elm$html$Html$text(book.b)
-								]))
-						]))
-				]));
-	});
 var $author$project$Main$viewLibraryBook = function (_v0) {
 	var b = _v0.a;
 	var availability = _v0.b;
@@ -5998,7 +6108,12 @@ var $author$project$Main$viewLibrary = F3(
 								])),
 							A2(
 							$elm$html$Html$div,
-							$author$project$SharedStyles$regularText,
+							_Utils_ap(
+								$author$project$SharedStyles$regularText,
+								_List_fromArray(
+									[
+										A2($elm$html$Html$Attributes$style, 'margin-top', '1em')
+									])),
 							_List_fromArray(
 								[
 									A2(
@@ -6147,111 +6262,6 @@ var $author$project$Main$viewLibrary = F3(
 														A2($elm$core$Dict$get, name, books));
 												},
 												$elm$core$Dict$toList(libState)))))))
-						]))
-				]));
-	});
-var $author$project$Main$LearningMaterialsOnlyFavorites = function (a) {
-	return {$: 0, a: a};
-};
-var $author$project$Utils$getMany = F2(
-	function (dict, keys) {
-		return $elm_community$maybe_extra$Maybe$Extra$values(
-			A2(
-				$elm$core$List$map,
-				function (k) {
-					return A2($elm$core$Dict$get, k, dict);
-				},
-				keys));
-	});
-var $elm$core$Basics$not = _Basics_not;
-var $author$project$Main$viewMyLearningPath = F3(
-	function (onlyFavorite, books, learnPath) {
-		return A2(
-			$elm$html$Html$div,
-			_Utils_ap(
-				$author$project$SharedStyles$fullwidthContainer,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$style, 'background-color', '#e3e3e3'),
-						$elm$html$Html$Attributes$id('learning-materials')
-					])),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$div,
-					$author$project$SharedStyles$innerContainer,
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$h2,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$elm$html$Html$text('My learning materials')
-								])),
-							A2(
-							$elm$html$Html$p,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'margin-top', '1em')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$a,
-									_Utils_ap(
-										A3($author$project$Utils$ifElse, onlyFavorite, $author$project$SharedStyles$link, $author$project$SharedStyles$activeLink),
-										_List_fromArray(
-											[
-												$elm$html$Html$Events$onClick(
-												$author$project$Main$LearningMaterialsOnlyFavorites(false))
-											])),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('All books and courses')
-										])),
-									A2(
-									$elm$html$Html$a,
-									_Utils_ap(
-										A3($author$project$Utils$ifElse, onlyFavorite, $author$project$SharedStyles$activeLink, $author$project$SharedStyles$link),
-										_List_fromArray(
-											[
-												$elm$html$Html$Events$onClick(
-												$author$project$Main$LearningMaterialsOnlyFavorites(true))
-											])),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Only the best')
-										]))
-								])),
-							A2(
-							$elm$html$Html$div,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-									A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap'),
-									A2($elm$html$Html$Attributes$style, 'align-items', 'baseline')
-								]),
-							A2(
-								$elm$core$List$map,
-								$author$project$Main$viewBook(
-									{z: true, B: !onlyFavorite, D: $elm$core$Maybe$Nothing}),
-								A2(
-									$elm$core$List$filter,
-									function (_v1) {
-										var favorite = _v1.aI;
-										return A3($author$project$Utils$ifElse, onlyFavorite, favorite, true);
-									},
-									A2(
-										$author$project$Utils$getMany,
-										books,
-										A2(
-											$elm$core$List$map,
-											function (_v0) {
-												var title = _v0;
-												return title;
-											},
-											learnPath)))))
 						]))
 				]));
 	});
@@ -6626,7 +6636,7 @@ var $author$project$Main$mainView = function (model) {
 				$author$project$Main$viewHeader($author$project$Main$viewIntro),
 				$author$project$Main$viewProjects($author$project$Dataset$projects),
 				A3($author$project$Main$viewLibrary, model.M.W, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState),
-				A3($author$project$Main$viewMyLearningPath, model.L.T, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
+				A3($author$project$Main$viewLearningMaterials, model.L.T, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
 			]));
 };
 var $elm$browser$Browser$External = function (a) {
