@@ -4762,7 +4762,7 @@ var $author$project$Dataset$projects = _List_fromArray(
 				]))
 	},
 		{
-		K: 'A small book about Curtis Mayfield «Black Keys» Open F# guitar tuning.',
+		K: 'A small book about Curtis Mayfield «Black Keys» open F# guitar tuning.',
 		L: $elm$core$Maybe$Just('facfaf.jpg'),
 		M: _List_fromArray(
 			[
@@ -4781,7 +4781,7 @@ var $author$project$SharedStyles$fullwidthContainer = _List_fromArray(
 		A2($elm$html$Html$Attributes$style, 'display', 'flex'),
 		A2($elm$html$Html$Attributes$style, 'flex-direction', 'row'),
 		A2($elm$html$Html$Attributes$style, 'justify-content', 'center'),
-		A2($elm$html$Html$Attributes$style, 'border-bottom', '0.5px solid rgba(0, 0, 0, 0.1)')
+		A2($elm$html$Html$Attributes$style, 'border-bottom', '1px solid rgba(0, 0, 0, 0.1)')
 	]);
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$header = _VirtualDom_node('header');
@@ -5070,82 +5070,149 @@ var $elm_community$maybe_extra$Maybe$Extra$cons = F2(
 		}
 	});
 var $elm_community$maybe_extra$Maybe$Extra$values = A2($elm$core$List$foldr, $elm_community$maybe_extra$Maybe$Extra$cons, _List_Nil);
+var $author$project$Main$roundSticker = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'position', 'relative'),
+		A2($elm$html$Html$Attributes$style, 'width', '50px'),
+		A2($elm$html$Html$Attributes$style, 'height', '50px'),
+		A2($elm$html$Html$Attributes$style, 'bottom', '58px'),
+		A2($elm$html$Html$Attributes$style, 'left', '5px'),
+		A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+		A2($elm$html$Html$Attributes$style, 'text-align', 'center'),
+		A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
+		A2($elm$html$Html$Attributes$style, 'border-radius', '300px'),
+		A2($elm$html$Html$Attributes$style, 'font-size', '12px'),
+		A2($elm$html$Html$Attributes$style, 'opacity', '.8'),
+		A2($elm$html$Html$Attributes$style, 'transform', 'rotate(-10deg)')
+	]);
+var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
+var $author$project$SharedStyles$highlight = A2($elm$html$Html$Attributes$style, 'box-shadow', '#F7DC6F66 0px 0px 5px 10px');
 var $author$project$SharedStyles$highlightShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px -1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 2px 2px,\n    rgba(0, 0, 0, 0.1) 0px 3px 3px, \n    #F7DC6F66 0px 0px 5px 10px');
 var $author$project$SharedStyles$regularShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
-var $author$project$Main$viewBook = function (_v0) {
-	var book = _v0;
-	var shadow = book.d ? $author$project$SharedStyles$highlightShadow : $author$project$SharedStyles$regularShadow;
-	return A2(
-		$elm$html$Html$section,
-		_List_fromArray(
+var $author$project$Main$viewBook = F2(
+	function (mSticker, _v0) {
+		var book = _v0;
+		var textStyle = book.d ? _List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'margin-right', '32px'),
-				A2($elm$html$Html$Attributes$style, 'width', '100px'),
-				A2($elm$html$Html$Attributes$style, 'font-size', '12px')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$a,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$href(book.f),
-						$elm$html$Html$Attributes$target('_blank')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$img,
-						_List_fromArray(
-							[
-								shadow,
-								A2($elm$html$Html$Attributes$style, 'max-height', '150px'),
-								A2($elm$html$Html$Attributes$style, 'max-width', '100px'),
-								A2($elm$html$Html$Attributes$style, 'border-radius', '3px'),
-								A2($elm$html$Html$Attributes$style, 'margin-top', '2em'),
-								$elm$html$Html$Attributes$src(book.c),
-								$elm$html$Html$Attributes$alt(book.b + (', ' + book.a))
-							]),
-						_List_Nil)
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$p,
-						_List_fromArray(
-							[
-								A2($elm$html$Html$Attributes$style, 'margin', '.5em 0')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$a,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$href(book.f),
-										$elm$html$Html$Attributes$target('_blank')
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(book.a)
-									]))
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text(book.b)
-							]))
-					]))
-			]));
-};
+				$author$project$SharedStyles$highlight,
+				A2($elm$html$Html$Attributes$style, 'background-color', '#F7DC6F66')
+			]) : _List_Nil;
+		var sticker = function () {
+			if (!mSticker.$) {
+				var x = mSticker.a;
+				return A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'position', 'relative'),
+							A2($elm$html$Html$Attributes$style, 'height', '0'),
+							A2($elm$html$Html$Attributes$style, 'user-select', 'none')
+						]),
+					_List_fromArray(
+						[x]));
+			} else {
+				return $author$project$Utils$emptyHtml;
+			}
+		}();
+		var shadow = book.d ? $author$project$SharedStyles$highlightShadow : $author$project$SharedStyles$regularShadow;
+		return A2(
+			$elm$html$Html$section,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'margin-right', '32px'),
+					A2($elm$html$Html$Attributes$style, 'width', '100px'),
+					A2($elm$html$Html$Attributes$style, 'font-size', '12px')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href(book.f),
+							$elm$html$Html$Attributes$target('_blank')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$img,
+							_List_fromArray(
+								[
+									shadow,
+									A2($elm$html$Html$Attributes$style, 'max-height', '150px'),
+									A2($elm$html$Html$Attributes$style, 'max-width', '100px'),
+									A2($elm$html$Html$Attributes$style, 'border-radius', '3px'),
+									A2($elm$html$Html$Attributes$style, 'margin-top', '2em'),
+									$elm$html$Html$Attributes$src(book.c),
+									$elm$html$Html$Attributes$alt(book.b + (', ' + book.a))
+								]),
+							_List_Nil)
+						])),
+					sticker,
+					A2(
+					$elm$html$Html$div,
+					textStyle,
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'margin', '.5em 0')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$a,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$href(book.f),
+											$elm$html$Html$Attributes$target('_blank')
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(book.a)
+										]))
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text(book.b)
+								]))
+						]))
+				]));
+	});
 var $author$project$Main$viewLibraryBook = function (_v0) {
 	var b = _v0.a;
 	var availability = _v0.b;
+	var givenToSomeone = A2(
+		$elm$html$Html$div,
+		_Utils_ap(
+			$author$project$Main$roundSticker,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'background-color', '#d50000'),
+					A2($elm$html$Html$Attributes$style, 'color', 'rgb(17, 21, 27)')
+				])),
+		_List_fromArray(
+			[
+				$elm$html$Html$text('already taken')
+			]));
+	var comingSoon = A2(
+		$elm$html$Html$div,
+		_Utils_ap(
+			$author$project$Main$roundSticker,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'background-color', 'rgb(17, 21, 27)'),
+					A2($elm$html$Html$Attributes$style, 'color', '#d50000')
+				])),
+		_List_fromArray(
+			[
+				$elm$html$Html$text('coming soon')
+			]));
 	var book = A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5154,41 +5221,21 @@ var $author$project$Main$viewLibraryBook = function (_v0) {
 			]),
 		_List_fromArray(
 			[
-				$author$project$Main$viewBook(b)
+				A2($author$project$Main$viewBook, $elm$core$Maybe$Nothing, b)
 			]));
 	switch (availability) {
 		case 0:
-			return A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$author$project$Main$viewBook(b)
-					]));
+			return A2($author$project$Main$viewBook, $elm$core$Maybe$Nothing, b);
 		case 1:
 			return A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$style, 'opacity', '.5')
-					]),
-				_List_fromArray(
-					[
-						$author$project$Main$viewBook(b),
-						$elm$html$Html$text('coming soon')
-					]));
+				$author$project$Main$viewBook,
+				$elm$core$Maybe$Just(comingSoon),
+				b);
 		default:
 			return A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$style, 'opacity', '.5')
-					]),
-				_List_fromArray(
-					[
-						$author$project$Main$viewBook(b),
-						$elm$html$Html$text('coming soon')
-					]));
+				$author$project$Main$viewBook,
+				$elm$core$Maybe$Just(givenToSomeone),
+				b);
 	}
 };
 var $author$project$Main$viewLibrary = F2(
@@ -5261,7 +5308,8 @@ var $author$project$Main$viewLibrary = F2(
 							_List_fromArray(
 								[
 									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-									A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap')
+									A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap'),
+									A2($elm$html$Html$Attributes$style, 'align-items', 'baseline')
 								]),
 							A2(
 								$elm$core$List$map,
@@ -5293,7 +5341,6 @@ var $author$project$Utils$getMany = F2(
 				},
 				keys));
 	});
-var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $author$project$Main$viewMyLearningPath = F2(
 	function (books, learnPath) {
 		return A2(
@@ -5319,7 +5366,7 @@ var $author$project$Main$viewMyLearningPath = F2(
 									$elm$html$Html$text('My learning path')
 								])),
 							A2(
-							$elm$html$Html$ul,
+							$elm$html$Html$div,
 							_List_fromArray(
 								[
 									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
@@ -5328,7 +5375,7 @@ var $author$project$Main$viewMyLearningPath = F2(
 								]),
 							A2(
 								$elm$core$List$map,
-								$author$project$Main$viewBook,
+								$author$project$Main$viewBook($elm$core$Maybe$Nothing),
 								A2(
 									$author$project$Utils$getMany,
 									books,
@@ -5343,7 +5390,6 @@ var $author$project$Main$viewMyLearningPath = F2(
 				]));
 	});
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
-var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
 var $author$project$Main$viewProjectImage = function (_v0) {
 	var name = _v0.O;
 	var imgFileName = _v0.L;
@@ -5426,6 +5472,7 @@ var $elm_community$maybe_extra$Maybe$Extra$toList = function (m) {
 			[x]);
 	}
 };
+var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $author$project$Project$userpicCssSize = 16;
 var $author$project$Project$userpicSrcSize = $author$project$Project$userpicCssSize * 3;
 var $author$project$Project$viewUserPic = function (userpic) {
@@ -5682,6 +5729,13 @@ var $author$project$Main$viewProjects = function (projs) {
 				$author$project$SharedStyles$innerContainer,
 				_List_fromArray(
 					[
+						A2(
+						$elm$html$Html$h2,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('side projects')
+							])),
 						A2(
 						$elm$html$Html$article,
 						_List_Nil,
