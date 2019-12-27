@@ -83,8 +83,8 @@ viewIntro =
         ]
 
 
-viewBook : Book -> Html Msg
-viewBook (Book book) =
+viewBook : Maybe (Html Msg) -> Book -> Html Msg
+viewBook mSticker (Book book) =
     let
         shadow =
             if book.favorite then
@@ -92,6 +92,28 @@ viewBook (Book book) =
 
             else
                 regularShadow
+
+        textStyle =
+            if book.favorite then
+                [ highlight, style "background-color" "#F7DC6F66" ]
+
+            else
+                []
+
+        {- sticker area is placed in a bottom left corner of the book -}
+        {- use ralative position for sticker to move inside this area -}
+        sticker =
+            case mSticker of
+                Just x ->
+                    div
+                        [ style "position" "relative"
+                        , style "height" "0"
+                        , style "user-select" "none"
+                        ]
+                        [ x ]
+
+                Nothing ->
+                    emptyHtml
     in
     section
         [ style "margin-right" "32px"
@@ -110,28 +132,67 @@ viewBook (Book book) =
                 ]
                 []
             ]
-        , div []
+        , sticker
+        , div textStyle
             [ p [ style "margin" ".5em 0" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
             , p [] [ text book.author ]
             ]
         ]
 
 
+roundSticker : List (Html.Attribute Msg)
+roundSticker =
+    [ -- sticker position
+      style "position" "relative"
+    , style "width" "50px"
+    , style "height" "50px"
+    , style "bottom" "58px"
+    , style "left" "5px"
+
+    -- sticker
+    , style "display" "flex"
+    , style "text-align" "center"
+    , style "align-items" "center"
+    , style "border-radius" "300px"
+    , style "font-size" "12px"
+    , style "opacity" ".8"
+    , style "transform" "rotate(-10deg)"
+    ]
+
+
 viewLibraryBook : ( Book, BookAvaliability ) -> Html Msg
 viewLibraryBook ( b, availability ) =
     let
         book =
-            div [ style "opacity" ".5" ] [ viewBook b ]
+            div [ style "opacity" ".5" ] [ viewBook Nothing b ]
+
+        comingSoon =
+            div
+                (roundSticker
+                    ++ [ style "background-color" "rgb(17, 21, 27)"
+                       , style "color" "#d50000"
+                       ]
+                )
+                [ text "coming soon" ]
+
+        givenToSomeone =
+            div
+                (roundSticker
+                    ++ [ style "background-color" "#d50000"
+                       , style "color" "rgb(17, 21, 27)"
+                       ]
+                )
+                [ text "already taken" ]
     in
     case availability of
         Available ->
-            div [] [ viewBook b ]
+            viewBook Nothing b
 
         ComingSoon ->
-            div [ style "opacity" ".5" ] [ viewBook b, text "coming soon" ]
+            viewBook (Just comingSoon) b
 
         GivenToSomeone ->
-            div [ style "opacity" ".5" ] [ viewBook b, text "coming soon" ]
+            viewBook (Just givenToSomeone) b
 
 
 viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
@@ -151,7 +212,7 @@ viewLibrary books libState =
                 |> List.map (\( name, availability ) -> Dict.get name books |> Maybe.map (\b -> ( b, availability )))
                 |> values
                 |> List.map viewLibraryBook
-                |> div [ style "display" "flex", style "flex-wrap" "wrap" ]
+                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
             ]
         ]
 
@@ -165,12 +226,8 @@ viewMyLearningPath books learnPath =
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
-                |> List.map viewBook
-                |> ul
-                    [ style "display" "flex"
-                    , style "flex-wrap" "wrap"
-                    , style "align-items" "baseline"
-                    ]
+                |> List.map (viewBook Nothing)
+                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
             ]
         ]
 
@@ -301,6 +358,7 @@ viewProjects : List Project -> Html Msg
 viewProjects projs =
     div (fullwidthContainer ++ [ style "background-color" "#e3e3e3" ])
         [ article innerContainer
-            [ article [] <| List.map viewProject projs
+            [ h2 [] [ text "side projects" ]
+            , article [] <| List.map viewProject projs
             ]
         ]

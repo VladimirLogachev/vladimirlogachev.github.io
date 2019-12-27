@@ -379,7 +379,7 @@ projects =
         }
     , Project
         { name = "#FACFAF. Quick reference guide"
-        , description = "A small book about Curtis Mayfield «Black Keys» Open F# guitar tuning."
+        , description = "A small book about Curtis Mayfield «Black Keys» open F# guitar tuning."
         , links =
             [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
             , Link "ePub" "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
