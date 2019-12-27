@@ -1,5 +1,7 @@
 module Book exposing (..)
 
+import Ordering exposing (Ordering)
+
 
 type Book
     = Book
@@ -12,17 +14,16 @@ type Book
         }
 
 
+favoriteOrdering : Ordering Bool
+favoriteOrdering =
+    Ordering.explicit
+        [ True
+        , False
+        ]
+
+
 type LearningMaterial
     = BookTitle String
-
-
-
--- | Course
---     { url : String
---     , certificateUrl : String
---     , organization : String
---     , title : String
---     }
 
 
 type BookAvaliability
@@ -31,34 +32,27 @@ type BookAvaliability
     | GivenToSomeone
 
 
+avaliabilityOrdering : Ordering BookAvaliability
+avaliabilityOrdering =
+    Ordering.explicit
+        [ Available
+        , GivenToSomeone
+        , ComingSoon
+        ]
+
+
 type Topic
-    = MUSIC_INSTRUMENTS
-    | JS
+    = DEV
     | HASKELL
     | SCALA
     | SCHEME
+    | JS
     | CSS
     | DESIGN
-    | DEV
+    | MANAGEMENT
     | LEADERSHIP
     | COMMUNICATION
-    | MANAGEMENT
-
-
-
--- TODO: devTopics :: Set without comparable constraint
-
-
-devTopics : List Topic
-devTopics =
-    [ JS
-    , HASKELL
-    , SCALA
-    , SCHEME
-    , CSS
-    , DESIGN
-    , DEV
-    ]
+    | MUSIC_INSTRUMENTS
 
 
 showTopic : Topic -> String
@@ -96,3 +90,77 @@ showTopic topic =
 
         MANAGEMENT ->
             "Management"
+
+
+type PersonKind
+    = Developer
+    | GeneralPerson
+    | Musician
+
+
+personKindOrdering : Ordering PersonKind
+personKindOrdering =
+    Ordering.explicit
+        [ Developer
+        , GeneralPerson
+        , Musician
+        ]
+
+
+personKindFromTopic : Topic -> PersonKind
+personKindFromTopic topic =
+    case topic of
+        DEV ->
+            Developer
+
+        HASKELL ->
+            Developer
+
+        SCALA ->
+            Developer
+
+        SCHEME ->
+            Developer
+
+        JS ->
+            Developer
+
+        CSS ->
+            Developer
+
+        DESIGN ->
+            Developer
+
+        MANAGEMENT ->
+            GeneralPerson
+
+        LEADERSHIP ->
+            GeneralPerson
+
+        COMMUNICATION ->
+            GeneralPerson
+
+        MUSIC_INSTRUMENTS ->
+            Musician
+
+
+showPersonKind : PersonKind -> String
+showPersonKind pk =
+    case pk of
+        Developer ->
+            "Developer"
+
+        GeneralPerson ->
+            "Everyone"
+
+        Musician ->
+            "Musician"
+
+
+bookOrdering : Ordering ( Book, BookAvaliability )
+bookOrdering =
+    Ordering.byFieldWith avaliabilityOrdering Tuple.second
+        |> Ordering.breakTiesWith
+            (Ordering.byFieldWith personKindOrdering (\( Book { topics }, _ ) -> personKindFromTopic topics))
+        |> Ordering.breakTiesWith
+            (Ordering.byFieldWith favoriteOrdering (\( Book { favorite }, _ ) -> favorite))

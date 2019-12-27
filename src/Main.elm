@@ -5,7 +5,7 @@ import Dataset exposing (..)
 import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import List.Extra
+import List.Extra exposing (stableSortWith)
 import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
 import SharedStyles exposing (..)
@@ -155,7 +155,7 @@ roundSticker =
     , style "align-items" "center"
     , style "border-radius" "300px"
     , style "font-size" "12px"
-    , style "opacity" ".8"
+    -- , style "opacity" ".8"
     , style "transform" "rotate(-10deg)"
     ]
 
@@ -169,8 +169,8 @@ viewLibraryBook ( b, availability ) =
         comingSoon =
             div
                 (roundSticker
-                    ++ [ style "background-color" "rgb(17, 21, 27)"
-                       , style "color" "#d50000"
+                    ++ [ style "background-color" "rgba(17, 21, 27, 0.8)"
+                       , style "color" "rgb(255, 152, 0)"
                        ]
                 )
                 [ text "coming soon" ]
@@ -178,7 +178,7 @@ viewLibraryBook ( b, availability ) =
         givenToSomeone =
             div
                 (roundSticker
-                    ++ [ style "background-color" "#d50000"
+                    ++ [ style "background-color" "rgba(255, 152, 0, 0.7)"
                        , style "color" "rgb(17, 21, 27)"
                        ]
                 )
@@ -211,6 +211,7 @@ viewLibrary books libState =
                 |> Dict.toList
                 |> List.map (\( name, availability ) -> Dict.get name books |> Maybe.map (\b -> ( b, availability )))
                 |> values
+                |> stableSortWith bookOrdering
                 |> List.map viewLibraryBook
                 |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
             ]
