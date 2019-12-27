@@ -519,11 +519,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.V.G === region.aa.G)
+	if (region.X.G === region.ac.G)
 	{
-		return 'on line ' + region.V.G;
+		return 'on line ' + region.X.G;
 	}
-	return 'on lines ' + region.V.G + ' through ' + region.aa.G;
+	return 'on lines ' + region.X.G + ' through ' + region.ac.G;
 }
 
 
@@ -1857,7 +1857,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aK,
+		impl.aL,
 		impl.aS,
 		impl.aQ,
 		function() { return function() {} }
@@ -2705,8 +2705,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		s: func(record.s),
-		W: record.W,
-		T: record.T
+		Y: record.Y,
+		U: record.U
 	}
 });
 
@@ -2975,10 +2975,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.s;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.W;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.Y;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.T) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.U) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3928,7 +3928,7 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aK,
+		impl.aL,
 		impl.aS,
 		impl.aQ,
 		function(sendToApp, initialModel) {
@@ -3964,11 +3964,11 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aK,
+		impl.aL,
 		impl.aS,
 		impl.aQ,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.U && impl.U(sendToApp)
+			var divertHrefToApp = impl.V && impl.V(sendToApp)
 			var view = impl.aT;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
@@ -3977,7 +3977,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aC);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aD);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
@@ -4038,12 +4038,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aL;
-	var onUrlRequest = impl.aM;
+	var onUrlChange = impl.aM;
+	var onUrlRequest = impl.aN;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		U: function(sendToApp)
+		V: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4059,9 +4059,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ao === next.ao
-							&& curr.ae === next.ae
-							&& curr.al.a === next.al.a
+							&& curr.ap === next.ap
+							&& curr.ag === next.ag
+							&& curr.am.a === next.am.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4069,9 +4069,9 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aK: function(flags)
+		aL: function(flags)
 		{
-			return A3(impl.aK, flags, _Browser_getUrl(), key);
+			return A3(impl.aL, flags, _Browser_getUrl(), key);
 		},
 		aT: impl.aT,
 		aS: impl.aS,
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aI: 'hidden', aD: 'visibilitychange' }
+		? { aJ: 'hidden', aE: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aI: 'mozHidden', aD: 'mozvisibilitychange' }
+		? { aJ: 'mozHidden', aE: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aI: 'msHidden', aD: 'msvisibilitychange' }
+		? { aJ: 'msHidden', aE: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aI: 'webkitHidden', aD: 'webkitvisibilitychange' }
-		: { aI: 'hidden', aD: 'visibilitychange' };
+		? { aJ: 'webkitHidden', aE: 'webkitvisibilitychange' }
+		: { aJ: 'hidden', aE: 'visibilitychange' };
 }
 
 
@@ -4232,12 +4232,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		as: _Browser_getScene(),
-		aw: {
-			ay: _Browser_window.pageXOffset,
-			az: _Browser_window.pageYOffset,
-			ax: _Browser_doc.documentElement.clientWidth,
-			ad: _Browser_doc.documentElement.clientHeight
+		at: _Browser_getScene(),
+		ax: {
+			az: _Browser_window.pageXOffset,
+			aA: _Browser_window.pageYOffset,
+			ay: _Browser_doc.documentElement.clientWidth,
+			af: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4247,8 +4247,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		ax: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		ad: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		ay: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		af: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4271,15 +4271,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			as: {
-				ax: node.scrollWidth,
-				ad: node.scrollHeight
+			at: {
+				ay: node.scrollWidth,
+				af: node.scrollHeight
 			},
-			aw: {
-				ay: node.scrollLeft,
-				az: node.scrollTop,
-				ax: node.clientWidth,
-				ad: node.clientHeight
+			ax: {
+				az: node.scrollLeft,
+				aA: node.scrollTop,
+				ay: node.clientWidth,
+				af: node.clientHeight
 			}
 		};
 	});
@@ -4309,18 +4309,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			as: _Browser_getScene(),
-			aw: {
-				ay: x,
-				az: y,
-				ax: _Browser_doc.documentElement.clientWidth,
-				ad: _Browser_doc.documentElement.clientHeight
+			at: _Browser_getScene(),
+			ax: {
+				az: x,
+				aA: y,
+				ay: _Browser_doc.documentElement.clientWidth,
+				af: _Browser_doc.documentElement.clientHeight
 			},
-			aF: {
-				ay: x + rect.left,
-				az: y + rect.top,
-				ax: rect.width,
-				ad: rect.height
+			aG: {
+				az: x + rect.left,
+				aA: y + rect.top,
+				ay: rect.width,
+				af: rect.height
 			}
 		};
 	});
@@ -4355,11 +4355,11 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $author$project$Main$Everyone = {$: 0};
+var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$Basics$True = 0;
 var $author$project$Main$init = {
-	L: {S: true},
-	ag: {aO: $author$project$Main$Everyone}
+	L: {T: true},
+	M: {W: $elm$core$Maybe$Nothing}
 };
 var $elm$core$List$cons = _List_cons;
 var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
@@ -4467,7 +4467,6 @@ var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
 	return {$: 0, a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
 var $elm$core$Basics$append = _Utils_append;
@@ -5067,46 +5066,46 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 		},
 		_List_fromArray(
 			[
-				{b: 'Miran Lipovača', c: 'https://images-na.ssl-images-amazon.com/images/I/41OnGOPKW3L._SX376_BO1,204,203,200_.jpg', aH: true, a: 'Learn You a Haskell for Great Good!', aR: 1, d: 'http://learnyouahaskell.com/'},
-				{b: 'Professor Frisby', c: 'https://github.com/MostlyAdequate/mostly-adequate-guide/raw/master/images/cover.png', aH: true, a: 'Mostly Adequate Guide to Functional Programming', aR: 4, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
-				{b: 'Douglas Crockford', c: 'https://covers.oreillystatic.com/images/9780596517748/cat.gif', aH: false, a: 'JavaScript: The Good Parts', aR: 4, d: 'http://shop.oreilly.com/product/9780596517748.do'},
-				{b: 'Luis Atencio', c: 'https://images.manning.com/720/960/resize/book/5/c5bd123-f4fd-4a03-9069-9309c782ea7e/Atencio_hires_Fc.png', aH: true, a: 'Functional Programming in JavaScript', aR: 4, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
-				{b: 'Sam Newman', c: 'https://covers.oreillystatic.com/images/0636920033158/cat.gif', aH: true, a: 'Building Microservices', aR: 0, d: 'http://shop.oreilly.com/product/0636920033158.do'},
-				{b: 'Alvin Alexander', c: '/images/book_covers/alvin_scala.png', aH: false, a: 'Learning Functional Programming in Scala', aR: 2, d: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
-				{b: 'Kyle Simpson', c: 'https://images-na.ssl-images-amazon.com/images/I/91w8pQAh21L._SY300_.jpg', aH: false, a: 'You Don\'t Know JS (book series) 1, 2, 3, 4', aR: 4, d: 'https://github.com/getify/You-Dont-Know-JS'},
-				{b: 'Bruce Eckel, Dianne Marsh', c: 'https://static-2.gumroad.com/res/gumroad/2484219515800/asset_previews/baa9edfdda1f0636d3141c6336006e1c/original/scala_20ebook_20cover_20web.gif', aH: false, a: 'Atomic Scala', aR: 2, d: 'http://www.atomicscala.com'},
-				{b: 'Robert Martin', c: 'https://images-na.ssl-images-amazon.com/images/I/51d1qVhmAmL._SX373_BO1,204,203,200_.jpg', aH: true, a: 'Clean Code. A Handbook of Agile Software Craftsmanship', aR: 0, d: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
-				{b: 'Максим Пацианский', c: '/images/book_covers/router.png', aH: false, a: 'Роутинг в react-приложениях', aR: 4, d: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
-				{b: 'Максим Пацианский', c: '/images/book_covers/redux.jpeg', aH: false, a: 'React Redux курс для начинающих', aR: 4, d: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
-				{b: 'Максим Пацианский', c: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1484152353l/33838152._SX318_.jpg', aH: false, a: 'React.js курс для начинающих', aR: 4, d: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
-				{b: 'Stoyan Stefanov', c: 'https://covers.oreillystatic.com/images/9780596806767/cat.gif', aH: false, a: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', aR: 4, d: 'https://shop.oreilly.com/product/9780596806767.do'},
-				{b: 'David Sawyer McFarland', c: 'https://m.media-amazon.com/images/I/61wK+-BXYUL._AC_UY218_ML3_.jpg', aH: true, a: 'CSS: The Missing Manual', aR: 5, d: 'https://shop.oreilly.com/product/0636920036357.do'},
-				{b: 'Rebecca Hagen, Kim Golombisky', c: 'https://m.media-amazon.com/images/I/41xlqwc2nUL._AC_UY218_ML3_.jpg', aH: false, a: 'White Space Is Not Your Enemy', aR: 6, d: 'http://cw.routledge.com/textbooks/9780240824147'},
-				{b: 'Артемий Лебедев', c: 'https://www.artlebedev.ru/kovodstvo/sections/ekovodstvo.png', aH: false, a: 'Ководство', aR: 6, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
-				{b: 'Эрин Киссейн', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/51/4351/1.00x-thumb.png', aH: false, a: 'Основы контентной стратегии', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/'},
-				{b: 'Аарон Уолтер', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png', aH: true, a: 'Эмоциональный веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/'},
-				{b: 'Итан Маркотт', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/60/4360/1.00x-thumb.png', aH: false, a: 'Отзывчивый веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/'},
-				{b: 'Aspen Pittman', c: 'https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg', aH: false, a: 'The Tube Amp Book - Deluxe Revised Edition', aR: 10, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
-				{b: 'Donald Brosnac', c: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', aH: false, a: 'Guitar Electronics for Musicians', aR: 10, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
-				{b: 'Hideo Kamimoto', c: 'https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg', aH: false, a: 'Complete Guitar Repair', aR: 10, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
-				{b: 'Roger H. Siminoff', c: 'https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg', aH: true, a: 'The Luthier\'s Handbook', aR: 10, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
-				{b: 'Paul Balmer', c: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', aH: false, a: 'The Gibson Les Paul Handbook', aR: 10, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
-				{b: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', c: 'https://images-na.ssl-images-amazon.com/images/I/51kuc0iWoKL._SX326_BO1,204,203,200_.jpg', aH: false, a: 'Design Patterns: Elements of Reusable Object-Oriented Software', aR: 0, d: 'https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8'},
-				{b: 'Pat Brisbin', c: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427714317l/25249192.jpg', aH: false, a: 'Maybe Haskell', aR: 1, d: 'https://books.thoughtbot.com/assets/maybe-haskell.pdf'},
-				{b: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', c: 'https://images-na.ssl-images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg', aH: false, a: 'Structure and Interpretation of Computer Programs', aR: 3, d: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
-				{b: 'Bartosz Milewski', c: 'https://blurb-pdf-processing-service-prod-preflight.s3.amazonaws.com/default/blurb/P14850377/preview_72dpi/cover-trim-no-fold-front_cover-f21dfbed-5945-4d12-be90-0eb565aba6ad.jpg', aH: true, a: 'Category Theory for Programmers', aR: 1, d: 'https://github.com/hmemcpy/milewski-ctfp-pdf'},
-				{b: 'Noel Welsh, Dave Gurnell', c: 'https://underscore.io/images/books/essential-scala.png', aH: false, a: 'Essential Scala', aR: 2, d: 'https://underscore.io/books/essential-scala/'},
-				{b: 'Noel Welsh, Dave Gurnell', c: 'https://underscore.io/images/books/scala-with-cats.png', aH: true, a: 'Scala with Cats', aR: 2, d: 'https://underscore.io/books/scala-with-cats/'},
-				{b: 'Vitaly Bragilevsky', c: 'https://images.manning.com/720/960/resize/book/9/16e1d67-4262-4e32-83c3-5cf65467e91e/Bragilevsky-Haskell-MEAP-HI.png', aH: false, a: 'Haskell in Depth', aR: 1, d: 'https://www.manning.com/books/haskell-in-depth'},
-				{b: 'Дэйв Логан, Джон Кинг, Хэли Фишер-Райт', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/59/17759/0.50x-thumb.png', aH: true, a: 'Лидер и племя', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/'},
-				{b: 'Фредерик Лалу', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/86/15686/0.50x-thumb.png', aH: true, a: 'Открывая организации будущего', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/'},
-				{b: 'Питер Брегман', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/93/23793/0.50x-thumb.png', aH: false, a: 'Эмоциональная смелость', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/'},
-				{b: 'Джон Хеннесси', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/32/24032/0.50x-thumb.png', aH: false, a: 'Принципы лидера', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/'},
-				{b: 'Ричард Пулин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/08/23308/0.50x-thumb.png', aH: false, a: 'Школа дизайна: шрифт', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/'},
-				{b: 'Кейт Феррацци, Тал Рэз', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/89/2589/0.50x-thumb.png', aH: false, a: 'Никогда не ешьте в одиночку', aR: 9, d: 'https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/'},
-				{b: 'Джон Дорр', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/18/22218/0.50x-thumb.png', aH: false, a: 'Измеряйте самое важное', aR: 7, d: 'https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/'},
-				{b: 'Рэй Далио', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/85/20585/0.50x-thumb.png', aH: false, a: 'Принципы', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/princzipyi/'},
-				{b: 'Ричард Пулин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png', aH: false, a: 'Школа дизайна: макет', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'}
+				{b: 'Miran Lipovača', c: 'https://images-na.ssl-images-amazon.com/images/I/41OnGOPKW3L._SX376_BO1,204,203,200_.jpg', aI: true, a: 'Learn You a Haskell for Great Good!', aR: 1, d: 'http://learnyouahaskell.com/'},
+				{b: 'Professor Frisby', c: 'https://github.com/MostlyAdequate/mostly-adequate-guide/raw/master/images/cover.png', aI: true, a: 'Mostly Adequate Guide to Functional Programming', aR: 4, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
+				{b: 'Douglas Crockford', c: 'https://covers.oreillystatic.com/images/9780596517748/cat.gif', aI: false, a: 'JavaScript: The Good Parts', aR: 4, d: 'http://shop.oreilly.com/product/9780596517748.do'},
+				{b: 'Luis Atencio', c: 'https://images.manning.com/720/960/resize/book/5/c5bd123-f4fd-4a03-9069-9309c782ea7e/Atencio_hires_Fc.png', aI: true, a: 'Functional Programming in JavaScript', aR: 4, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
+				{b: 'Sam Newman', c: 'https://covers.oreillystatic.com/images/0636920033158/cat.gif', aI: true, a: 'Building Microservices', aR: 0, d: 'http://shop.oreilly.com/product/0636920033158.do'},
+				{b: 'Alvin Alexander', c: '/images/book_covers/alvin_scala.png', aI: false, a: 'Learning Functional Programming in Scala', aR: 2, d: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
+				{b: 'Kyle Simpson', c: 'https://images-na.ssl-images-amazon.com/images/I/91w8pQAh21L._SY300_.jpg', aI: false, a: 'You Don\'t Know JS (book series) 1, 2, 3, 4', aR: 4, d: 'https://github.com/getify/You-Dont-Know-JS'},
+				{b: 'Bruce Eckel, Dianne Marsh', c: 'https://static-2.gumroad.com/res/gumroad/2484219515800/asset_previews/baa9edfdda1f0636d3141c6336006e1c/original/scala_20ebook_20cover_20web.gif', aI: false, a: 'Atomic Scala', aR: 2, d: 'http://www.atomicscala.com'},
+				{b: 'Robert Martin', c: 'https://images-na.ssl-images-amazon.com/images/I/51d1qVhmAmL._SX373_BO1,204,203,200_.jpg', aI: true, a: 'Clean Code. A Handbook of Agile Software Craftsmanship', aR: 0, d: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
+				{b: 'Максим Пацианский', c: '/images/book_covers/router.png', aI: false, a: 'Роутинг в react-приложениях', aR: 4, d: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
+				{b: 'Максим Пацианский', c: '/images/book_covers/redux.jpeg', aI: false, a: 'React Redux курс для начинающих', aR: 4, d: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
+				{b: 'Максим Пацианский', c: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1484152353l/33838152._SX318_.jpg', aI: false, a: 'React.js курс для начинающих', aR: 4, d: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
+				{b: 'Stoyan Stefanov', c: 'https://covers.oreillystatic.com/images/9780596806767/cat.gif', aI: false, a: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', aR: 4, d: 'https://shop.oreilly.com/product/9780596806767.do'},
+				{b: 'David Sawyer McFarland', c: 'https://m.media-amazon.com/images/I/61wK+-BXYUL._AC_UY218_ML3_.jpg', aI: true, a: 'CSS: The Missing Manual', aR: 5, d: 'https://shop.oreilly.com/product/0636920036357.do'},
+				{b: 'Rebecca Hagen, Kim Golombisky', c: 'https://m.media-amazon.com/images/I/41xlqwc2nUL._AC_UY218_ML3_.jpg', aI: false, a: 'White Space Is Not Your Enemy', aR: 6, d: 'http://cw.routledge.com/textbooks/9780240824147'},
+				{b: 'Артемий Лебедев', c: 'https://www.artlebedev.ru/kovodstvo/sections/ekovodstvo.png', aI: false, a: 'Ководство', aR: 6, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
+				{b: 'Эрин Киссейн', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/51/4351/1.00x-thumb.png', aI: false, a: 'Основы контентной стратегии', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/'},
+				{b: 'Аарон Уолтер', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png', aI: true, a: 'Эмоциональный веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/'},
+				{b: 'Итан Маркотт', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/60/4360/1.00x-thumb.png', aI: false, a: 'Отзывчивый веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/'},
+				{b: 'Aspen Pittman', c: 'https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg', aI: false, a: 'The Tube Amp Book - Deluxe Revised Edition', aR: 10, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
+				{b: 'Donald Brosnac', c: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', aI: false, a: 'Guitar Electronics for Musicians', aR: 10, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
+				{b: 'Hideo Kamimoto', c: 'https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg', aI: false, a: 'Complete Guitar Repair', aR: 10, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
+				{b: 'Roger H. Siminoff', c: 'https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg', aI: true, a: 'The Luthier\'s Handbook', aR: 10, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
+				{b: 'Paul Balmer', c: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', aI: false, a: 'The Gibson Les Paul Handbook', aR: 10, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
+				{b: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', c: 'https://images-na.ssl-images-amazon.com/images/I/51kuc0iWoKL._SX326_BO1,204,203,200_.jpg', aI: false, a: 'Design Patterns: Elements of Reusable Object-Oriented Software', aR: 0, d: 'https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8'},
+				{b: 'Pat Brisbin', c: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427714317l/25249192.jpg', aI: false, a: 'Maybe Haskell', aR: 1, d: 'https://books.thoughtbot.com/assets/maybe-haskell.pdf'},
+				{b: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', c: 'https://images-na.ssl-images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg', aI: false, a: 'Structure and Interpretation of Computer Programs', aR: 3, d: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
+				{b: 'Bartosz Milewski', c: 'https://blurb-pdf-processing-service-prod-preflight.s3.amazonaws.com/default/blurb/P14850377/preview_72dpi/cover-trim-no-fold-front_cover-f21dfbed-5945-4d12-be90-0eb565aba6ad.jpg', aI: true, a: 'Category Theory for Programmers', aR: 1, d: 'https://github.com/hmemcpy/milewski-ctfp-pdf'},
+				{b: 'Noel Welsh, Dave Gurnell', c: 'https://underscore.io/images/books/essential-scala.png', aI: false, a: 'Essential Scala', aR: 2, d: 'https://underscore.io/books/essential-scala/'},
+				{b: 'Noel Welsh, Dave Gurnell', c: 'https://underscore.io/images/books/scala-with-cats.png', aI: true, a: 'Scala with Cats', aR: 2, d: 'https://underscore.io/books/scala-with-cats/'},
+				{b: 'Vitaly Bragilevsky', c: 'https://images.manning.com/720/960/resize/book/9/16e1d67-4262-4e32-83c3-5cf65467e91e/Bragilevsky-Haskell-MEAP-HI.png', aI: false, a: 'Haskell in Depth', aR: 1, d: 'https://www.manning.com/books/haskell-in-depth'},
+				{b: 'Дэйв Логан, Джон Кинг, Хэли Фишер-Райт', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/59/17759/0.50x-thumb.png', aI: true, a: 'Лидер и племя', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/'},
+				{b: 'Фредерик Лалу', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/86/15686/0.50x-thumb.png', aI: true, a: 'Открывая организации будущего', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/'},
+				{b: 'Питер Брегман', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/93/23793/0.50x-thumb.png', aI: false, a: 'Эмоциональная смелость', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/'},
+				{b: 'Джон Хеннесси', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/32/24032/0.50x-thumb.png', aI: false, a: 'Принципы лидера', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/'},
+				{b: 'Ричард Пулин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/08/23308/0.50x-thumb.png', aI: false, a: 'Школа дизайна: шрифт', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/'},
+				{b: 'Кейт Феррацци, Тал Рэз', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/89/2589/0.50x-thumb.png', aI: false, a: 'Никогда не ешьте в одиночку', aR: 9, d: 'https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/'},
+				{b: 'Джон Дорр', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/18/22218/0.50x-thumb.png', aI: false, a: 'Измеряйте самое важное', aR: 7, d: 'https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/'},
+				{b: 'Рэй Далио', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/85/20585/0.50x-thumb.png', aI: false, a: 'Принципы', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/princzipyi/'},
+				{b: 'Ричард Пулин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png', aI: false, a: 'Школа дизайна: макет', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'}
 			])));
 var $author$project$Book$BookTitle = $elm$core$Basics$identity;
 var $author$project$Dataset$learningPath = _List_fromArray(
@@ -5138,7 +5137,7 @@ var $author$project$Project$GitHubUserId = function (a) {
 };
 var $author$project$Project$Link = F2(
 	function (name, url) {
-		return {Q: name, d: url};
+		return {R: name, d: url};
 	});
 var $author$project$Project$NoPic = {$: 0};
 var $author$project$Project$OnlyMe = {$: 0};
@@ -5148,20 +5147,20 @@ var $author$project$Project$Team = function (a) {
 };
 var $author$project$Project$TeamMate = F3(
 	function (name, userpic, url) {
-		return {Q: name, d: url, av: userpic};
+		return {R: name, d: url, aw: userpic};
 	});
 var $author$project$Dataset$projects = _List_fromArray(
 	[
 		{
-		M: 'Collaboration with friends from FP Specialty.',
-		N: $elm$core$Maybe$Just('scala-with-cats.png'),
-		O: _List_fromArray(
+		N: 'Collaboration with friends from FP Specialty.',
+		O: $elm$core$Maybe$Just('scala-with-cats.png'),
+		P: _List_fromArray(
 			[
 				A2($author$project$Project$Link, 'WIP: Russian translation repo', 'https://github.com/fpspecialty/scala-with-cats-ru'),
 				A2($author$project$Project$Link, 'Original book', 'https://underscore.io/books/scala-with-cats/')
 			]),
-		Q: 'WIP: Translation of Scala with Cats',
-		X: $author$project$Project$Team(
+		R: 'WIP: Translation of Scala with Cats',
+		Z: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
@@ -5183,15 +5182,15 @@ var $author$project$Dataset$projects = _List_fromArray(
 				]))
 	},
 		{
-		M: 'Russian version \n      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, \n      refactored every chapter translated before us and then finished the translation.',
-		N: $elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
-		O: _List_fromArray(
+		N: 'Russian version \n      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, \n      refactored every chapter translated before us and then finished the translation.',
+		O: $elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
+		P: _List_fromArray(
 			[
 				A2($author$project$Project$Link, 'Russian translation', 'https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md'),
 				A2($author$project$Project$Link, 'Original book', 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
 			]),
-		Q: 'Translation of the Mostly Adequate Guide',
-		X: $author$project$Project$Team(
+		R: 'Translation of the Mostly Adequate Guide',
+		Z: $author$project$Project$Team(
 			_List_fromArray(
 				[
 					A3(
@@ -5208,16 +5207,16 @@ var $author$project$Dataset$projects = _List_fromArray(
 				]))
 	},
 		{
-		M: 'A small book about Curtis Mayfield «Black Keys» open F# guitar tuning.',
-		N: $elm$core$Maybe$Just('facfaf.jpg'),
-		O: _List_fromArray(
+		N: 'A small book about Curtis Mayfield «Black Keys» open F# guitar tuning.',
+		O: $elm$core$Maybe$Just('facfaf.jpg'),
+		P: _List_fromArray(
 			[
 				A2($author$project$Project$Link, 'PDF', 'https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf'),
 				A2($author$project$Project$Link, 'ePub', 'https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf'),
 				A2($author$project$Project$Link, 'Read online', 'https://www.gitbook.com/read/book/vladimirlogachev/facfaf')
 			]),
-		Q: '#FACFAF. Quick reference guide',
-		X: $author$project$Project$OnlyMe
+		R: '#FACFAF. Quick reference guide',
+		Z: $author$project$Project$OnlyMe
 	}
 	]);
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
@@ -5457,6 +5456,35 @@ var $author$project$Main$viewIntro = function () {
 					]))
 			]));
 }();
+var $author$project$Book$Developer = 0;
+var $author$project$Book$GeneralPerson = 1;
+var $author$project$Book$Musician = 2;
+var $author$project$Main$SetLibrarySpecific = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $elm$html$Html$Attributes$boolProperty = F2(
+	function (key, bool) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$bool(bool));
+	});
+var $elm$html$Html$Attributes$disabled = $elm$html$Html$Attributes$boolProperty('disabled');
+var $author$project$SharedStyles$link = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'margin-right', '1em'),
+		A2($elm$html$Html$Attributes$style, 'cursor', 'pointer'),
+		A2($elm$html$Html$Attributes$style, 'user-select', 'none')
+	]);
+var $author$project$SharedStyles$activeLink = _Utils_ap(
+	$author$project$SharedStyles$link,
+	_List_fromArray(
+		[
+			A2($elm$html$Html$Attributes$style, 'color', 'grey'),
+			$elm$html$Html$Attributes$disabled(true),
+			A2($elm$html$Html$Attributes$style, 'cursor', 'default')
+		]));
 var $elm$html$Html$article = _VirtualDom_node('article');
 var $matthewsj$elm_ordering$Ordering$explicit = F3(
 	function (elements, x, y) {
@@ -5545,9 +5573,6 @@ var $matthewsj$elm_ordering$Ordering$byFieldWith = F4(
 var $author$project$Book$favoriteOrdering = $matthewsj$elm_ordering$Ordering$explicit(
 	_List_fromArray(
 		[true, false]));
-var $author$project$Book$Developer = 0;
-var $author$project$Book$GeneralPerson = 1;
-var $author$project$Book$Musician = 2;
 var $author$project$Book$personKindFromTopic = function (topic) {
 	switch (topic) {
 		case 0:
@@ -5587,7 +5612,7 @@ var $author$project$Book$bookOrdering = A2(
 		$matthewsj$elm_ordering$Ordering$byFieldWith,
 		$author$project$Book$favoriteOrdering,
 		function (_v1) {
-			var favorite = _v1.a.aH;
+			var favorite = _v1.a.aI;
 			return favorite;
 		}),
 	A2(
@@ -5600,6 +5625,22 @@ var $author$project$Book$bookOrdering = A2(
 				return $author$project$Book$personKindFromTopic(topics);
 			}),
 		A2($matthewsj$elm_ordering$Ordering$byFieldWith, $author$project$Book$avaliabilityOrdering, $elm$core$Tuple$second)));
+var $elm$core$Basics$composeR = F3(
+	function (f, g, x) {
+		return g(
+			f(x));
+	});
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
@@ -5633,6 +5674,10 @@ var $elm$core$Dict$get = F2(
 	});
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $author$project$Utils$ifElse = F3(
+	function (b, x, y) {
+		return b ? x : y;
+	});
 var $elm$core$Maybe$map = F2(
 	function (f, maybe) {
 		if (!maybe.$) {
@@ -5643,6 +5688,23 @@ var $elm$core$Maybe$map = F2(
 			return $elm$core$Maybe$Nothing;
 		}
 	});
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
+};
 var $author$project$SharedStyles$regularText = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'line-height', '1.3'),
@@ -5704,10 +5766,6 @@ var $author$project$Main$roundSticker = _List_fromArray(
 var $author$project$Utils$emptyHtml = $elm$html$Html$text('');
 var $author$project$SharedStyles$highlight = A2($elm$html$Html$Attributes$style, 'box-shadow', '#F7DC6F66 0px 0px 5px 10px');
 var $author$project$SharedStyles$highlightShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px -1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 2px 2px,\n    rgba(0, 0, 0, 0.1) 0px 3px 3px, \n    #F7DC6F66 0px 0px 5px 10px');
-var $author$project$Utils$ifElse = F3(
-	function (b, x, y) {
-		return b ? x : y;
-	});
 var $author$project$SharedStyles$regularShadow = A2($elm$html$Html$Attributes$style, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
 var $author$project$Main$viewBook = F2(
 	function (_v0, _v1) {
@@ -5717,7 +5775,7 @@ var $author$project$Main$viewBook = F2(
 		var book = _v1;
 		var textStyle = A3(
 			$author$project$Utils$ifElse,
-			book.aH && (highlightFavorite && available),
+			book.aI && (highlightFavorite && available),
 			_List_fromArray(
 				[
 					$author$project$SharedStyles$highlight,
@@ -5741,7 +5799,7 @@ var $author$project$Main$viewBook = F2(
 				return $author$project$Utils$emptyHtml;
 			}
 		}();
-		var shadow = A3($author$project$Utils$ifElse, book.aH && (highlightFavorite && available), $author$project$SharedStyles$highlightShadow, $author$project$SharedStyles$regularShadow);
+		var shadow = A3($author$project$Utils$ifElse, book.aI && (highlightFavorite && available), $author$project$SharedStyles$highlightShadow, $author$project$SharedStyles$regularShadow);
 		var availabilityStyle = A3(
 			$author$project$Utils$ifElse,
 			available,
@@ -5890,8 +5948,19 @@ var $author$project$Main$viewLibraryBook = function (_v0) {
 				b);
 	}
 };
-var $author$project$Main$viewLibrary = F2(
-	function (books, libState) {
+var $author$project$Main$viewLibrary = F3(
+	function (specific, books, libState) {
+		var specificPredicate = function (_v2) {
+			var topics = _v2.aR;
+			if (!specific.$) {
+				var s = specific.a;
+				return _Utils_eq(
+					s,
+					$author$project$Book$personKindFromTopic(topics));
+			} else {
+				return true;
+			}
+		};
 		return A2(
 			$elm$html$Html$div,
 			_Utils_ap(
@@ -5957,6 +6026,92 @@ var $author$project$Main$viewLibrary = F2(
 										]))
 								])),
 							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'margin-top', '1em')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$a,
+									_Utils_ap(
+										A3(
+											$author$project$Utils$ifElse,
+											_Utils_eq(specific, $elm$core$Maybe$Nothing),
+											$author$project$SharedStyles$activeLink,
+											$author$project$SharedStyles$link),
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SetLibrarySpecific($elm$core$Maybe$Nothing))
+											])),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('All books')
+										])),
+									A2(
+									$elm$html$Html$a,
+									_Utils_ap(
+										A3(
+											$author$project$Utils$ifElse,
+											_Utils_eq(
+												specific,
+												$elm$core$Maybe$Just(0)),
+											$author$project$SharedStyles$activeLink,
+											$author$project$SharedStyles$link),
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SetLibrarySpecific(
+													$elm$core$Maybe$Just(0)))
+											])),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('For developers')
+										])),
+									A2(
+									$elm$html$Html$a,
+									_Utils_ap(
+										A3(
+											$author$project$Utils$ifElse,
+											_Utils_eq(
+												specific,
+												$elm$core$Maybe$Just(1)),
+											$author$project$SharedStyles$activeLink,
+											$author$project$SharedStyles$link),
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SetLibrarySpecific(
+													$elm$core$Maybe$Just(1)))
+											])),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('For everyone')
+										])),
+									A2(
+									$elm$html$Html$a,
+									_Utils_ap(
+										A3(
+											$author$project$Utils$ifElse,
+											_Utils_eq(
+												specific,
+												$elm$core$Maybe$Just(2)),
+											$author$project$SharedStyles$activeLink,
+											$author$project$SharedStyles$link),
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SetLibrarySpecific(
+													$elm$core$Maybe$Just(2)))
+											])),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('For musicians')
+										]))
+								])),
+							A2(
 							$elm$html$Html$div,
 							_List_fromArray(
 								[
@@ -5970,58 +6125,29 @@ var $author$project$Main$viewLibrary = F2(
 								A2(
 									$elm_community$list_extra$List$Extra$stableSortWith,
 									$author$project$Book$bookOrdering,
-									$elm_community$maybe_extra$Maybe$Extra$values(
-										A2(
-											$elm$core$List$map,
-											function (_v0) {
-												var name = _v0.a;
-												var availability = _v0.b;
-												return A2(
-													$elm$core$Maybe$map,
-													function (b) {
-														return _Utils_Tuple2(b, availability);
-													},
-													A2($elm$core$Dict$get, name, books));
-											},
-											$elm$core$Dict$toList(libState))))))
+									A2(
+										$elm$core$List$filter,
+										A2($elm$core$Basics$composeR, $elm$core$Tuple$first, specificPredicate),
+										$elm_community$maybe_extra$Maybe$Extra$values(
+											A2(
+												$elm$core$List$map,
+												function (_v0) {
+													var name = _v0.a;
+													var availability = _v0.b;
+													return A2(
+														$elm$core$Maybe$map,
+														function (b) {
+															return _Utils_Tuple2(b, availability);
+														},
+														A2($elm$core$Dict$get, name, books));
+												},
+												$elm$core$Dict$toList(libState)))))))
 						]))
 				]));
 	});
-var $author$project$Main$LearningMaterialsOnlyFavorites = $elm$core$Basics$identity;
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $elm$html$Html$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$bool(bool));
-	});
-var $elm$html$Html$Attributes$disabled = $elm$html$Html$Attributes$boolProperty('disabled');
-var $author$project$SharedStyles$link = _List_fromArray(
-	[
-		A2($elm$html$Html$Attributes$style, 'margin-right', '1em'),
-		A2($elm$html$Html$Attributes$style, 'cursor', 'pointer'),
-		A2($elm$html$Html$Attributes$style, 'user-select', 'none')
-	]);
-var $author$project$SharedStyles$activeLink = _Utils_ap(
-	$author$project$SharedStyles$link,
-	_List_fromArray(
-		[
-			A2($elm$html$Html$Attributes$style, 'color', 'grey'),
-			$elm$html$Html$Attributes$disabled(true),
-			A2($elm$html$Html$Attributes$style, 'cursor', 'default')
-		]));
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
+var $author$project$Main$LearningMaterialsOnlyFavorites = function (a) {
+	return {$: 0, a: a};
+};
 var $author$project$Utils$getMany = F2(
 	function (dict, keys) {
 		return $elm_community$maybe_extra$Maybe$Extra$values(
@@ -6033,26 +6159,8 @@ var $author$project$Utils$getMany = F2(
 				keys));
 	});
 var $elm$core$Basics$not = _Basics_not;
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 0, a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var $elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'click',
-		$elm$json$Json$Decode$succeed(msg));
-};
 var $author$project$Main$viewMyLearningPath = F3(
-	function (_v0, books, learnPath) {
-		var onlyFavorite = _v0.S;
+	function (onlyFavorite, books, learnPath) {
 		return A2(
 			$elm$html$Html$div,
 			_Utils_ap(
@@ -6090,7 +6198,8 @@ var $author$project$Main$viewMyLearningPath = F3(
 										A3($author$project$Utils$ifElse, onlyFavorite, $author$project$SharedStyles$link, $author$project$SharedStyles$activeLink),
 										_List_fromArray(
 											[
-												$elm$html$Html$Events$onClick(false)
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$LearningMaterialsOnlyFavorites(false))
 											])),
 									_List_fromArray(
 										[
@@ -6102,7 +6211,8 @@ var $author$project$Main$viewMyLearningPath = F3(
 										A3($author$project$Utils$ifElse, onlyFavorite, $author$project$SharedStyles$activeLink, $author$project$SharedStyles$link),
 										_List_fromArray(
 											[
-												$elm$html$Html$Events$onClick(true)
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$LearningMaterialsOnlyFavorites(true))
 											])),
 									_List_fromArray(
 										[
@@ -6123,8 +6233,8 @@ var $author$project$Main$viewMyLearningPath = F3(
 									{z: true, B: !onlyFavorite, D: $elm$core$Maybe$Nothing}),
 								A2(
 									$elm$core$List$filter,
-									function (_v2) {
-										var favorite = _v2.aH;
+									function (_v1) {
+										var favorite = _v1.aI;
 										return A3($author$project$Utils$ifElse, onlyFavorite, favorite, true);
 									},
 									A2(
@@ -6132,8 +6242,8 @@ var $author$project$Main$viewMyLearningPath = F3(
 										books,
 										A2(
 											$elm$core$List$map,
-											function (_v1) {
-												var title = _v1;
+											function (_v0) {
+												var title = _v0;
 												return title;
 											},
 											learnPath)))))
@@ -6142,8 +6252,8 @@ var $author$project$Main$viewMyLearningPath = F3(
 	});
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $author$project$Main$viewProjectImage = function (_v0) {
-	var name = _v0.Q;
-	var imgFileName = _v0.N;
+	var name = _v0.R;
+	var imgFileName = _v0.O;
 	if (!imgFileName.$) {
 		var filename = imgFileName.a;
 		return A2(
@@ -6269,8 +6379,8 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 			$elm$core$List$map,
 			function (_v2) {
 				var url = _v2.d;
-				var userpic = _v2.av;
-				var name = _v2.Q;
+				var userpic = _v2.aw;
+				var name = _v2.R;
 				return A2(
 					$elm$html$Html$li,
 					teamStyle,
@@ -6307,8 +6417,8 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 			$elm$core$List$map,
 			function (_v1) {
 				var url = _v1.d;
-				var userpic = _v1.av;
-				var name = _v1.Q;
+				var userpic = _v1.aw;
+				var name = _v1.R;
 				return A2(
 					$elm$html$Html$li,
 					teamStyle,
@@ -6385,10 +6495,10 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 	}
 };
 var $author$project$Main$viewProject = function (project) {
-	var name = project.Q;
-	var description = project.M;
-	var team = project.X;
-	var links = project.O;
+	var name = project.R;
+	var description = project.N;
+	var team = project.Z;
+	var links = project.P;
 	var projectSection = $elm$html$Html$section(
 		_List_fromArray(
 			[
@@ -6456,7 +6566,7 @@ var $author$project$Main$viewProject = function (project) {
 										]),
 									_List_fromArray(
 										[
-											$elm$html$Html$text(link.Q)
+											$elm$html$Html$text(link.R)
 										]));
 							},
 							links)),
@@ -6510,8 +6620,8 @@ var $author$project$Main$mainView = function (model) {
 			[
 				$author$project$Main$viewHeader($author$project$Main$viewIntro),
 				$author$project$Main$viewProjects($author$project$Dataset$projects),
-				A2($author$project$Main$viewLibrary, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState),
-				A3($author$project$Main$viewMyLearningPath, model.L, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
+				A3($author$project$Main$viewLibrary, model.M.W, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState),
+				A3($author$project$Main$viewMyLearningPath, model.L.T, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
 			]));
 };
 var $elm$browser$Browser$External = function (a) {
@@ -6525,7 +6635,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {ac: fragment, ae: host, aj: path, al: port_, ao: protocol, ap: query};
+		return {ae: fragment, ag: host, ak: path, am: port_, ap: protocol, aq: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -6741,8 +6851,8 @@ var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $elm$browser$Browser$sandbox = function (impl) {
 	return _Browser_element(
 		{
-			aK: function (_v0) {
-				return _Utils_Tuple2(impl.aK, $elm$core$Platform$Cmd$none);
+			aL: function (_v0) {
+				return _Utils_Tuple2(impl.aL, $elm$core$Platform$Cmd$none);
 			},
 			aQ: function (_v1) {
 				return $elm$core$Platform$Sub$none;
@@ -6758,14 +6868,23 @@ var $elm$browser$Browser$sandbox = function (impl) {
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
-		var x = msg;
-		return _Utils_update(
-			model,
-			{
-				L: {S: x}
-			});
+		if (!msg.$) {
+			var x = msg.a;
+			return _Utils_update(
+				model,
+				{
+					L: {T: x}
+				});
+		} else {
+			var x = msg.a;
+			return _Utils_update(
+				model,
+				{
+					M: {W: x}
+				});
+		}
 	});
 var $author$project$Main$main = $elm$browser$Browser$sandbox(
-	{aK: $author$project$Main$init, aS: $author$project$Main$update, aT: $author$project$Main$mainView});
+	{aL: $author$project$Main$init, aS: $author$project$Main$update, aT: $author$project$Main$mainView});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));
