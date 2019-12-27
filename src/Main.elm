@@ -83,165 +83,6 @@ viewIntro =
         ]
 
 
-
-
-viewBook : { sticker : Maybe (Html Msg), highlightFavorite: Bool, available: Bool } -> Book -> Html Msg
-viewBook { sticker, highlightFavorite, available } (Book book) =
-    let
-        shadow =
-            if book.favorite && highlightFavorite && available then
-                highlightShadow
-
-            else
-                regularShadow
-
-        textStyle =
-            if book.favorite && highlightFavorite && available then
-                [ highlight, style "background-color" "#F7DC6F66" ]
-
-            else
-                []
-
-        availabilityStyle = if available then
-                []
-
-            else
-                [ highlight, style "filter" "grayscale(1)" ]
-
-        {- sticker area is placed in a bottom left corner of the book -}
-        {- use ralative position for sticker to move inside this area -}
-        stickerNode =
-            case sticker of
-                Just x ->
-                    div
-                        [ style "position" "relative"
-                        , style "height" "0"
-                        , style "user-select" "none"
-                        ]
-                        [ x ]
-
-                Nothing ->
-                    emptyHtml
-    in
-    section
-        [ style "margin-right" "32px"
-        , style "width" "100px"
-        , style "font-size" "12px"
-        ]
-        [ a [ href book.url, target "_blank" ]
-            [ img
-                (availabilityStyle ++ [ shadow
-                , style "max-height" "150px"
-                , style "max-width" "100px"
-                , style "border-radius" "3px"
-                , style "margin-top" "2em"
-                , src book.coverUrl
-                , alt <| book.author ++ ", " ++ book.title
-                ])
-                []
-            ]
-        , stickerNode
-        , div textStyle 
-            [ p [ style "margin" ".5em 0" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
-            , p [] [ text book.author ]
-            ]
-        ]
-
-
-roundSticker : List (Html.Attribute Msg)
-roundSticker =
-    [ -- sticker position
-      style "position" "relative"
-    , style "width" "50px"
-    , style "height" "50px"
-    , style "bottom" "58px"
-    , style "left" "5px"
-
-    -- sticker
-    , style "display" "flex"
-    , style "text-align" "center"
-    , style "align-items" "center"
-    , style "border-radius" "300px"
-    , style "font-size" "12px"
-
-    -- , style "opacity" ".8"
-    , style "transform" "rotate(-10deg)"
-    ]
-
-
-viewLibraryBook : ( Book, BookAvaliability ) -> Html Msg
-viewLibraryBook ( b, availability ) =
-    let
-        book =
-            div [ style "opacity" ".5" ] [ viewBook  { sticker = Nothing, highlightFavorite = True, available = True } b ]
-
-        comingSoon =
-            div
-                (roundSticker
-                    ++ [ style "background-color" "rgba(17, 21, 27, 0.8)"
-                       , style "color" "rgb(255, 152, 0)"
-                       ]
-                )
-                [ text "coming soon" ]
-
-        givenToSomeone =
-            div
-                (roundSticker
-                    ++ [ style "background-color" "rgba(255, 152, 0, 0.7)"
-                       , style "color" "rgb(17, 21, 27)"
-                       ]
-                )
-                [ text "already taken" ]
-    in
-    case availability of
-        Available ->
-            viewBook  { sticker = Nothing, highlightFavorite = True, available = True } b
-
-        ComingSoon ->
-            viewBook { sticker = Just comingSoon , highlightFavorite = False, available = False} b
-
-        GivenToSomeone ->
-            viewBook { sticker = Just givenToSomeone, highlightFavorite = False , available = False} b
-
- 
-viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
-viewLibrary books libState =
-    div (fullwidthContainer ++ [ style "background-color" "#d2dbe0" ])
-        [ article innerContainer
-            [ h2 [] [ text "My offline library, shared" ]
-            , div regularText
-                [ p [] [ text "I have a tradition of storing my books on my desk in the workplace." ]
-                , p [] [ text "Any person can borrow any book from my personal library." ]
-                , p [] [ text "This applies not only to my collegues, but to any person who knows me in real life." ]
-                , p [] [ text "This is my culture, it works great, it makes the world around me a better place," ]
-                , p [] [ text "and I won't give up on it, so everyone should just accept it." ]
-                ]
-            , libState
-                |> Dict.toList
-                |> List.map (\( name, availability ) -> Dict.get name books |> Maybe.map (\b -> ( b, availability )))
-                |> values
-                |> stableSortWith bookOrdering
-                |> List.map viewLibraryBook
-                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
-            ]
-        ]
-
-
-viewMyLearningPath : Dict String Book -> List LearningMaterial -> Html Msg
-viewMyLearningPath books learnPath =
-    -- Best | All (with best marked)
-    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3" ])
-        [ div innerContainer
-            [ h2 [] [ text "My learning path" ]
-            , learnPath
-                |> List.map (\(BookTitle title) -> title)
-                |> getMany books
-                |> List.map (viewBook { sticker = Nothing, highlightFavorite = True, available = True })
-                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
-            ]
-        ]
-
-
 viewProjectImage : Project -> Html Msg
 viewProjectImage (Project { name, imgFileName }) =
     case imgFileName of
@@ -370,5 +211,165 @@ viewProjects projs =
         [ article innerContainer
             [ h2 [] [ text "side projects" ]
             , article [] <| List.map viewProject projs
+            ]
+        ]
+
+
+viewBook : { sticker : Maybe (Html Msg), highlightFavorite : Bool, available : Bool } -> Book -> Html Msg
+viewBook { sticker, highlightFavorite, available } (Book book) =
+    let
+        shadow =
+            if book.favorite && highlightFavorite && available then
+                highlightShadow
+
+            else
+                regularShadow
+
+        textStyle =
+            if book.favorite && highlightFavorite && available then
+                [ highlight, style "background-color" "#F7DC6F66" ]
+
+            else
+                []
+
+        availabilityStyle =
+            if available then
+                []
+
+            else
+                [ highlight, style "filter" "grayscale(1)" ]
+
+        {- sticker area is placed in a bottom left corner of the book -}
+        {- use ralative position for sticker to move inside this area -}
+        stickerNode =
+            case sticker of
+                Just x ->
+                    div
+                        [ style "position" "relative"
+                        , style "height" "0"
+                        , style "user-select" "none"
+                        ]
+                        [ x ]
+
+                Nothing ->
+                    emptyHtml
+    in
+    section
+        [ style "margin-right" "32px"
+        , style "width" "100px"
+        , style "font-size" "12px"
+        ]
+        [ a [ href book.url, target "_blank" ]
+            [ img
+                (availabilityStyle
+                    ++ [ shadow
+                       , style "max-height" "150px"
+                       , style "max-width" "100px"
+                       , style "border-radius" "3px"
+                       , style "margin-top" "2em"
+                       , src book.coverUrl
+                       , alt <| book.author ++ ", " ++ book.title
+                       ]
+                )
+                []
+            ]
+        , stickerNode
+        , div textStyle
+            [ p [ style "margin" ".5em 0" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
+            , p [] [ text book.author ]
+            ]
+        ]
+
+
+roundSticker : List (Html.Attribute Msg)
+roundSticker =
+    [ -- sticker position
+      style "position" "relative"
+    , style "width" "50px"
+    , style "height" "50px"
+    , style "bottom" "58px"
+    , style "left" "5px"
+
+    -- sticker
+    , style "display" "flex"
+    , style "text-align" "center"
+    , style "align-items" "center"
+    , style "border-radius" "300px"
+    , style "font-size" "12px"
+
+    -- , style "opacity" ".8"
+    , style "transform" "rotate(-10deg)"
+    ]
+
+
+viewLibraryBook : ( Book, BookAvaliability ) -> Html Msg
+viewLibraryBook ( b, availability ) =
+    let
+        book =
+            div [ style "opacity" ".5" ] [ viewBook { sticker = Nothing, highlightFavorite = True, available = True } b ]
+
+        comingSoon =
+            div
+                (roundSticker
+                    ++ [ style "background-color" "rgba(17, 21, 27, 0.8)"
+                       , style "color" "rgb(255, 152, 0)"
+                       ]
+                )
+                [ text "coming soon" ]
+
+        givenToSomeone =
+            div
+                (roundSticker
+                    ++ [ style "background-color" "rgba(255, 152, 0, 0.7)"
+                       , style "color" "rgb(17, 21, 27)"
+                       ]
+                )
+                [ text "already taken" ]
+    in
+    case availability of
+        Available ->
+            viewBook { sticker = Nothing, highlightFavorite = True, available = True } b
+
+        ComingSoon ->
+            viewBook { sticker = Just comingSoon, highlightFavorite = False, available = False } b
+
+        GivenToSomeone ->
+            viewBook { sticker = Just givenToSomeone, highlightFavorite = False, available = False } b
+
+
+viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
+viewLibrary books libState =
+    div (fullwidthContainer ++ [ style "background-color" "#d2dbe0" ])
+        [ article innerContainer
+            [ h2 [] [ text "My offline library, shared" ]
+            , div regularText
+                [ p [] [ text "I have a tradition of storing my books on my desk in the workplace." ]
+                , p [] [ text "Any person can borrow any book from my personal library." ]
+                , p [] [ text "This applies not only to my collegues, but to any person who knows me in real life." ]
+                , p [] [ text "This is my culture, it works great, it makes the world around me a better place," ]
+                , p [] [ text "and I won't give up on it, so everyone should just accept it." ]
+                ]
+            , libState
+                |> Dict.toList
+                |> List.map (\( name, availability ) -> Dict.get name books |> Maybe.map (\b -> ( b, availability )))
+                |> values
+                |> stableSortWith bookOrdering
+                |> List.map viewLibraryBook
+                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
+            ]
+        ]
+
+
+viewMyLearningPath : Dict String Book -> List LearningMaterial -> Html Msg
+viewMyLearningPath books learnPath =
+    -- Best | All (with best marked)
+    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3" ])
+        [ div innerContainer
+            [ h2 [] [ text "My learning path" ]
+            , learnPath
+                |> List.map (\(BookTitle title) -> title)
+                |> getMany books
+                |> List.map (viewBook { sticker = Nothing, highlightFavorite = True, available = True })
+                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
             ]
         ]
