@@ -67,7 +67,7 @@ mainView model =
         [ viewHeader viewIntro
         , viewProjects projects
         , viewLibrary model.library.specific knownBooks libraryState
-        , viewMyLearningPath model.learningMaterials.onlyFavorite knownBooks learningPath
+        , viewLearningMaterials model.learningMaterials.onlyFavorite knownBooks learningPath
         ]
 
 
@@ -385,7 +385,7 @@ viewLibrary specific books libState =
     div (fullwidthContainer ++ [ style "background-color" "#d2dbe0", id "library" ])
         [ article innerContainer
             [ h2 [] [ text "My offline library, shared" ]
-            , div regularText
+            , div (regularText ++ [style "margin-top" "1em"])
                 [ p [] [ text "I have a tradition of storing my books on my desk in the workplace." ]
                 , p [] [ text "Any person can borrow any book from my personal library." ]
                 , p [] [ text "This applies not only to my collegues, but to any person who knows me in real life." ]
@@ -410,8 +410,8 @@ viewLibrary specific books libState =
         ]
 
 
-viewMyLearningPath : Bool -> Dict String Book -> List LearningMaterial -> Html Msg
-viewMyLearningPath onlyFavorite books learnPath =
+viewLearningMaterials : Bool -> Dict String Book -> List LearningMaterial -> Html Msg
+viewLearningMaterials onlyFavorite books learnPath =
     div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "learning-materials" ])
         [ div innerContainer
             [ h2 [] [ text "My learning materials" ]

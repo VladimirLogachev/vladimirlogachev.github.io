@@ -60,6 +60,8 @@ projects =
 {-
    as long as I don't use relational database for this library,
    book title is a key. To keep things consistent, title should be never changed :D
+
+   There is nop visible difference between Book and Course, so I will keep them as Book for a while)
 -}
 
 
@@ -409,6 +411,46 @@ knownBooks =
         , coverUrl = "https://img-gorod.ru/21/581/2158108_detail.jpg"
         , favorite = True
         }
+    , Book
+        { author = "freeCodeCamp"
+        , title = "Frontend Developer Specialization"
+        , topics = JS
+        , url = "https://www.freecodecamp.org/"
+        , coverUrl = "/images/course_covers/freecodecamp.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Computer Science Center"
+        , title = "Функциональное программирование на языке Haskell"
+        , topics = HASKELL
+        , url = "https://stepik.org/course/75"
+        , coverUrl = "https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png"
+        , favorite = True
+        }
+    , Book
+        { author = "Computer Science Center"
+        , title = "Функциональное программирование на языке Haskell (часть 2)"
+        , topics = HASKELL
+        , url = "https://stepik.org/course/693"
+        , coverUrl = "https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png"
+        , favorite = True
+        }
+    , Book
+        { author = "Tinkoff.ru"
+        , title = "Введение в Scala"
+        , topics = SCALA
+        , url = "https://stepik.org/course/16243"
+        , coverUrl = "https://stepik.org/media/cache/images/courses/16243/cover_MdfnLfH/471712250971b734e490e6c554c72105.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Samuel Gélineau"
+        , title = "Mastering Haskell Programming"
+        , topics = HASKELL
+        , url = "https://www.udemy.com/course/mastering-haskell-programming/"
+        , coverUrl = "https://covers.oreillystatic.com/images/0636920080893/lrg.jpg"
+        , favorite = False
+        }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
         |> Dict.fromList
@@ -447,7 +489,11 @@ learningPath =
     [ BookTitle "Scala with Cats"
     , BookTitle "Essential Scala"
     , BookTitle "Category Theory for Programmers"
+    , BookTitle "Введение в Scala"
     , BookTitle "Structure and Interpretation of Computer Programs"
+    , BookTitle "Mastering Haskell Programming"
+    , BookTitle "Функциональное программирование на языке Haskell (часть 2)"
+    , BookTitle "Функциональное программирование на языке Haskell"
     , BookTitle "Maybe Haskell"
     , BookTitle "Design Patterns: Elements of Reusable Object-Oriented Software"
     , BookTitle "Learn You a Haskell for Great Good!"
@@ -463,6 +509,7 @@ learningPath =
     , BookTitle "React Redux курс для начинающих"
     , BookTitle "React.js курс для начинающих"
     , BookTitle "JavaScript Patterns: Build Better Applications with Coding and Design Patterns"
+    , BookTitle "Frontend Developer Specialization"
     , BookTitle "CSS: The Missing Manual"
     , BookTitle "White Space Is Not Your Enemy"
     , BookTitle "Ководство"
