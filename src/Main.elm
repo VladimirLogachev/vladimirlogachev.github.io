@@ -83,27 +83,35 @@ viewIntro =
         ]
 
 
-viewBook : Maybe (Html Msg) -> Book -> Html Msg
-viewBook mSticker (Book book) =
+
+
+viewBook : { sticker : Maybe (Html Msg), highlightFavorite: Bool, available: Bool } -> Book -> Html Msg
+viewBook { sticker, highlightFavorite, available } (Book book) =
     let
         shadow =
-            if book.favorite then
+            if book.favorite && highlightFavorite && available then
                 highlightShadow
 
             else
                 regularShadow
 
         textStyle =
-            if book.favorite then
+            if book.favorite && highlightFavorite && available then
                 [ highlight, style "background-color" "#F7DC6F66" ]
 
             else
                 []
 
+        availabilityStyle = if available then
+                []
+
+            else
+                [ highlight, style "filter" "grayscale(1)" ]
+
         {- sticker area is placed in a bottom left corner of the book -}
         {- use ralative position for sticker to move inside this area -}
-        sticker =
-            case mSticker of
+        stickerNode =
+            case sticker of
                 Just x ->
                     div
                         [ style "position" "relative"
@@ -122,18 +130,18 @@ viewBook mSticker (Book book) =
         ]
         [ a [ href book.url, target "_blank" ]
             [ img
-                [ shadow
+                (availabilityStyle ++ [ shadow
                 , style "max-height" "150px"
                 , style "max-width" "100px"
                 , style "border-radius" "3px"
                 , style "margin-top" "2em"
                 , src book.coverUrl
                 , alt <| book.author ++ ", " ++ book.title
-                ]
+                ])
                 []
             ]
-        , sticker
-        , div textStyle
+        , stickerNode
+        , div textStyle 
             [ p [ style "margin" ".5em 0" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
             , p [] [ text book.author ]
             ]
@@ -155,6 +163,7 @@ roundSticker =
     , style "align-items" "center"
     , style "border-radius" "300px"
     , style "font-size" "12px"
+
     -- , style "opacity" ".8"
     , style "transform" "rotate(-10deg)"
     ]
@@ -164,7 +173,7 @@ viewLibraryBook : ( Book, BookAvaliability ) -> Html Msg
 viewLibraryBook ( b, availability ) =
     let
         book =
-            div [ style "opacity" ".5" ] [ viewBook Nothing b ]
+            div [ style "opacity" ".5" ] [ viewBook  { sticker = Nothing, highlightFavorite = True, available = True } b ]
 
         comingSoon =
             div
@@ -186,15 +195,15 @@ viewLibraryBook ( b, availability ) =
     in
     case availability of
         Available ->
-            viewBook Nothing b
+            viewBook  { sticker = Nothing, highlightFavorite = True, available = True } b
 
         ComingSoon ->
-            viewBook (Just comingSoon) b
+            viewBook { sticker = Just comingSoon , highlightFavorite = False, available = False} b
 
         GivenToSomeone ->
-            viewBook (Just givenToSomeone) b
+            viewBook { sticker = Just givenToSomeone, highlightFavorite = False , available = False} b
 
-
+ 
 viewLibrary : Dict String Book -> Dict String BookAvaliability -> Html Msg
 viewLibrary books libState =
     div (fullwidthContainer ++ [ style "background-color" "#d2dbe0" ])
@@ -227,7 +236,7 @@ viewMyLearningPath books learnPath =
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
-                |> List.map (viewBook Nothing)
+                |> List.map (viewBook { sticker = Nothing, highlightFavorite = True, available = True })
                 |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
             ]
         ]
