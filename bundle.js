@@ -4858,11 +4858,13 @@ var $author$project$Book$COMMUNICATION = 9;
 var $author$project$Book$CSS = 5;
 var $author$project$Book$DESIGN = 6;
 var $author$project$Book$DEV = 0;
+var $author$project$Book$ENTREPRENEURSHIP = 11;
+var $author$project$Book$FASHION = 10;
 var $author$project$Book$HASKELL = 1;
 var $author$project$Book$JS = 4;
 var $author$project$Book$LEADERSHIP = 8;
 var $author$project$Book$MANAGEMENT = 7;
-var $author$project$Book$MUSIC_INSTRUMENTS = 10;
+var $author$project$Book$MUSIC_INSTRUMENTS = 12;
 var $author$project$Book$SCALA = 2;
 var $author$project$Book$SCHEME = 3;
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
@@ -5085,11 +5087,11 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Эрин Киссейн', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/51/4351/1.00x-thumb.png', aI: false, a: 'Основы контентной стратегии', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/'},
 				{b: 'Аарон Уолтер', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png', aI: true, a: 'Эмоциональный веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/'},
 				{b: 'Итан Маркотт', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/60/4360/1.00x-thumb.png', aI: false, a: 'Отзывчивый веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/'},
-				{b: 'Aspen Pittman', c: 'https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg', aI: false, a: 'The Tube Amp Book - Deluxe Revised Edition', aR: 10, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
-				{b: 'Donald Brosnac', c: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', aI: false, a: 'Guitar Electronics for Musicians', aR: 10, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
-				{b: 'Hideo Kamimoto', c: 'https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg', aI: false, a: 'Complete Guitar Repair', aR: 10, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
-				{b: 'Roger H. Siminoff', c: 'https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg', aI: true, a: 'The Luthier\'s Handbook', aR: 10, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
-				{b: 'Paul Balmer', c: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', aI: false, a: 'The Gibson Les Paul Handbook', aR: 10, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
+				{b: 'Aspen Pittman', c: 'https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg', aI: false, a: 'The Tube Amp Book - Deluxe Revised Edition', aR: 12, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
+				{b: 'Donald Brosnac', c: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', aI: false, a: 'Guitar Electronics for Musicians', aR: 12, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
+				{b: 'Hideo Kamimoto', c: 'https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg', aI: false, a: 'Complete Guitar Repair', aR: 12, d: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
+				{b: 'Roger H. Siminoff', c: 'https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg', aI: true, a: 'The Luthier\'s Handbook', aR: 12, d: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
+				{b: 'Paul Balmer', c: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', aI: false, a: 'The Gibson Les Paul Handbook', aR: 12, d: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
 				{b: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', c: 'https://images-na.ssl-images-amazon.com/images/I/51kuc0iWoKL._SX326_BO1,204,203,200_.jpg', aI: false, a: 'Design Patterns: Elements of Reusable Object-Oriented Software', aR: 0, d: 'https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8'},
 				{b: 'Pat Brisbin', c: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427714317l/25249192.jpg', aI: false, a: 'Maybe Haskell', aR: 1, d: 'https://books.thoughtbot.com/assets/maybe-haskell.pdf'},
 				{b: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', c: 'https://images-na.ssl-images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg', aI: false, a: 'Structure and Interpretation of Computer Programs', aR: 3, d: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
@@ -5105,7 +5107,10 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Кейт Феррацци, Тал Рэз', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/89/2589/0.50x-thumb.png', aI: false, a: 'Никогда не ешьте в одиночку', aR: 9, d: 'https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/'},
 				{b: 'Джон Дорр', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/18/22218/0.50x-thumb.png', aI: false, a: 'Измеряйте самое важное', aR: 7, d: 'https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/'},
 				{b: 'Рэй Далио', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/85/20585/0.50x-thumb.png', aI: false, a: 'Принципы', aR: 8, d: 'https://www.mann-ivanov-ferber.ru/books/princzipyi/'},
-				{b: 'Ричард Пулин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png', aI: false, a: 'Школа дизайна: макет', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'}
+				{b: 'Ричард Пулин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png', aI: false, a: 'Школа дизайна: макет', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'},
+				{b: 'Бернхард Ретцель', c: 'https://cdn1.ozone.ru/multimedia/c1200/1001551788.jpg', aI: false, a: 'Джентльмен. Путеводитель по стилю и моде для мужчин', aR: 10, d: 'https://www.ozon.ru/context/detail/id/4993260/'},
+				{b: 'Максим Котин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/48/11448/1.00x-thumb.png', aI: false, a: 'И ботаники делают бизнес 1+2', aR: 11, d: 'https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/'},
+				{b: 'Эмилио Пухоль', c: 'https://img-gorod.ru/21/581/2158108_detail.jpg', aI: true, a: 'Школа игры на шестиструнной гитаре', aR: 12, d: 'https://www.chitai-gorod.ru/catalog/book/358478/'}
 			])));
 var $author$project$Book$BookTitle = $elm$core$Basics$identity;
 var $author$project$Dataset$learningPath = _List_fromArray(
@@ -5119,8 +5124,8 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 			_Utils_Tuple2('Лидер и племя', 2),
 			_Utils_Tuple2('Открывая организации будущего', 0),
 			_Utils_Tuple2('Эмоциональная смелость', 1),
-			_Utils_Tuple2('Принципы лидера', 1),
-			_Utils_Tuple2('Школа дизайна: шрифт', 1),
+			_Utils_Tuple2('Принципы лидера', 2),
+			_Utils_Tuple2('Школа дизайна: шрифт', 2),
 			_Utils_Tuple2('Никогда не ешьте в одиночку', 1),
 			_Utils_Tuple2('Измеряйте самое важное', 1),
 			_Utils_Tuple2('Принципы', 1),
@@ -5130,7 +5135,10 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 			_Utils_Tuple2('Guitar Electronics for Musicians', 0),
 			_Utils_Tuple2('Complete Guitar Repair', 0),
 			_Utils_Tuple2('The Luthier\'s Handbook', 0),
-			_Utils_Tuple2('The Gibson Les Paul Handbook', 0)
+			_Utils_Tuple2('The Gibson Les Paul Handbook', 0),
+			_Utils_Tuple2('Джентльмен. Путеводитель по стилю и моде для мужчин', 0),
+			_Utils_Tuple2('И ботаники делают бизнес 1+2', 0),
+			_Utils_Tuple2('Школа игры на шестиструнной гитаре', 0)
 		]));
 var $author$project$Project$GitHubUserId = function (a) {
 	return {$: 1, a: a};
@@ -5481,7 +5489,7 @@ var $author$project$SharedStyles$activeLink = _Utils_ap(
 	$author$project$SharedStyles$link,
 	_List_fromArray(
 		[
-			A2($elm$html$Html$Attributes$style, 'color', 'grey'),
+			A2($elm$html$Html$Attributes$style, 'color', 'rgb(187, 189, 189)'),
 			$elm$html$Html$Attributes$disabled(true),
 			A2($elm$html$Html$Attributes$style, 'cursor', 'default')
 		]));
@@ -5594,6 +5602,10 @@ var $author$project$Book$personKindFromTopic = function (topic) {
 		case 8:
 			return 1;
 		case 9:
+			return 1;
+		case 10:
+			return 1;
+		case 11:
 			return 1;
 		default:
 			return 2;
@@ -6015,14 +6027,7 @@ var $author$project$Main$viewLibrary = F3(
 									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$text('This is my culture, it works great, it makes the world around me a better place,')
-										])),
-									A2(
-									$elm$html$Html$p,
-									_List_Nil,
-									_List_fromArray(
-										[
-											$elm$html$Html$text('and I won\'t give up on it, so everyone should just accept it.')
+											$elm$html$Html$text('This is my culture, it works great, and I won\'t give up on it, so everyone should just accept it.')
 										]))
 								])),
 							A2(
