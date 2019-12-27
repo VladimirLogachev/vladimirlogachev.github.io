@@ -5069,7 +5069,7 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 		_List_fromArray(
 			[
 				{b: 'Miran Lipovača', c: 'https://images-na.ssl-images-amazon.com/images/I/41OnGOPKW3L._SX376_BO1,204,203,200_.jpg', aI: true, a: 'Learn You a Haskell for Great Good!', aR: 1, d: 'http://learnyouahaskell.com/'},
-				{b: 'Professor Frisby', c: 'https://github.com/MostlyAdequate/mostly-adequate-guide/raw/master/images/cover.png', aI: true, a: 'Mostly Adequate Guide to Functional Programming', aR: 4, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
+				{b: 'Brian Lonsdorf', c: 'https://github.com/MostlyAdequate/mostly-adequate-guide/raw/master/images/cover.png', aI: true, a: 'Mostly Adequate Guide to Functional Programming', aR: 4, d: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
 				{b: 'Douglas Crockford', c: 'https://covers.oreillystatic.com/images/9780596517748/cat.gif', aI: false, a: 'JavaScript: The Good Parts', aR: 4, d: 'http://shop.oreilly.com/product/9780596517748.do'},
 				{b: 'Luis Atencio', c: 'https://images.manning.com/720/960/resize/book/5/c5bd123-f4fd-4a03-9069-9309c782ea7e/Atencio_hires_Fc.png', aI: true, a: 'Functional Programming in JavaScript', aR: 4, d: 'https://www.manning.com/books/functional-programming-in-javascript'},
 				{b: 'Sam Newman', c: 'https://covers.oreillystatic.com/images/0636920033158/cat.gif', aI: true, a: 'Building Microservices', aR: 0, d: 'http://shop.oreilly.com/product/0636920033158.do'},
@@ -5085,7 +5085,7 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Rebecca Hagen, Kim Golombisky', c: 'https://m.media-amazon.com/images/I/41xlqwc2nUL._AC_UY218_ML3_.jpg', aI: false, a: 'White Space Is Not Your Enemy', aR: 6, d: 'http://cw.routledge.com/textbooks/9780240824147'},
 				{b: 'Артемий Лебедев', c: 'https://www.artlebedev.ru/kovodstvo/sections/ekovodstvo.png', aI: false, a: 'Ководство', aR: 6, d: 'https://www.artlebedev.ru/kovodstvo/sections/'},
 				{b: 'Эрин Киссейн', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/51/4351/1.00x-thumb.png', aI: false, a: 'Основы контентной стратегии', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/'},
-				{b: 'Аарон Уолтер', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png', aI: true, a: 'Эмоциональный веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/'},
+				{b: 'Аарон Уолтер', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png', aI: false, a: 'Эмоциональный веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/'},
 				{b: 'Итан Маркотт', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/60/4360/1.00x-thumb.png', aI: false, a: 'Отзывчивый веб-дизайн', aR: 6, d: 'https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/'},
 				{b: 'Aspen Pittman', c: 'https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg', aI: false, a: 'The Tube Amp Book - Deluxe Revised Edition', aR: 12, d: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
 				{b: 'Donald Brosnac', c: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', aI: false, a: 'Guitar Electronics for Musicians', aR: 12, d: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
@@ -5112,8 +5112,8 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 				{b: 'Максим Котин', c: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/48/11448/1.00x-thumb.png', aI: false, a: 'И ботаники делают бизнес 1+2', aR: 11, d: 'https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/'},
 				{b: 'Эмилио Пухоль', c: 'https://img-gorod.ru/21/581/2158108_detail.jpg', aI: true, a: 'Школа игры на шестиструнной гитаре', aR: 12, d: 'https://www.chitai-gorod.ru/catalog/book/358478/'},
 				{b: 'freeCodeCamp', c: '/images/course_covers/freecodecamp.png', aI: false, a: 'Frontend Developer Specialization', aR: 4, d: 'https://www.freecodecamp.org/'},
-				{b: 'Computer Science Center', c: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', aI: true, a: 'Функциональное программирование на языке Haskell', aR: 1, d: 'https://stepik.org/course/75'},
-				{b: 'Computer Science Center', c: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', aI: true, a: 'Функциональное программирование на языке Haskell (часть 2)', aR: 1, d: 'https://stepik.org/course/693'},
+				{b: 'Денис Москвин, Computer Science Center', c: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', aI: true, a: 'Функциональное программирование на языке Haskell', aR: 1, d: 'https://stepik.org/course/75'},
+				{b: 'Денис Москвин, Computer Science Center', c: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', aI: true, a: 'Функциональное программирование на языке Haskell (часть 2)', aR: 1, d: 'https://stepik.org/course/693'},
 				{b: 'Tinkoff.ru', c: 'https://stepik.org/media/cache/images/courses/16243/cover_MdfnLfH/471712250971b734e490e6c554c72105.png', aI: false, a: 'Введение в Scala', aR: 2, d: 'https://stepik.org/course/16243'},
 				{b: 'Samuel Gélineau', c: 'https://covers.oreillystatic.com/images/0636920080893/lrg.jpg', aI: false, a: 'Mastering Haskell Programming', aR: 1, d: 'https://www.udemy.com/course/mastering-haskell-programming/'}
 			])));
@@ -5195,7 +5195,7 @@ var $author$project$Dataset$projects = _List_fromArray(
 				]))
 	},
 		{
-		N: 'Russian version \n      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%.\n      Then me and Sakayama joined the translation, \n      refactored every chapter translated before us and then finished the translation.',
+		N: 'Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n      The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation.',
 		O: $elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
 		P: _List_fromArray(
 			[
@@ -6514,6 +6514,21 @@ var $author$project$Main$viewProject = function (project) {
 	var description = project.N;
 	var team = project.Z;
 	var links = project.P;
+	var splitDescription = A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		A2(
+			$elm$core$List$map,
+			function (x) {
+				return A2(
+					$elm$html$Html$p,
+					$author$project$SharedStyles$regularText,
+					_List_fromArray(
+						[
+							$elm$html$Html$text(x)
+						]));
+			},
+			A2($elm$core$String$split, '\n', description)));
 	var projectSection = $elm$html$Html$section(
 		_List_fromArray(
 			[
@@ -6554,13 +6569,7 @@ var $author$project$Main$viewProject = function (project) {
 							[
 								$elm$html$Html$text(name)
 							])),
-						A2(
-						$elm$html$Html$p,
-						$author$project$SharedStyles$regularText,
-						_List_fromArray(
-							[
-								$elm$html$Html$text(description)
-							])),
+						splitDescription,
 						A2(
 						$elm$html$Html$div,
 						_List_fromArray(
