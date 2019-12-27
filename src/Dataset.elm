@@ -25,11 +25,8 @@ projects =
         }
     , Project
         { name = "Translation of the Mostly Adequate Guide"
-        , description = """Russian version 
-      of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
-      The translation was initiated by Maxim Filippov and stopped at 60%.
-      Then me and Sakayama joined the translation, 
-      refactored every chapter translated before us and then finished the translation."""
+        , description = """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
+      The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
         , links =
             [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
             , Link "Original book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
@@ -76,7 +73,7 @@ knownBooks =
         , favorite = True
         }
     , Book
-        { author = "Professor Frisby"
+        { author = "Brian Lonsdorf"
         , title = "Mostly Adequate Guide to Functional Programming"
         , topics = JS
         , url = "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
@@ -209,7 +206,7 @@ knownBooks =
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/"
         , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png"
-        , favorite = True
+        , favorite = False
         }
     , Book
         { author = "Итан Маркотт"
@@ -420,7 +417,7 @@ knownBooks =
         , favorite = False
         }
     , Book
-        { author = "Computer Science Center"
+        { author = "Денис Москвин, Computer Science Center"
         , title = "Функциональное программирование на языке Haskell"
         , topics = HASKELL
         , url = "https://stepik.org/course/75"
@@ -428,7 +425,7 @@ knownBooks =
         , favorite = True
         }
     , Book
-        { author = "Computer Science Center"
+        { author = "Денис Москвин, Computer Science Center"
         , title = "Функциональное программирование на языке Haskell (часть 2)"
         , topics = HASKELL
         , url = "https://stepik.org/course/693"

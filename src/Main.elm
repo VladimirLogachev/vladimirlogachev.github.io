@@ -217,13 +217,16 @@ viewProject ((Project { name, description, team, links }) as project) =
                 [ style "flex-shrink" "1"
                 , style "min-width" "350px"
                 ]
+
+        splitDescription =
+            description |> String.split "\n" |> List.map (\x -> p regularText [ text x ]) |> div []
     in
     projectSection
         [ imageWrapper [ viewProjectImage project ]
         , descriptionWrapper
             [ h3 []
                 [ text name ]
-            , p regularText [ text description ]
+            , splitDescription
             , div
                 [ style "margin-top" "0.4em"
                 , style "margin-bottom" "0.4em"
@@ -385,7 +388,7 @@ viewLibrary specific books libState =
     div (fullwidthContainer ++ [ style "background-color" "#d2dbe0", id "library" ])
         [ article innerContainer
             [ h2 [] [ text "My offline library, shared" ]
-            , div (regularText ++ [style "margin-top" "1em"])
+            , div (regularText ++ [ style "margin-top" "1em" ])
                 [ p [] [ text "I have a tradition of storing my books on my desk in the workplace." ]
                 , p [] [ text "Any person can borrow any book from my personal library." ]
                 , p [] [ text "This applies not only to my collegues, but to any person who knows me in real life." ]
