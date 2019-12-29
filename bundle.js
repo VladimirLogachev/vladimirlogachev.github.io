@@ -5127,7 +5127,7 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 	_List_fromArray(
 		[
 			_Utils_Tuple2('Лидер и племя', 2),
-			_Utils_Tuple2('Открывая организации будущего', 0),
+			_Utils_Tuple2('Открывая организации будущего', 2),
 			_Utils_Tuple2('Эмоциональная смелость', 1),
 			_Utils_Tuple2('Принципы лидера', 2),
 			_Utils_Tuple2('Школа дизайна: шрифт', 2),
@@ -5142,8 +5142,8 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 			_Utils_Tuple2('The Luthier\'s Handbook', 0),
 			_Utils_Tuple2('The Gibson Les Paul Handbook', 0),
 			_Utils_Tuple2('Джентльмен. Путеводитель по стилю и моде для мужчин', 0),
-			_Utils_Tuple2('И ботаники делают бизнес 1+2', 0),
-			_Utils_Tuple2('Школа игры на шестиструнной гитаре', 0)
+			_Utils_Tuple2('И ботаники делают бизнес 1+2', 2),
+			_Utils_Tuple2('Школа игры на шестиструнной гитаре', 2)
 		]));
 var $author$project$Project$GitHubUserId = function (a) {
 	return {$: 1, a: a};
