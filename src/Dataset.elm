@@ -461,7 +461,7 @@ libraryState : Dict String BookAvaliability
 libraryState =
     Dict.fromList
         [ ( "Лидер и племя", GivenToSomeone )
-        , ( "Открывая организации будущего", Available )
+        , ( "Открывая организации будущего", GivenToSomeone )
         , ( "Эмоциональная смелость", ComingSoon )
         , ( "Принципы лидера", GivenToSomeone )
         , ( "Школа дизайна: шрифт", GivenToSomeone )
@@ -476,8 +476,8 @@ libraryState =
         , ( "The Luthier's Handbook", Available )
         , ( "The Gibson Les Paul Handbook", Available )
         , ( "Джентльмен. Путеводитель по стилю и моде для мужчин", Available )
-        , ( "И ботаники делают бизнес 1+2", Available )
-        , ( "Школа игры на шестиструнной гитаре", Available )
+        , ( "И ботаники делают бизнес 1+2", GivenToSomeone )
+        , ( "Школа игры на шестиструнной гитаре", GivenToSomeone )
         ]
 
 
