@@ -1,7 +1,8 @@
 module Project exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Css exposing (..)
+import Html.Styled exposing (Html, img)
+import Html.Styled.Attributes exposing (css, src)
 import Utils exposing (..)
 
 
@@ -43,25 +44,26 @@ type alias TeamMate =
     }
 
 
-userpicCssSize =
-    16
-
-
-userpicSrcSize =
-    userpicCssSize * 3
-
-
 viewUserPic : Userpic -> Html a
 viewUserPic userpic =
+    let
+        userpicSize =
+            22
+
+        userpicSrcSize =
+            userpicSize * 3
+    in
     case userpic of
         NoPic ->
             emptyHtml
 
         GitHubUserId githubUserId ->
             img
-                [ style "max-height" "20px"
-                , style "border-radius" "3px"
-                , style "margin-right" "0.2em"
+                [ css
+                    [ maxHeight (px userpicSize)
+                    , borderRadius (px 3)
+                    , marginRight (em 0.2)
+                    ]
                 , src <|
                     "https://avatars2.githubusercontent.com/u/"
                         ++ String.fromInt githubUserId

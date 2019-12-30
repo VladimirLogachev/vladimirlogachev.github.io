@@ -1,58 +1,113 @@
 module SharedStyles exposing (..)
 
-import Html exposing (Attribute)
-import Html.Attributes exposing (style, disabled)
+import Colors
+import Css exposing (..)
+import Css.Transitions as Transitions exposing (ease, transition)
+import Html.Styled exposing (a, h1, h2, h3, styled)
 
 
-regularShadow : Attribute a
+regularShadow : Style
 regularShadow =
-    style "box-shadow" """0px -1px 1px rgba(0, 0, 0, 0.1), 
+    property "box-shadow" """0px -1px 1px rgba(0, 0, 0, 0.1), 
     0px 1px 1px rgba(0, 0, 0, 0.1),
     0px 2px 2px rgba(0, 0, 0, 0.1), 
     0px 3px 3px rgba(0, 0, 0, 0.1)"""
 
 
-highlightShadow : Attribute a
+highlightShadow : Style
 highlightShadow =
-    style "box-shadow" """rgba(0, 0, 0, 0.1) 0px -1px 1px,
+    property "box-shadow" <| """rgba(0, 0, 0, 0.1) 0px -1px 1px,
     rgba(0, 0, 0, 0.1) 0px 1px 1px,
     rgba(0, 0, 0, 0.1) 0px 2px 2px,
     rgba(0, 0, 0, 0.1) 0px 3px 3px, 
-    #F7DC6F66 0px 0px 5px 10px"""
+    #""" ++ Colors.highlightHex ++ " 0px 0px 5px 10px"
 
 
-highlight : Attribute a
+highlight : Style
 highlight =
-    style "box-shadow" """#F7DC6F66 0px 0px 5px 10px"""
+    boxShadow5 (px 0) (px 0) (px 5) (px 10) Colors.highlight
 
 
-fullwidthContainer : List (Attribute a)
+fullwidthContainer : Style
 fullwidthContainer =
-    [ style "display" "flex"
-    , style "flex-direction" "row"
-    , style "justify-content" "center"
-    , style "border-bottom" "1px solid rgba(0, 0, 0, 0.1)"
-    ]
+    batch
+        [ displayFlex
+        , flexDirection row
+        , justifyContent center
+        , borderBottom3 (px 1) solid (rgba 0 0 0 0.1)
+        ]
 
 
-innerContainer : List (Attribute a)
+innerContainer : Style
 innerContainer =
-    [ style "width" "1000px"
-    , style "padding" "48px 16px 48px 32px"
-    ]
+    batch
+        [ width (px 1000)
+        , padding4 (px 48) (px 16) (px 48) (px 32)
+        ]
 
 
-regularText : List (Attribute a)
+regularText : Style
 regularText =
-    [ style "line-height" "1.3"
-    , style "margin-top" "0.4em"
-    , style "margin-bottom" "0.4em"
-    ]
+    batch
+        [ lineHeight (num 1.3)
+        , marginTop (em 0.4)
+        , marginBottom (em 0.4)
+        ]
 
 
-link =
-    [ style "margin-right" "1em", style "cursor" "pointer", style "user-select" "none" ]
+linkStyle : Style
+linkStyle =
+    batch [ marginRight (em 1), cursor pointer, userSelectNone ]
 
 
-activeLink =
-    link ++ [ style "color" "rgb(187, 189, 189)", disabled True, style "cursor" "default" ]
+allHeaders : Style
+allHeaders =
+    batch
+        [ fontFamilies [ "Oswald", "sans-serif" ]
+        , fontWeight
+            (int 700)
+        ]
+
+
+header1 : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
+header1 =
+    styled h1
+        [ allHeaders
+        , fontSize (px 32)
+        , textTransform uppercase
+        ]
+
+
+header2 : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
+header2 =
+    styled h2
+        [ allHeaders
+        , fontSize (px 28)
+        , textTransform uppercase
+        ]
+
+
+header3 : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
+header3 =
+    styled h3
+        [ allHeaders
+        , fontSize (px 24)
+        ]
+
+
+anchor : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
+anchor =
+    styled a
+        [ textDecoration none
+        , color Colors.link
+        , transition [ Transitions.color3 150 0 ease ]
+        , hover
+            [ color Colors.hover
+            , transition [ Transitions.color3 150 0 ease ]
+            ]
+        ]
+
+
+userSelectNone : Style
+userSelectNone =
+    property "user-select" "none"

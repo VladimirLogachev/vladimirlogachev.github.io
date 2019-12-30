@@ -2,17 +2,19 @@ module Main exposing (main)
 
 import Book exposing (..)
 import Browser
+import Css exposing (..)
+import Css.Global exposing (global, selector)
 import Dataset exposing (..)
 import Dict exposing (Dict)
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
+import Html.Styled exposing (..)
+import Html.Styled.Attributes as Attributes exposing (alt, css, href, id, src, title)
+import Html.Styled.Events exposing (onClick)
 import List.Extra exposing (stableSortWith)
 import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
 import SharedStyles exposing (..)
 import Utils exposing (..)
-
+import Colors 
 
 type Msg
     = LearningMaterialsOnlyFavorites Bool
@@ -52,19 +54,32 @@ update msg model =
 
 main : Program () Model Msg
 main =
-    Browser.sandbox { init = init, update = update, view = mainView }
+    Browser.sandbox
+        { init = init
+        , update = update
+        , view = mainView >> toUnstyled
+        }
 
 
 mainView : Model -> Html Msg
 mainView model =
     div
-        [ style "background-color" "#fff"
-        , style "font-family" "Lato, sans-serif"
-        , style "font-weight" "400"
-        , style "line-height" "1.1"
-        , style "color" "#111"
+        [ css
+            [ backgroundColor Colors.light1
+            , fontFamilies [ "Lato", "sans-serif" ]
+            , fontWeight (int 400)
+            , lineHeight (num 1.1)
+            , color Colors.dark2
+            ]
         ]
-        [ viewHeader viewIntro
+        [ global
+            [ selector "::selection"
+                [ color Colors.dark2
+                , property "background" Colors.selection1
+                , textShadow none
+                ]
+            ]
+        , viewHeader viewIntro
         , viewProjects projects
         , viewLibrary model.library.specific knownBooks libraryState
         , viewLearningMaterials model.learningMaterials.onlyFavorite knownBooks learningPath
@@ -74,13 +89,14 @@ mainView model =
 viewHeader : Html Msg -> Html Msg
 viewHeader content =
     header
-        (fullwidthContainer
-            ++ [ style "background-color" "#11151b"
-               , style "color" "#bbbdbd"
-               ]
-        )
-        [ div innerContainer
-            [ h1 [ style "color" "#fff" ]
+        [ css
+            [ fullwidthContainer
+            , backgroundColor Colors.dark1
+            , color Colors.light2
+            ]
+        ]
+        [ div [ css [ innerContainer ] ]
+            [ header1 [ css [ color Colors.light1 ] ]
                 [ text "Vladimir Logachev" ]
             , content
             ]
@@ -90,34 +106,42 @@ viewHeader content =
 viewIntro : Html Msg
 viewIntro =
     let
-        icon =
-            [ style "max-height" "24px", style "margin-right" "0.5em" ]
+        icon filename altText =
+            img
+                [ css [ maxHeight (px 24), marginRight (Css.em 0.5) ]
+                , src <| "images/logos/" ++ filename
+                , alt altText
+                , title altText
+                ]
+                []
 
-        link =
-            [ target "_blank", style "margin-right" "0.5em" ]
+        link url txt =
+            anchor
+                [ Attributes.target "_blank"
+                , css [ marginRight (Css.em 0.5) ]
+                , href url
+                ]
+                [ text txt ]
     in
     section []
-        [ p
-            [ style "display" "flex"
-            , style "margin-top" "0.8em"
-            , style "margin-bottom" "0.8em"
-            ]
-            [ img (icon ++ [ src "images/logos/haskell.svg", alt "Haskell" ]) []
-            , img (icon ++ [ src "images/logos/scala.svg", alt "Scala" ]) []
-            , img (icon ++ [ src "images/logos/elm.svg", alt "Elm" ]) []
+        [ p [ css [ displayFlex, marginTop (Css.em 0.8), marginBottom (Css.em 0.8) ] ]
+            [ icon "haskell.svg" "Haskell"
+            , icon "scala.svg" "Scala"
+            , icon "elm.svg" "Elm"
             ]
         , p [] [ text "Fullstack developer" ]
-        , p [] [ text "Chief Enthusiast in ", a [ target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ], text " — FP reading group, meetups, collaborations" ]
-        , p [] [ text "Available for hiring, collaboration and pair programming." ]
-        , p
-            [ style "margin-top" "0.8em"
-            , style "margin-right" "0.5em"
+        , p []
+            [ text "Chief Enthusiast in "
+            , anchor [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
+            , text " — FP reading group, meetups, collaborations"
             ]
-            [ a (link ++ [ href "https://github.com/VladimirLogachev" ]) [ text "github" ]
-            , a (link ++ [ href "mailto:doit@keemail.me" ]) [ text "mail" ]
-            , a (link ++ [ href "https://t.me/vladimirlogachev" ]) [ text "telegram" ]
-            , a (link ++ [ href "http://www.linkedin.com/in/vladimirlogachev" ]) [ text "linkedin" ]
-            , a (link ++ [ href "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" ]) [ text "cv" ]
+        , p [] [ text "Available for hiring, collaboration and pair programming." ]
+        , p [ css [ marginTop (Css.em 0.8), marginRight (Css.em 0.5) ] ]
+            [ link "https://github.com/VladimirLogachev" "github"
+            , link "mailto:doit@keemail.me" "mail"
+            , link "https://t.me/vladimirlogachev" "telegram"
+            , link "http://www.linkedin.com/in/vladimirlogachev" "linkedin"
+            , link "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" "cv"
             ]
         ]
 
@@ -127,10 +151,12 @@ viewProjectImage (Project { name, imgFileName }) =
     case imgFileName of
         Just filename ->
             img
-                [ regularShadow
-                , style "max-width" "300px"
-                , style "max-height" "300px"
-                , style "border-radius" "3px"
+                [ css
+                    [ regularShadow
+                    , maxWidth (px 200)
+                    , maxHeight (px 300)
+                    , borderRadius (px 3)
+                    ]
                 , src <| "images/projects/" ++ filename
                 , alt name
                 ]
@@ -144,9 +170,9 @@ viewTeam : ProjectTeam -> Html Msg
 viewTeam projectTeam =
     let
         teamStyle =
-            [ style "display" "flex"
-            , style "align-items" "center"
-            , style "margin-right" "0.5em"
+            [ displayFlex
+            , alignItems center
+            , marginRight <| Css.em 0.5
             ]
     in
     case projectTeam of
@@ -162,9 +188,9 @@ viewTeam projectTeam =
                         |> List.concat
                         |> List.map
                             (\{ url, userpic, name } ->
-                                li teamStyle
-                                    [ a [ style "line-height" "0", href url, target "_blank" ] [ viewUserPic userpic ]
-                                    , a [ href url, target "_blank" ] [ text name ]
+                                li [ css teamStyle ]
+                                    [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
+                                    , anchor [ href url, Attributes.target "_blank" ] [ text name ]
                                     , text ","
                                     ]
                             )
@@ -175,22 +201,24 @@ viewTeam projectTeam =
                         |> toList
                         |> List.map
                             (\{ url, userpic, name } ->
-                                li teamStyle
-                                    [ a [ style "line-height" "0", href url, target "_blank" ] [ viewUserPic userpic ]
-                                    , a [ href url, target "_blank" ] [ text name ]
+                                li [ css teamStyle ]
+                                    [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
+                                    , anchor [ href url, Attributes.target "_blank" ] [ text name ]
                                     ]
                             )
             in
             ul
-                [ style "margin-top" "0.5em"
-                , style "display" "flex"
-                , style "flex-wrap" "wrap"
+                [ css
+                    [ marginTop (Css.em 0.5)
+                    , displayFlex
+                    , flexWrap wrap
+                    ]
                 ]
             <|
-                [ li teamStyle [ strong [] [ text "Team:" ] ] ]
+                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text "Team:" ] ] ]
                     ++ allButLast
                     ++ last
-                    ++ [ li teamStyle [ text " and me." ] ]
+                    ++ [ li [ css teamStyle ] [ text " and me." ] ]
 
 
 viewProject : Project -> Html Msg
@@ -198,46 +226,54 @@ viewProject ((Project { name, description, team, links }) as project) =
     let
         projectSection =
             section
-                [ style "display" "flex"
-                , style "margin-top" "32px"
-                , style "margin-bottom" "32px"
+                [ css
+                    [ displayFlex
+                    , marginTop (px 32)
+                    , marginBottom (px 32)
+                    ]
                 ]
 
         imageWrapper =
             div
-                [ style "width" "300px"
-                , style "flex-grow" "0"
-                , style "flex-shrink" "0"
-                , style "text-align" "right"
-                , style "margin-right" "32px"
+                [ css
+                    [ width (px 200)
+                    , flexGrow (num 0)
+                    , flexShrink (num 0)
+                    , textAlign right
+                    , marginRight (px 32)
+                    ]
                 ]
 
         descriptionWrapper =
             div
-                [ style "flex-shrink" "1"
-                , style "min-width" "350px"
+                [ css
+                    [ flexShrink (num 1)
+                    , minWidth (px 350)
+                    ]
                 ]
 
         splitDescription =
-            description |> String.split "\n" |> List.map (\x -> p regularText [ text x ]) |> div []
+            description |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text x ]) |> div []
     in
     projectSection
         [ imageWrapper [ viewProjectImage project ]
         , descriptionWrapper
-            [ h3 []
+            [ header3 []
                 [ text name ]
             , splitDescription
             , div
-                [ style "margin-top" "0.4em"
-                , style "margin-bottom" "0.4em"
+                [ css
+                    [ marginTop (Css.em 0.4)
+                    , marginBottom (Css.em 0.4)
+                    ]
                 ]
               <|
                 List.map
                     (\link ->
-                        a
-                            [ style "margin-right" "1em"
+                        anchor
+                            [ css [ marginRight (Css.em 1) ]
                             , href link.url
-                            , target "_blank"
+                            , Attributes.target "_blank"
                             ]
                             [ text link.name ]
                     )
@@ -249,9 +285,9 @@ viewProject ((Project { name, description, team, links }) as project) =
 
 viewProjects : List Project -> Html Msg
 viewProjects projs =
-    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "projects" ])
-        [ article innerContainer
-            [ h2 [] [ text "side projects" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "projects" ]
+        [ article [ css [ innerContainer ] ]
+            [ header2 [] [ text "side projects" ]
             , div [] <| List.map viewProject projs
             ]
         ]
@@ -267,13 +303,11 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
 
         textStyle =
             ifElse (book.favorite && highlightFavorite && available)
-                [ highlight, style "background-color" "#F7DC6F66" ]
+                [ css [ highlight, backgroundColor Colors.highlight] ]
                 []
 
         availabilityStyle =
-            ifElse available
-                []
-                [ highlight, style "filter" "grayscale(1)" ]
+            batch <| ifElse available [] [ highlight, property "filter" "grayscale(1)" ]
 
         {- sticker area is placed in a bottom left corner of the book -}
         {- use ralative position for sticker to move inside this area -}
@@ -281,9 +315,11 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
             case sticker of
                 Just x ->
                     div
-                        [ style "position" "relative"
-                        , style "height" "0"
-                        , style "user-select" "none"
+                        [ css
+                            [ position relative
+                            , height zero
+                            , userSelectNone
+                            ]
                         ]
                         [ x ]
 
@@ -291,75 +327,76 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
                     emptyHtml
     in
     section
-        [ style "margin-right" "32px"
-        , style "width" "100px"
-        , style "font-size" "12px"
+        [ css
+            [ marginRight (px 32)
+            , width (px 100)
+            , fontSize (px 12)
+            ]
         ]
-        [ a [ href book.url, target "_blank" ]
+        [ anchor [ href book.url, Attributes.target "_blank" ]
             [ img
-                (availabilityStyle
-                    ++ [ shadow
-                       , style "max-height" "150px"
-                       , style "max-width" "100px"
-                       , style "border-radius" "3px"
-                       , style "margin-top" "2em"
-                       , src book.coverUrl
-                       , alt <| book.author ++ ", " ++ book.title
-                       ]
-                )
+                [ css
+                    [ availabilityStyle
+                    , shadow
+                    , maxHeight (px 150)
+                    , maxWidth (px 100)
+                    , borderRadius (px 3)
+                    , marginTop (Css.em 2)
+                    ]
+                , src book.coverUrl
+                , alt <| book.author ++ ", " ++ book.title
+                ]
                 []
             ]
         , stickerNode
         , div textStyle
-            [ p [ style "margin" ".5em 0" ] [ a [ href book.url, target "_blank" ] [ text book.title ] ]
+            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ anchor [ href book.url, Attributes.target "_blank" ] [ text book.title ] ]
             , p [] [ text book.author ]
             ]
         ]
 
 
-roundSticker : List (Html.Attribute Msg)
+roundSticker : Style
 roundSticker =
-    [ -- sticker position
-      style "position" "relative"
-    , style "width" "50px"
-    , style "height" "50px"
-    , style "bottom" "58px"
-    , style "left" "5px"
+    batch
+        [ -- sticker position
+          position relative
+        , bottom (px 58)
+        , left (px 5)
+        , transform (rotate (deg -10))
 
-    -- sticker
-    , style "display" "flex"
-    , style "text-align" "center"
-    , style "align-items" "center"
-    , style "border-radius" "300px"
-    , style "font-size" "12px"
-
-    -- , style "opacity" ".8"
-    , style "transform" "rotate(-10deg)"
-    ]
+        -- sticker itself
+        , displayFlex
+        , width (px 50)
+        , height (px 50)
+        , textAlign center
+        , alignItems center
+        , borderRadius (px 300)
+        , fontSize (px 12)
+        ]
 
 
 viewLibraryBook : ( Book, BookAvaliability ) -> Html Msg
 viewLibraryBook ( b, availability ) =
     let
-        book =
-            div [ style "opacity" ".5" ] [ viewBook { sticker = Nothing, highlightFavorite = True, available = True } b ]
-
         comingSoon =
             div
-                (roundSticker
-                    ++ [ style "background-color" "rgba(17, 21, 27, 0.8)"
-                       , style "color" "rgb(255, 152, 0)"
-                       ]
-                )
+                [ css
+                    [ roundSticker
+                    , backgroundColor Colors.dark1b
+                    , color Colors.selection1a
+                    ]
+                ]
                 [ text "coming soon" ]
 
         givenToSomeone =
             div
-                (roundSticker
-                    ++ [ style "background-color" "rgba(255, 152, 0, 0.7)"
-                       , style "color" "rgb(17, 21, 27)"
-                       ]
-                )
+                [ css
+                    [ roundSticker
+                    , backgroundColor Colors.selection1b
+                    , color Colors.dark1
+                    ]
+                ]
                 [ text "already taken" ]
     in
     case availability of
@@ -371,6 +408,25 @@ viewLibraryBook ( b, availability ) =
 
         GivenToSomeone ->
             viewBook { sticker = Just givenToSomeone, highlightFavorite = False, available = False } b
+
+
+enabledLink : Msg -> String -> Html Msg
+enabledLink e txt =
+    anchor [ css [ linkStyle ], onClick e ] [ text txt ]
+
+
+disabledLink : Msg -> String -> Html Msg
+disabledLink _ txt =
+    anchor
+        [ css
+            [ linkStyle
+            , color Colors.light2
+            , cursor default
+            , hover [ color Colors.light2 ]
+            ]
+        , Attributes.disabled True
+        ]
+        [ text txt ]
 
 
 viewLibrary : Maybe PersonKind -> Dict String Book -> Dict String BookAvaliability -> Html Msg
@@ -385,21 +441,21 @@ viewLibrary specific books libState =
                 Nothing ->
                     True
     in
-    div (fullwidthContainer ++ [ style "background-color" "#d2dbe0", id "library" ])
-        [ article innerContainer
-            [ h2 [] [ text "My offline library, shared" ]
-            , div (regularText ++ [ style "margin-top" "1em" ])
+    div [ css [ fullwidthContainer, backgroundColor Colors.light4 ], id "library" ]
+        [ article [ css [ innerContainer ] ]
+            [ header2 [] [ text "My offline library, shared" ]
+            , div [ css [ regularText, marginTop (Css.em 1) ] ]
                 [ p [] [ text "I have a tradition of storing my books on my desk in the workplace." ]
                 , p [] [ text "Any person can borrow any book from my personal library." ]
                 , p [] [ text "This applies not only to my collegues, but to any person who knows me in real life." ]
                 , p [] [ text "This is my culture, it works great, and I won't give up on it, so everyone should just accept it." ]
                 ]
             , p
-                [ style "margin-top" "1em" ]
-                [ a (ifElse (specific == Nothing) activeLink link ++ [ onClick (SetLibrarySpecific Nothing) ]) [ text "All books" ]
-                , a (ifElse (specific == Just Developer) activeLink link ++ [ onClick (SetLibrarySpecific (Just Developer)) ]) [ text "For developers" ]
-                , a (ifElse (specific == Just GeneralPerson) activeLink link ++ [ onClick (SetLibrarySpecific (Just GeneralPerson)) ]) [ text "For everyone" ]
-                , a (ifElse (specific == Just Musician) activeLink link ++ [ onClick (SetLibrarySpecific (Just Musician)) ]) [ text "For musicians" ]
+                [ css [ marginTop (Css.em 1) ] ]
+                [ ifElse (specific == Nothing) disabledLink enabledLink (SetLibrarySpecific Nothing) "All books"
+                , ifElse (specific == Just Developer) disabledLink enabledLink (SetLibrarySpecific (Just Developer)) "For developers"
+                , ifElse (specific == Just GeneralPerson) disabledLink enabledLink (SetLibrarySpecific (Just GeneralPerson)) "For everyone"
+                , ifElse (specific == Just Musician) disabledLink enabledLink (SetLibrarySpecific (Just Musician)) "For musicians"
                 ]
             , libState
                 |> Dict.toList
@@ -408,26 +464,26 @@ viewLibrary specific books libState =
                 |> List.filter (Tuple.first >> specificPredicate)
                 |> stableSortWith bookOrdering
                 |> List.map viewLibraryBook
-                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
+                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
         ]
 
 
 viewLearningMaterials : Bool -> Dict String Book -> List LearningMaterial -> Html Msg
 viewLearningMaterials onlyFavorite books learnPath =
-    div (fullwidthContainer ++ [ style "background-color" "#e3e3e3", id "learning-materials" ])
-        [ div innerContainer
-            [ h2 [] [ text "My learning materials" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "learning-materials" ]
+        [ div [ css [ innerContainer ] ]
+            [ header2 [] [ text "My learning materials" ]
             , p
-                [ style "margin-top" "1em" ]
-                [ a (ifElse onlyFavorite link activeLink ++ [ onClick (LearningMaterialsOnlyFavorites False) ]) [ text "All books and courses" ]
-                , a (ifElse onlyFavorite activeLink link ++ [ onClick (LearningMaterialsOnlyFavorites True) ]) [ text "Only the best" ]
+                [ css [ marginTop (Css.em 1) ] ]
+                [ ifElse (not onlyFavorite) disabledLink enabledLink (LearningMaterialsOnlyFavorites False) "All books and courses"
+                , ifElse onlyFavorite disabledLink enabledLink (LearningMaterialsOnlyFavorites True) "Only the best"
                 ]
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
                 |> List.filter (\(Book { favorite }) -> ifElse onlyFavorite favorite True)
                 |> List.map (viewBook { sticker = Nothing, highlightFavorite = not onlyFavorite, available = True })
-                |> div [ style "display" "flex", style "flex-wrap" "wrap", style "align-items" "baseline" ]
+                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
         ]
