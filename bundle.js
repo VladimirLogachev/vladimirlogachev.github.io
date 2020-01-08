@@ -7408,7 +7408,7 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 			_Utils_Tuple2('Школа дизайна: шрифт', 0),
 			_Utils_Tuple2('Никогда не ешьте в одиночку', 1),
 			_Utils_Tuple2('Измеряйте самое важное', 0),
-			_Utils_Tuple2('Принципы', 1),
+			_Utils_Tuple2('Принципы', 2),
 			_Utils_Tuple2('Школа дизайна: макет', 1),
 			_Utils_Tuple2('Haskell in Depth', 1),
 			_Utils_Tuple2('The Tube Amp Book - Deluxe Revised Edition', 0),
