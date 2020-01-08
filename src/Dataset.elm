@@ -466,7 +466,7 @@ libraryState =
         , ( "Принципы лидера", GivenToSomeone )
         , ( "Школа дизайна: шрифт", Available )
         , ( "Никогда не ешьте в одиночку", ComingSoon )
-        , ( "Измеряйте самое важное", Available )
+        , ( "Измеряйте самое важное", GivenToSomeone )
         , ( "Принципы", GivenToSomeone)
         , ( "Школа дизайна: макет", ComingSoon )
         , ( "Haskell in Depth", ComingSoon )
