@@ -467,7 +467,7 @@ libraryState =
         , ( "Школа дизайна: шрифт", Available )
         , ( "Никогда не ешьте в одиночку", ComingSoon )
         , ( "Измеряйте самое важное", Available )
-        , ( "Принципы", ComingSoon )
+        , ( "Принципы", GivenToSomeone)
         , ( "Школа дизайна: макет", ComingSoon )
         , ( "Haskell in Depth", ComingSoon )
         , ( "The Tube Amp Book - Deluxe Revised Edition", Available )
