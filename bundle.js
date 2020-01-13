@@ -8899,6 +8899,16 @@ var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-ri
 var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
 var $rtfeldman$elm_css$Css$maxHeight = $rtfeldman$elm_css$Css$prop1('max-height');
 var $rtfeldman$elm_css$Html$Styled$p = $rtfeldman$elm_css$Html$Styled$node('p');
+var $author$project$SharedStyles$regularText = $rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$lineHeight(
+			$rtfeldman$elm_css$Css$num(1.3)),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(0.4)),
+			$rtfeldman$elm_css$Css$marginBottom(
+			$rtfeldman$elm_css$Css$em(0.4))
+		]));
 var $rtfeldman$elm_css$Html$Styled$section = $rtfeldman$elm_css$Html$Styled$node('section');
 var $rtfeldman$elm_css$Html$Styled$Attributes$src = function (url) {
 	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'src', url);
@@ -8948,7 +8958,12 @@ var $author$project$Main$viewIntro = function () {
 		});
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$section,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[$author$project$SharedStyles$regularText]))
+			]),
 		_List_fromArray(
 			[
 				A2(
@@ -9628,16 +9643,6 @@ var $author$project$Book$bookOrdering = A2(
 			}),
 		A2($matthewsj$elm_ordering$Ordering$byFieldWith, $author$project$Book$avaliabilityOrdering, $elm$core$Tuple$second)));
 var $author$project$Colors$light4 = $rtfeldman$elm_css$Css$hex('d2dbe0');
-var $author$project$SharedStyles$regularText = $rtfeldman$elm_css$Css$batch(
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$lineHeight(
-			$rtfeldman$elm_css$Css$num(1.3)),
-			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$em(0.4)),
-			$rtfeldman$elm_css$Css$marginBottom(
-			$rtfeldman$elm_css$Css$em(0.4))
-		]));
 var $elm$core$List$sortWith = _List_sortWith;
 var $elm_community$list_extra$List$Extra$stableSortWith = F2(
 	function (pred, list) {
