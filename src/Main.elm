@@ -140,6 +140,7 @@ viewIntro =
             [ link "https://github.com/VladimirLogachev" "github"
             , link "mailto:doit@keemail.me" "mail"
             , link "https://t.me/vladimirlogachev" "telegram"
+            , link "https://twitter.com/v__logachev" "twitter"
             , link "http://www.linkedin.com/in/vladimirlogachev" "linkedin"
             , link "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" "cv"
             ]
