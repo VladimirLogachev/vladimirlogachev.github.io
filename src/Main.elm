@@ -2,8 +2,11 @@ module Main exposing (main)
 
 import Book exposing (..)
 import Browser
+import Browser.Hash exposing (application)
+import Colors
 import Css exposing (..)
 import Css.Global exposing (global, selector)
+import Cv
 import Dataset exposing (..)
 import Dict exposing (Dict)
 import Html.Styled exposing (..)
@@ -13,12 +16,15 @@ import List.Extra exposing (stableSortWith)
 import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
 import SharedStyles exposing (..)
+import Url
 import Utils exposing (..)
-import Colors 
+
 
 type Msg
     = LearningMaterialsOnlyFavorites Bool
     | SetLibrarySpecific (Maybe PersonKind)
+    | RouteChange Url.Url
+    | OnUrlRequest Browser.UrlRequest
 
 
 type alias Model =
@@ -28,41 +34,63 @@ type alias Model =
     , learningMaterials :
         { onlyFavorite : Bool
         }
+    , path : String
     }
 
 
-init : Model
-init =
-    { library =
-        { specific = Nothing
+init : () -> Url.Url -> c -> ( Model, Cmd Msg )
+init flags { path } key =
+    plain
+        { library =
+            { specific = Nothing
+            }
+        , learningMaterials =
+            { onlyFavorite = True
+            }
+        , path = path
         }
-    , learningMaterials =
-        { onlyFavorite = True
-        }
-    }
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         LearningMaterialsOnlyFavorites x ->
-            { model | learningMaterials = { onlyFavorite = x } }
+            plain { model | learningMaterials = { onlyFavorite = x } }
 
         SetLibrarySpecific x ->
-            { model | library = { specific = x } }
+            plain { model | library = { specific = x } }
+
+        RouteChange { path } ->
+            plain { model | path = path }
+
+        OnUrlRequest _ ->
+            plain model
 
 
 main : Program () Model Msg
 main =
-    Browser.sandbox
+    application
         { init = init
+        , view = router
         , update = update
-        , view = mainView >> toUnstyled
+        , subscriptions = always Sub.none
+        , onUrlChange = RouteChange
+        , onUrlRequest = OnUrlRequest
         }
 
 
-mainView : Model -> Html Msg
-mainView model =
+router : Model -> Browser.Document Msg
+router model =
+    case model.path of
+        "cv" ->
+            Cv.cv model
+
+        _ ->
+            mainPage model
+
+
+mainPage : Model -> Browser.Document Msg
+mainPage model =
     div
         [ css
             [ backgroundColor Colors.light1
@@ -84,6 +112,11 @@ mainView model =
         , viewLibrary model.library.specific knownBooks libraryState
         , viewLearningMaterials model.learningMaterials.onlyFavorite knownBooks learningPath
         ]
+        |> (\html ->
+                { title = "Vladimir Logachev"
+                , body = [ toUnstyled html ]
+                }
+           )
 
 
 viewHeader : Html Msg -> Html Msg
@@ -304,7 +337,7 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
 
         textStyle =
             ifElse (book.favorite && highlightFavorite && available)
-                [ css [ highlight, backgroundColor Colors.highlight] ]
+                [ css [ highlight, backgroundColor Colors.highlight ] ]
                 []
 
         availabilityStyle =

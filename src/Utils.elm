@@ -25,3 +25,8 @@ ifElse b x y =
 
     else
         y
+
+
+plain : model -> ( model, Cmd msg )
+plain m =
+    ( m, Cmd.none )
