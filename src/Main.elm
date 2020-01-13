@@ -156,7 +156,7 @@ viewIntro =
                 ]
                 [ text txt ]
     in
-    section []
+    section [css [regularText]]
         [ p [ css [ displayFlex, marginTop (Css.em 0.8), marginBottom (Css.em 0.8) ] ]
             [ icon "haskell.svg" "Haskell"
             , icon "scala.svg" "Scala"
