@@ -8258,6 +8258,7 @@ var $author$project$Main$viewIntro = function () {
 						A2(link, 'https://github.com/VladimirLogachev', 'github'),
 						A2(link, 'mailto:doit@keemail.me', 'mail'),
 						A2(link, 'https://t.me/vladimirlogachev', 'telegram'),
+						A2(link, 'https://twitter.com/v__logachev', 'twitter'),
 						A2(link, 'http://www.linkedin.com/in/vladimirlogachev', 'linkedin'),
 						A2(link, 'https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf', 'cv')
 					]))
