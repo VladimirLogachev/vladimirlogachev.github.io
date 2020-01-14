@@ -12,6 +12,8 @@ import Dict exposing (Dict)
 import Html.Styled exposing (..)
 import Html.Styled.Attributes as Attributes exposing (alt, css, href, id, src, title)
 import Html.Styled.Events exposing (onClick)
+import Json.Decode as D
+import Language exposing (..)
 import List.Extra exposing (stableSortWith)
 import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
@@ -34,12 +36,13 @@ type alias Model =
     , learningMaterials :
         { onlyFavorite : Bool
         }
-    , path : String
+    , url : Url.Url
+    , language : Language
     }
 
 
-init : () -> Url.Url -> c -> ( Model, Cmd Msg )
-init flags { path } key =
+init : D.Value -> Url.Url -> c -> ( Model, Cmd Msg )
+init flags url key =
     plain
         { library =
             { specific = Nothing
@@ -47,7 +50,8 @@ init flags { path } key =
         , learningMaterials =
             { onlyFavorite = True
             }
-        , path = path
+        , url = url
+        , language = decodeLanguage flags
         }
 
 
@@ -60,14 +64,14 @@ update msg model =
         SetLibrarySpecific x ->
             plain { model | library = { specific = x } }
 
-        RouteChange { path } ->
-            plain { model | path = path }
+        RouteChange url ->
+            plain { model | url = url }
 
         OnUrlRequest _ ->
             plain model
 
 
-main : Program () Model Msg
+main : Program D.Value Model Msg
 main =
     application
         { init = init
@@ -81,7 +85,7 @@ main =
 
 router : Model -> Browser.Document Msg
 router model =
-    case model.path of
+    case model.url.path of
         "cv" ->
             Cv.cv model
 
@@ -156,7 +160,7 @@ viewIntro =
                 ]
                 [ text txt ]
     in
-    section [css [regularText]]
+    section [ css [ regularText ] ]
         [ p [ css [ displayFlex, marginTop (Css.em 0.8), marginBottom (Css.em 0.8) ] ]
             [ icon "haskell.svg" "Haskell"
             , icon "scala.svg" "Scala"
