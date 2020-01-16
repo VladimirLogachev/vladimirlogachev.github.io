@@ -3,6 +3,7 @@ module Main exposing (main)
 import Book exposing (..)
 import Browser
 import Browser.Hash exposing (application)
+import Browser.Navigation as Nav
 import Colors
 import Css exposing (..)
 import Css.Global exposing (global, selector)
@@ -13,46 +14,49 @@ import Html.Styled exposing (..)
 import Html.Styled.Attributes as Attributes exposing (alt, css, href, id, src, title)
 import Html.Styled.Events exposing (onClick)
 import Json.Decode as D
-import Language exposing (..)
+import Language exposing (Language(..))
 import List.Extra exposing (stableSortWith)
 import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
+import Route exposing (Route)
 import SharedStyles exposing (..)
-import Url
+import Url exposing (Url)
 import Utils exposing (..)
 
 
 type Msg
     = LearningMaterialsOnlyFavorites Bool
     | SetLibrarySpecific (Maybe PersonKind)
-    | RouteChange Url.Url
+    | RouteChange Url
     | OnUrlRequest Browser.UrlRequest
 
 
 type alias Model =
-    { library :
-        { specific : Maybe PersonKind
-        }
-    , learningMaterials :
-        { onlyFavorite : Bool
-        }
-    , url : Url.Url
-    , language : Language
+    { library : { specific : Maybe PersonKind }
+    , learningMaterials : { onlyFavorite : Bool }
+    , lang : Language
+    , route : Route
+    , navKey : Nav.Key
     }
 
 
-init : D.Value -> Url.Url -> c -> ( Model, Cmd Msg )
+init : D.Value -> Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
-    plain
-        { library =
-            { specific = Nothing
-            }
-        , learningMaterials =
-            { onlyFavorite = True
-            }
-        , url = url
-        , language = decodeLanguage flags
-        }
+    let
+        currentLang =
+            Language.decode flags
+
+        ( ( lang, route ), cmd ) =
+            Route.parseUrl key currentLang url
+    in
+    ( { library = { specific = Nothing }
+      , learningMaterials = { onlyFavorite = True }
+      , lang = lang
+      , route = route
+      , navKey = key
+      }
+    , cmd
+    )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -65,7 +69,11 @@ update msg model =
             plain { model | library = { specific = x } }
 
         RouteChange url ->
-            plain { model | url = url }
+            let
+                ( ( lang, route ), cmd ) =
+                    Route.parseUrl model.navKey model.lang url
+            in
+            ( { model | lang = lang, route = route }, cmd )
 
         OnUrlRequest _ ->
             plain model
@@ -75,7 +83,7 @@ main : Program D.Value Model Msg
 main =
     application
         { init = init
-        , view = router
+        , view = viewRoute
         , update = update
         , subscriptions = always Sub.none
         , onUrlChange = RouteChange
@@ -83,14 +91,17 @@ main =
         }
 
 
-router : Model -> Browser.Document Msg
-router model =
-    case model.url.path of
-        "cv" ->
-            Cv.cv model
-
-        _ ->
+viewRoute : Model -> Browser.Document Msg
+viewRoute model =
+    case model.route of
+        Route.Home ->
             mainPage model
+
+        Route.Recommendations ->
+            mainPage model
+
+        Route.Cv ->
+            Cv.cv model
 
 
 mainPage : Model -> Browser.Document Msg
@@ -146,7 +157,7 @@ viewIntro =
         icon filename altText =
             img
                 [ css [ maxHeight (px 24), marginRight (Css.em 0.5) ]
-                , src <| "images/logos/" ++ filename
+                , src <| "/images/logos/" ++ filename
                 , alt altText
                 , title altText
                 ]
@@ -195,7 +206,7 @@ viewProjectImage (Project { name, imgFileName }) =
                     , maxHeight (px 300)
                     , borderRadius (px 3)
                     ]
-                , src <| "images/projects/" ++ filename
+                , src <| "/images/projects/" ++ filename
                 , alt name
                 ]
                 []
