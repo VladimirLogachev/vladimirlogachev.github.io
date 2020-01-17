@@ -8989,7 +8989,7 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 			_Utils_Tuple2('Никогда не ешьте в одиночку', 1),
 			_Utils_Tuple2('Измеряйте самое важное', 2),
 			_Utils_Tuple2('Принципы', 2),
-			_Utils_Tuple2('Школа дизайна: макет', 1),
+			_Utils_Tuple2('Школа дизайна: макет', 2),
 			_Utils_Tuple2('Haskell in Depth', 1),
 			_Utils_Tuple2('The Tube Amp Book - Deluxe Revised Edition', 0),
 			_Utils_Tuple2('Guitar Electronics for Musicians', 0),
@@ -8998,7 +8998,7 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 			_Utils_Tuple2('The Gibson Les Paul Handbook', 0),
 			_Utils_Tuple2('Джентльмен. Путеводитель по стилю и моде для мужчин', 0),
 			_Utils_Tuple2('И ботаники делают бизнес 1+2', 2),
-			_Utils_Tuple2('Школа игры на шестиструнной гитаре', 2)
+			_Utils_Tuple2('Школа игры на шестиструнной гитаре', 0)
 		]));
 var $author$project$Colors$light1 = $rtfeldman$elm_css$Css$hex('fff');
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
