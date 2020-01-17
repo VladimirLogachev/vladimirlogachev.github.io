@@ -14,7 +14,7 @@ import Html.Styled exposing (..)
 import Html.Styled.Attributes as Attributes exposing (alt, css, href, id, src, title)
 import Html.Styled.Events exposing (onClick)
 import Json.Decode as D
-import Language exposing (Language(..))
+import Language exposing (Language(..), enRu)
 import List.Extra exposing (stableSortWith)
 import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
@@ -122,10 +122,10 @@ mainPage model =
                 , textShadow none
                 ]
             ]
-        , viewHeader viewIntro
-        , viewProjects projects model.lang
-        , viewLibrary model.library.specific knownBooks libraryState
-        , viewLearningMaterials model.learningMaterials.onlyFavorite knownBooks learningPath
+        , viewHeader model.lang (viewIntro model.lang)
+        , viewProjects model.lang projects
+        , viewLibrary model.lang model.library.specific knownBooks libraryState
+        , viewLearningMaterials model.lang model.learningMaterials.onlyFavorite knownBooks learningPath
         ]
         |> (\html ->
                 { title = "Vladimir Logachev"
@@ -134,8 +134,8 @@ mainPage model =
            )
 
 
-viewHeader : Html Msg -> Html Msg
-viewHeader content =
+viewHeader : Language -> Html Msg -> Html Msg
+viewHeader lang content =
     header
         [ css
             [ fullwidthContainer
@@ -145,14 +145,14 @@ viewHeader content =
         ]
         [ div [ css [ innerContainer ] ]
             [ header1 [ css [ color Colors.light1 ] ]
-                [ text "Vladimir Logachev" ]
+                [ text (enRu lang "Vladimir Logachev" "Владимир Логачев") ]
             , content
             ]
         ]
 
 
-viewIntro : Html Msg
-viewIntro =
+viewIntro : Language -> Html Msg
+viewIntro lang =
     let
         icon filename altText =
             img
@@ -177,13 +177,27 @@ viewIntro =
             , icon "scala.svg" "Scala"
             , icon "elm.svg" "Elm"
             ]
-        , p [] [ text "Fullstack developer" ]
+        , p [] [ text (enRu lang "Fullstack developer" "Fullstack-разработчик") ]
         , p []
-            [ text "Chief Enthusiast in "
+            [ text
+                (enRu lang
+                    "Chief Enthusiast in "
+                    "Главный энтузиаст в "
+                )
             , anchor [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
-            , text " — FP reading group, meetups, collaborations"
+            , text
+                (enRu lang
+                    " — FP reading group, meetups, collaborations"
+                    " — книжный клуб, митапы, совместные проекты с ФП"
+                )
             ]
-        , p [] [ text "Available for hiring, collaboration and pair programming." ]
+        , p []
+            [ text
+                (enRu lang
+                    "Available for hiring, collaboration and pair programming."
+                    "Открыт для новой работы, совместных проектов и парного программирования."
+                )
+            ]
         , p [ css [ marginTop (Css.em 0.8), marginRight (Css.em 0.5) ] ]
             [ link "https://github.com/VladimirLogachev" "github"
             , link "mailto:doit@keemail.me" "mail"
@@ -195,8 +209,8 @@ viewIntro =
         ]
 
 
-viewProjectImage : Language -> Project -> Html Msg
-viewProjectImage lang (Project { name_i18n, imgFileName }) =
+viewProjectImage : Project -> Html Msg
+viewProjectImage (Project { name_i18n, imgFileName }) =
     case imgFileName of
         Just filename ->
             img
@@ -215,8 +229,8 @@ viewProjectImage lang (Project { name_i18n, imgFileName }) =
             emptyHtml
 
 
-viewTeam : ProjectTeam -> Html Msg
-viewTeam projectTeam =
+viewTeam : Language -> ProjectTeam -> Html Msg
+viewTeam lang projectTeam =
     let
         teamStyle =
             [ displayFlex
@@ -264,10 +278,10 @@ viewTeam projectTeam =
                     ]
                 ]
             <|
-                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text "Team:" ] ] ]
+                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text (enRu lang "Team:" "Команда:") ] ] ]
                     ++ allButLast
                     ++ last
-                    ++ [ li [ css teamStyle ] [ text " and me." ] ]
+                    ++ [ li [ css teamStyle ] [ text (enRu lang ("and" ++ nbsp ++ "me.") ("и" ++ nbsp ++ "я.")) ] ]
 
 
 viewProject : Language -> Project -> Html Msg
@@ -305,7 +319,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
             description_i18n |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text x ]) |> div []
     in
     projectSection
-        [ imageWrapper [ viewProjectImage lang project ]
+        [ imageWrapper [ viewProjectImage project ]
         , descriptionWrapper
             [ header3 []
                 [ text name_i18n ]
@@ -327,16 +341,16 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                             [ text link.name_i18n ]
                     )
                     links
-            , viewTeam team
+            , viewTeam lang team
             ]
         ]
 
 
-viewProjects : (Language -> List Project) -> Language -> Html Msg
-viewProjects projs lang =
+viewProjects : Language -> (Language -> List Project) -> Html Msg
+viewProjects lang projs =
     div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "projects" ]
         [ article [ css [ innerContainer ] ]
-            [ header2 [] [ text "side projects" ]
+            [ header2 [] [ text (enRu lang "projects" "проекты") ]
             , div [] <| List.map (viewProject lang) (projs lang)
             ]
         ]
@@ -478,8 +492,8 @@ disabledLink _ txt =
         [ text txt ]
 
 
-viewLibrary : Maybe PersonKind -> Dict String Book -> Dict String BookAvaliability -> Html Msg
-viewLibrary specific books libState =
+viewLibrary : Language -> Maybe PersonKind -> Dict String Book -> Dict String BookAvaliability -> Html Msg
+viewLibrary lang specific books libState =
     let
         specificPredicate : Book -> Bool
         specificPredicate (Book { topics }) =
@@ -518,8 +532,8 @@ viewLibrary specific books libState =
         ]
 
 
-viewLearningMaterials : Bool -> Dict String Book -> List LearningMaterial -> Html Msg
-viewLearningMaterials onlyFavorite books learnPath =
+viewLearningMaterials : Language -> Bool -> Dict String Book -> List LearningMaterial -> Html Msg
+viewLearningMaterials lang onlyFavorite books learnPath =
     div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "learning-materials" ]
         [ div [ css [ innerContainer ] ]
             [ header2 [] [ text "My learning materials" ]

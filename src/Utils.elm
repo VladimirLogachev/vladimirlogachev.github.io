@@ -39,3 +39,8 @@ ifElse b x y =
 plain : model -> ( model, Cmd msg )
 plain m =
     ( m, Cmd.none )
+
+
+nbsp : String
+nbsp =
+    "\u{00A0}"
