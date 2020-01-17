@@ -503,22 +503,34 @@ viewLibrary lang specific books libState =
 
                 Nothing ->
                     True
+
+        description =
+            enRu lang
+                """I have a tradition of storing my books on my desk in the workplace.
+                Any person can borrow any book from my personal library.
+                This applies not only to my collegues, but to any person who knows me in real life.
+                This is my culture, it works great, and I won't give up on it, so everyone should just accept it."""
+                """У меня есть традиция хранить свои книги на работе, на своём рабочем столе.
+                Любой человек может взять почитать любую книгу из моей библиотеки.
+                Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично.
+                Это моя культура, она великолепно работает и я не намерен от неё отказываться."""
+
+        splitDescription =
+            description
+                |> String.split "\n"
+                |> List.map (\x -> p [] [ text x ])
+                |> div [ css [ regularText, marginTop (Css.em 1) ] ]
     in
     div [ css [ fullwidthContainer, backgroundColor Colors.light4 ], id "library" ]
         [ article [ css [ innerContainer ] ]
-            [ header2 [] [ text "My offline library, shared" ]
-            , div [ css [ regularText, marginTop (Css.em 1) ] ]
-                [ p [] [ text "I have a tradition of storing my books on my desk in the workplace." ]
-                , p [] [ text "Any person can borrow any book from my personal library." ]
-                , p [] [ text "This applies not only to my collegues, but to any person who knows me in real life." ]
-                , p [] [ text "This is my culture, it works great, and I won't give up on it, so everyone should just accept it." ]
-                ]
+            [ header2 [] [ text (enRu lang "My offline library, shared" "Библиотека для коллег и знакомых") ]
+            , splitDescription
             , p
                 [ css [ marginTop (Css.em 1) ] ]
-                [ ifElse (specific == Nothing) disabledLink enabledLink (SetLibrarySpecific Nothing) "All books"
-                , ifElse (specific == Just Developer) disabledLink enabledLink (SetLibrarySpecific (Just Developer)) "For developers"
-                , ifElse (specific == Just GeneralPerson) disabledLink enabledLink (SetLibrarySpecific (Just GeneralPerson)) "For everyone"
-                , ifElse (specific == Just Musician) disabledLink enabledLink (SetLibrarySpecific (Just Musician)) "For musicians"
+                [ ifElse (specific == Nothing) disabledLink enabledLink (SetLibrarySpecific Nothing) (enRu lang "All books" "Все книги")
+                , ifElse (specific == Just Developer) disabledLink enabledLink (SetLibrarySpecific (Just Developer)) (enRu lang "For developers" "Для разработчиков")
+                , ifElse (specific == Just GeneralPerson) disabledLink enabledLink (SetLibrarySpecific (Just GeneralPerson)) (enRu lang "For everyone" "Для всех")
+                , ifElse (specific == Just Musician) disabledLink enabledLink (SetLibrarySpecific (Just Musician)) (enRu lang "For musicians" "Для музыкантов")
                 ]
             , libState
                 |> Dict.toList
@@ -536,11 +548,11 @@ viewLearningMaterials : Language -> Bool -> Dict String Book -> List LearningMat
 viewLearningMaterials lang onlyFavorite books learnPath =
     div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "learning-materials" ]
         [ div [ css [ innerContainer ] ]
-            [ header2 [] [ text "My learning materials" ]
+            [ header2 [] [ text (enRu lang "My recommendations learning materials" "Рекомендуемые мной книги и курсы") ]
             , p
                 [ css [ marginTop (Css.em 1) ] ]
-                [ ifElse (not onlyFavorite) disabledLink enabledLink (LearningMaterialsOnlyFavorites False) "All books and courses"
-                , ifElse onlyFavorite disabledLink enabledLink (LearningMaterialsOnlyFavorites True) "Only the best"
+                [ ifElse (not onlyFavorite) disabledLink enabledLink (LearningMaterialsOnlyFavorites False) (enRu lang "All books and courses" "Все книги и курсы")
+                , ifElse onlyFavorite disabledLink enabledLink (LearningMaterialsOnlyFavorites True) (enRu lang "Only the best" "Только лучшие")
                 ]
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
