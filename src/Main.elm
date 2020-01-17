@@ -236,10 +236,10 @@ viewTeam projectTeam =
                         |> toList
                         |> List.concat
                         |> List.map
-                            (\{ url, userpic, name } ->
+                            (\{ url, userpic, name_i18n } ->
                                 li [ css teamStyle ]
                                     [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , anchor [ href url, Attributes.target "_blank" ] [ text name ]
+                                    , anchor [ href url, Attributes.target "_blank" ] [ text name_i18n ]
                                     , text ","
                                     ]
                             )
@@ -249,10 +249,10 @@ viewTeam projectTeam =
                         |> List.Extra.last
                         |> toList
                         |> List.map
-                            (\{ url, userpic, name } ->
+                            (\{ url, userpic, name_i18n } ->
                                 li [ css teamStyle ]
                                     [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , anchor [ href url, Attributes.target "_blank" ] [ text name ]
+                                    , anchor [ href url, Attributes.target "_blank" ] [ text name_i18n ]
                                     ]
                             )
             in
@@ -271,7 +271,7 @@ viewTeam projectTeam =
 
 
 viewProject : Language -> Project -> Html Msg
-viewProject lang ((Project { name_i18n, description, team, links }) as project) =
+viewProject lang ((Project { name_i18n, description_i18n, team, links }) as project) =
     let
         projectSection =
             section
@@ -302,7 +302,7 @@ viewProject lang ((Project { name_i18n, description, team, links }) as project) 
                 ]
 
         splitDescription =
-            description |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text x ]) |> div []
+            description_i18n |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text x ]) |> div []
     in
     projectSection
         [ imageWrapper [ viewProjectImage lang project ]
@@ -324,7 +324,7 @@ viewProject lang ((Project { name_i18n, description, team, links }) as project) 
                             , href link.url
                             , Attributes.target "_blank"
                             ]
-                            [ text link.name ]
+                            [ text link.name_i18n ]
                     )
                     links
             , viewTeam team

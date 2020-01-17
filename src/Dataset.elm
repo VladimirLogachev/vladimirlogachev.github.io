@@ -13,7 +13,7 @@ projects lang =
             enRu lang
                 "WIP: Translation of Scala with Cats"
                 "Скоро: Перевод книги Scala with Cats"
-        , description = """Collaboration with friends from FP Specialty."""
+        , description_i18n = """Collaboration with friends from FP Specialty."""
         , links =
             [ Link "WIP: Russian translation repo" "https://github.com/fpspecialty/scala-with-cats-ru"
             , Link "Original book" "https://underscore.io/books/scala-with-cats/"
@@ -32,7 +32,7 @@ projects lang =
             enRu lang
                 "Russian Translation of the Mostly Adequate Guide to Functional Programming"
                 "Перевод книги Mostly Adequate Guide to Functional Programming"
-        , description = """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
+        , description_i18n = """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
       The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
         , links =
             [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
@@ -51,7 +51,7 @@ projects lang =
             enRu lang
                 "#FACFAF. Quick reference guide"
                 "#FACFAF. Quick reference guide"
-        , description = "A small book about Curtis Mayfield «Black Keys» open F# guitar tuning."
+        , description_i18n = "A small book about Curtis Mayfield «Black Keys» open F# guitar tuning."
         , links =
             [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
             , Link "ePub" "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"

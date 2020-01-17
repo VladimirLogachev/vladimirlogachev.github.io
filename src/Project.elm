@@ -14,11 +14,17 @@ import Utils exposing (..)
 type Project
     = Project
         { name_i18n : String
-        , description : String
+        , description_i18n : String
         , links : List Link
         , imgFileName : Maybe String
         , team : ProjectTeam
         }
+
+
+type alias Link =
+    { name_i18n : String
+    , url : String
+    }
 
 
 type ProjectTeam
@@ -26,8 +32,9 @@ type ProjectTeam
     | Team (List TeamMate)
 
 
-type alias Link =
-    { name : String
+type alias TeamMate =
+    { name_i18n : String
+    , userpic : Userpic
     , url : String
     }
 
@@ -36,13 +43,6 @@ type Userpic
     = NoPic
     | GitHubUserId Int
     | DirectUrl String
-
-
-type alias TeamMate =
-    { name : String
-    , userpic : Userpic
-    , url : String
-    }
 
 
 viewUserPic : Userpic -> Html a
