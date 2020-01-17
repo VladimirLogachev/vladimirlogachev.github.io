@@ -75,15 +75,11 @@ projects lang =
     ]
 
 
-
-{-
-   as long as I don't use relational database for this library,
-   book title is a key. To keep things consistent, title should be never changed :D
-
-   There is nop visible difference between Book and Course, so I will keep them as Book for a while)
+{-| As long as I don't use relational database for this library, book title is a key. 
+To keep things consistent, title should be never changed :D
+Also, there is no visible difference between Book and Course, 
+so I will store them all as "Books" for a while :D
 -}
-
-
 knownBooks : Dict String Book
 knownBooks =
     [ Book
@@ -490,7 +486,7 @@ libraryState =
         , ( "Никогда не ешьте в одиночку", ComingSoon )
         , ( "Измеряйте самое важное", GivenToSomeone )
         , ( "Принципы", GivenToSomeone )
-        , ( "Школа дизайна: макет", ComingSoon )
+        , ( "Школа дизайна: макет", GivenToSomeone )
         , ( "Haskell in Depth", ComingSoon )
         , ( "The Tube Amp Book - Deluxe Revised Edition", Available )
         , ( "Guitar Electronics for Musicians", Available )
@@ -499,7 +495,7 @@ libraryState =
         , ( "The Gibson Les Paul Handbook", Available )
         , ( "Джентльмен. Путеводитель по стилю и моде для мужчин", Available )
         , ( "И ботаники делают бизнес 1+2", GivenToSomeone )
-        , ( "Школа игры на шестиструнной гитаре", GivenToSomeone )
+        , ( "Школа игры на шестиструнной гитаре", Available )
         ]
 
 
