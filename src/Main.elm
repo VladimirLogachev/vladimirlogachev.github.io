@@ -123,7 +123,7 @@ mainPage model =
                 ]
             ]
         , viewHeader viewIntro
-        , viewProjects projects
+        , viewProjects projects model.lang
         , viewLibrary model.library.specific knownBooks libraryState
         , viewLearningMaterials model.learningMaterials.onlyFavorite knownBooks learningPath
         ]
@@ -195,8 +195,8 @@ viewIntro =
         ]
 
 
-viewProjectImage : Project -> Html Msg
-viewProjectImage (Project { name, imgFileName }) =
+viewProjectImage : Language -> Project -> Html Msg
+viewProjectImage lang (Project { name_i18n, imgFileName }) =
     case imgFileName of
         Just filename ->
             img
@@ -207,7 +207,7 @@ viewProjectImage (Project { name, imgFileName }) =
                     , borderRadius (px 3)
                     ]
                 , src <| "/images/projects/" ++ filename
-                , alt name
+                , alt name_i18n
                 ]
                 []
 
@@ -270,8 +270,8 @@ viewTeam projectTeam =
                     ++ [ li [ css teamStyle ] [ text " and me." ] ]
 
 
-viewProject : Project -> Html Msg
-viewProject ((Project { name, description, team, links }) as project) =
+viewProject : Language -> Project -> Html Msg
+viewProject lang ((Project { name_i18n, description, team, links }) as project) =
     let
         projectSection =
             section
@@ -305,10 +305,10 @@ viewProject ((Project { name, description, team, links }) as project) =
             description |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text x ]) |> div []
     in
     projectSection
-        [ imageWrapper [ viewProjectImage project ]
+        [ imageWrapper [ viewProjectImage lang project ]
         , descriptionWrapper
             [ header3 []
-                [ text name ]
+                [ text name_i18n ]
             , splitDescription
             , div
                 [ css
@@ -332,12 +332,12 @@ viewProject ((Project { name, description, team, links }) as project) =
         ]
 
 
-viewProjects : List Project -> Html Msg
-viewProjects projs =
+viewProjects : (Language -> List Project) -> Language -> Html Msg
+viewProjects projs lang =
     div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "projects" ]
         [ article [ css [ innerContainer ] ]
             [ header2 [] [ text "side projects" ]
-            , div [] <| List.map viewProject projs
+            , div [] <| List.map (viewProject lang) (projs lang)
             ]
         ]
 

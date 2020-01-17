@@ -2,13 +2,17 @@ module Dataset exposing (..)
 
 import Book exposing (..)
 import Dict exposing (Dict)
+import Language exposing (Language(..), enRu)
 import Project exposing (..)
 
 
-projects : List Project
-projects =
+projects : Language -> List Project
+projects lang =
     [ Project
-        { name = "WIP: Translation of Scala with Cats"
+        { name_i18n =
+            enRu lang
+                "WIP: Translation of Scala with Cats"
+                "Скоро: Перевод книги Scala with Cats"
         , description = """Collaboration with friends from FP Specialty."""
         , links =
             [ Link "WIP: Russian translation repo" "https://github.com/fpspecialty/scala-with-cats-ru"
@@ -24,7 +28,10 @@ projects =
                 ]
         }
     , Project
-        { name = "Translation of the Mostly Adequate Guide"
+        { name_i18n =
+            enRu lang
+                "Russian Translation of the Mostly Adequate Guide to Functional Programming"
+                "Перевод книги Mostly Adequate Guide to Functional Programming"
         , description = """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
       The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
         , links =
@@ -40,7 +47,10 @@ projects =
                 ]
         }
     , Project
-        { name = "#FACFAF. Quick reference guide"
+        { name_i18n =
+            enRu lang
+                "#FACFAF. Quick reference guide"
+                "#FACFAF. Quick reference guide"
         , description = "A small book about Curtis Mayfield «Black Keys» open F# guitar tuning."
         , links =
             [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
@@ -467,7 +477,7 @@ libraryState =
         , ( "Школа дизайна: шрифт", Available )
         , ( "Никогда не ешьте в одиночку", ComingSoon )
         , ( "Измеряйте самое важное", GivenToSomeone )
-        , ( "Принципы", GivenToSomeone)
+        , ( "Принципы", GivenToSomeone )
         , ( "Школа дизайна: макет", ComingSoon )
         , ( "Haskell in Depth", ComingSoon )
         , ( "The Tube Amp Book - Deluxe Revised Edition", Available )

@@ -3,6 +3,7 @@ module Project exposing (..)
 import Css exposing (..)
 import Html.Styled exposing (Html, img)
 import Html.Styled.Attributes exposing (css, src)
+import Language exposing (Language)
 import Utils exposing (..)
 
 
@@ -12,7 +13,7 @@ import Utils exposing (..)
 
 type Project
     = Project
-        { name : String
+        { name_i18n : String
         , description : String
         , links : List Link
         , imgFileName : Maybe String
