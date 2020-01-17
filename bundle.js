@@ -2704,7 +2704,7 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		J: func(record.J),
+		K: func(record.K),
 		bm: record.bm,
 		bi: record.bi
 	}
@@ -2974,7 +2974,7 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.J;
+		var message = !tag ? value : tag < 3 ? value.a : value.K;
 		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.bm;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
@@ -5292,7 +5292,7 @@ var $author$project$Language$decode = function (localeFlags) {
 var $author$project$Route$Home = 0;
 var $elm$url$Url$Parser$State = F5(
 	function (visited, unvisited, params, frag, value) {
-		return {P: frag, S: params, M: unvisited, C: value, X: visited};
+		return {Q: frag, T: params, N: unvisited, D: value, Y: visited};
 	});
 var $elm$url$Url$Parser$getFirstMatch = function (states) {
 	getFirstMatch:
@@ -5302,12 +5302,12 @@ var $elm$url$Url$Parser$getFirstMatch = function (states) {
 		} else {
 			var state = states.a;
 			var rest = states.b;
-			var _v1 = state.M;
+			var _v1 = state.N;
 			if (!_v1.b) {
-				return $elm$core$Maybe$Just(state.C);
+				return $elm$core$Maybe$Just(state.D);
 			} else {
 				if ((_v1.a === '') && (!_v1.b.b)) {
-					return $elm$core$Maybe$Just(state.C);
+					return $elm$core$Maybe$Just(state.D);
 				} else {
 					var $temp$states = rest;
 					states = $temp$states;
@@ -5929,11 +5929,11 @@ var $author$project$Route$Recommendations = 1;
 var $elm$url$Url$Parser$Parser = $elm$core$Basics$identity;
 var $elm$url$Url$Parser$mapState = F2(
 	function (func, _v0) {
-		var visited = _v0.X;
-		var unvisited = _v0.M;
-		var params = _v0.S;
-		var frag = _v0.P;
-		var value = _v0.C;
+		var visited = _v0.Y;
+		var unvisited = _v0.N;
+		var params = _v0.T;
+		var frag = _v0.Q;
+		var value = _v0.D;
 		return A5(
 			$elm$url$Url$Parser$State,
 			visited,
@@ -5946,11 +5946,11 @@ var $elm$url$Url$Parser$map = F2(
 	function (subValue, _v0) {
 		var parseArg = _v0;
 		return function (_v1) {
-			var visited = _v1.X;
-			var unvisited = _v1.M;
-			var params = _v1.S;
-			var frag = _v1.P;
-			var value = _v1.C;
+			var visited = _v1.Y;
+			var unvisited = _v1.N;
+			var params = _v1.T;
+			var frag = _v1.Q;
+			var value = _v1.D;
 			return A2(
 				$elm$core$List$map,
 				$elm$url$Url$Parser$mapState(value),
@@ -5987,11 +5987,11 @@ var $elm$url$Url$Parser$oneOf = function (parsers) {
 };
 var $elm$url$Url$Parser$s = function (str) {
 	return function (_v0) {
-		var visited = _v0.X;
-		var unvisited = _v0.M;
-		var params = _v0.S;
-		var frag = _v0.P;
-		var value = _v0.C;
+		var visited = _v0.Y;
+		var unvisited = _v0.N;
+		var params = _v0.T;
+		var frag = _v0.Q;
+		var value = _v0.D;
 		if (!unvisited.b) {
 			return _List_Nil;
 		} else {
@@ -6028,11 +6028,11 @@ var $elm$url$Url$Parser$top = function (state) {
 var $elm$url$Url$Parser$custom = F2(
 	function (tipe, stringToSomething) {
 		return function (_v0) {
-			var visited = _v0.X;
-			var unvisited = _v0.M;
-			var params = _v0.S;
-			var frag = _v0.P;
-			var value = _v0.C;
+			var visited = _v0.Y;
+			var unvisited = _v0.N;
+			var params = _v0.T;
+			var frag = _v0.Q;
+			var value = _v0.D;
 			if (!unvisited.b) {
 				return _List_Nil;
 			} else {
@@ -6166,7 +6166,7 @@ var $author$project$Main$init = F3(
 		var cmd = _v0.b;
 		return _Utils_Tuple2(
 			{
-				az: lang,
+				A: lang,
 				aT: {bg: true},
 				aU: {bk: $elm$core$Maybe$Nothing},
 				bd: key,
@@ -6197,7 +6197,7 @@ var $author$project$Main$update = F2(
 						}));
 			case 2:
 				var url = msg.a;
-				var _v1 = A3($author$project$Route$parseUrl, model.bd, model.az, url);
+				var _v1 = A3($author$project$Route$parseUrl, model.bd, model.A, url);
 				var _v2 = _v1.a;
 				var lang = _v2.a;
 				var route = _v2.b;
@@ -6205,7 +6205,7 @@ var $author$project$Main$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{az: lang, a0: route}),
+						{A: lang, a0: route}),
 					cmd);
 			default:
 				return $author$project$Utils$plain(model);
@@ -6673,7 +6673,7 @@ var $rtfeldman$elm_css$Css$Structure$Output$mediaExpressionToString = function (
 		A2(
 			$elm$core$Maybe$map,
 			$elm$core$Basics$append(': '),
-			expression.C)) + ')'));
+			expression.D)) + ')'));
 };
 var $rtfeldman$elm_css$Css$Structure$Output$mediaTypeToString = function (mediaType) {
 	switch (mediaType) {
@@ -7341,7 +7341,7 @@ var $rtfeldman$elm_css$Css$Structure$concatMapLastStyleBlock = F2(
 var $elm$core$String$cons = _String_cons;
 var $Skinney$murmur3$Murmur3$HashData = F4(
 	function (shift, seed, hash, charsProcessed) {
-		return {_: charsProcessed, af: hash, U: seed, ak: shift};
+		return {aa: charsProcessed, ag: hash, V: seed, al: shift};
 	});
 var $Skinney$murmur3$Murmur3$c1 = 3432918353;
 var $Skinney$murmur3$Murmur3$c2 = 461845907;
@@ -7360,14 +7360,14 @@ var $Skinney$murmur3$Murmur3$rotlBy = F2(
 	});
 var $elm$core$Bitwise$xor = _Bitwise_xor;
 var $Skinney$murmur3$Murmur3$finalize = function (data) {
-	var acc = (!(!data.af)) ? (data.U ^ A2(
+	var acc = (!(!data.ag)) ? (data.V ^ A2(
 		$Skinney$murmur3$Murmur3$multiplyBy,
 		$Skinney$murmur3$Murmur3$c2,
 		A2(
 			$Skinney$murmur3$Murmur3$rotlBy,
 			15,
-			A2($Skinney$murmur3$Murmur3$multiplyBy, $Skinney$murmur3$Murmur3$c1, data.af)))) : data.U;
-	var h0 = acc ^ data._;
+			A2($Skinney$murmur3$Murmur3$multiplyBy, $Skinney$murmur3$Murmur3$c1, data.ag)))) : data.V;
+	var h0 = acc ^ data.aa;
 	var h1 = A2($Skinney$murmur3$Murmur3$multiplyBy, 2246822507, h0 ^ (h0 >>> 16));
 	var h2 = A2($Skinney$murmur3$Murmur3$multiplyBy, 3266489909, h1 ^ (h1 >>> 13));
 	return (h2 ^ (h2 >>> 16)) >>> 0;
@@ -7391,17 +7391,17 @@ var $Skinney$murmur3$Murmur3$mix = F2(
 	});
 var $Skinney$murmur3$Murmur3$hashFold = F2(
 	function (c, data) {
-		var res = data.af | ((255 & $elm$core$Char$toCode(c)) << data.ak);
-		var _v0 = data.ak;
+		var res = data.ag | ((255 & $elm$core$Char$toCode(c)) << data.al);
+		var _v0 = data.al;
 		if (_v0 === 24) {
 			return {
-				_: data._ + 1,
-				af: 0,
-				U: A2($Skinney$murmur3$Murmur3$mix, data.U, res),
-				ak: 0
+				aa: data.aa + 1,
+				ag: 0,
+				V: A2($Skinney$murmur3$Murmur3$mix, data.V, res),
+				al: 0
 			};
 		} else {
-			return {_: data._ + 1, af: res, U: data.U, ak: data.ak + 8};
+			return {aa: data.aa + 1, ag: res, V: data.V, al: data.al + 8};
 		}
 	});
 var $Skinney$murmur3$Murmur3$hashString = F2(
@@ -8408,10 +8408,10 @@ var $rtfeldman$elm_css$Css$property = F2(
 		return $rtfeldman$elm_css$Css$Preprocess$AppendProperty(key + (':' + value));
 	});
 var $rtfeldman$elm_css$Css$backgroundColor = function (c) {
-	return A2($rtfeldman$elm_css$Css$property, 'background-color', c.C);
+	return A2($rtfeldman$elm_css$Css$property, 'background-color', c.D);
 };
 var $rtfeldman$elm_css$Css$color = function (c) {
-	return A2($rtfeldman$elm_css$Css$property, 'color', c.C);
+	return A2($rtfeldman$elm_css$Css$property, 'color', c.D);
 };
 var $rtfeldman$elm_css$VirtualDom$Styled$Attribute = F3(
 	function (a, b, c) {
@@ -8458,12 +8458,12 @@ var $rtfeldman$elm_css$Css$withPrecedingHash = function (str) {
 };
 var $rtfeldman$elm_css$Css$erroneousHex = function (str) {
 	return {
-		as: 1,
-		av: 0,
+		at: 1,
+		aw: 0,
 		z: 0,
-		ax: 0,
+		ay: 0,
 		aE: 0,
-		C: $rtfeldman$elm_css$Css$withPrecedingHash(str)
+		D: $rtfeldman$elm_css$Css$withPrecedingHash(str)
 	};
 };
 var $elm$core$String$foldr = _String_foldr;
@@ -8721,12 +8721,12 @@ var $rtfeldman$elm_css$Css$validHex = F5(
 			var blue = _v6.a.a;
 			var alpha = _v6.b.a;
 			return {
-				as: alpha / 255,
-				av: blue,
+				at: alpha / 255,
+				aw: blue,
 				z: 0,
-				ax: green,
+				ay: green,
 				aE: red,
-				C: $rtfeldman$elm_css$Css$withPrecedingHash(str)
+				D: $rtfeldman$elm_css$Css$withPrecedingHash(str)
 			};
 		} else {
 			return $rtfeldman$elm_css$Css$erroneousHex(str);
@@ -8837,11 +8837,11 @@ var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$n
 var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
 var $rtfeldman$elm_css$Css$prop1 = F2(
 	function (key, arg) {
-		return A2($rtfeldman$elm_css$Css$property, key, arg.C);
+		return A2($rtfeldman$elm_css$Css$property, key, arg.D);
 	});
 var $rtfeldman$elm_css$Css$stringsToValue = function (list) {
-	return $elm$core$List$isEmpty(list) ? {C: 'none'} : {
-		C: A2(
+	return $elm$core$List$isEmpty(list) ? {D: 'none'} : {
+		D: A2(
 			$elm$core$String$join,
 			', ',
 			A2(
@@ -8857,7 +8857,7 @@ var $rtfeldman$elm_css$Css$fontFamilies = A2(
 	$rtfeldman$elm_css$Css$prop1('font-family'),
 	$rtfeldman$elm_css$Css$stringsToValue);
 var $rtfeldman$elm_css$Css$fontWeight = function (_v0) {
-	var value = _v0.C;
+	var value = _v0.D;
 	return A2($rtfeldman$elm_css$Css$property, 'font-weight', value);
 };
 var $rtfeldman$elm_css$VirtualDom$Styled$unstyledNode = $rtfeldman$elm_css$VirtualDom$Styled$Unstyled;
@@ -8876,16 +8876,16 @@ var $rtfeldman$elm_css$Css$Global$global = function (snippets) {
 var $rtfeldman$elm_css$Css$UnitlessInteger = 0;
 var $rtfeldman$elm_css$Css$int = function (val) {
 	return {
-		H: 0,
+		I: 0,
 		aS: 0,
-		R: 0,
-		A: 0,
+		S: 0,
+		B: 0,
 		aC: 0,
 		aW: 0,
-		K: val,
-		ap: '',
+		L: val,
+		aq: '',
 		aK: 0,
-		C: $elm$core$String$fromInt(val)
+		D: $elm$core$String$fromInt(val)
 	};
 };
 var $author$project$Book$Book = $elm$core$Basics$identity;
@@ -9002,19 +9002,19 @@ var $author$project$Dataset$libraryState = $elm$core$Dict$fromList(
 		]));
 var $author$project$Colors$light1 = $rtfeldman$elm_css$Css$hex('fff');
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
-var $rtfeldman$elm_css$Css$none = {Y: 0, bw: 0, q: 0, d: 0, i: 0, co: 0, bL: 0, a9: 0, ai: 0, Q: 0, A: 0, f: 0, e: 0, be: 0, aY: 0, cx: 0, x: 0, a_: 0, cz: 0, am: 0, W: 0, t: 0, h: 0, cF: 0, C: 'none'};
+var $rtfeldman$elm_css$Css$none = {Z: 0, bw: 0, q: 0, d: 0, i: 0, co: 0, bL: 0, a9: 0, aj: 0, R: 0, B: 0, f: 0, e: 0, be: 0, aY: 0, cx: 0, x: 0, a_: 0, cz: 0, an: 0, X: 0, t: 0, h: 0, cF: 0, D: 'none'};
 var $rtfeldman$elm_css$Css$UnitlessFloat = 0;
 var $elm$core$String$fromFloat = _String_fromNumber;
 var $rtfeldman$elm_css$Css$num = function (val) {
 	return {
-		R: 0,
-		A: 0,
+		S: 0,
+		B: 0,
 		aC: 0,
 		aW: 0,
-		K: val,
-		ap: '',
+		L: val,
+		aq: '',
 		aK: 0,
-		C: $elm$core$String$fromFloat(val)
+		D: $elm$core$String$fromFloat(val)
 	};
 };
 var $author$project$Project$GitHubUserId = function (a) {
@@ -9167,7 +9167,7 @@ var $rtfeldman$elm_css$Css$prop3 = F4(
 				$elm$core$String$join,
 				' ',
 				_List_fromArray(
-					[argA.C, argB.C, argC.C])));
+					[argA.D, argB.D, argC.D])));
 	});
 var $rtfeldman$elm_css$Css$borderBottom3 = $rtfeldman$elm_css$Css$prop3('border-bottom');
 var $rtfeldman$elm_css$Css$center = $rtfeldman$elm_css$Css$prop1('center');
@@ -9239,21 +9239,21 @@ var $rtfeldman$elm_css$Css$Internal$lengthConverter = F3(
 		return {
 			bp: 0,
 			by: 0,
-			ac: 0,
+			ad: 0,
 			o: 0,
 			aA: 0,
-			ag: 0,
-			I: 0,
 			ah: 0,
+			J: 0,
 			ai: 0,
-			Q: 0,
+			aj: 0,
 			R: 0,
-			A: 0,
-			K: numericValue,
-			an: 0,
-			ap: unitLabel,
+			S: 0,
+			B: 0,
+			L: numericValue,
+			ao: 0,
+			aq: unitLabel,
 			aK: units,
-			C: _Utils_ap(
+			D: _Utils_ap(
 				$elm$core$String$fromFloat(numericValue),
 				unitLabel)
 		};
@@ -9275,12 +9275,12 @@ var $rtfeldman$elm_css$Css$cssFunction = F2(
 var $rtfeldman$elm_css$Css$rgba = F4(
 	function (r, g, b, alpha) {
 		return {
-			as: alpha,
-			av: b,
+			at: alpha,
+			aw: b,
 			z: 0,
-			ax: g,
+			ay: g,
 			aE: r,
-			C: A2(
+			D: A2(
 				$rtfeldman$elm_css$Css$cssFunction,
 				'rgba',
 				_Utils_ap(
@@ -9295,8 +9295,8 @@ var $rtfeldman$elm_css$Css$rgba = F4(
 						])))
 		};
 	});
-var $rtfeldman$elm_css$Css$row = {a7: 0, aw: 0, C: 'row'};
-var $rtfeldman$elm_css$Css$solid = {q: 0, V: 0, C: 'solid'};
+var $rtfeldman$elm_css$Css$row = {a7: 0, ax: 0, D: 'row'};
+var $rtfeldman$elm_css$Css$solid = {q: 0, W: 0, D: 'solid'};
 var $author$project$SharedStyles$fullwidthContainer = $rtfeldman$elm_css$Css$batch(
 	_List_fromArray(
 		[
@@ -9332,7 +9332,7 @@ var $rtfeldman$elm_css$Html$Styled$styled = F4(
 			children);
 	});
 var $rtfeldman$elm_css$Css$textTransform = $rtfeldman$elm_css$Css$prop1('text-transform');
-var $rtfeldman$elm_css$Css$uppercase = {W: 0, C: 'uppercase'};
+var $rtfeldman$elm_css$Css$uppercase = {X: 0, D: 'uppercase'};
 var $author$project$SharedStyles$header1 = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$h1,
@@ -9352,7 +9352,7 @@ var $rtfeldman$elm_css$Css$prop4 = F5(
 				$elm$core$String$join,
 				' ',
 				_List_fromArray(
-					[argA.C, argB.C, argC.C, argD.C])));
+					[argA.D, argB.D, argC.D, argD.D])));
 	});
 var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
 var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
@@ -9369,49 +9369,51 @@ var $author$project$SharedStyles$innerContainer = $rtfeldman$elm_css$Css$batch(
 			$rtfeldman$elm_css$Css$px(32))
 		]));
 var $author$project$Colors$light2 = $rtfeldman$elm_css$Css$hex('bbbdbd');
-var $author$project$Main$viewHeader = function (content) {
-	return A2(
-		$rtfeldman$elm_css$Html$Styled$header,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$author$project$SharedStyles$fullwidthContainer,
-						$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$dark1),
-						$rtfeldman$elm_css$Css$color($author$project$Colors$light2)
-					]))
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$rtfeldman$elm_css$Html$Styled$div,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[$author$project$SharedStyles$innerContainer]))
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$author$project$SharedStyles$header1,
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Html$Styled$Attributes$css(
-								_List_fromArray(
-									[
-										$rtfeldman$elm_css$Css$color($author$project$Colors$light1)
-									]))
-							]),
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Html$Styled$text('Vladimir Logachev')
-							])),
-						content
-					]))
-			]));
-};
+var $author$project$Main$viewHeader = F2(
+	function (lang, content) {
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$header,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$SharedStyles$fullwidthContainer,
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$dark1),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$light2)
+						]))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$rtfeldman$elm_css$Html$Styled$div,
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$Attributes$css(
+							_List_fromArray(
+								[$author$project$SharedStyles$innerContainer]))
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$author$project$SharedStyles$header1,
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Html$Styled$Attributes$css(
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Css$color($author$project$Colors$light1)
+										]))
+								]),
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Html$Styled$text(
+									A3($author$project$Language$enRu, lang, 'Vladimir Logachev', 'Владимир Логачев'))
+								])),
+							content
+						]))
+				]));
+	});
 var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
 	function (key, value) {
 		return A3(
@@ -9765,7 +9767,7 @@ var $rtfeldman$elm_css$Html$Styled$Attributes$src = function (url) {
 };
 var $rtfeldman$elm_css$Html$Styled$Attributes$target = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('target');
 var $rtfeldman$elm_css$Html$Styled$Attributes$title = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('title');
-var $author$project$Main$viewIntro = function () {
+var $author$project$Main$viewIntro = function (lang) {
 	var link = F2(
 		function (url, txt) {
 			return A2(
@@ -9841,14 +9843,16 @@ var $author$project$Main$viewIntro = function () {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text('Fullstack developer')
+						$rtfeldman$elm_css$Html$Styled$text(
+						A3($author$project$Language$enRu, lang, 'Fullstack developer', 'Fullstack-разработчик'))
 					])),
 				A2(
 				$rtfeldman$elm_css$Html$Styled$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text('Chief Enthusiast in '),
+						$rtfeldman$elm_css$Html$Styled$text(
+						A3($author$project$Language$enRu, lang, 'Chief Enthusiast in ', 'Главный энтузиаст в ')),
 						A2(
 						$author$project$SharedStyles$anchor,
 						_List_fromArray(
@@ -9860,14 +9864,16 @@ var $author$project$Main$viewIntro = function () {
 							[
 								$rtfeldman$elm_css$Html$Styled$text('FP Specialty')
 							])),
-						$rtfeldman$elm_css$Html$Styled$text(' — FP reading group, meetups, collaborations')
+						$rtfeldman$elm_css$Html$Styled$text(
+						A3($author$project$Language$enRu, lang, ' — FP reading group, meetups, collaborations', ' — книжный клуб, митапы, совместные проекты с ФП'))
 					])),
 				A2(
 				$rtfeldman$elm_css$Html$Styled$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text('Available for hiring, collaboration and pair programming.')
+						$rtfeldman$elm_css$Html$Styled$text(
+						A3($author$project$Language$enRu, lang, 'Available for hiring, collaboration and pair programming.', 'Открыт для новой работы, совместных проектов и парного программирования.'))
 					])),
 				A2(
 				$rtfeldman$elm_css$Html$Styled$p,
@@ -9892,7 +9898,7 @@ var $author$project$Main$viewIntro = function () {
 						A2(link, 'https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf', 'cv')
 					]))
 			]));
-}();
+};
 var $author$project$Main$LearningMaterialsOnlyFavorites = function (a) {
 	return {$: 0, a: a};
 };
@@ -9905,7 +9911,7 @@ var $rtfeldman$elm_css$Css$alignItems = function (fn) {
 };
 var $rtfeldman$elm_css$Css$baseline = $rtfeldman$elm_css$Css$prop1('baseline');
 var $rtfeldman$elm_css$Css$cursor = $rtfeldman$elm_css$Css$prop1('cursor');
-var $rtfeldman$elm_css$Css$default = {d: 0, C: 'default'};
+var $rtfeldman$elm_css$Css$default = {d: 0, D: 'default'};
 var $elm$json$Json$Encode$bool = _Json_wrap;
 var $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty = F2(
 	function (key, bool) {
@@ -9915,7 +9921,7 @@ var $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty = F2(
 			$elm$json$Json$Encode$bool(bool));
 	});
 var $rtfeldman$elm_css$Html$Styled$Attributes$disabled = $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty('disabled');
-var $rtfeldman$elm_css$Css$pointer = {d: 0, C: 'pointer'};
+var $rtfeldman$elm_css$Css$pointer = {d: 0, D: 'pointer'};
 var $author$project$SharedStyles$userSelectNone = A2($rtfeldman$elm_css$Css$property, 'user-select', 'none');
 var $author$project$SharedStyles$linkStyle = $rtfeldman$elm_css$Css$batch(
 	_List_fromArray(
@@ -10039,7 +10045,7 @@ var $rtfeldman$elm_css$Css$prop5 = F6(
 				$elm$core$String$join,
 				' ',
 				_List_fromArray(
-					[argA.C, argB.C, argC.C, argD.C, argE.C])));
+					[argA.D, argB.D, argC.D, argD.D, argE.D])));
 	});
 var $rtfeldman$elm_css$Css$boxShadow5 = $rtfeldman$elm_css$Css$prop5('box-shadow');
 var $author$project$SharedStyles$highlight = A5(
@@ -10059,19 +10065,19 @@ var $rtfeldman$elm_css$Css$prop2 = F3(
 				$elm$core$String$join,
 				' ',
 				_List_fromArray(
-					[argA.C, argB.C])));
+					[argA.D, argB.D])));
 	});
 var $rtfeldman$elm_css$Css$margin2 = $rtfeldman$elm_css$Css$prop2('margin');
 var $rtfeldman$elm_css$Css$maxWidth = $rtfeldman$elm_css$Css$prop1('max-width');
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
 var $author$project$SharedStyles$regularShadow = A2($rtfeldman$elm_css$Css$property, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
-var $rtfeldman$elm_css$Css$relative = {aD: 0, C: 'relative'};
-var $rtfeldman$elm_css$Css$zero = {aA: 0, ag: 0, I: 0, ah: 0, ai: 0, Q: 0, R: 0, aC: 0, K: 0, aY: 0, ap: '', aK: 0, C: '0'};
+var $rtfeldman$elm_css$Css$relative = {aD: 0, D: 'relative'};
+var $rtfeldman$elm_css$Css$zero = {aA: 0, ah: 0, J: 0, ai: 0, aj: 0, R: 0, S: 0, aC: 0, L: 0, aY: 0, aq: '', aK: 0, D: '0'};
 var $author$project$Main$viewBook = F2(
 	function (_v0, _v1) {
 		var sticker = _v0.aF;
-		var highlightFavorite = _v0.ay;
-		var available = _v0.at;
+		var highlightFavorite = _v0.az;
+		var available = _v0.au;
 		var book = _v1;
 		var textStyle = A3(
 			$author$project$Utils$ifElse,
@@ -10210,9 +10216,9 @@ var $author$project$Main$viewBook = F2(
 						]))
 				]));
 	});
-var $rtfeldman$elm_css$Css$wrap = {aw: 0, aQ: 0, C: 'wrap'};
-var $author$project$Main$viewLearningMaterials = F3(
-	function (onlyFavorite, books, learnPath) {
+var $rtfeldman$elm_css$Css$wrap = {ax: 0, aQ: 0, D: 'wrap'};
+var $author$project$Main$viewLearningMaterials = F4(
+	function (lang, onlyFavorite, books, learnPath) {
 		return A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_fromArray(
@@ -10287,7 +10293,7 @@ var $author$project$Main$viewLearningMaterials = F3(
 							A2(
 								$elm$core$List$map,
 								$author$project$Main$viewBook(
-									{at: true, ay: !onlyFavorite, aF: $elm$core$Maybe$Nothing}),
+									{au: true, az: !onlyFavorite, aF: $elm$core$Maybe$Nothing}),
 								A2(
 									$elm$core$List$filter,
 									function (_v1) {
@@ -10493,7 +10499,7 @@ var $rtfeldman$elm_css$Css$angleConverter = F2(
 		return {
 			cd: 0,
 			y: 0,
-			C: _Utils_ap(
+			D: _Utils_ap(
 				$elm$core$String$fromFloat(angleVal),
 				suffix)
 		};
@@ -10501,10 +10507,10 @@ var $rtfeldman$elm_css$Css$angleConverter = F2(
 var $rtfeldman$elm_css$Css$deg = $rtfeldman$elm_css$Css$angleConverter('deg');
 var $rtfeldman$elm_css$Css$left = $rtfeldman$elm_css$Css$prop1('left');
 var $rtfeldman$elm_css$Css$rotate = function (_v0) {
-	var value = _v0.C;
+	var value = _v0.D;
 	return {
 		h: 0,
-		C: A2(
+		D: A2(
 			$rtfeldman$elm_css$Css$cssFunction,
 			'rotate',
 			_List_fromArray(
@@ -10519,14 +10525,14 @@ var $rtfeldman$elm_css$Css$textAlign = function (fn) {
 		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
 };
 var $rtfeldman$elm_css$Css$valuesOrNone = function (list) {
-	return $elm$core$List$isEmpty(list) ? {C: 'none'} : {
-		C: A2(
+	return $elm$core$List$isEmpty(list) ? {D: 'none'} : {
+		D: A2(
 			$elm$core$String$join,
 			' ',
 			A2(
 				$elm$core$List$map,
 				function ($) {
-					return $.C;
+					return $.D;
 				},
 				list))
 	};
@@ -10566,12 +10572,12 @@ var $author$project$Main$roundSticker = $rtfeldman$elm_css$Css$batch(
 var $rtfeldman$elm_css$Css$rgb = F3(
 	function (r, g, b) {
 		return {
-			as: 1,
-			av: b,
+			at: 1,
+			aw: b,
 			z: 0,
-			ax: g,
+			ay: g,
 			aE: r,
-			C: A2(
+			D: A2(
 				$rtfeldman$elm_css$Css$cssFunction,
 				'rgb',
 				A2(
@@ -10622,14 +10628,14 @@ var $author$project$Main$viewLibraryBook = function (_v0) {
 		case 0:
 			return A2(
 				$author$project$Main$viewBook,
-				{at: true, ay: true, aF: $elm$core$Maybe$Nothing},
+				{au: true, az: true, aF: $elm$core$Maybe$Nothing},
 				b);
 		case 1:
 			return A2(
 				$author$project$Main$viewBook,
 				{
-					at: false,
-					ay: false,
+					au: false,
+					az: false,
 					aF: $elm$core$Maybe$Just(comingSoon)
 				},
 				b);
@@ -10637,15 +10643,15 @@ var $author$project$Main$viewLibraryBook = function (_v0) {
 			return A2(
 				$author$project$Main$viewBook,
 				{
-					at: false,
-					ay: false,
+					au: false,
+					az: false,
 					aF: $elm$core$Maybe$Just(givenToSomeone)
 				},
 				b);
 	}
 };
-var $author$project$Main$viewLibrary = F3(
-	function (specific, books, libState) {
+var $author$project$Main$viewLibrary = F4(
+	function (lang, specific, books, libState) {
 		var specificPredicate = function (_v2) {
 			var topics = _v2.cD;
 			if (!specific.$) {
@@ -10834,35 +10840,34 @@ var $author$project$SharedStyles$header3 = A2(
 		]));
 var $rtfeldman$elm_css$Css$minWidth = $rtfeldman$elm_css$Css$prop1('min-width');
 var $rtfeldman$elm_css$Css$right = $rtfeldman$elm_css$Css$prop1('right');
-var $author$project$Main$viewProjectImage = F2(
-	function (lang, _v0) {
-		var name_i18n = _v0.bc;
-		var imgFileName = _v0.a8;
-		if (!imgFileName.$) {
-			var filename = imgFileName.a;
-			return A2(
-				$rtfeldman$elm_css$Html$Styled$img,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[
-								$author$project$SharedStyles$regularShadow,
-								$rtfeldman$elm_css$Css$maxWidth(
-								$rtfeldman$elm_css$Css$px(200)),
-								$rtfeldman$elm_css$Css$maxHeight(
-								$rtfeldman$elm_css$Css$px(300)),
-								$rtfeldman$elm_css$Css$borderRadius(
-								$rtfeldman$elm_css$Css$px(3))
-							])),
-						$rtfeldman$elm_css$Html$Styled$Attributes$src('/images/projects/' + filename),
-						$rtfeldman$elm_css$Html$Styled$Attributes$alt(name_i18n)
-					]),
-				_List_Nil);
-		} else {
-			return $author$project$Utils$emptyHtml;
-		}
-	});
+var $author$project$Main$viewProjectImage = function (_v0) {
+	var name_i18n = _v0.bc;
+	var imgFileName = _v0.a8;
+	if (!imgFileName.$) {
+		var filename = imgFileName.a;
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$img,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$SharedStyles$regularShadow,
+							$rtfeldman$elm_css$Css$maxWidth(
+							$rtfeldman$elm_css$Css$px(200)),
+							$rtfeldman$elm_css$Css$maxHeight(
+							$rtfeldman$elm_css$Css$px(300)),
+							$rtfeldman$elm_css$Css$borderRadius(
+							$rtfeldman$elm_css$Css$px(3))
+						])),
+					$rtfeldman$elm_css$Html$Styled$Attributes$src('/images/projects/' + filename),
+					$rtfeldman$elm_css$Html$Styled$Attributes$alt(name_i18n)
+				]),
+			_List_Nil);
+	} else {
+		return $author$project$Utils$emptyHtml;
+	}
+};
 var $elm_community$list_extra$List$Extra$init = function (items) {
 	if (!items.b) {
 		return $elm$core$Maybe$Nothing;
@@ -10894,6 +10899,7 @@ var $elm_community$list_extra$List$Extra$last = function (items) {
 	}
 };
 var $rtfeldman$elm_css$Html$Styled$li = $rtfeldman$elm_css$Html$Styled$node('li');
+var $author$project$Utils$nbsp = '\u00A0';
 var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
 var $elm_community$maybe_extra$Maybe$Extra$toList = function (m) {
 	if (m.$ === 1) {
@@ -10942,129 +10948,26 @@ var $author$project$Project$viewUserPic = function (userpic) {
 				_List_Nil);
 	}
 };
-var $author$project$Main$viewTeam = function (projectTeam) {
-	var teamStyle = _List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$displayFlex,
-			$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-			$rtfeldman$elm_css$Css$marginRight(
-			$rtfeldman$elm_css$Css$em(0.5))
-		]);
-	if (!projectTeam.$) {
-		return $author$project$Utils$emptyHtml;
-	} else {
-		var team = projectTeam.a;
-		var last = A2(
-			$elm$core$List$map,
-			function (_v2) {
-				var url = _v2.c;
-				var userpic = _v2.b6;
-				var name_i18n = _v2.bc;
-				return A2(
-					$rtfeldman$elm_css$Html$Styled$li,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$author$project$SharedStyles$anchor,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$css(
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Css$lineHeight(
-											$rtfeldman$elm_css$Css$num(0))
-										])),
-									$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-									$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-								]),
-							_List_fromArray(
-								[
-									$author$project$Project$viewUserPic(userpic)
-								])),
-							A2(
-							$author$project$SharedStyles$anchor,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-									$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-								]),
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$text(name_i18n)
-								]))
-						]));
-			},
-			$elm_community$maybe_extra$Maybe$Extra$toList(
-				$elm_community$list_extra$List$Extra$last(team)));
-		var allButLast = A2(
-			$elm$core$List$map,
-			function (_v1) {
-				var url = _v1.c;
-				var userpic = _v1.b6;
-				var name_i18n = _v1.bc;
-				return A2(
-					$rtfeldman$elm_css$Html$Styled$li,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$author$project$SharedStyles$anchor,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$css(
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Css$lineHeight(
-											$rtfeldman$elm_css$Css$num(0))
-										])),
-									$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-									$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-								]),
-							_List_fromArray(
-								[
-									$author$project$Project$viewUserPic(userpic)
-								])),
-							A2(
-							$author$project$SharedStyles$anchor,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-									$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-								]),
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$text(name_i18n)
-								])),
-							$rtfeldman$elm_css$Html$Styled$text(',')
-						]));
-			},
-			$elm$core$List$concat(
-				$elm_community$maybe_extra$Maybe$Extra$toList(
-					$elm_community$list_extra$List$Extra$init(team))));
-		return A2(
-			$rtfeldman$elm_css$Html$Styled$ul,
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$Attributes$css(
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Css$marginTop(
-							$rtfeldman$elm_css$Css$em(0.5)),
-							$rtfeldman$elm_css$Css$displayFlex,
-							$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap)
-						]))
-				]),
-			_Utils_ap(
-				_List_fromArray(
-					[
-						A2(
+var $author$project$Main$viewTeam = F2(
+	function (lang, projectTeam) {
+		var teamStyle = _List_fromArray(
+			[
+				$rtfeldman$elm_css$Css$displayFlex,
+				$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+				$rtfeldman$elm_css$Css$marginRight(
+				$rtfeldman$elm_css$Css$em(0.5))
+			]);
+		if (!projectTeam.$) {
+			return $author$project$Utils$emptyHtml;
+		} else {
+			var team = projectTeam.a;
+			var last = A2(
+				$elm$core$List$map,
+				function (_v2) {
+					var url = _v2.c;
+					var userpic = _v2.b6;
+					var name_i18n = _v2.bc;
+					return A2(
 						$rtfeldman$elm_css$Html$Styled$li,
 						_List_fromArray(
 							[
@@ -11073,41 +10976,147 @@ var $author$project$Main$viewTeam = function (projectTeam) {
 						_List_fromArray(
 							[
 								A2(
-								$rtfeldman$elm_css$Html$Styled$span,
+								$author$project$SharedStyles$anchor,
 								_List_fromArray(
 									[
 										$rtfeldman$elm_css$Html$Styled$Attributes$css(
 										_List_fromArray(
 											[
-												$rtfeldman$elm_css$Css$fontWeight(
-												$rtfeldman$elm_css$Css$int(700))
-											]))
+												$rtfeldman$elm_css$Css$lineHeight(
+												$rtfeldman$elm_css$Css$num(0))
+											])),
+										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
+										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
 									]),
 								_List_fromArray(
 									[
-										$rtfeldman$elm_css$Html$Styled$text('Team:')
+										$author$project$Project$viewUserPic(userpic)
+									])),
+								A2(
+								$author$project$SharedStyles$anchor,
+								_List_fromArray(
+									[
+										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
+										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
+									]),
+								_List_fromArray(
+									[
+										$rtfeldman$elm_css$Html$Styled$text(name_i18n)
 									]))
-							]))
-					]),
-				_Utils_ap(
-					allButLast,
-					_Utils_ap(
-						last,
+							]));
+				},
+				$elm_community$maybe_extra$Maybe$Extra$toList(
+					$elm_community$list_extra$List$Extra$last(team)));
+			var allButLast = A2(
+				$elm$core$List$map,
+				function (_v1) {
+					var url = _v1.c;
+					var userpic = _v1.b6;
+					var name_i18n = _v1.bc;
+					return A2(
+						$rtfeldman$elm_css$Html$Styled$li,
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
+							]),
 						_List_fromArray(
 							[
 								A2(
-								$rtfeldman$elm_css$Html$Styled$li,
+								$author$project$SharedStyles$anchor,
 								_List_fromArray(
 									[
-										$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
+										$rtfeldman$elm_css$Html$Styled$Attributes$css(
+										_List_fromArray(
+											[
+												$rtfeldman$elm_css$Css$lineHeight(
+												$rtfeldman$elm_css$Css$num(0))
+											])),
+										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
+										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
 									]),
 								_List_fromArray(
 									[
-										$rtfeldman$elm_css$Html$Styled$text(' and me.')
-									]))
-							])))));
-	}
-};
+										$author$project$Project$viewUserPic(userpic)
+									])),
+								A2(
+								$author$project$SharedStyles$anchor,
+								_List_fromArray(
+									[
+										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
+										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
+									]),
+								_List_fromArray(
+									[
+										$rtfeldman$elm_css$Html$Styled$text(name_i18n)
+									])),
+								$rtfeldman$elm_css$Html$Styled$text(',')
+							]));
+				},
+				$elm$core$List$concat(
+					$elm_community$maybe_extra$Maybe$Extra$toList(
+						$elm_community$list_extra$List$Extra$init(team))));
+			return A2(
+				$rtfeldman$elm_css$Html$Styled$ul,
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$Attributes$css(
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Css$marginTop(
+								$rtfeldman$elm_css$Css$em(0.5)),
+								$rtfeldman$elm_css$Css$displayFlex,
+								$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap)
+							]))
+					]),
+				_Utils_ap(
+					_List_fromArray(
+						[
+							A2(
+							$rtfeldman$elm_css$Html$Styled$li,
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$rtfeldman$elm_css$Html$Styled$span,
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Html$Styled$Attributes$css(
+											_List_fromArray(
+												[
+													$rtfeldman$elm_css$Css$fontWeight(
+													$rtfeldman$elm_css$Css$int(700))
+												]))
+										]),
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Html$Styled$text(
+											A3($author$project$Language$enRu, lang, 'Team:', 'Команда:'))
+										]))
+								]))
+						]),
+					_Utils_ap(
+						allButLast,
+						_Utils_ap(
+							last,
+							_List_fromArray(
+								[
+									A2(
+									$rtfeldman$elm_css$Html$Styled$li,
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
+										]),
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Html$Styled$text(
+											A3($author$project$Language$enRu, lang, 'and' + ($author$project$Utils$nbsp + 'me.'), 'и' + ($author$project$Utils$nbsp + 'я.')))
+										]))
+								])))));
+		}
+	});
 var $author$project$Main$viewProject = F2(
 	function (lang, project) {
 		var name_i18n = project.bc;
@@ -11182,7 +11191,7 @@ var $author$project$Main$viewProject = F2(
 					imageWrapper(
 					_List_fromArray(
 						[
-							A2($author$project$Main$viewProjectImage, lang, project)
+							$author$project$Main$viewProjectImage(project)
 						])),
 					descriptionWrapper(
 					_List_fromArray(
@@ -11230,12 +11239,12 @@ var $author$project$Main$viewProject = F2(
 											]));
 								},
 								links)),
-							$author$project$Main$viewTeam(team)
+							A2($author$project$Main$viewTeam, lang, team)
 						]))
 				]));
 	});
 var $author$project$Main$viewProjects = F2(
-	function (projs, lang) {
+	function (lang, projs) {
 		return A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_fromArray(
@@ -11265,7 +11274,8 @@ var $author$project$Main$viewProjects = F2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text('side projects')
+									$rtfeldman$elm_css$Html$Styled$text(
+									A3($author$project$Language$enRu, lang, 'projects', 'проекты'))
 								])),
 							A2(
 							$rtfeldman$elm_css$Html$Styled$div,
@@ -11320,10 +11330,13 @@ var $author$project$Main$mainPage = function (model) {
 									$rtfeldman$elm_css$Css$textShadow($rtfeldman$elm_css$Css$none)
 								]))
 						])),
-					$author$project$Main$viewHeader($author$project$Main$viewIntro),
-					A2($author$project$Main$viewProjects, $author$project$Dataset$projects, model.az),
-					A3($author$project$Main$viewLibrary, model.aU.bk, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState),
-					A3($author$project$Main$viewLearningMaterials, model.aT.bg, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
+					A2(
+					$author$project$Main$viewHeader,
+					model.A,
+					$author$project$Main$viewIntro(model.A)),
+					A2($author$project$Main$viewProjects, model.A, $author$project$Dataset$projects),
+					A4($author$project$Main$viewLibrary, model.A, model.aU.bk, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState),
+					A4($author$project$Main$viewLearningMaterials, model.A, model.aT.bg, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath)
 				])));
 };
 var $author$project$Main$viewRoute = function (model) {
