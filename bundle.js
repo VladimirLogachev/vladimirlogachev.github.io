@@ -10248,7 +10248,8 @@ var $author$project$Main$viewLearningMaterials = F4(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text('My learning materials')
+									$rtfeldman$elm_css$Html$Styled$text(
+									A3($author$project$Language$enRu, lang, 'My recommendations learning materials', 'Рекомендуемые мной книги и курсы'))
 								])),
 							A2(
 							$rtfeldman$elm_css$Html$Styled$p,
@@ -10269,14 +10270,14 @@ var $author$project$Main$viewLearningMaterials = F4(
 									$author$project$Main$disabledLink,
 									$author$project$Main$enabledLink,
 									$author$project$Main$LearningMaterialsOnlyFavorites(false),
-									'All books and courses'),
+									A3($author$project$Language$enRu, lang, 'All books and courses', 'Все книги и курсы')),
 									A5(
 									$author$project$Utils$ifElse,
 									onlyFavorite,
 									$author$project$Main$disabledLink,
 									$author$project$Main$enabledLink,
 									$author$project$Main$LearningMaterialsOnlyFavorites(true),
-									'Only the best')
+									A3($author$project$Language$enRu, lang, 'Only the best', 'Только лучшие'))
 								])),
 							A2(
 							$rtfeldman$elm_css$Html$Styled$div,
@@ -10663,6 +10664,31 @@ var $author$project$Main$viewLibrary = F4(
 				return true;
 			}
 		};
+		var description = A3($author$project$Language$enRu, lang, 'I have a tradition of storing my books on my desk in the workplace.\n                Any person can borrow any book from my personal library.\n                This applies not only to my collegues, but to any person who knows me in real life.\n                This is my culture, it works great, and I won\'t give up on it, so everyone should just accept it.', 'У меня есть традиция хранить свои книги на работе, на своём рабочем столе.\n                Любой человек может взять почитать любую книгу из моей библиотеки.\n                Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично.\n                Это моя культура, она великолепно работает и я не намерен от неё отказываться.');
+		var splitDescription = A2(
+			$rtfeldman$elm_css$Html$Styled$div,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$SharedStyles$regularText,
+							$rtfeldman$elm_css$Css$marginTop(
+							$rtfeldman$elm_css$Css$em(1))
+						]))
+				]),
+			A2(
+				$elm$core$List$map,
+				function (x) {
+					return A2(
+						$rtfeldman$elm_css$Html$Styled$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$text(x)
+							]));
+				},
+				A2($elm$core$String$split, '\n', description)));
 		return A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_fromArray(
@@ -10692,51 +10718,10 @@ var $author$project$Main$viewLibrary = F4(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text('My offline library, shared')
+									$rtfeldman$elm_css$Html$Styled$text(
+									A3($author$project$Language$enRu, lang, 'My offline library, shared', 'Библиотека для коллег и знакомых'))
 								])),
-							A2(
-							$rtfeldman$elm_css$Html$Styled$div,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$css(
-									_List_fromArray(
-										[
-											$author$project$SharedStyles$regularText,
-											$rtfeldman$elm_css$Css$marginTop(
-											$rtfeldman$elm_css$Css$em(1))
-										]))
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$rtfeldman$elm_css$Html$Styled$p,
-									_List_Nil,
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Html$Styled$text('I have a tradition of storing my books on my desk in the workplace.')
-										])),
-									A2(
-									$rtfeldman$elm_css$Html$Styled$p,
-									_List_Nil,
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Html$Styled$text('Any person can borrow any book from my personal library.')
-										])),
-									A2(
-									$rtfeldman$elm_css$Html$Styled$p,
-									_List_Nil,
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Html$Styled$text('This applies not only to my collegues, but to any person who knows me in real life.')
-										])),
-									A2(
-									$rtfeldman$elm_css$Html$Styled$p,
-									_List_Nil,
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Html$Styled$text('This is my culture, it works great, and I won\'t give up on it, so everyone should just accept it.')
-										]))
-								])),
+							splitDescription,
 							A2(
 							$rtfeldman$elm_css$Html$Styled$p,
 							_List_fromArray(
@@ -10756,7 +10741,7 @@ var $author$project$Main$viewLibrary = F4(
 									$author$project$Main$disabledLink,
 									$author$project$Main$enabledLink,
 									$author$project$Main$SetLibrarySpecific($elm$core$Maybe$Nothing),
-									'All books'),
+									A3($author$project$Language$enRu, lang, 'All books', 'Все книги')),
 									A5(
 									$author$project$Utils$ifElse,
 									_Utils_eq(
@@ -10766,7 +10751,7 @@ var $author$project$Main$viewLibrary = F4(
 									$author$project$Main$enabledLink,
 									$author$project$Main$SetLibrarySpecific(
 										$elm$core$Maybe$Just(0)),
-									'For developers'),
+									A3($author$project$Language$enRu, lang, 'For developers', 'Для разработчиков')),
 									A5(
 									$author$project$Utils$ifElse,
 									_Utils_eq(
@@ -10776,7 +10761,7 @@ var $author$project$Main$viewLibrary = F4(
 									$author$project$Main$enabledLink,
 									$author$project$Main$SetLibrarySpecific(
 										$elm$core$Maybe$Just(1)),
-									'For everyone'),
+									A3($author$project$Language$enRu, lang, 'For everyone', 'Для всех')),
 									A5(
 									$author$project$Utils$ifElse,
 									_Utils_eq(
@@ -10786,7 +10771,7 @@ var $author$project$Main$viewLibrary = F4(
 									$author$project$Main$enabledLink,
 									$author$project$Main$SetLibrarySpecific(
 										$elm$core$Maybe$Just(2)),
-									'For musicians')
+									A3($author$project$Language$enRu, lang, 'For musicians', 'Для музыкантов'))
 								])),
 							A2(
 							$rtfeldman$elm_css$Html$Styled$div,
