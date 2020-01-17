@@ -11,12 +11,17 @@ projects lang =
     [ Project
         { name_i18n =
             enRu lang
-                "WIP: Translation of Scala with Cats"
-                "Скоро: Перевод книги Scala with Cats"
-        , description_i18n = """Collaboration with friends from FP Specialty."""
+                "Coming Soon: Russian Translation of Scala with Cats"
+                "Скоро: Русский перевод книги «Scala with Cats»"
+        , description_i18n =
+            enRu lang
+                """The book covers purely functional approach to software development in Scala.
+                The translation is carried out together with my colleagues from FP Specialty."""
+                """Книга описывает чисто функциональный подход к разработке приложений на Scala.
+                Перевод осуществляется совместно с коллегами по FP Specialty."""
         , links =
-            [ Link "WIP: Russian translation repo" "https://github.com/fpspecialty/scala-with-cats-ru"
-            , Link "Original book" "https://underscore.io/books/scala-with-cats/"
+            [ Link (enRu lang "Russian translation repo (WIP)" "Репозиторий перевода (в процессе)") "https://github.com/fpspecialty/scala-with-cats-ru"
+            , Link (enRu lang "Original book" "Оригинал книги на английском") "https://underscore.io/books/scala-with-cats/"
             ]
         , imgFileName = Just "scala-with-cats.png"
         , team =
@@ -24,38 +29,45 @@ projects lang =
                 [ TeamMate "klass-ivan" (GitHubUserId 2673108) "https://github.com/klass-ivan"
                 , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
                 , TeamMate "Vladimir Nizamutdinov" (GitHubUserId 10260495) "https://github.com/astartes91"
-                , TeamMate "other contributors" NoPic "https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors"
+                , TeamMate (enRu lang "other contributors" "остальные участники") NoPic "https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors"
                 ]
         }
     , Project
         { name_i18n =
             enRu lang
                 "Russian Translation of the Mostly Adequate Guide to Functional Programming"
-                "Перевод книги Mostly Adequate Guide to Functional Programming"
-        , description_i18n = """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
-      The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
+                "Русский перевод книги «Mostly Adequate Guide to Functional Programming in JavaScript»"
+        , description_i18n =
+            enRu lang
+                """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
+                The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
+                """Книга знакомит читателя с функциональной парадигмой программирования и описывает функциональный подход к разработке приложений на JavaScript.
+                Работа по переводу была начата Максимом Филипповым и остановилась на 60%. Затем я и Sakayama присоединились к работе, переписали перевод каждой главы, выполненной до нас, а затем завершили перевод остальных глав."""
         , links =
-            [ Link "Russian translation" "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
-            , Link "Original book" "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
+            [ Link (enRu lang "Russian translation" "Книга на русском") "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
+            , Link (enRu lang "Original book" "Оригинал книги на английском") "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
             ]
         , imgFileName = Just "mostly_adequate_guide_fp_ru.png"
         , team =
             Team
                 [ TeamMate "Maxim Filippov" (GitHubUserId 860283) "https://github.com/maksimf"
                 , TeamMate "Sakayama" (GitHubUserId 44540001) "https://github.com/Sakayama"
-                , TeamMate "other contributors" NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
+                , TeamMate (enRu lang "other contributors" "остальные участники") NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
                 ]
         }
     , Project
         { name_i18n =
+            "#FACFAF. Quick reference guide"
+        , description_i18n =
             enRu lang
-                "#FACFAF. Quick reference guide"
-                "#FACFAF. Quick reference guide"
-        , description_i18n = "A small book about Curtis Mayfield «Black Keys» open F# guitar tuning."
+                """A small book about Curtis Mayfield «Black Keys» (open F#) guitar tuning. 
+                Contains my own conclusions, which aren't necessarily correct"""
+                """Краткое руководство по гитарному строю «Black Keys» (open F#), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. 
+                Содержит мои собственные умозаключения, которые не обязательно корректны."""
         , links =
-            [ Link "PDF" "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
-            , Link "ePub" "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
-            , Link "Read online" "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
+            [ Link (enRu lang "Download PDF" "Скачать PDF") "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
+            , Link (enRu lang "Download ePub" "Скачать ePub") "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
+            , Link (enRu lang "Read online" "Читать онлайн") "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
             ]
         , imgFileName = Just "facfaf.jpg"
         , team = OnlyMe
