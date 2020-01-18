@@ -476,7 +476,15 @@ viewLibraryBook lang ( b, availability ) =
 
 enabledLink : Msg -> String -> Html Msg
 enabledLink e txt =
-    anchor [ css [ linkStyle ], onClick e ] [ text txt ]
+    anchor
+        [ css
+            [ linkStyle
+            , borderBottom3 (px 0.5) dashed Colors.linkAlpha025
+            , hover [borderBottom3 (px 0.5) dashed Colors.hover]
+            ]
+        , onClick e
+        ]
+        [ text txt ]
 
 
 disabledLink : Msg -> String -> Html Msg
@@ -484,9 +492,9 @@ disabledLink _ txt =
     anchor
         [ css
             [ linkStyle
-            , color Colors.light2
+            , color Colors.dark2
             , cursor default
-            , hover [ color Colors.light2 ]
+            , hover [ color Colors.dark2 ]
             ]
         , Attributes.disabled True
         ]

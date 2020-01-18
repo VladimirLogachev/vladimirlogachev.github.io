@@ -39,6 +39,16 @@ link =
     hex "0097a7"
 
 
+linkAlpha50 : Color
+linkAlpha50 =
+    hex "#0097a780"
+
+
+linkAlpha025 : Color
+linkAlpha025 =
+    rgba 0 151 167 0.25
+
+
 hover : Color
 hover =
     hex "d50000"

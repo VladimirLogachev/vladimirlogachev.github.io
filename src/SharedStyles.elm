@@ -98,10 +98,10 @@ anchor =
     styled a
         [ textDecoration none
         , color Colors.link
-        , transition [ Transitions.color3 150 0 ease ]
+        , transition [ Transitions.color 150, Transitions.border 150 ]
         , hover
             [ color Colors.hover
-            , transition [ Transitions.color3 150 0 ease ]
+            , transition [ Transitions.color 150, Transitions.border 150 ]
             ]
         ]
 
