@@ -27,8 +27,9 @@ projects lang =
         , team =
             Team
                 [ TeamMate "klass-ivan" (GitHubUserId 2673108) "https://github.com/klass-ivan"
-                , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
                 , TeamMate "Vladimir Nizamutdinov" (GitHubUserId 10260495) "https://github.com/astartes91"
+                , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
+                , TeamMate "AntonShtyrkin" (GitHubUserId 15253161) "https://github.com/AntonShtyrkin"
                 , TeamMate (enRu lang "other contributors" "остальные участники") NoPic "https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors"
                 ]
         }
@@ -57,12 +58,12 @@ projects lang =
         }
     , Project
         { name_i18n =
-            "#FACFAF. Quick reference guide"
+            "♯‎FACFAF. Quick reference guide"
         , description_i18n =
             enRu lang
-                """A small book about Curtis Mayfield «Black Keys» (open F#) guitar tuning. 
+                """A small book about Curtis Mayfield «Black Keys» (open F♯‎) guitar tuning. 
                 Contains my own conclusions, which aren't necessarily correct"""
-                """Краткое руководство по гитарному строю «Black Keys» (open F#), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. 
+                """Краткое руководство по гитарному строю «Black Keys» (open F♯‎), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. 
                 Содержит мои собственные умозаключения, которые не обязательно корректны."""
         , links =
             [ Link (enRu lang "Download PDF" "Скачать PDF") "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"

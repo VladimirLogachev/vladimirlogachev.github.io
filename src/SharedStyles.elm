@@ -63,9 +63,9 @@ linkStyle =
 allHeaders : Style
 allHeaders =
     batch
-        [ fontFamilies [ "Oswald", "sans-serif" ]
-        , fontWeight
-            (int 700)
+        [ fontFamilies [ "Merriweather", "serif" ]
+        , fontWeight (int 400)
+        , lineHeight (num 1.6)
         ]
 
 
@@ -73,8 +73,7 @@ header1 : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Htm
 header1 =
     styled h1
         [ allHeaders
-        , fontSize (px 32)
-        , textTransform uppercase
+        , fontSize (px 36)
         ]
 
 
@@ -82,8 +81,7 @@ header2 : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Htm
 header2 =
     styled h2
         [ allHeaders
-        , fontSize (px 28)
-        , textTransform uppercase
+        , fontSize (px 32)
         ]
 
 

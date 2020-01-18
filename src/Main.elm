@@ -109,7 +109,7 @@ mainPage model =
     div
         [ css
             [ backgroundColor Colors.light1
-            , fontFamilies [ "Lato", "sans-serif" ]
+            , fontFamilies [ "Nunito", "sans-serif" ]
             , fontWeight (int 400)
             , lineHeight (num 1.1)
             , color Colors.dark2
@@ -188,7 +188,7 @@ viewIntro lang =
             , text
                 (enRu lang
                     " — FP reading group, meetups, collaborations"
-                    " — книжный клуб, митапы, совместные проекты с ФП"
+                    " — книжный клуб, митапы, совместные проекты"
                 )
             ]
         , p []
@@ -235,7 +235,7 @@ viewTeam lang projectTeam =
         teamStyle =
             [ displayFlex
             , alignItems center
-            , marginRight <| Css.em 0.5
+            , marginTop <| Css.em 0.35
             ]
     in
     case projectTeam of
@@ -272,13 +272,13 @@ viewTeam lang projectTeam =
             in
             ul
                 [ css
-                    [ marginTop (Css.em 0.5)
-                    , displayFlex
+                    [ displayFlex
                     , flexWrap wrap
+                    , flexDirection column
                     ]
                 ]
             <|
-                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text (enRu lang "Team:" "Команда:") ] ] ]
+                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text (enRu lang "Project team:" "Команда проекта:") ] ] ]
                     ++ allButLast
                     ++ last
                     ++ [ li [ css teamStyle ] [ text (enRu lang ("and" ++ nbsp ++ "me.") ("и" ++ nbsp ++ "я.")) ] ]
@@ -292,7 +292,8 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                 [ css
                     [ displayFlex
                     , marginTop (px 32)
-                    , marginBottom (px 32)
+                    , marginBottom (px 72)
+                    , lastChild [ marginBottom zero ]
                     ]
                 ]
 
@@ -350,7 +351,7 @@ viewProjects : Language -> (Language -> List Project) -> Html Msg
 viewProjects lang projs =
     div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "projects" ]
         [ article [ css [ innerContainer ] ]
-            [ header2 [] [ text (enRu lang "projects" "проекты") ]
+            [ header2 [] [ text (enRu lang "Projects" "Проекты") ]
             , div [] <| List.map (viewProject lang) (projs lang)
             ]
         ]
@@ -393,7 +394,7 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
         [ css
             [ marginRight (px 32)
             , width (px 100)
-            , fontSize (px 12)
+            , fontSize (px 13)
             ]
         ]
         [ anchor [ href book.url, Attributes.target "_blank" ]
@@ -439,8 +440,8 @@ roundSticker =
         ]
 
 
-viewLibraryBook : ( Book, BookAvaliability ) -> Html Msg
-viewLibraryBook ( b, availability ) =
+viewLibraryBook : Language -> ( Book, BookAvaliability ) -> Html Msg
+viewLibraryBook lang ( b, availability ) =
     let
         comingSoon =
             div
@@ -450,7 +451,7 @@ viewLibraryBook ( b, availability ) =
                     , color Colors.selection1a
                     ]
                 ]
-                [ text "coming soon" ]
+                [ text (enRu lang "coming soon" "скоро будет") ]
 
         givenToSomeone =
             div
@@ -460,7 +461,7 @@ viewLibraryBook ( b, availability ) =
                     , color Colors.dark1
                     ]
                 ]
-                [ text "already taken" ]
+                [ text (enRu lang "already taken" "кто-то читает") ]
     in
     case availability of
         Available ->
@@ -523,7 +524,7 @@ viewLibrary lang specific books libState =
     in
     div [ css [ fullwidthContainer, backgroundColor Colors.light4 ], id "library" ]
         [ article [ css [ innerContainer ] ]
-            [ header2 [] [ text (enRu lang "My offline library, shared" "Библиотека для коллег и знакомых") ]
+            [ header2 [] [ text (enRu lang "My Offline Library, Shared" "Библиотека для коллег и знакомых") ]
             , splitDescription
             , p
                 [ css [ marginTop (Css.em 1) ] ]
@@ -538,7 +539,7 @@ viewLibrary lang specific books libState =
                 |> values
                 |> List.filter (Tuple.first >> specificPredicate)
                 |> stableSortWith bookOrdering
-                |> List.map viewLibraryBook
+                |> List.map (viewLibraryBook lang)
                 |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
         ]
@@ -548,7 +549,7 @@ viewLearningMaterials : Language -> Bool -> Dict String Book -> List LearningMat
 viewLearningMaterials lang onlyFavorite books learnPath =
     div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "learning-materials" ]
         [ div [ css [ innerContainer ] ]
-            [ header2 [] [ text (enRu lang "My recommendations learning materials" "Рекомендуемые мной книги и курсы") ]
+            [ header2 [] [ text (enRu lang "My Recommendations on Learning Materials" "Рекомендуемые мной книги и курсы") ]
             , p
                 [ css [ marginTop (Css.em 1) ] ]
                 [ ifElse (not onlyFavorite) disabledLink enabledLink (LearningMaterialsOnlyFavorites False) (enRu lang "All books and courses" "Все книги и курсы")
