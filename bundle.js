@@ -9070,14 +9070,19 @@ var $author$project$Dataset$projects = function (lang) {
 						'https://github.com/klass-ivan'),
 						A3(
 						$author$project$Project$TeamMate,
+						'Vladimir Nizamutdinov',
+						$author$project$Project$GitHubUserId(10260495),
+						'https://github.com/astartes91'),
+						A3(
+						$author$project$Project$TeamMate,
 						'BanyRule',
 						$author$project$Project$GitHubUserId(14077902),
 						'https://github.com/banyrule'),
 						A3(
 						$author$project$Project$TeamMate,
-						'Vladimir Nizamutdinov',
-						$author$project$Project$GitHubUserId(10260495),
-						'https://github.com/astartes91'),
+						'AntonShtyrkin',
+						$author$project$Project$GitHubUserId(15253161),
+						'https://github.com/AntonShtyrkin'),
 						A3(
 						$author$project$Project$TeamMate,
 						A3($author$project$Language$enRu, lang, 'other contributors', 'остальные участники'),
@@ -9121,7 +9126,7 @@ var $author$project$Dataset$projects = function (lang) {
 					]))
 		},
 			{
-			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield «Black Keys» (open F#) guitar tuning. \n                Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F#), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. \n                Содержит мои собственные умозаключения, которые не обязательно корректны.'),
+			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield «Black Keys» (open F♯‎) guitar tuning. \n                Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F♯‎), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. \n                Содержит мои собственные умозаключения, которые не обязательно корректны.'),
 			a8: $elm$core$Maybe$Just('facfaf.jpg'),
 			ba: _List_fromArray(
 				[
@@ -9138,7 +9143,7 @@ var $author$project$Dataset$projects = function (lang) {
 					A3($author$project$Language$enRu, lang, 'Read online', 'Читать онлайн'),
 					'https://www.gitbook.com/read/book/vladimirlogachev/facfaf')
 				]),
-			bc: '#FACFAF. Quick reference guide',
+			bc: '♯‎FACFAF. Quick reference guide',
 			bn: $author$project$Project$OnlyMe
 		}
 		]);
@@ -9315,9 +9320,11 @@ var $author$project$SharedStyles$allHeaders = $rtfeldman$elm_css$Css$batch(
 		[
 			$rtfeldman$elm_css$Css$fontFamilies(
 			_List_fromArray(
-				['Oswald', 'sans-serif'])),
+				['Merriweather', 'serif'])),
 			$rtfeldman$elm_css$Css$fontWeight(
-			$rtfeldman$elm_css$Css$int(700))
+			$rtfeldman$elm_css$Css$int(400)),
+			$rtfeldman$elm_css$Css$lineHeight(
+			$rtfeldman$elm_css$Css$num(1.6))
 		]));
 var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
 var $rtfeldman$elm_css$Html$Styled$h1 = $rtfeldman$elm_css$Html$Styled$node('h1');
@@ -9331,8 +9338,6 @@ var $rtfeldman$elm_css$Html$Styled$styled = F4(
 				attrs),
 			children);
 	});
-var $rtfeldman$elm_css$Css$textTransform = $rtfeldman$elm_css$Css$prop1('text-transform');
-var $rtfeldman$elm_css$Css$uppercase = {X: 0, D: 'uppercase'};
 var $author$project$SharedStyles$header1 = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$h1,
@@ -9340,8 +9345,7 @@ var $author$project$SharedStyles$header1 = A2(
 		[
 			$author$project$SharedStyles$allHeaders,
 			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(32)),
-			$rtfeldman$elm_css$Css$textTransform($rtfeldman$elm_css$Css$uppercase)
+			$rtfeldman$elm_css$Css$px(36))
 		]));
 var $rtfeldman$elm_css$Css$prop4 = F5(
 	function (key, argA, argB, argC, argD) {
@@ -9865,7 +9869,7 @@ var $author$project$Main$viewIntro = function (lang) {
 								$rtfeldman$elm_css$Html$Styled$text('FP Specialty')
 							])),
 						$rtfeldman$elm_css$Html$Styled$text(
-						A3($author$project$Language$enRu, lang, ' — FP reading group, meetups, collaborations', ' — книжный клуб, митапы, совместные проекты с ФП'))
+						A3($author$project$Language$enRu, lang, ' — FP reading group, meetups, collaborations', ' — книжный клуб, митапы, совместные проекты'))
 					])),
 				A2(
 				$rtfeldman$elm_css$Html$Styled$p,
@@ -10026,8 +10030,7 @@ var $author$project$SharedStyles$header2 = A2(
 		[
 			$author$project$SharedStyles$allHeaders,
 			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(28)),
-			$rtfeldman$elm_css$Css$textTransform($rtfeldman$elm_css$Css$uppercase)
+			$rtfeldman$elm_css$Css$px(32))
 		]));
 var $rtfeldman$elm_css$Html$Styled$Attributes$id = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('id');
 var $author$project$Colors$light3 = $rtfeldman$elm_css$Css$hex('e3e3e3');
@@ -10136,7 +10139,7 @@ var $author$project$Main$viewBook = F2(
 							$rtfeldman$elm_css$Css$width(
 							$rtfeldman$elm_css$Css$px(100)),
 							$rtfeldman$elm_css$Css$fontSize(
-							$rtfeldman$elm_css$Css$px(12))
+							$rtfeldman$elm_css$Css$px(13))
 						]))
 				]),
 			_List_fromArray(
@@ -10249,7 +10252,7 @@ var $author$project$Main$viewLearningMaterials = F4(
 							_List_fromArray(
 								[
 									$rtfeldman$elm_css$Html$Styled$text(
-									A3($author$project$Language$enRu, lang, 'My recommendations learning materials', 'Рекомендуемые мной книги и курсы'))
+									A3($author$project$Language$enRu, lang, 'My Recommendations on Learning Materials', 'Рекомендуемые мной книги и курсы'))
 								])),
 							A2(
 							$rtfeldman$elm_css$Html$Styled$p,
@@ -10590,67 +10593,70 @@ var $rtfeldman$elm_css$Css$rgb = F3(
 	});
 var $author$project$Colors$selection1a = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$sel1rgb.aZ, $author$project$Colors$sel1rgb.aR, $author$project$Colors$sel1rgb.aN);
 var $author$project$Colors$selection1b = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$sel1rgb.aZ, $author$project$Colors$sel1rgb.aR, $author$project$Colors$sel1rgb.aN, 0.7);
-var $author$project$Main$viewLibraryBook = function (_v0) {
-	var b = _v0.a;
-	var availability = _v0.b;
-	var givenToSomeone = A2(
-		$rtfeldman$elm_css$Html$Styled$div,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$author$project$Main$roundSticker,
-						$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$selection1b),
-						$rtfeldman$elm_css$Css$color($author$project$Colors$dark1)
-					]))
-			]),
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$text('already taken')
-			]));
-	var comingSoon = A2(
-		$rtfeldman$elm_css$Html$Styled$div,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$author$project$Main$roundSticker,
-						$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$dark1b),
-						$rtfeldman$elm_css$Css$color($author$project$Colors$selection1a)
-					]))
-			]),
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$text('coming soon')
-			]));
-	switch (availability) {
-		case 0:
-			return A2(
-				$author$project$Main$viewBook,
-				{au: true, az: true, aF: $elm$core$Maybe$Nothing},
-				b);
-		case 1:
-			return A2(
-				$author$project$Main$viewBook,
-				{
-					au: false,
-					az: false,
-					aF: $elm$core$Maybe$Just(comingSoon)
-				},
-				b);
-		default:
-			return A2(
-				$author$project$Main$viewBook,
-				{
-					au: false,
-					az: false,
-					aF: $elm$core$Maybe$Just(givenToSomeone)
-				},
-				b);
-	}
-};
+var $author$project$Main$viewLibraryBook = F2(
+	function (lang, _v0) {
+		var b = _v0.a;
+		var availability = _v0.b;
+		var givenToSomeone = A2(
+			$rtfeldman$elm_css$Html$Styled$div,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$Main$roundSticker,
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$selection1b),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$dark1)
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(
+					A3($author$project$Language$enRu, lang, 'already taken', 'кто-то читает'))
+				]));
+		var comingSoon = A2(
+			$rtfeldman$elm_css$Html$Styled$div,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$Main$roundSticker,
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$dark1b),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$selection1a)
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(
+					A3($author$project$Language$enRu, lang, 'coming soon', 'скоро будет'))
+				]));
+		switch (availability) {
+			case 0:
+				return A2(
+					$author$project$Main$viewBook,
+					{au: true, az: true, aF: $elm$core$Maybe$Nothing},
+					b);
+			case 1:
+				return A2(
+					$author$project$Main$viewBook,
+					{
+						au: false,
+						az: false,
+						aF: $elm$core$Maybe$Just(comingSoon)
+					},
+					b);
+			default:
+				return A2(
+					$author$project$Main$viewBook,
+					{
+						au: false,
+						az: false,
+						aF: $elm$core$Maybe$Just(givenToSomeone)
+					},
+					b);
+		}
+	});
 var $author$project$Main$viewLibrary = F4(
 	function (lang, specific, books, libState) {
 		var specificPredicate = function (_v2) {
@@ -10719,7 +10725,7 @@ var $author$project$Main$viewLibrary = F4(
 							_List_fromArray(
 								[
 									$rtfeldman$elm_css$Html$Styled$text(
-									A3($author$project$Language$enRu, lang, 'My offline library, shared', 'Библиотека для коллег и знакомых'))
+									A3($author$project$Language$enRu, lang, 'My Offline Library, Shared', 'Библиотека для коллег и знакомых'))
 								])),
 							splitDescription,
 							A2(
@@ -10787,7 +10793,7 @@ var $author$project$Main$viewLibrary = F4(
 								]),
 							A2(
 								$elm$core$List$map,
-								$author$project$Main$viewLibraryBook,
+								$author$project$Main$viewLibraryBook(lang),
 								A2(
 									$elm_community$list_extra$List$Extra$stableSortWith,
 									$author$project$Book$bookOrdering,
@@ -10823,6 +10829,7 @@ var $author$project$SharedStyles$header3 = A2(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(24))
 		]));
+var $rtfeldman$elm_css$Css$lastChild = $rtfeldman$elm_css$Css$pseudoClass('last-child');
 var $rtfeldman$elm_css$Css$minWidth = $rtfeldman$elm_css$Css$prop1('min-width');
 var $rtfeldman$elm_css$Css$right = $rtfeldman$elm_css$Css$prop1('right');
 var $author$project$Main$viewProjectImage = function (_v0) {
@@ -10853,6 +10860,9 @@ var $author$project$Main$viewProjectImage = function (_v0) {
 		return $author$project$Utils$emptyHtml;
 	}
 };
+var $rtfeldman$elm_css$Css$column = _Utils_update(
+	$rtfeldman$elm_css$Css$row,
+	{D: 'column'});
 var $elm_community$list_extra$List$Extra$init = function (items) {
 	if (!items.b) {
 		return $elm$core$Maybe$Nothing;
@@ -10939,8 +10949,8 @@ var $author$project$Main$viewTeam = F2(
 			[
 				$rtfeldman$elm_css$Css$displayFlex,
 				$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-				$rtfeldman$elm_css$Css$marginRight(
-				$rtfeldman$elm_css$Css$em(0.5))
+				$rtfeldman$elm_css$Css$marginTop(
+				$rtfeldman$elm_css$Css$em(0.35))
 			]);
 		if (!projectTeam.$) {
 			return $author$project$Utils$emptyHtml;
@@ -11047,10 +11057,9 @@ var $author$project$Main$viewTeam = F2(
 						$rtfeldman$elm_css$Html$Styled$Attributes$css(
 						_List_fromArray(
 							[
-								$rtfeldman$elm_css$Css$marginTop(
-								$rtfeldman$elm_css$Css$em(0.5)),
 								$rtfeldman$elm_css$Css$displayFlex,
-								$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap)
+								$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap),
+								$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$column)
 							]))
 					]),
 				_Utils_ap(
@@ -11078,7 +11087,7 @@ var $author$project$Main$viewTeam = F2(
 									_List_fromArray(
 										[
 											$rtfeldman$elm_css$Html$Styled$text(
-											A3($author$project$Language$enRu, lang, 'Team:', 'Команда:'))
+											A3($author$project$Language$enRu, lang, 'Project team:', 'Команда проекта:'))
 										]))
 								]))
 						]),
@@ -11138,7 +11147,12 @@ var $author$project$Main$viewProject = F2(
 							$rtfeldman$elm_css$Css$marginTop(
 							$rtfeldman$elm_css$Css$px(32)),
 							$rtfeldman$elm_css$Css$marginBottom(
-							$rtfeldman$elm_css$Css$px(32))
+							$rtfeldman$elm_css$Css$px(72)),
+							$rtfeldman$elm_css$Css$lastChild(
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Css$marginBottom($rtfeldman$elm_css$Css$zero)
+								]))
 						]))
 				]));
 		var imageWrapper = $rtfeldman$elm_css$Html$Styled$div(
@@ -11260,7 +11274,7 @@ var $author$project$Main$viewProjects = F2(
 							_List_fromArray(
 								[
 									$rtfeldman$elm_css$Html$Styled$text(
-									A3($author$project$Language$enRu, lang, 'projects', 'проекты'))
+									A3($author$project$Language$enRu, lang, 'Projects', 'Проекты'))
 								])),
 							A2(
 							$rtfeldman$elm_css$Html$Styled$div,
@@ -11292,7 +11306,7 @@ var $author$project$Main$mainPage = function (model) {
 							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$light1),
 							$rtfeldman$elm_css$Css$fontFamilies(
 							_List_fromArray(
-								['Lato', 'sans-serif'])),
+								['Nunito', 'sans-serif'])),
 							$rtfeldman$elm_css$Css$fontWeight(
 							$rtfeldman$elm_css$Css$int(400)),
 							$rtfeldman$elm_css$Css$lineHeight(
