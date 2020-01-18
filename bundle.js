@@ -9435,20 +9435,15 @@ var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
 	});
 var $rtfeldman$elm_css$Html$Styled$Attributes$alt = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('alt');
 var $rtfeldman$elm_css$Html$Styled$a = $rtfeldman$elm_css$Html$Styled$node('a');
-var $rtfeldman$elm_css$Css$Transitions$Color = 29;
+var $rtfeldman$elm_css$Css$Transitions$Border = 4;
 var $rtfeldman$elm_css$Css$Transitions$Transition = $elm$core$Basics$identity;
-var $rtfeldman$elm_css$Css$Transitions$fullTransition = F4(
-	function (animation, duration, delay, timing) {
-		return {
-			aM: animation,
-			aP: $elm$core$Maybe$Just(delay),
-			bC: duration,
-			a3: $elm$core$Maybe$Just(timing)
-		};
+var $rtfeldman$elm_css$Css$Transitions$durationTransition = F2(
+	function (animation, duration) {
+		return {aM: animation, aP: $elm$core$Maybe$Nothing, bC: duration, a3: $elm$core$Maybe$Nothing};
 	});
-var $rtfeldman$elm_css$Css$Transitions$color3 = $rtfeldman$elm_css$Css$Transitions$fullTransition(29);
-var $rtfeldman$elm_css$Css$Transitions$Ease = {$: 0};
-var $rtfeldman$elm_css$Css$Transitions$ease = $rtfeldman$elm_css$Css$Transitions$Ease;
+var $rtfeldman$elm_css$Css$Transitions$border = $rtfeldman$elm_css$Css$Transitions$durationTransition(4);
+var $rtfeldman$elm_css$Css$Transitions$Color = 29;
+var $rtfeldman$elm_css$Css$Transitions$color = $rtfeldman$elm_css$Css$Transitions$durationTransition(29);
 var $author$project$Colors$hover = $rtfeldman$elm_css$Css$hex('d50000');
 var $rtfeldman$elm_css$Css$Preprocess$ExtendSelector = F2(
 	function (a, b) {
@@ -9731,7 +9726,8 @@ var $author$project$SharedStyles$anchor = A2(
 			$rtfeldman$elm_css$Css$Transitions$transition(
 			_List_fromArray(
 				[
-					A3($rtfeldman$elm_css$Css$Transitions$color3, 150, 0, $rtfeldman$elm_css$Css$Transitions$ease)
+					$rtfeldman$elm_css$Css$Transitions$color(150),
+					$rtfeldman$elm_css$Css$Transitions$border(150)
 				])),
 			$rtfeldman$elm_css$Css$hover(
 			_List_fromArray(
@@ -9740,7 +9736,8 @@ var $author$project$SharedStyles$anchor = A2(
 					$rtfeldman$elm_css$Css$Transitions$transition(
 					_List_fromArray(
 						[
-							A3($rtfeldman$elm_css$Css$Transitions$color3, 150, 0, $rtfeldman$elm_css$Css$Transitions$ease)
+							$rtfeldman$elm_css$Css$Transitions$color(150),
+							$rtfeldman$elm_css$Css$Transitions$border(150)
 						]))
 				]))
 		]));
@@ -9945,12 +9942,12 @@ var $author$project$Main$disabledLink = F2(
 					_List_fromArray(
 						[
 							$author$project$SharedStyles$linkStyle,
-							$rtfeldman$elm_css$Css$color($author$project$Colors$light2),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$dark2),
 							$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$default),
 							$rtfeldman$elm_css$Css$hover(
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Css$color($author$project$Colors$light2)
+									$rtfeldman$elm_css$Css$color($author$project$Colors$dark2)
 								]))
 						])),
 					$rtfeldman$elm_css$Html$Styled$Attributes$disabled(true)
@@ -9960,6 +9957,8 @@ var $author$project$Main$disabledLink = F2(
 					$rtfeldman$elm_css$Html$Styled$text(txt)
 				]));
 	});
+var $rtfeldman$elm_css$Css$dashed = {q: 0, W: 0, D: 'dashed'};
+var $author$project$Colors$linkAlpha025 = A4($rtfeldman$elm_css$Css$rgba, 0, 151, 167, 0.25);
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -9993,7 +9992,23 @@ var $author$project$Main$enabledLink = F2(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$css(
 					_List_fromArray(
-						[$author$project$SharedStyles$linkStyle])),
+						[
+							$author$project$SharedStyles$linkStyle,
+							A3(
+							$rtfeldman$elm_css$Css$borderBottom3,
+							$rtfeldman$elm_css$Css$px(0.5),
+							$rtfeldman$elm_css$Css$dashed,
+							$author$project$Colors$linkAlpha025),
+							$rtfeldman$elm_css$Css$hover(
+							_List_fromArray(
+								[
+									A3(
+									$rtfeldman$elm_css$Css$borderBottom3,
+									$rtfeldman$elm_css$Css$px(0.5),
+									$rtfeldman$elm_css$Css$dashed,
+									$author$project$Colors$hover)
+								]))
+						])),
 					$rtfeldman$elm_css$Html$Styled$Events$onClick(e)
 				]),
 			_List_fromArray(
