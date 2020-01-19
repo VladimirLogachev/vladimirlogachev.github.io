@@ -1,20 +1,13 @@
-module Typography exposing (processString, processText)
+module Typography exposing (text__)
 
 import Html.Styled exposing (text)
 import Set exposing (Set)
 
 
-{-| Same as processString, but returns Styled Html
--}
-processText : String -> Html.Styled.Html msg
-processText =
-    processString >> text
-
-
 {-| Avoid typographic mistakes
 
 1.  Split string into lines
-2.  Glue last 3 words in a line together
+2.  Glue last 2 words in a line together (if line consists of 3 and more)
 3.  Replace spaces after specific words with nbsp
 4.  Glue lines back together
 
@@ -22,17 +15,17 @@ Ideally it should be stored in both clean and processed forms in database.
 But I don't have one, so why not process everything in real time? :D
 
 -}
-processString : String -> String
-processString =
+text__ : String -> Html.Styled.Html msg
+text__ =
     String.lines
         >> List.map processLine
         >> String.join "\n"
+        >> text
 
 
 processLine : String -> String
 processLine =
     String.words
-        >> joinLast3Words
         >> List.foldr
             (\word tail ->
                 if Set.member (String.toLower word) dictionary then
@@ -42,19 +35,6 @@ processLine =
                     word ++ " " ++ tail
             )
             ""
-
-
-joinLast3Words : List String -> List String
-joinLast3Words words =
-    case List.reverse words of
-        a :: b :: c :: xs ->
-            List.reverse ((c ++ nbsp ++ b ++ nbsp ++ a) :: xs)
-
-        [ a, b ] ->
-            [ b ++ nbsp ++ a ]
-
-        _ ->
-            words
 
 
 nbsp : String
@@ -138,7 +118,6 @@ dictionary =
     , "why"
     , "will"
     , "with"
-    , "you"
 
     -- russian
     , "а"
@@ -147,6 +126,7 @@ dictionary =
     , "все"
     , "всё"
     , "где"
+    , "для"
     , "до"
     , "ее"
     , "её"

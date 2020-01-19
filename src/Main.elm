@@ -20,7 +20,7 @@ import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
 import Route exposing (Route)
 import SharedStyles exposing (..)
-import Typography exposing (processText)
+import Typography exposing (text__)
 import Url exposing (Url)
 import Utils exposing (..)
 
@@ -146,7 +146,7 @@ viewHeader lang content =
         ]
         [ div [ css [ innerContainer ] ]
             [ header1 [ css [ color Colors.light1 ] ]
-                [ text (enRu lang "Vladimir Logachev" "Владимир Логачев") ]
+                [ text__ (enRu lang "Vladimir Logachev" "Владимир Логачев") ]
             , content
             ]
         ]
@@ -170,7 +170,7 @@ viewIntro lang =
                 , css [ marginRight (Css.em 0.5) ]
                 , href url
                 ]
-                [ text txt ]
+                [ text__ txt ]
     in
     section [ css [ regularText ] ]
         [ p [ css [ displayFlex, marginTop (Css.em 0.8), marginBottom (Css.em 0.8) ] ]
@@ -178,7 +178,7 @@ viewIntro lang =
             , icon "scala.svg" "Scala"
             , icon "elm.svg" "Elm"
             ]
-        , p [] [ text (enRu lang "Fullstack developer" "Fullstack-разработчик") ]
+        , p [] [ text__ (enRu lang "Fullstack developer" "Fullstack-разработчик") ]
         , p []
             [ text
                 (enRu lang
@@ -186,14 +186,14 @@ viewIntro lang =
                     "Организатор "
                 )
             , anchor [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
-            , text
+            , text__
                 (enRu lang
                     " — FP reading group, meetups, collaborations."
                     " — книжный клуб, митапы, совместные проекты."
                 )
             ]
         , p []
-            [ text
+            [ text__
                 (enRu lang
                     "Available for hiring, collaboration and pair programming."
                     "Открыт для новой работы, совместных проектов и парного программирования."
@@ -254,7 +254,7 @@ viewTeam lang projectTeam =
                             (\{ url, userpic, name_i18n } ->
                                 li [ css teamStyle ]
                                     [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , anchor [ href url, Attributes.target "_blank" ] [ text name_i18n ]
+                                    , anchor [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
                                     , text ","
                                     ]
                             )
@@ -267,7 +267,7 @@ viewTeam lang projectTeam =
                             (\{ url, userpic, name_i18n } ->
                                 li [ css teamStyle ]
                                     [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , anchor [ href url, Attributes.target "_blank" ] [ text name_i18n ]
+                                    , anchor [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
                                     ]
                             )
             in
@@ -279,10 +279,10 @@ viewTeam lang projectTeam =
                     ]
                 ]
             <|
-                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text (enRu lang "Project team:" "Команда проекта:") ] ] ]
+                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text__ (enRu lang "Project team:" "Команда проекта:") ] ] ]
                     ++ allButLast
                     ++ last
-                    ++ [ li [ css teamStyle ] [ processText (enRu lang "and me." "и я.") ] ]
+                    ++ [ li [ css teamStyle ] [ text__ (enRu lang "and me." "и я.") ] ]
 
 
 viewProject : Language -> Project -> Html Msg
@@ -314,13 +314,13 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
             div [ css [ flexShrink (num 1) ] ]
 
         splitDescription =
-            description_i18n |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text x ]) |> div []
+            description_i18n |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text__ x ]) |> div []
     in
     projectSection
         [ imageWrapper [ viewProjectImage project ]
         , descriptionWrapper
             [ header3 []
-                [ text name_i18n ]
+                [ text__ name_i18n ]
             , splitDescription
             , div
                 [ css
@@ -336,7 +336,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                             , href link.url
                             , Attributes.target "_blank"
                             ]
-                            [ text link.name_i18n ]
+                            [ text__ link.name_i18n ]
                     )
                     links
             , viewTeam lang team
@@ -411,8 +411,8 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
             ]
         , stickerNode
         , div textStyle
-            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ anchor [ href book.url, Attributes.target "_blank" ] [ text book.title ] ]
-            , p [] [ text book.author ]
+            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ anchor [ href book.url, Attributes.target "_blank" ] [ text__ book.title ] ]
+            , p [] [ text__ book.author ]
             ]
         ]
 
@@ -481,7 +481,7 @@ enabledLink e txt =
             ]
         , onClick e
         ]
-        [ text txt ]
+        [ text__ txt ]
 
 
 disabledLink : Msg -> String -> Html Msg
@@ -495,7 +495,7 @@ disabledLink _ txt =
             ]
         , Attributes.disabled True
         ]
-        [ text txt ]
+        [ text__ txt ]
 
 
 viewLibrary : Language -> Maybe PersonKind -> Dict String Book -> Dict String BookAvaliability -> Html Msg
@@ -518,12 +518,12 @@ viewLibrary lang specific books libState =
         splitDescription =
             description
                 |> String.split "\n"
-                |> List.map (\x -> p [] [ processText x ])
+                |> List.map (\x -> p [] [ text__ x ])
                 |> div [ css [ regularText, marginTop (Css.em 1) ] ]
     in
     div [ css [ fullwidthContainer, backgroundColor Colors.light4 ], id "library" ]
         [ article [ css [ innerContainer ] ]
-            [ header2 [] [ text (enRu lang "My Offline Library, Shared" "Библиотека для коллег и знакомых") ]
+            [ header2 [] [ text__ (enRu lang "My Offline Library, Shared" "Библиотека для коллег и знакомых") ]
             , splitDescription
             , p
                 [ css [ marginTop (Css.em 1) ] ]
@@ -548,7 +548,7 @@ viewLearningMaterials : Language -> Bool -> Dict String Book -> List LearningMat
 viewLearningMaterials lang onlyFavorite books learnPath =
     div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "learning-materials" ]
         [ div [ css [ innerContainer ] ]
-            [ header2 [] [ text (enRu lang "My Recommendations on Learning Materials" "Рекомендуемые мной книги и курсы") ]
+            [ header2 [] [ text__ (enRu lang "My Recommendations on Learning Materials" "Рекомендуемые мной книги и курсы") ]
             , p
                 [ css [ marginTop (Css.em 1) ] ]
                 [ ifElse (not onlyFavorite) disabledLink enabledLink (LearningMaterialsOnlyFavorites False) (enRu lang "All books and courses" "Все книги и курсы")

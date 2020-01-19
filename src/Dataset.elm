@@ -15,10 +15,8 @@ projects lang =
                 "Скоро: Русский перевод книги «Scala with Cats»"
         , description_i18n =
             enRu lang
-                """The book covers purely functional approach to software development in Scala.
-                The translation is carried out together with my colleagues from FP Specialty."""
-                """Книга описывает чисто функциональный подход к разработке приложений на Scala.
-                Перевод осуществляется совместно с коллегами по FP Specialty."""
+                """The book covers purely functional approach to software development in Scala. The translation is carried out together with my colleagues from FP Specialty."""
+                """Книга описывает чисто функциональный подход к разработке приложений на Scala. Перевод осуществляется совместно с коллегами по FP Specialty."""
         , links =
             [ Link (enRu lang "Russian translation repo (WIP)" "Репозиторий перевода (в процессе)") "https://github.com/fpspecialty/scala-with-cats-ru"
             , Link (enRu lang "Original book" "Оригинал книги на английском") "https://underscore.io/books/scala-with-cats/"
@@ -61,10 +59,8 @@ projects lang =
             "♯FACFAF. Quick reference guide"
         , description_i18n =
             enRu lang
-                """A small book about Curtis Mayfield “Black Keys” (open F♯) guitar tuning. 
-                Contains my own conclusions, which aren't necessarily correct"""
-                """Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. 
-                Содержит мои собственные умозаключения, которые не обязательно корректны."""
+                """A small book about Curtis Mayfield “Black Keys” (open F♯) guitar tuning. Contains my own conclusions, which aren't necessarily correct"""
+                """Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. Содержит мои собственные умозаключения, которые не обязательно корректны."""
         , links =
             [ Link (enRu lang "Download PDF" "Скачать PDF") "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
             , Link (enRu lang "Download ePub" "Скачать ePub") "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
