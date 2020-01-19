@@ -9046,7 +9046,7 @@ var $author$project$Dataset$projects = function (lang) {
 	return _List_fromArray(
 		[
 			{
-			a5: A3($author$project$Language$enRu, lang, 'The book covers purely functional approach to software development in Scala.\n                The translation is carried out together with my colleagues from FP Specialty.', 'Книга описывает чисто функциональный подход к разработке приложений на Scala.\n                Перевод осуществляется совместно с коллегами по FP Specialty.'),
+			a5: A3($author$project$Language$enRu, lang, 'The book covers purely functional approach to software development in Scala. The translation is carried out together with my colleagues from FP Specialty.', 'Книга описывает чисто функциональный подход к разработке приложений на Scala. Перевод осуществляется совместно с коллегами по FP Specialty.'),
 			a8: $elm$core$Maybe$Just('scala-with-cats.png'),
 			ba: _List_fromArray(
 				[
@@ -9126,7 +9126,7 @@ var $author$project$Dataset$projects = function (lang) {
 					]))
 		},
 			{
-			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield “Black Keys” (open F♯) guitar tuning. \n                Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. \n                Содержит мои собственные умозаключения, которые не обязательно корректны.'),
+			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield “Black Keys” (open F♯) guitar tuning. Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. Содержит мои собственные умозаключения, которые не обязательно корректны.'),
 			a8: $elm$core$Maybe$Just('facfaf.jpg'),
 			ba: _List_fromArray(
 				[
@@ -9428,6 +9428,61 @@ var $author$project$SharedStyles$innerContainer = $rtfeldman$elm_css$Css$batch(
 				]))
 		]));
 var $author$project$Colors$light2 = $rtfeldman$elm_css$Css$hex('bbbdbd');
+var $elm$core$String$lines = _String_lines;
+var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
+var $elm$core$Set$empty = $elm$core$Dict$empty;
+var $elm$core$Set$insert = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A3($elm$core$Dict$insert, key, 0, dict);
+	});
+var $elm$core$Set$fromList = function (list) {
+	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
+};
+var $author$project$Typography$dictionary = $elm$core$Set$fromList(
+	_List_fromArray(
+		['-', '—', '+', 'a', 'about', 'an', 'and', 'any', 'are', 'as', 'at', 'au', 'be', 'bi', 'but', 'by', 'can', 'de', 'do', 'et', 'fit', 'for', 'from', 'give', 'go', 'going', 'had', 'he', 'i', 'if', 'in', 'is', 'it', 'just', 'know', 'la', 'let', 'made', 'may', 'me', 'my', 'no', 'not', 'of', 'on', 'or', 'part', 'real', 'see', 'seek', 'sent', 'so', 'than', 'that', 'the', 'them', 'there', 'this', 'to', 'up', 'upon', 'watch', 'wd', 'we', 'what', 'whether', 'which', 'who', 'why', 'will', 'with', 'а', 'в', 'во', 'все', 'всё', 'где', 'для', 'до', 'ее', 'её', 'если', 'за', 'и', 'из', 'ими', 'их', 'к', 'мы', 'на', 'не', 'ни', 'но', 'о', 'он', 'от', 'по', 'с', 'слов', 'со', 'столь', 'так', 'таким', 'тем', 'теми', 'то', 'той', 'тот', 'у', 'я']));
+var $elm$core$Dict$member = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$get, key, dict);
+		if (!_v0.$) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var $elm$core$Set$member = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A2($elm$core$Dict$member, key, dict);
+	});
+var $author$project$Typography$nbsp = '\u00A0';
+var $elm$core$String$words = _String_words;
+var $author$project$Typography$processLine = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$words,
+	A2(
+		$elm$core$List$foldr,
+		F2(
+			function (word, tail) {
+				return A2(
+					$elm$core$Set$member,
+					$elm$core$String$toLower(word),
+					$author$project$Typography$dictionary) ? _Utils_ap(
+					word,
+					_Utils_ap($author$project$Typography$nbsp, tail)) : (word + (' ' + tail));
+			}),
+		''));
+var $author$project$Typography$text__ = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$lines,
+	A2(
+		$elm$core$Basics$composeR,
+		$elm$core$List$map($author$project$Typography$processLine),
+		A2(
+			$elm$core$Basics$composeR,
+			$elm$core$String$join('\n'),
+			$rtfeldman$elm_css$Html$Styled$text)));
 var $author$project$Main$viewHeader = F2(
 	function (lang, content) {
 		return A2(
@@ -9466,7 +9521,7 @@ var $author$project$Main$viewHeader = F2(
 								]),
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text(
+									$author$project$Typography$text__(
 									A3($author$project$Language$enRu, lang, 'Vladimir Logachev', 'Владимир Логачев'))
 								])),
 							content
@@ -9859,7 +9914,7 @@ var $author$project$Main$viewIntro = function (lang) {
 					]),
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text(txt)
+						$author$project$Typography$text__(txt)
 					]));
 		});
 	var icon = F2(
@@ -9917,7 +9972,7 @@ var $author$project$Main$viewIntro = function (lang) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text(
+						$author$project$Typography$text__(
 						A3($author$project$Language$enRu, lang, 'Fullstack developer', 'Fullstack-разработчик'))
 					])),
 				A2(
@@ -9938,7 +9993,7 @@ var $author$project$Main$viewIntro = function (lang) {
 							[
 								$rtfeldman$elm_css$Html$Styled$text('FP Specialty')
 							])),
-						$rtfeldman$elm_css$Html$Styled$text(
+						$author$project$Typography$text__(
 						A3($author$project$Language$enRu, lang, ' — FP reading group, meetups, collaborations.', ' — книжный клуб, митапы, совместные проекты.'))
 					])),
 				A2(
@@ -9946,7 +10001,7 @@ var $author$project$Main$viewIntro = function (lang) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text(
+						$author$project$Typography$text__(
 						A3($author$project$Language$enRu, lang, 'Available for hiring, collaboration and pair programming.', 'Открыт для новой работы, совместных проектов и парного программирования.'))
 					])),
 				A2(
@@ -10027,7 +10082,7 @@ var $author$project$Main$disabledLink = F2(
 				]),
 			_List_fromArray(
 				[
-					$rtfeldman$elm_css$Html$Styled$text(txt)
+					$author$project$Typography$text__(txt)
 				]));
 	});
 var $rtfeldman$elm_css$Css$dashed = {q: 0, W: 0, D: 'dashed'};
@@ -10087,7 +10142,7 @@ var $author$project$Main$enabledLink = F2(
 				]),
 			_List_fromArray(
 				[
-					$rtfeldman$elm_css$Html$Styled$text(txt)
+					$author$project$Typography$text__(txt)
 				]));
 	});
 var $rtfeldman$elm_css$Css$flexWrap = $rtfeldman$elm_css$Css$prop1('flex-wrap');
@@ -10295,7 +10350,7 @@ var $author$project$Main$viewBook = F2(
 										]),
 									_List_fromArray(
 										[
-											$rtfeldman$elm_css$Html$Styled$text(book.cC)
+											$author$project$Typography$text__(book.cC)
 										]))
 								])),
 							A2(
@@ -10303,7 +10358,7 @@ var $author$project$Main$viewBook = F2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text(book.a)
+									$author$project$Typography$text__(book.a)
 								]))
 						]))
 				]));
@@ -10340,7 +10395,7 @@ var $author$project$Main$viewLearningMaterials = F4(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text(
+									$author$project$Typography$text__(
 									A3($author$project$Language$enRu, lang, 'My Recommendations on Learning Materials', 'Рекомендуемые мной книги и курсы'))
 								])),
 							A2(
@@ -10560,98 +10615,6 @@ var $author$project$Book$bookOrdering = A2(
 			}),
 		A2($matthewsj$elm_ordering$Ordering$byFieldWith, $author$project$Book$avaliabilityOrdering, $elm$core$Tuple$second)));
 var $author$project$Colors$light4 = $rtfeldman$elm_css$Css$hex('d2dbe0');
-var $elm$core$String$lines = _String_lines;
-var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
-var $elm$core$Set$empty = $elm$core$Dict$empty;
-var $elm$core$Set$insert = F2(
-	function (key, _v0) {
-		var dict = _v0;
-		return A3($elm$core$Dict$insert, key, 0, dict);
-	});
-var $elm$core$Set$fromList = function (list) {
-	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
-};
-var $author$project$Typography$dictionary = $elm$core$Set$fromList(
-	_List_fromArray(
-		['-', '—', '+', 'a', 'about', 'an', 'and', 'any', 'are', 'as', 'at', 'au', 'be', 'bi', 'but', 'by', 'can', 'de', 'do', 'et', 'fit', 'for', 'from', 'give', 'go', 'going', 'had', 'he', 'i', 'if', 'in', 'is', 'it', 'just', 'know', 'la', 'let', 'made', 'may', 'me', 'my', 'no', 'not', 'of', 'on', 'or', 'part', 'real', 'see', 'seek', 'sent', 'so', 'than', 'that', 'the', 'them', 'there', 'this', 'to', 'up', 'upon', 'watch', 'wd', 'we', 'what', 'whether', 'which', 'who', 'why', 'will', 'with', 'you', 'а', 'в', 'во', 'все', 'всё', 'где', 'до', 'ее', 'её', 'если', 'за', 'и', 'из', 'ими', 'их', 'к', 'мы', 'на', 'не', 'ни', 'но', 'о', 'он', 'от', 'по', 'с', 'слов', 'со', 'столь', 'так', 'таким', 'тем', 'теми', 'то', 'той', 'тот', 'у', 'я']));
-var $author$project$Typography$nbsp = '\u00A0';
-var $author$project$Typography$joinLast3Words = function (words) {
-	var _v0 = $elm$core$List$reverse(words);
-	if (_v0.b && _v0.b.b) {
-		if (_v0.b.b.b) {
-			var a = _v0.a;
-			var _v1 = _v0.b;
-			var b = _v1.a;
-			var _v2 = _v1.b;
-			var c = _v2.a;
-			var xs = _v2.b;
-			return $elm$core$List$reverse(
-				A2(
-					$elm$core$List$cons,
-					_Utils_ap(
-						c,
-						_Utils_ap(
-							$author$project$Typography$nbsp,
-							_Utils_ap(
-								b,
-								_Utils_ap($author$project$Typography$nbsp, a)))),
-					xs));
-		} else {
-			var a = _v0.a;
-			var _v3 = _v0.b;
-			var b = _v3.a;
-			return _List_fromArray(
-				[
-					_Utils_ap(
-					b,
-					_Utils_ap($author$project$Typography$nbsp, a))
-				]);
-		}
-	} else {
-		return words;
-	}
-};
-var $elm$core$Dict$member = F2(
-	function (key, dict) {
-		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (!_v0.$) {
-			return true;
-		} else {
-			return false;
-		}
-	});
-var $elm$core$Set$member = F2(
-	function (key, _v0) {
-		var dict = _v0;
-		return A2($elm$core$Dict$member, key, dict);
-	});
-var $elm$core$String$words = _String_words;
-var $author$project$Typography$processLine = A2(
-	$elm$core$Basics$composeR,
-	$elm$core$String$words,
-	A2(
-		$elm$core$Basics$composeR,
-		$author$project$Typography$joinLast3Words,
-		A2(
-			$elm$core$List$foldr,
-			F2(
-				function (word, tail) {
-					return A2(
-						$elm$core$Set$member,
-						$elm$core$String$toLower(word),
-						$author$project$Typography$dictionary) ? _Utils_ap(
-						word,
-						_Utils_ap($author$project$Typography$nbsp, tail)) : (word + (' ' + tail));
-				}),
-			'')));
-var $author$project$Typography$processString = A2(
-	$elm$core$Basics$composeR,
-	$elm$core$String$lines,
-	A2(
-		$elm$core$Basics$composeR,
-		$elm$core$List$map($author$project$Typography$processLine),
-		$elm$core$String$join('\n')));
-var $author$project$Typography$processText = A2($elm$core$Basics$composeR, $author$project$Typography$processString, $rtfeldman$elm_css$Html$Styled$text);
 var $elm$core$List$sortWith = _List_sortWith;
 var $elm_community$list_extra$List$Extra$stableSortWith = F2(
 	function (pred, list) {
@@ -10857,7 +10820,7 @@ var $author$project$Main$viewLibrary = F4(
 						_List_Nil,
 						_List_fromArray(
 							[
-								$author$project$Typography$processText(x)
+								$author$project$Typography$text__(x)
 							]));
 				},
 				A2($elm$core$String$split, '\n', description)));
@@ -10890,7 +10853,7 @@ var $author$project$Main$viewLibrary = F4(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text(
+									$author$project$Typography$text__(
 									A3($author$project$Language$enRu, lang, 'My Offline Library, Shared', 'Библиотека для коллег и знакомых'))
 								])),
 							splitDescription,
@@ -11163,7 +11126,7 @@ var $author$project$Main$viewTeam = F2(
 									]),
 								_List_fromArray(
 									[
-										$rtfeldman$elm_css$Html$Styled$text(name_i18n)
+										$author$project$Typography$text__(name_i18n)
 									]))
 							]));
 				},
@@ -11209,7 +11172,7 @@ var $author$project$Main$viewTeam = F2(
 									]),
 								_List_fromArray(
 									[
-										$rtfeldman$elm_css$Html$Styled$text(name_i18n)
+										$author$project$Typography$text__(name_i18n)
 									])),
 								$rtfeldman$elm_css$Html$Styled$text(',')
 							]));
@@ -11253,7 +11216,7 @@ var $author$project$Main$viewTeam = F2(
 										]),
 									_List_fromArray(
 										[
-											$rtfeldman$elm_css$Html$Styled$text(
+											$author$project$Typography$text__(
 											A3($author$project$Language$enRu, lang, 'Project team:', 'Команда проекта:'))
 										]))
 								]))
@@ -11272,7 +11235,7 @@ var $author$project$Main$viewTeam = F2(
 										]),
 									_List_fromArray(
 										[
-											$author$project$Typography$processText(
+											$author$project$Typography$text__(
 											A3($author$project$Language$enRu, lang, 'and me.', 'и я.'))
 										]))
 								])))));
@@ -11300,7 +11263,7 @@ var $author$project$Main$viewProject = F2(
 							]),
 						_List_fromArray(
 							[
-								$rtfeldman$elm_css$Html$Styled$text(x)
+								$author$project$Typography$text__(x)
 							]));
 				},
 				A2($elm$core$String$split, '\n', description_i18n)));
@@ -11370,7 +11333,7 @@ var $author$project$Main$viewProject = F2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$text(name_i18n)
+									$author$project$Typography$text__(name_i18n)
 								])),
 							splitDescription,
 							A2(
@@ -11404,7 +11367,7 @@ var $author$project$Main$viewProject = F2(
 											]),
 										_List_fromArray(
 											[
-												$rtfeldman$elm_css$Html$Styled$text(link.bc)
+												$author$project$Typography$text__(link.bc)
 											]));
 								},
 								links)),
