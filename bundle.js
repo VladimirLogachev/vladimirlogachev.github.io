@@ -9059,7 +9059,7 @@ var $author$project$Dataset$projects = function (lang) {
 					A3($author$project$Language$enRu, lang, 'Original book', 'Оригинал книги на английском'),
 					'https://underscore.io/books/scala-with-cats/')
 				]),
-			bc: A3($author$project$Language$enRu, lang, 'Coming Soon: Russian Translation of Scala with Cats', 'Скоро: Русский перевод книги «Scala with Cats»'),
+			bc: A3($author$project$Language$enRu, lang, 'Coming Soon: Russian Translation of “Scala with Cats”', 'Скоро: Русский перевод книги «Scala with Cats»'),
 			bn: $author$project$Project$Team(
 				_List_fromArray(
 					[
@@ -9104,7 +9104,7 @@ var $author$project$Dataset$projects = function (lang) {
 					A3($author$project$Language$enRu, lang, 'Original book', 'Оригинал книги на английском'),
 					'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/')
 				]),
-			bc: A3($author$project$Language$enRu, lang, 'Russian Translation of the Mostly Adequate Guide to Functional Programming', 'Русский перевод книги «Mostly Adequate Guide to Functional Programming in JavaScript»'),
+			bc: A3($author$project$Language$enRu, lang, 'Russian Translation of the “Mostly Adequate Guide to Functional Programming”', 'Русский перевод книги «Mostly Adequate Guide to Functional Programming in JavaScript»'),
 			bn: $author$project$Project$Team(
 				_List_fromArray(
 					[
@@ -9126,7 +9126,7 @@ var $author$project$Dataset$projects = function (lang) {
 					]))
 		},
 			{
-			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield «Black Keys» (open F♯) guitar tuning. \n                Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. \n                Содержит мои собственные умозаключения, которые не обязательно корректны.'),
+			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield “Black Keys” (open F♯) guitar tuning. \n                Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. \n                Содержит мои собственные умозаключения, которые не обязательно корректны.'),
 			a8: $elm$core$Maybe$Just('facfaf.jpg'),
 			ba: _List_fromArray(
 				[
