@@ -2,8 +2,14 @@ module SharedStyles exposing (..)
 
 import Colors
 import Css exposing (..)
-import Css.Transitions as Transitions exposing (ease, transition)
+import Css.Media as Media exposing (only, orientation, portrait, screen, withMedia)
+import Css.Transitions as Transitions exposing (transition)
 import Html.Styled exposing (a, h1, h2, h3, styled)
+
+
+mediaSmartphonePortrait : List Style -> Style
+mediaSmartphonePortrait =
+    withMedia [ only screen [ Media.maxWidth (px 600), orientation portrait ] ]
 
 
 regularShadow : Style
@@ -21,6 +27,13 @@ highlightShadow =
     rgba(0, 0, 0, 0.1) 0px 2px 2px,
     rgba(0, 0, 0, 0.1) 0px 3px 3px, 
     #""" ++ Colors.highlightHex ++ " 0px 0px 5px 10px"
+
+
+{-| Missing in elm-css
+-}
+spaceEvenly : Style
+spaceEvenly =
+    property "justify-content" "space-evenly"
 
 
 highlight : Style
@@ -41,8 +54,10 @@ fullwidthContainer =
 innerContainer : Style
 innerContainer =
     batch
-        [ width (px 1000)
+        [ width (pct 100)
+        , maxWidth (px 1000)
         , padding4 (px 48) (px 16) (px 48) (px 32)
+        , mediaSmartphonePortrait [ paddingLeft (px 16), paddingRight (px 16) ]
         ]
 
 

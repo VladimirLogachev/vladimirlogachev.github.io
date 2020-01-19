@@ -40,7 +40,7 @@ projects lang =
                 "Русский перевод книги «Mostly Adequate Guide to Functional Programming in JavaScript»"
         , description_i18n =
             enRu lang
-                """Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.
+                """The book introduces the reader to the functional programming paradigm and describes a functional approach to developing JavaScript applications.
                 The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation."""
                 """Книга знакомит читателя с функциональной парадигмой программирования и описывает функциональный подход к разработке приложений на JavaScript.
                 Работа по переводу была начата Максимом Филипповым и остановилась на 60%. Затем я и Sakayama присоединились к работе, переписали перевод каждой главы, выполненной до нас, а затем завершили перевод остальных глав."""
@@ -58,12 +58,12 @@ projects lang =
         }
     , Project
         { name_i18n =
-            "♯‎FACFAF. Quick reference guide"
+            "♯FACFAF. Quick reference guide"
         , description_i18n =
             enRu lang
-                """A small book about Curtis Mayfield «Black Keys» (open F♯‎) guitar tuning. 
+                """A small book about Curtis Mayfield «Black Keys» (open F♯) guitar tuning. 
                 Contains my own conclusions, which aren't necessarily correct"""
-                """Краткое руководство по гитарному строю «Black Keys» (open F♯‎), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. 
+                """Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. 
                 Содержит мои собственные умозаключения, которые не обязательно корректны."""
         , links =
             [ Link (enRu lang "Download PDF" "Скачать PDF") "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
@@ -76,9 +76,9 @@ projects lang =
     ]
 
 
-{-| As long as I don't use relational database for this library, book title is a key. 
+{-| As long as I don't use relational database for this library, book title is a key.
 To keep things consistent, title should be never changed :D
-Also, there is no visible difference between Book and Course, 
+Also, there is no visible difference between Book and Course,
 so I will store them all as "Books" for a while :D
 -}
 knownBooks : Dict String Book

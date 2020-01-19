@@ -20,6 +20,7 @@ import Maybe.Extra exposing (toList, values)
 import Project exposing (..)
 import Route exposing (Route)
 import SharedStyles exposing (..)
+import Typography exposing (processText)
 import Url exposing (Url)
 import Utils exposing (..)
 
@@ -182,13 +183,13 @@ viewIntro lang =
             [ text
                 (enRu lang
                     "Chief Enthusiast in "
-                    "Главный энтузиаст в "
+                    "Организатор "
                 )
             , anchor [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
             , text
                 (enRu lang
-                    " — FP reading group, meetups, collaborations"
-                    " — книжный клуб, митапы, совместные проекты"
+                    " — FP reading group, meetups, collaborations."
+                    " — книжный клуб, митапы, совместные проекты."
                 )
             ]
         , p []
@@ -281,7 +282,7 @@ viewTeam lang projectTeam =
                 [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text (enRu lang "Project team:" "Команда проекта:") ] ] ]
                     ++ allButLast
                     ++ last
-                    ++ [ li [ css teamStyle ] [ text (enRu lang ("and" ++ nbsp ++ "me.") ("и" ++ nbsp ++ "я.")) ] ]
+                    ++ [ li [ css teamStyle ] [ processText (enRu lang "and me." "и я.") ] ]
 
 
 viewProject : Language -> Project -> Html Msg
@@ -480,7 +481,7 @@ enabledLink e txt =
         [ css
             [ linkStyle
             , borderBottom3 (px 0.5) dashed Colors.linkAlpha025
-            , hover [borderBottom3 (px 0.5) dashed Colors.hover]
+            , hover [ borderBottom3 (px 0.5) dashed Colors.hover025 ]
             ]
         , onClick e
         ]
@@ -515,19 +516,13 @@ viewLibrary lang specific books libState =
 
         description =
             enRu lang
-                """I have a tradition of storing my books on my desk in the workplace.
-                Any person can borrow any book from my personal library.
-                This applies not only to my collegues, but to any person who knows me in real life.
-                This is my culture, it works great, and I won't give up on it, so everyone should just accept it."""
-                """У меня есть традиция хранить свои книги на работе, на своём рабочем столе.
-                Любой человек может взять почитать любую книгу из моей библиотеки.
-                Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично.
-                Это моя культура, она великолепно работает и я не намерен от неё отказываться."""
+                """I have a tradition of storing my books on my desk in the workplace. Any person can borrow any book from my personal library. This applies not only to my collegues, but to any person who knows me in real life. This is my culture, it works great, and I won't give up on it, so everyone should just accept it."""
+                """У меня есть традиция хранить свои книги на работе, на своём рабочем столе. Любой человек может взять почитать любую книгу из моей библиотеки. Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично. Это моя культура, она великолепно работает и я не намерен от неё отказываться."""
 
         splitDescription =
             description
                 |> String.split "\n"
-                |> List.map (\x -> p [] [ text x ])
+                |> List.map (\x -> p [] [ processText x ])
                 |> div [ css [ regularText, marginTop (Css.em 1) ] ]
     in
     div [ css [ fullwidthContainer, backgroundColor Colors.light4 ], id "library" ]
@@ -548,7 +543,7 @@ viewLibrary lang specific books libState =
                 |> List.filter (Tuple.first >> specificPredicate)
                 |> stableSortWith bookOrdering
                 |> List.map (viewLibraryBook lang)
-                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
+                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline, mediaSmartphonePortrait [ spaceEvenly ] ] ]
             ]
         ]
 
@@ -568,6 +563,6 @@ viewLearningMaterials lang onlyFavorite books learnPath =
                 |> getMany books
                 |> List.filter (\(Book { favorite }) -> ifElse onlyFavorite favorite True)
                 |> List.map (viewBook { sticker = Nothing, highlightFavorite = not onlyFavorite, available = True })
-                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
+                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline, mediaSmartphonePortrait [ spaceEvenly ] ] ]
             ]
         ]
