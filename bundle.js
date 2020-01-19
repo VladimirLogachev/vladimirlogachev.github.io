@@ -9091,7 +9091,7 @@ var $author$project$Dataset$projects = function (lang) {
 					]))
 		},
 			{
-			a5: A3($author$project$Language$enRu, lang, 'Russian version of the Mostly Adequate Guide to Functional Programming in JavaScript by Brian Lonsdorf.\n                The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation.', 'Книга знакомит читателя с функциональной парадигмой программирования и описывает функциональный подход к разработке приложений на JavaScript.\n                Работа по переводу была начата Максимом Филипповым и остановилась на 60%. Затем я и Sakayama присоединились к работе, переписали перевод каждой главы, выполненной до нас, а затем завершили перевод остальных глав.'),
+			a5: A3($author$project$Language$enRu, lang, 'The book introduces the reader to the functional programming paradigm and describes a functional approach to developing JavaScript applications.\n                The translation was initiated by Maxim Filippov and stopped at 60%. Then me and Sakayama joined the translation, refactored every chapter translated before us and then finished the translation.', 'Книга знакомит читателя с функциональной парадигмой программирования и описывает функциональный подход к разработке приложений на JavaScript.\n                Работа по переводу была начата Максимом Филипповым и остановилась на 60%. Затем я и Sakayama присоединились к работе, переписали перевод каждой главы, выполненной до нас, а затем завершили перевод остальных глав.'),
 			a8: $elm$core$Maybe$Just('mostly_adequate_guide_fp_ru.png'),
 			ba: _List_fromArray(
 				[
@@ -9126,7 +9126,7 @@ var $author$project$Dataset$projects = function (lang) {
 					]))
 		},
 			{
-			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield «Black Keys» (open F♯‎) guitar tuning. \n                Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F♯‎), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. \n                Содержит мои собственные умозаключения, которые не обязательно корректны.'),
+			a5: A3($author$project$Language$enRu, lang, 'A small book about Curtis Mayfield «Black Keys» (open F♯) guitar tuning. \n                Contains my own conclusions, which aren\'t necessarily correct', 'Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. \n                Содержит мои собственные умозаключения, которые не обязательно корректны.'),
 			a8: $elm$core$Maybe$Just('facfaf.jpg'),
 			ba: _List_fromArray(
 				[
@@ -9143,7 +9143,7 @@ var $author$project$Dataset$projects = function (lang) {
 					A3($author$project$Language$enRu, lang, 'Read online', 'Читать онлайн'),
 					'https://www.gitbook.com/read/book/vladimirlogachev/facfaf')
 				]),
-			bc: '♯‎FACFAF. Quick reference guide',
+			bc: '♯FACFAF. Quick reference guide',
 			bn: $author$project$Project$OnlyMe
 		}
 		]);
@@ -9347,6 +9347,47 @@ var $author$project$SharedStyles$header1 = A2(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(36))
 		]));
+var $rtfeldman$elm_css$Css$maxWidth = $rtfeldman$elm_css$Css$prop1('max-width');
+var $rtfeldman$elm_css$Css$Media$feature = F2(
+	function (key, _v0) {
+		var value = _v0.D;
+		return {
+			bF: key,
+			D: $elm$core$Maybe$Just(value)
+		};
+	});
+var $rtfeldman$elm_css$Css$Media$maxWidth = function (value) {
+	return A2($rtfeldman$elm_css$Css$Media$feature, 'max-width', value);
+};
+var $rtfeldman$elm_css$Css$Structure$OnlyQuery = F2(
+	function (a, b) {
+		return {$: 1, a: a, b: b};
+	});
+var $rtfeldman$elm_css$Css$Media$only = $rtfeldman$elm_css$Css$Structure$OnlyQuery;
+var $rtfeldman$elm_css$Css$Media$orientation = function (value) {
+	return A2($rtfeldman$elm_css$Css$Media$feature, 'orientation', value);
+};
+var $rtfeldman$elm_css$Css$Media$portrait = {aX: 0, D: 'portrait'};
+var $rtfeldman$elm_css$Css$Structure$Screen = 1;
+var $rtfeldman$elm_css$Css$Media$screen = 1;
+var $rtfeldman$elm_css$Css$Preprocess$WithMedia = F2(
+	function (a, b) {
+		return {$: 4, a: a, b: b};
+	});
+var $rtfeldman$elm_css$Css$Media$withMedia = $rtfeldman$elm_css$Css$Preprocess$WithMedia;
+var $author$project$SharedStyles$mediaSmartphonePortrait = $rtfeldman$elm_css$Css$Media$withMedia(
+	_List_fromArray(
+		[
+			A2(
+			$rtfeldman$elm_css$Css$Media$only,
+			$rtfeldman$elm_css$Css$Media$screen,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$Media$maxWidth(
+					$rtfeldman$elm_css$Css$px(600)),
+					$rtfeldman$elm_css$Css$Media$orientation($rtfeldman$elm_css$Css$Media$portrait)
+				]))
+		]));
 var $rtfeldman$elm_css$Css$prop4 = F5(
 	function (key, argA, argB, argC, argD) {
 		return A2(
@@ -9359,18 +9400,32 @@ var $rtfeldman$elm_css$Css$prop4 = F5(
 					[argA.D, argB.D, argC.D, argD.D])));
 	});
 var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
+var $rtfeldman$elm_css$Css$paddingLeft = $rtfeldman$elm_css$Css$prop1('padding-left');
+var $rtfeldman$elm_css$Css$paddingRight = $rtfeldman$elm_css$Css$prop1('padding-right');
+var $rtfeldman$elm_css$Css$PercentageUnits = 0;
+var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, '%');
 var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
 var $author$project$SharedStyles$innerContainer = $rtfeldman$elm_css$Css$batch(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$width(
+			$rtfeldman$elm_css$Css$pct(100)),
+			$rtfeldman$elm_css$Css$maxWidth(
 			$rtfeldman$elm_css$Css$px(1000)),
 			A4(
 			$rtfeldman$elm_css$Css$padding4,
 			$rtfeldman$elm_css$Css$px(48),
 			$rtfeldman$elm_css$Css$px(16),
 			$rtfeldman$elm_css$Css$px(48),
-			$rtfeldman$elm_css$Css$px(32))
+			$rtfeldman$elm_css$Css$px(32)),
+			$author$project$SharedStyles$mediaSmartphonePortrait(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$paddingLeft(
+					$rtfeldman$elm_css$Css$px(16)),
+					$rtfeldman$elm_css$Css$paddingRight(
+					$rtfeldman$elm_css$Css$px(16))
+				]))
 		]));
 var $author$project$Colors$light2 = $rtfeldman$elm_css$Css$hex('bbbdbd');
 var $author$project$Main$viewHeader = F2(
@@ -9444,7 +9499,25 @@ var $rtfeldman$elm_css$Css$Transitions$durationTransition = F2(
 var $rtfeldman$elm_css$Css$Transitions$border = $rtfeldman$elm_css$Css$Transitions$durationTransition(4);
 var $rtfeldman$elm_css$Css$Transitions$Color = 29;
 var $rtfeldman$elm_css$Css$Transitions$color = $rtfeldman$elm_css$Css$Transitions$durationTransition(29);
-var $author$project$Colors$hover = $rtfeldman$elm_css$Css$hex('d50000');
+var $rtfeldman$elm_css$Css$rgb = F3(
+	function (r, g, b) {
+		return {
+			at: 1,
+			aw: b,
+			z: 0,
+			ay: g,
+			aE: r,
+			D: A2(
+				$rtfeldman$elm_css$Css$cssFunction,
+				'rgb',
+				A2(
+					$elm$core$List$map,
+					$elm$core$String$fromInt,
+					_List_fromArray(
+						[r, g, b])))
+		};
+	});
+var $author$project$Colors$hover = A3($rtfeldman$elm_css$Css$rgb, 213, 0, 0);
 var $rtfeldman$elm_css$Css$Preprocess$ExtendSelector = F2(
 	function (a, b) {
 		return {$: 1, a: a, b: b};
@@ -9853,7 +9926,7 @@ var $author$project$Main$viewIntro = function (lang) {
 				_List_fromArray(
 					[
 						$rtfeldman$elm_css$Html$Styled$text(
-						A3($author$project$Language$enRu, lang, 'Chief Enthusiast in ', 'Главный энтузиаст в ')),
+						A3($author$project$Language$enRu, lang, 'Chief Enthusiast in ', 'Организатор ')),
 						A2(
 						$author$project$SharedStyles$anchor,
 						_List_fromArray(
@@ -9866,7 +9939,7 @@ var $author$project$Main$viewIntro = function (lang) {
 								$rtfeldman$elm_css$Html$Styled$text('FP Specialty')
 							])),
 						$rtfeldman$elm_css$Html$Styled$text(
-						A3($author$project$Language$enRu, lang, ' — FP reading group, meetups, collaborations', ' — книжный клуб, митапы, совместные проекты'))
+						A3($author$project$Language$enRu, lang, ' — FP reading group, meetups, collaborations.', ' — книжный клуб, митапы, совместные проекты.'))
 					])),
 				A2(
 				$rtfeldman$elm_css$Html$Styled$p,
@@ -9958,6 +10031,7 @@ var $author$project$Main$disabledLink = F2(
 				]));
 	});
 var $rtfeldman$elm_css$Css$dashed = {q: 0, W: 0, D: 'dashed'};
+var $author$project$Colors$hover025 = A4($rtfeldman$elm_css$Css$rgba, 213, 0, 0, 0.25);
 var $author$project$Colors$linkAlpha025 = A4($rtfeldman$elm_css$Css$rgba, 0, 151, 167, 0.25);
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
@@ -10006,7 +10080,7 @@ var $author$project$Main$enabledLink = F2(
 									$rtfeldman$elm_css$Css$borderBottom3,
 									$rtfeldman$elm_css$Css$px(0.5),
 									$rtfeldman$elm_css$Css$dashed,
-									$author$project$Colors$hover)
+									$author$project$Colors$hover025)
 								]))
 						])),
 					$rtfeldman$elm_css$Html$Styled$Events$onClick(e)
@@ -10049,6 +10123,7 @@ var $author$project$SharedStyles$header2 = A2(
 		]));
 var $rtfeldman$elm_css$Html$Styled$Attributes$id = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('id');
 var $author$project$Colors$light3 = $rtfeldman$elm_css$Css$hex('e3e3e3');
+var $author$project$SharedStyles$spaceEvenly = A2($rtfeldman$elm_css$Css$property, 'justify-content', 'space-evenly');
 var $rtfeldman$elm_css$Css$borderRadius = $rtfeldman$elm_css$Css$prop1('border-radius');
 var $author$project$Utils$emptyHtml = $rtfeldman$elm_css$Html$Styled$text('');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
@@ -10086,7 +10161,6 @@ var $rtfeldman$elm_css$Css$prop2 = F3(
 					[argA.D, argB.D])));
 	});
 var $rtfeldman$elm_css$Css$margin2 = $rtfeldman$elm_css$Css$prop2('margin');
-var $rtfeldman$elm_css$Css$maxWidth = $rtfeldman$elm_css$Css$prop1('max-width');
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
 var $author$project$SharedStyles$regularShadow = A2($rtfeldman$elm_css$Css$property, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
 var $rtfeldman$elm_css$Css$relative = {aD: 0, D: 'relative'};
@@ -10306,7 +10380,10 @@ var $author$project$Main$viewLearningMaterials = F4(
 										[
 											$rtfeldman$elm_css$Css$displayFlex,
 											$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap),
-											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline)
+											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline),
+											$author$project$SharedStyles$mediaSmartphonePortrait(
+											_List_fromArray(
+												[$author$project$SharedStyles$spaceEvenly]))
 										]))
 								]),
 							A2(
@@ -10483,6 +10560,98 @@ var $author$project$Book$bookOrdering = A2(
 			}),
 		A2($matthewsj$elm_ordering$Ordering$byFieldWith, $author$project$Book$avaliabilityOrdering, $elm$core$Tuple$second)));
 var $author$project$Colors$light4 = $rtfeldman$elm_css$Css$hex('d2dbe0');
+var $elm$core$String$lines = _String_lines;
+var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
+var $elm$core$Set$empty = $elm$core$Dict$empty;
+var $elm$core$Set$insert = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A3($elm$core$Dict$insert, key, 0, dict);
+	});
+var $elm$core$Set$fromList = function (list) {
+	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
+};
+var $author$project$Typography$dictionary = $elm$core$Set$fromList(
+	_List_fromArray(
+		['-', '—', '+', 'a', 'about', 'an', 'and', 'any', 'are', 'as', 'at', 'au', 'be', 'bi', 'but', 'by', 'can', 'de', 'do', 'et', 'fit', 'for', 'from', 'give', 'go', 'going', 'had', 'he', 'i', 'if', 'in', 'is', 'it', 'just', 'know', 'la', 'let', 'made', 'may', 'me', 'my', 'no', 'not', 'of', 'on', 'or', 'part', 'real', 'see', 'seek', 'sent', 'so', 'than', 'that', 'the', 'them', 'there', 'this', 'to', 'up', 'upon', 'watch', 'wd', 'we', 'what', 'whether', 'which', 'who', 'why', 'will', 'with', 'you', 'а', 'в', 'во', 'все', 'всё', 'где', 'до', 'ее', 'её', 'если', 'за', 'и', 'из', 'ими', 'их', 'к', 'мы', 'на', 'не', 'ни', 'но', 'о', 'он', 'от', 'по', 'с', 'слов', 'со', 'столь', 'так', 'таким', 'тем', 'теми', 'то', 'той', 'тот', 'у', 'я']));
+var $author$project$Typography$nbsp = '\u00A0';
+var $author$project$Typography$joinLast3Words = function (words) {
+	var _v0 = $elm$core$List$reverse(words);
+	if (_v0.b && _v0.b.b) {
+		if (_v0.b.b.b) {
+			var a = _v0.a;
+			var _v1 = _v0.b;
+			var b = _v1.a;
+			var _v2 = _v1.b;
+			var c = _v2.a;
+			var xs = _v2.b;
+			return $elm$core$List$reverse(
+				A2(
+					$elm$core$List$cons,
+					_Utils_ap(
+						c,
+						_Utils_ap(
+							$author$project$Typography$nbsp,
+							_Utils_ap(
+								b,
+								_Utils_ap($author$project$Typography$nbsp, a)))),
+					xs));
+		} else {
+			var a = _v0.a;
+			var _v3 = _v0.b;
+			var b = _v3.a;
+			return _List_fromArray(
+				[
+					_Utils_ap(
+					b,
+					_Utils_ap($author$project$Typography$nbsp, a))
+				]);
+		}
+	} else {
+		return words;
+	}
+};
+var $elm$core$Dict$member = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$get, key, dict);
+		if (!_v0.$) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var $elm$core$Set$member = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A2($elm$core$Dict$member, key, dict);
+	});
+var $elm$core$String$words = _String_words;
+var $author$project$Typography$processLine = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$words,
+	A2(
+		$elm$core$Basics$composeR,
+		$author$project$Typography$joinLast3Words,
+		A2(
+			$elm$core$List$foldr,
+			F2(
+				function (word, tail) {
+					return A2(
+						$elm$core$Set$member,
+						$elm$core$String$toLower(word),
+						$author$project$Typography$dictionary) ? _Utils_ap(
+						word,
+						_Utils_ap($author$project$Typography$nbsp, tail)) : (word + (' ' + tail));
+				}),
+			'')));
+var $author$project$Typography$processString = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$lines,
+	A2(
+		$elm$core$Basics$composeR,
+		$elm$core$List$map($author$project$Typography$processLine),
+		$elm$core$String$join('\n')));
+var $author$project$Typography$processText = A2($elm$core$Basics$composeR, $author$project$Typography$processString, $rtfeldman$elm_css$Html$Styled$text);
 var $elm$core$List$sortWith = _List_sortWith;
 var $elm_community$list_extra$List$Extra$stableSortWith = F2(
 	function (pred, list) {
@@ -10588,24 +10757,6 @@ var $author$project$Main$roundSticker = $rtfeldman$elm_css$Css$batch(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(12))
 		]));
-var $rtfeldman$elm_css$Css$rgb = F3(
-	function (r, g, b) {
-		return {
-			at: 1,
-			aw: b,
-			z: 0,
-			ay: g,
-			aE: r,
-			D: A2(
-				$rtfeldman$elm_css$Css$cssFunction,
-				'rgb',
-				A2(
-					$elm$core$List$map,
-					$elm$core$String$fromInt,
-					_List_fromArray(
-						[r, g, b])))
-		};
-	});
 var $author$project$Colors$selection1a = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$sel1rgb.aZ, $author$project$Colors$sel1rgb.aR, $author$project$Colors$sel1rgb.aN);
 var $author$project$Colors$selection1b = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$sel1rgb.aZ, $author$project$Colors$sel1rgb.aR, $author$project$Colors$sel1rgb.aN, 0.7);
 var $author$project$Main$viewLibraryBook = F2(
@@ -10685,7 +10836,7 @@ var $author$project$Main$viewLibrary = F4(
 				return true;
 			}
 		};
-		var description = A3($author$project$Language$enRu, lang, 'I have a tradition of storing my books on my desk in the workplace.\n                Any person can borrow any book from my personal library.\n                This applies not only to my collegues, but to any person who knows me in real life.\n                This is my culture, it works great, and I won\'t give up on it, so everyone should just accept it.', 'У меня есть традиция хранить свои книги на работе, на своём рабочем столе.\n                Любой человек может взять почитать любую книгу из моей библиотеки.\n                Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично.\n                Это моя культура, она великолепно работает и я не намерен от неё отказываться.');
+		var description = A3($author$project$Language$enRu, lang, 'I have a tradition of storing my books on my desk in the workplace. Any person can borrow any book from my personal library. This applies not only to my collegues, but to any person who knows me in real life. This is my culture, it works great, and I won\'t give up on it, so everyone should just accept it.', 'У меня есть традиция хранить свои книги на работе, на своём рабочем столе. Любой человек может взять почитать любую книгу из моей библиотеки. Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично. Это моя культура, она великолепно работает и я не намерен от неё отказываться.');
 		var splitDescription = A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_fromArray(
@@ -10706,7 +10857,7 @@ var $author$project$Main$viewLibrary = F4(
 						_List_Nil,
 						_List_fromArray(
 							[
-								$rtfeldman$elm_css$Html$Styled$text(x)
+								$author$project$Typography$processText(x)
 							]));
 				},
 				A2($elm$core$String$split, '\n', description)));
@@ -10803,7 +10954,10 @@ var $author$project$Main$viewLibrary = F4(
 										[
 											$rtfeldman$elm_css$Css$displayFlex,
 											$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap),
-											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline)
+											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline),
+											$author$project$SharedStyles$mediaSmartphonePortrait(
+											_List_fromArray(
+												[$author$project$SharedStyles$spaceEvenly]))
 										]))
 								]),
 							A2(
@@ -10909,7 +11063,6 @@ var $elm_community$list_extra$List$Extra$last = function (items) {
 	}
 };
 var $rtfeldman$elm_css$Html$Styled$li = $rtfeldman$elm_css$Html$Styled$node('li');
-var $author$project$Utils$nbsp = '\u00A0';
 var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
 var $elm_community$maybe_extra$Maybe$Extra$toList = function (m) {
 	if (m.$ === 1) {
@@ -11120,8 +11273,8 @@ var $author$project$Main$viewTeam = F2(
 										]),
 									_List_fromArray(
 										[
-											$rtfeldman$elm_css$Html$Styled$text(
-											A3($author$project$Language$enRu, lang, 'and' + ($author$project$Utils$nbsp + 'me.'), 'и' + ($author$project$Utils$nbsp + 'я.')))
+											$author$project$Typography$processText(
+											A3($author$project$Language$enRu, lang, 'and me.', 'и я.'))
 										]))
 								])))));
 		}
