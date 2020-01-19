@@ -11,7 +11,7 @@ projects lang =
     [ Project
         { name_i18n =
             enRu lang
-                "Coming Soon: Russian Translation of Scala with Cats"
+                "Coming Soon: Russian Translation of “Scala with Cats”"
                 "Скоро: Русский перевод книги «Scala with Cats»"
         , description_i18n =
             enRu lang
@@ -36,7 +36,7 @@ projects lang =
     , Project
         { name_i18n =
             enRu lang
-                "Russian Translation of the Mostly Adequate Guide to Functional Programming"
+                "Russian Translation of the “Mostly Adequate Guide to Functional Programming”"
                 "Русский перевод книги «Mostly Adequate Guide to Functional Programming in JavaScript»"
         , description_i18n =
             enRu lang
@@ -61,7 +61,7 @@ projects lang =
             "♯FACFAF. Quick reference guide"
         , description_i18n =
             enRu lang
-                """A small book about Curtis Mayfield «Black Keys» (open F♯) guitar tuning. 
+                """A small book about Curtis Mayfield “Black Keys” (open F♯) guitar tuning. 
                 Contains my own conclusions, which aren't necessarily correct"""
                 """Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. 
                 Содержит мои собственные умозаключения, которые не обязательно корректны."""
