@@ -10986,6 +10986,9 @@ var $author$project$Main$viewLibrary = F4(
 						]))
 				]));
 	});
+var $rtfeldman$elm_css$Css$column = _Utils_update(
+	$rtfeldman$elm_css$Css$row,
+	{D: 'column'});
 var $rtfeldman$elm_css$Css$flexGrow = $rtfeldman$elm_css$Css$prop1('flex-grow');
 var $rtfeldman$elm_css$Css$flexShrink = $rtfeldman$elm_css$Css$prop1('flex-shrink');
 var $rtfeldman$elm_css$Html$Styled$h3 = $rtfeldman$elm_css$Html$Styled$node('h3');
@@ -10999,7 +11002,6 @@ var $author$project$SharedStyles$header3 = A2(
 			$rtfeldman$elm_css$Css$px(24))
 		]));
 var $rtfeldman$elm_css$Css$lastChild = $rtfeldman$elm_css$Css$pseudoClass('last-child');
-var $rtfeldman$elm_css$Css$minWidth = $rtfeldman$elm_css$Css$prop1('min-width');
 var $rtfeldman$elm_css$Css$right = $rtfeldman$elm_css$Css$prop1('right');
 var $author$project$Main$viewProjectImage = function (_v0) {
 	var name_i18n = _v0.bc;
@@ -11029,9 +11031,6 @@ var $author$project$Main$viewProjectImage = function (_v0) {
 		return $author$project$Utils$emptyHtml;
 	}
 };
-var $rtfeldman$elm_css$Css$column = _Utils_update(
-	$rtfeldman$elm_css$Css$row,
-	{D: 'column'});
 var $elm_community$list_extra$List$Extra$init = function (items) {
 	if (!items.b) {
 		return $elm$core$Maybe$Nothing;
@@ -11320,6 +11319,11 @@ var $author$project$Main$viewProject = F2(
 							_List_fromArray(
 								[
 									$rtfeldman$elm_css$Css$marginBottom($rtfeldman$elm_css$Css$zero)
+								])),
+							$author$project$SharedStyles$mediaSmartphonePortrait(
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$column)
 								]))
 						]))
 				]));
@@ -11347,9 +11351,7 @@ var $author$project$Main$viewProject = F2(
 					_List_fromArray(
 						[
 							$rtfeldman$elm_css$Css$flexShrink(
-							$rtfeldman$elm_css$Css$num(1)),
-							$rtfeldman$elm_css$Css$minWidth(
-							$rtfeldman$elm_css$Css$px(350))
+							$rtfeldman$elm_css$Css$num(1))
 						]))
 				]));
 		return projectSection(
