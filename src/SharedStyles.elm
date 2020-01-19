@@ -47,7 +47,8 @@ fullwidthContainer =
         [ displayFlex
         , flexDirection row
         , justifyContent center
-        , borderBottom3 (px 1) solid (rgba 0 0 0 0.1)
+        , borderBottom3 (px 1) solid (rgba 0 0 0 0.15)
+        , lastChild [ borderBottom zero]
         ]
 
 
@@ -120,6 +121,20 @@ textLink =
             ]
         ]
 
+textLinkOnDark : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
+textLinkOnDark =
+    styled a
+        [ textDecoration none
+        , color Colors.linkOnBlack
+        , transition [ Transitions.color 150, Transitions.border 150 ]
+        , hover
+            [ color Colors.hover
+            , transition [ Transitions.color 150, Transitions.border 150 ]
+            ]
+        ]
+
+
+
 
 buttonLink : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
 buttonLink =
@@ -127,12 +142,13 @@ buttonLink =
         [ textDecoration none
         , padding4 (px 8) (px 12) (px 8) (px 12)
         , color Colors.light1
-        , backgroundColor Colors.dark1
+        , backgroundColor Colors.link
         , borderRadius (px 3)
         , regularShadow
+        , flexShrink zero
         , transition [ Transitions.backgroundColor 150]
         , hover
-            [ backgroundColor Colors.link
+            [ backgroundColor Colors.hover
             , transition [ Transitions.backgroundColor 150 ]
             ]
         ]

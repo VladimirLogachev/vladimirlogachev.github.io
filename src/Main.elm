@@ -165,7 +165,7 @@ viewIntro lang =
                 []
 
         link url txt =
-            textLink
+            textLinkOnDark
                 [ Attributes.target "_blank"
                 , css [ marginRight (Css.em 0.5) ]
                 , href url
@@ -185,7 +185,7 @@ viewIntro lang =
                     "Chief Enthusiast in "
                     "Организатор "
                 )
-            , textLink [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
+            , textLinkOnDark [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
             , text__
                 (enRu lang
                     " — FP reading group, meetups, collaborations."
@@ -237,6 +237,8 @@ viewTeam lang projectTeam =
             [ displayFlex
             , alignItems center
             , marginTop <| Css.em 0.35
+            , marginRight <| Css.em 0.35
+            , lastChild [ marginRight zero ]
             ]
     in
     case projectTeam of
@@ -275,7 +277,7 @@ viewTeam lang projectTeam =
                 [ css
                     [ displayFlex
                     , flexWrap wrap
-                    , flexDirection column
+                    , flexDirection row
                     ]
                 ]
             <|
@@ -307,6 +309,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                     , flexShrink (num 0)
                     , textAlign right
                     , marginRight (px 32)
+                    , marginBottom (px 24)
                     ]
                 ]
 
@@ -327,9 +330,10 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                     (\link ->
                         buttonLink
                             [ css
-                                [ marginBottom (Css.em 1)
-                                , lastChild [marginBottom zero]
-                                
+                                [ marginTop (Css.em 0.7)
+                                , marginBottom (Css.em 0.7)
+                                , marginRight (Css.em 1)
+                                , lastChild [ marginRight zero ]
                                 ]
                             , href link.url
                             , Attributes.target "_blank"
@@ -338,10 +342,9 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                     )
                 |> div
                     [ css
-                        [ marginTop (Css.em 0.4)
-                        , marginBottom (Css.em 0.4)
-                        , displayFlex
-                        , flexDirection column
+                        [ displayFlex
+                        , flexDirection row
+                        , flexWrap wrap
                         , alignItems flexStart
                         ]
                     ]
@@ -352,7 +355,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
 
 viewProjects : Language -> (Language -> List Project) -> Html Msg
 viewProjects lang projs =
-    div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "projects" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.light1 ], id "projects" ]
         [ article [ css [ innerContainer ] ]
             [ header2 [] [ text (enRu lang "Projects" "Проекты") ]
             , div [] <| List.map (viewProject lang) (projs lang)
@@ -527,7 +530,7 @@ viewLibrary lang specific books libState =
                 |> List.map (\x -> p [] [ text__ x ])
                 |> div [ css [ regularText, marginTop (Css.em 1) ] ]
     in
-    div [ css [ fullwidthContainer, backgroundColor Colors.light4 ], id "library" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.light1 ], id "library" ]
         [ article [ css [ innerContainer ] ]
             [ header2 [] [ text__ (enRu lang "My Offline Library, Shared" "Библиотека для коллег и знакомых") ]
             , splitDescription
@@ -552,7 +555,7 @@ viewLibrary lang specific books libState =
 
 viewLearningMaterials : Language -> Bool -> Dict String Book -> List LearningMaterial -> Html Msg
 viewLearningMaterials lang onlyFavorite books learnPath =
-    div [ css [ fullwidthContainer, backgroundColor Colors.light3 ], id "learning-materials" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.light1 ], id "learning-materials" ]
         [ div [ css [ innerContainer ] ]
             [ header2 [] [ text__ (enRu lang "My Recommendations on Learning Materials" "Рекомендуемые мной книги и курсы") ]
             , p

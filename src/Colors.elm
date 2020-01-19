@@ -6,22 +6,22 @@ import String exposing (fromInt)
 
 light1 : Color
 light1 =
-    hex "fff"
+    hex "E5E7E9"
 
 
 light2 : Color
 light2 =
-    hex "bbbdbd"
+    hex "E5E7E9"
 
 
 light3 : Color
 light3 =
-    hex "e3e3e3"
+    hex "CACFD2"
 
 
 light4 : Color
 light4 =
-    hex "d2dbe0"
+    hex "BDC3C7"
 
 
 highlightHex : String
@@ -36,47 +36,52 @@ highlight =
 
 link : Color
 link =
-    hex "0097a7"
+    rgb 0 72 96
 
 
 linkAlpha05 : Color
 linkAlpha05 =
-    hex "#0097a780"
+    rgba 0 72 96 0.5
 
 
 linkAlpha025 : Color
 linkAlpha025 =
-    rgba 0 151 167 0.25
+    rgba 0 72 96 0.25
+
+
+linkOnBlack : Color
+linkOnBlack =
+    rgb 97 185 214
 
 
 hover : Color
 hover =
-    rgb 213 0 0
+    rgb 194 78 59
 
 
 hover05 : Color
 hover05 =
-    rgba 213 0 0 0.5
+    rgba 194 78 59 0.5
 
 
 hover025 : Color
 hover025 =
-    rgba 213 0 0 0.25
+    rgba 194 78 59 0.25
 
 
 dark1 : Color
 dark1 =
-    hex "11151b"
+    rgb 18 25 33
 
 
 dark1b : Color
 dark1b =
-    rgba 17 21 27 0.8
+    rgba 18 25 33 0.8
 
 
 dark2 : Color
 dark2 =
-    hex "111"
+    dark1
 
 
 sel1rgb =
