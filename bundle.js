@@ -9544,6 +9544,32 @@ var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $rtfeldman$elm_css$Html$Styled$Attributes$alt = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('alt');
+var $rtfeldman$elm_css$Css$EmUnits = 0;
+var $rtfeldman$elm_css$Css$em = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, 'em');
+var $rtfeldman$elm_css$Html$Styled$Attributes$href = function (url) {
+	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'href', url);
+};
+var $rtfeldman$elm_css$Html$Styled$img = $rtfeldman$elm_css$Html$Styled$node('img');
+var $rtfeldman$elm_css$Css$marginBottom = $rtfeldman$elm_css$Css$prop1('margin-bottom');
+var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
+var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
+var $rtfeldman$elm_css$Css$maxHeight = $rtfeldman$elm_css$Css$prop1('max-height');
+var $rtfeldman$elm_css$Html$Styled$p = $rtfeldman$elm_css$Html$Styled$node('p');
+var $author$project$SharedStyles$regularText = $rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$lineHeight(
+			$rtfeldman$elm_css$Css$num(1.3)),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(0.4)),
+			$rtfeldman$elm_css$Css$marginBottom(
+			$rtfeldman$elm_css$Css$em(0.4))
+		]));
+var $rtfeldman$elm_css$Html$Styled$section = $rtfeldman$elm_css$Html$Styled$node('section');
+var $rtfeldman$elm_css$Html$Styled$Attributes$src = function (url) {
+	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'src', url);
+};
+var $rtfeldman$elm_css$Html$Styled$Attributes$target = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('target');
 var $rtfeldman$elm_css$Html$Styled$a = $rtfeldman$elm_css$Html$Styled$node('a');
 var $rtfeldman$elm_css$Css$Transitions$Border = 4;
 var $rtfeldman$elm_css$Css$Transitions$Transition = $elm$core$Basics$identity;
@@ -9844,7 +9870,7 @@ var $rtfeldman$elm_css$Css$Transitions$transition = function (options) {
 			options));
 	return A2($rtfeldman$elm_css$Css$property, 'transition', v);
 };
-var $author$project$SharedStyles$anchor = A2(
+var $author$project$SharedStyles$textLink = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$a,
 	_List_fromArray(
@@ -9869,38 +9895,12 @@ var $author$project$SharedStyles$anchor = A2(
 						]))
 				]))
 		]));
-var $rtfeldman$elm_css$Css$EmUnits = 0;
-var $rtfeldman$elm_css$Css$em = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, 'em');
-var $rtfeldman$elm_css$Html$Styled$Attributes$href = function (url) {
-	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'href', url);
-};
-var $rtfeldman$elm_css$Html$Styled$img = $rtfeldman$elm_css$Html$Styled$node('img');
-var $rtfeldman$elm_css$Css$marginBottom = $rtfeldman$elm_css$Css$prop1('margin-bottom');
-var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
-var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
-var $rtfeldman$elm_css$Css$maxHeight = $rtfeldman$elm_css$Css$prop1('max-height');
-var $rtfeldman$elm_css$Html$Styled$p = $rtfeldman$elm_css$Html$Styled$node('p');
-var $author$project$SharedStyles$regularText = $rtfeldman$elm_css$Css$batch(
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$lineHeight(
-			$rtfeldman$elm_css$Css$num(1.3)),
-			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$em(0.4)),
-			$rtfeldman$elm_css$Css$marginBottom(
-			$rtfeldman$elm_css$Css$em(0.4))
-		]));
-var $rtfeldman$elm_css$Html$Styled$section = $rtfeldman$elm_css$Html$Styled$node('section');
-var $rtfeldman$elm_css$Html$Styled$Attributes$src = function (url) {
-	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'src', url);
-};
-var $rtfeldman$elm_css$Html$Styled$Attributes$target = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('target');
 var $rtfeldman$elm_css$Html$Styled$Attributes$title = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('title');
 var $author$project$Main$viewIntro = function (lang) {
 	var link = F2(
 		function (url, txt) {
 			return A2(
-				$author$project$SharedStyles$anchor,
+				$author$project$SharedStyles$textLink,
 				_List_fromArray(
 					[
 						$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank'),
@@ -9983,7 +9983,7 @@ var $author$project$Main$viewIntro = function (lang) {
 						$rtfeldman$elm_css$Html$Styled$text(
 						A3($author$project$Language$enRu, lang, 'Chief Enthusiast in ', 'Организатор ')),
 						A2(
-						$author$project$SharedStyles$anchor,
+						$author$project$SharedStyles$textLink,
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank'),
@@ -10063,7 +10063,7 @@ var $author$project$SharedStyles$linkStyle = $rtfeldman$elm_css$Css$batch(
 var $author$project$Main$disabledLink = F2(
 	function (_v0, txt) {
 		return A2(
-			$author$project$SharedStyles$anchor,
+			$author$project$SharedStyles$textLink,
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$css(
@@ -10116,7 +10116,7 @@ var $rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
 var $author$project$Main$enabledLink = F2(
 	function (e, txt) {
 		return A2(
-			$author$project$SharedStyles$anchor,
+			$author$project$SharedStyles$textLink,
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$css(
@@ -10289,7 +10289,7 @@ var $author$project$Main$viewBook = F2(
 			_List_fromArray(
 				[
 					A2(
-					$author$project$SharedStyles$anchor,
+					$author$project$SharedStyles$textLink,
 					_List_fromArray(
 						[
 							$rtfeldman$elm_css$Html$Styled$Attributes$href(book.c),
@@ -10342,7 +10342,7 @@ var $author$project$Main$viewBook = F2(
 							_List_fromArray(
 								[
 									A2(
-									$author$project$SharedStyles$anchor,
+									$author$project$SharedStyles$textLink,
 									_List_fromArray(
 										[
 											$rtfeldman$elm_css$Html$Styled$Attributes$href(book.c),
@@ -10949,11 +10949,47 @@ var $author$project$Main$viewLibrary = F4(
 						]))
 				]));
 	});
+var $rtfeldman$elm_css$Css$Transitions$BackgroundColor = 1;
+var $rtfeldman$elm_css$Css$Transitions$backgroundColor = $rtfeldman$elm_css$Css$Transitions$durationTransition(1);
+var $author$project$SharedStyles$buttonLink = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$a,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			A4(
+			$rtfeldman$elm_css$Css$padding4,
+			$rtfeldman$elm_css$Css$px(8),
+			$rtfeldman$elm_css$Css$px(12),
+			$rtfeldman$elm_css$Css$px(8),
+			$rtfeldman$elm_css$Css$px(12)),
+			$rtfeldman$elm_css$Css$color($author$project$Colors$light1),
+			$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$dark1),
+			$rtfeldman$elm_css$Css$borderRadius(
+			$rtfeldman$elm_css$Css$px(3)),
+			$author$project$SharedStyles$regularShadow,
+			$rtfeldman$elm_css$Css$Transitions$transition(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$Transitions$backgroundColor(150)
+				])),
+			$rtfeldman$elm_css$Css$hover(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$link),
+					$rtfeldman$elm_css$Css$Transitions$transition(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$Transitions$backgroundColor(150)
+						]))
+				]))
+		]));
 var $rtfeldman$elm_css$Css$column = _Utils_update(
 	$rtfeldman$elm_css$Css$row,
 	{D: 'column'});
 var $rtfeldman$elm_css$Css$flexGrow = $rtfeldman$elm_css$Css$prop1('flex-grow');
 var $rtfeldman$elm_css$Css$flexShrink = $rtfeldman$elm_css$Css$prop1('flex-shrink');
+var $rtfeldman$elm_css$Css$flexStart = $rtfeldman$elm_css$Css$prop1('flex-start');
 var $rtfeldman$elm_css$Html$Styled$h3 = $rtfeldman$elm_css$Html$Styled$node('h3');
 var $author$project$SharedStyles$header3 = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
@@ -11101,7 +11137,7 @@ var $author$project$Main$viewTeam = F2(
 						_List_fromArray(
 							[
 								A2(
-								$author$project$SharedStyles$anchor,
+								$author$project$SharedStyles$textLink,
 								_List_fromArray(
 									[
 										$rtfeldman$elm_css$Html$Styled$Attributes$css(
@@ -11118,7 +11154,7 @@ var $author$project$Main$viewTeam = F2(
 										$author$project$Project$viewUserPic(userpic)
 									])),
 								A2(
-								$author$project$SharedStyles$anchor,
+								$author$project$SharedStyles$textLink,
 								_List_fromArray(
 									[
 										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
@@ -11147,7 +11183,7 @@ var $author$project$Main$viewTeam = F2(
 						_List_fromArray(
 							[
 								A2(
-								$author$project$SharedStyles$anchor,
+								$author$project$SharedStyles$textLink,
 								_List_fromArray(
 									[
 										$rtfeldman$elm_css$Html$Styled$Attributes$css(
@@ -11164,7 +11200,7 @@ var $author$project$Main$viewTeam = F2(
 										$author$project$Project$viewUserPic(userpic)
 									])),
 								A2(
-								$author$project$SharedStyles$anchor,
+								$author$project$SharedStyles$textLink,
 								_List_fromArray(
 									[
 										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
@@ -11346,21 +11382,29 @@ var $author$project$Main$viewProject = F2(
 											$rtfeldman$elm_css$Css$marginTop(
 											$rtfeldman$elm_css$Css$em(0.4)),
 											$rtfeldman$elm_css$Css$marginBottom(
-											$rtfeldman$elm_css$Css$em(0.4))
+											$rtfeldman$elm_css$Css$em(0.4)),
+											$rtfeldman$elm_css$Css$displayFlex,
+											$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$column),
+											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$flexStart)
 										]))
 								]),
 							A2(
 								$elm$core$List$map,
 								function (link) {
 									return A2(
-										$author$project$SharedStyles$anchor,
+										$author$project$SharedStyles$buttonLink,
 										_List_fromArray(
 											[
 												$rtfeldman$elm_css$Html$Styled$Attributes$css(
 												_List_fromArray(
 													[
-														$rtfeldman$elm_css$Css$marginRight(
-														$rtfeldman$elm_css$Css$em(1))
+														$rtfeldman$elm_css$Css$marginBottom(
+														$rtfeldman$elm_css$Css$em(1)),
+														$rtfeldman$elm_css$Css$lastChild(
+														_List_fromArray(
+															[
+																$rtfeldman$elm_css$Css$marginBottom($rtfeldman$elm_css$Css$zero)
+															]))
 													])),
 												$rtfeldman$elm_css$Html$Styled$Attributes$href(link.c),
 												$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
