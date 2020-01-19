@@ -165,7 +165,7 @@ viewIntro lang =
                 []
 
         link url txt =
-            anchor
+            textLink
                 [ Attributes.target "_blank"
                 , css [ marginRight (Css.em 0.5) ]
                 , href url
@@ -185,7 +185,7 @@ viewIntro lang =
                     "Chief Enthusiast in "
                     "Организатор "
                 )
-            , anchor [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
+            , textLink [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
             , text__
                 (enRu lang
                     " — FP reading group, meetups, collaborations."
@@ -253,8 +253,8 @@ viewTeam lang projectTeam =
                         |> List.map
                             (\{ url, userpic, name_i18n } ->
                                 li [ css teamStyle ]
-                                    [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , anchor [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
+                                    [ textLink [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
+                                    , textLink [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
                                     , text ","
                                     ]
                             )
@@ -266,8 +266,8 @@ viewTeam lang projectTeam =
                         |> List.map
                             (\{ url, userpic, name_i18n } ->
                                 li [ css teamStyle ]
-                                    [ anchor [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , anchor [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
+                                    [ textLink [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
+                                    , textLink [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
                                     ]
                             )
             in
@@ -322,23 +322,29 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
             [ header3 []
                 [ text__ name_i18n ]
             , splitDescription
-            , div
-                [ css
-                    [ marginTop (Css.em 0.4)
-                    , marginBottom (Css.em 0.4)
-                    ]
-                ]
-              <|
-                List.map
+            , links
+                |> List.map
                     (\link ->
-                        anchor
-                            [ css [ marginRight (Css.em 1) ]
+                        buttonLink
+                            [ css
+                                [ marginBottom (Css.em 1)
+                                , lastChild [marginBottom zero]
+                                
+                                ]
                             , href link.url
                             , Attributes.target "_blank"
                             ]
                             [ text__ link.name_i18n ]
                     )
-                    links
+                |> div
+                    [ css
+                        [ marginTop (Css.em 0.4)
+                        , marginBottom (Css.em 0.4)
+                        , displayFlex
+                        , flexDirection column
+                        , alignItems flexStart
+                        ]
+                    ]
             , viewTeam lang team
             ]
         ]
@@ -394,7 +400,7 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
             , fontSize (px 13)
             ]
         ]
-        [ anchor [ href book.url, Attributes.target "_blank" ]
+        [ textLink [ href book.url, Attributes.target "_blank" ]
             [ img
                 [ css
                     [ availabilityStyle
@@ -411,7 +417,7 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
             ]
         , stickerNode
         , div textStyle
-            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ anchor [ href book.url, Attributes.target "_blank" ] [ text__ book.title ] ]
+            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ textLink [ href book.url, Attributes.target "_blank" ] [ text__ book.title ] ]
             , p [] [ text__ book.author ]
             ]
         ]
@@ -473,7 +479,7 @@ viewLibraryBook lang ( b, availability ) =
 
 enabledLink : Msg -> String -> Html Msg
 enabledLink e txt =
-    anchor
+    textLink
         [ css
             [ linkStyle
             , borderBottom3 (px 0.5) dashed Colors.linkAlpha025
@@ -486,7 +492,7 @@ enabledLink e txt =
 
 disabledLink : Msg -> String -> Html Msg
 disabledLink _ txt =
-    anchor
+    textLink
         [ css
             [ linkStyle
             , color Colors.dark2

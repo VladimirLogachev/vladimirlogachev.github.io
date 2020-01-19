@@ -108,8 +108,8 @@ header3 =
         ]
 
 
-anchor : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
-anchor =
+textLink : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
+textLink =
     styled a
         [ textDecoration none
         , color Colors.link
@@ -117,6 +117,23 @@ anchor =
         , hover
             [ color Colors.hover
             , transition [ Transitions.color 150, Transitions.border 150 ]
+            ]
+        ]
+
+
+buttonLink : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
+buttonLink =
+    styled a
+        [ textDecoration none
+        , padding4 (px 8) (px 12) (px 8) (px 12)
+        , color Colors.light1
+        , backgroundColor Colors.dark1
+        , borderRadius (px 3)
+        , regularShadow
+        , transition [ Transitions.backgroundColor 150]
+        , hover
+            [ backgroundColor Colors.link
+            , transition [ Transitions.backgroundColor 150 ]
             ]
         ]
 
