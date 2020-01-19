@@ -295,6 +295,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                     , marginTop (px 32)
                     , marginBottom (px 72)
                     , lastChild [ marginBottom zero ]
+                    , mediaSmartphonePortrait [ flexDirection column ]
                     ]
                 ]
 
@@ -310,12 +311,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                 ]
 
         descriptionWrapper =
-            div
-                [ css
-                    [ flexShrink (num 1)
-                    , minWidth (px 350)
-                    ]
-                ]
+            div [ css [ flexShrink (num 1) ] ]
 
         splitDescription =
             description_i18n |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text x ]) |> div []
