@@ -16,6 +16,14 @@ navStyle =
         [ textDecoration none
         , userSelectNone
         , cursor pointer
+        , borderTop zero
+        , lineHeight (Css.em 1.1)
+        , fontSize (px 16)
+        , fontFamilies [ "Nunito", "sans-serif" ]
+        , padding zero
+        , borderRight zero
+        , borderLeft zero
+        , backgroundColor transparent
         , borderBottom3 (px 0.5) dashed Colors.link025
         , hover [ borderBottom3 (px 0.5) dashed Colors.hover025 ]
         , marginTop (Css.em 1)
@@ -43,13 +51,9 @@ navDisabledStyle =
         ]
 
 
-
--- TODO: maybe remove an empty argument from disabled versions?
-
-
 navButton : msg -> String -> Html msg
 navButton msg txt =
-    span [ css [ navStyle ], onClick msg ] [ text__ txt ]
+    button [ css [ navStyle ], onClick msg ] [ text__ txt ]
 
 
 navButtonDisabled : a -> String -> Html msg
