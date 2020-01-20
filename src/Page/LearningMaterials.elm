@@ -21,6 +21,18 @@ type Msg
     = LearningMaterialsOnlyFavorites Bool
 
 
+init : ( Model, Cmd Msg )
+init =
+    plain { onlyFavorite = True }
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        LearningMaterialsOnlyFavorites onlyFavorite ->
+            plain { model | onlyFavorite = onlyFavorite }
+
+
 viewLearningMaterials : Language -> Model -> Dict String Book -> List LearningMaterial -> (Msg -> msg) -> Html msg
 viewLearningMaterials lang { onlyFavorite } books learnPath wrapper =
     div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ] ]

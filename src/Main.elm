@@ -1,6 +1,5 @@
 module Main exposing (main)
 
-import Book exposing (PersonKind)
 import Browser
 import Browser.Hash exposing (application)
 import Browser.Navigation as Nav
@@ -24,6 +23,28 @@ import Url exposing (Url)
 import Utils exposing (..)
 
 
+type alias Session =
+    { lang : Language
+    , navKey : Nav.Key
+    }
+
+
+toSession : Model -> Session
+toSession page =
+    case page of
+        Projects session ->
+            session
+
+        Library session _ ->
+            session
+
+        LearningMaterials session _ ->
+            session
+
+        Cv session ->
+            session
+
+
 main : Program D.Value Model Msg
 main =
     application
@@ -36,22 +57,11 @@ main =
         }
 
 
-type alias Model =
-    { library : Page.Library.Model
-    , learningMaterials : Page.LearningMaterials.Model
-    , lang : Language
-    , route : Route
-    , navKey : Nav.Key
-    }
-
-
-{-| Not the same as route, but page + its state
--}
-type Page
-    = Projects
-    | Library Page.Library.Model
-    | LearningMaterials Page.LearningMaterials.Model
-    | Cv
+type Model
+    = Projects Session
+    | Library Session Page.Library.Model
+    | LearningMaterials Session Page.LearningMaterials.Model
+    | Cv Session
 
 
 type Msg
@@ -61,66 +71,121 @@ type Msg
     | OnUrlRequest Browser.UrlRequest
 
 
+routeToInit : Session -> Route -> ( Model, Cmd Msg )
+routeToInit session route =
+    case route of
+        Route.Projects ->
+            plain <| Projects session
+
+        Route.Library ->
+            let
+                ( state, cmd ) =
+                    Page.Library.init
+            in
+            ( Library session state, Cmd.map GotLibraryMsg cmd )
+
+        Route.LearningMaterials ->
+            let
+                ( state, cmd ) =
+                    Page.LearningMaterials.init
+            in
+            ( LearningMaterials session state, Cmd.map GotLearningMaterialsMsg cmd )
+
+        Route.Cv ->
+            plain <| Cv session
+
+
+{-| A crutch. I don't know how to implement it the right way for now.
+Later will remove it, for sure.
+Needed in cases when user clicks Enter with the same url,
+or when language changes
+-}
+preserveOldState : Model -> Model -> Model
+preserveOldState prev next =
+    case ( prev, next ) of
+        ( Library _ x, Library session _ ) ->
+            Library session x
+
+        ( LearningMaterials _ x, LearningMaterials session _ ) ->
+            LearningMaterials session x
+
+        _ ->
+            next
+
+
 init : D.Value -> Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
     let
         currentLang =
             Language.decode flags
 
-        ( ( lang, route ), cmd ) =
+        ( ( lang, route ), navCmd ) =
             Route.parseUrl key currentLang url
+
+        ( newModel, initCmd ) =
+            routeToInit (Session lang key) route
     in
-    ( { library = { specific = Nothing }
-      , learningMaterials = { onlyFavorite = True }
-      , lang = lang
-      , route = route
-      , navKey = key
-      }
-    , cmd
-    )
+    ( newModel, Cmd.batch [ navCmd, initCmd ] )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        GotLearningMaterialsMsg (Page.LearningMaterials.LearningMaterialsOnlyFavorites x) ->
-            plain { model | learningMaterials = { onlyFavorite = x } }
-
-        GotLibraryMsg (Page.Library.SetLibrarySpecific x) ->
-            plain { model | library = { specific = x } }
-
-        RouteChange url ->
+    case ( msg, model ) of
+        ( GotLearningMaterialsMsg m, LearningMaterials session x ) ->
             let
-                ( ( lang, route ), cmd ) =
-                    Route.parseUrl model.navKey model.lang url
+                ( newmodel, cmd ) =
+                    Page.LearningMaterials.update m x
             in
-            ( { model | lang = lang, route = route }, cmd )
+            ( LearningMaterials session newmodel, Cmd.map GotLearningMaterialsMsg cmd )
 
-        OnUrlRequest urlRequest ->
+        ( GotLibraryMsg m, Library session x ) ->
+            let
+                ( newmodel, cmd ) =
+                    Page.Library.update m x
+            in
+            ( Library session newmodel, Cmd.map GotLibraryMsg cmd )
+
+        ( RouteChange url, _ ) ->
+            let
+                prevSession =
+                    toSession model
+
+                ( ( lang, route ), navCmd ) =
+                    Route.parseUrl prevSession.navKey prevSession.lang url
+
+                ( newModel, initCmd ) =
+                    routeToInit (Session lang prevSession.navKey) route
+            in
+            ( preserveOldState model newModel, Cmd.batch [ navCmd, initCmd ] )
+
+        ( OnUrlRequest urlRequest, _ ) ->
             case urlRequest of
                 Browser.Internal url ->
-                    ( model, Nav.replaceUrl model.navKey <| "#" ++ Maybe.withDefault "" url.fragment )
+                    ( model, Nav.replaceUrl (toSession model).navKey <| "#" ++ Maybe.withDefault "" url.fragment )
 
                 Browser.External url ->
                     ( model, Nav.load url )
 
+        _ ->
+            plain model
+
 
 viewRoute : Model -> Browser.Document Msg
 viewRoute model =
-    case model.route of
-        Route.Projects ->
-            Page.Projects.viewProjects model.lang Dataset.projects
+    case model of
+        Projects { lang } ->
+            Page.Projects.viewProjects lang Dataset.projects
                 |> generalTemplate model
 
-        Route.Library ->
-            Page.Library.viewLibrary model.lang model.library Dataset.knownBooks Dataset.libraryState GotLibraryMsg
+        Library { lang } state ->
+            Page.Library.viewLibrary lang state Dataset.knownBooks Dataset.libraryState GotLibraryMsg
                 |> generalTemplate model
 
-        Route.LearningMaterials ->
-            Page.LearningMaterials.viewLearningMaterials model.lang model.learningMaterials Dataset.knownBooks Dataset.learningPath GotLearningMaterialsMsg
+        LearningMaterials { lang } state ->
+            Page.LearningMaterials.viewLearningMaterials lang state Dataset.knownBooks Dataset.learningPath GotLearningMaterialsMsg
                 |> generalTemplate model
 
-        Route.Cv ->
+        Cv _ ->
             Cv.cv model
 
 
@@ -144,8 +209,8 @@ generalTemplate model content =
                 , textShadow none
                 ]
             ]
-        , viewHeader model.lang (viewIntro model.lang)
-        , viewNav model.lang model.route
+        , viewHeader (toSession model).lang (viewIntro (toSession model).lang)
+        , viewNav (toSession model).lang model
         , content
         ]
         |> (\html ->
@@ -230,14 +295,33 @@ viewIntro lang =
         ]
 
 
-viewNav : Language -> Route -> Html Msg
-viewNav lang currentRoute =
+isCurrentlyActive : Model -> Route -> Bool
+isCurrentlyActive model route =
+    case ( model, route ) of
+        ( Projects _, Route.Projects ) ->
+            True
+
+        ( Library _ _, Route.Library ) ->
+            True
+
+        ( LearningMaterials _ _, Route.LearningMaterials ) ->
+            True
+
+        ( Cv _, Route.Cv ) ->
+            True
+
+        _ ->
+            False
+
+
+viewNav : Language -> Model -> Html Msg
+viewNav lang model =
     let
         link route txt =
-            ifElse (currentRoute == route) navLinkDisabled navLink (toUrl lang route) txt
+            ifElse (isCurrentlyActive model route) navLinkDisabled navLink (toUrl lang route) txt
     in
     div [ css [ fullwidthContainer, backgroundColor Colors.secondaryLightGrey ] ]
-        [ article
+        [ nav
             [ css
                 [ displayFlex
                 , flexWrap wrap

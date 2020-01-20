@@ -23,6 +23,18 @@ type alias Model =
     { specific : Maybe PersonKind }
 
 
+init : ( Model, Cmd Msg )
+init =
+    plain { specific = Nothing }
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        SetLibrarySpecific specific ->
+            plain { model | specific = specific }
+
+
 roundSticker : Style
 roundSticker =
     batch
