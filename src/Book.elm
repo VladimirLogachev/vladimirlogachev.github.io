@@ -1,6 +1,14 @@
 module Book exposing (..)
 
+import Colors
+import Css exposing (..)
+import Html.Styled exposing (..)
+import Html.Styled.Attributes as Attributes exposing (alt, css, href, src)
 import Ordering exposing (Ordering)
+import Typography exposing (text__)
+import UiElements exposing (..)
+import UiStyles exposing (..)
+import Utils exposing (..)
 
 
 type Book
@@ -135,3 +143,66 @@ bookOrdering =
             (Ordering.byFieldWith personKindOrdering (\( Book { topics }, _ ) -> personKindFromTopic topics))
         |> Ordering.breakTiesWith
             (Ordering.byFieldWith favoriteOrdering (\( Book { favorite }, _ ) -> favorite))
+
+
+view : { sticker : Maybe (Html msg), highlightFavorite : Bool, available : Bool } -> Book -> Html msg
+view { sticker, highlightFavorite, available } (Book book) =
+    let
+        shadow =
+            ifElse (book.favorite && highlightFavorite && available)
+                itemHighlightShadow
+                regularShadow
+
+        textStyle =
+            ifElse (book.favorite && highlightFavorite && available)
+                [ css [ itemHighlight, backgroundColor Colors.itemHighlight ] ]
+                []
+
+        availabilityStyle =
+            batch <| ifElse available [] [ itemHighlight, property "filter" "grayscale(1)" ]
+
+        {- sticker area is placed in a bottom left corner of the book -}
+        {- use ralative position for sticker to move inside this area -}
+        stickerNode =
+            case sticker of
+                Just x ->
+                    div
+                        [ css
+                            [ position relative
+                            , height zero
+                            , userSelectNone
+                            ]
+                        ]
+                        [ x ]
+
+                Nothing ->
+                    emptyHtml
+    in
+    section
+        [ css
+            [ marginRight (px 32)
+            , width (px 100)
+            , fontSize (px 13)
+            ]
+        ]
+        [ textLink [ href book.url, Attributes.target "_blank" ]
+            [ img
+                [ css
+                    [ availabilityStyle
+                    , shadow
+                    , maxHeight (px 150)
+                    , maxWidth (px 100)
+                    , borderRadius (px 3)
+                    , marginTop (Css.em 2)
+                    ]
+                , src book.coverUrl
+                , alt <| book.author ++ ", " ++ book.title
+                ]
+                []
+            ]
+        , stickerNode
+        , div textStyle
+            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ textLink [ href book.url, Attributes.target "_blank" ] [ text__ book.title ] ]
+            , p [] [ text__ book.author ]
+            ]
+        ]

@@ -31,6 +31,9 @@ processLine =
                 if Set.member (String.toLower word) dictionary then
                     word ++ nbsp ++ tail
 
+                else if tail == "" then
+                    word
+
                 else
                     word ++ " " ++ tail
             )

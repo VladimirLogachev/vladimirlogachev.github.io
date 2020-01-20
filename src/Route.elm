@@ -10,8 +10,9 @@ import Utils exposing (..)
 
 
 type Route
-    = Home
-    | Recommendations
+    = Projects
+    | Library
+    | LearningMaterials
     | Cv
 
 
@@ -19,7 +20,7 @@ parseUrl : Nav.Key -> Language -> Url -> ( ( Language, Route ), Cmd msg )
 parseUrl key fallbackLang url =
     fromUrl url
         |> Maybe.map plain
-        |> Maybe.withDefault ( ( fallbackLang, Home ), replaceUrl key fallbackLang Home )
+        |> Maybe.withDefault ( ( fallbackLang, Projects ), replaceUrl key fallbackLang Projects )
 
 
 router_href : Language -> Route -> Attribute msg
@@ -30,11 +31,14 @@ router_href lang targetRoute =
 routeToPieces : Route -> List String
 routeToPieces page =
     case page of
-        Home ->
-            []
+        Projects ->
+            [ "projects" ]
 
-        Recommendations ->
-            [ "recommendations" ]
+        Library ->
+            [ "library" ]
+
+        LearningMaterials ->
+            [ "learning-materials" ]
 
         Cv ->
             [ "cv" ]
@@ -54,9 +58,10 @@ parser : Parser (( Language, Route ) -> a) a
 parser =
     (Language.urlParser
         </> oneOf
-                [ Parser.map Home Parser.top
+                [ Parser.map Projects (Parser.s "projects")
+                , Parser.map Library (Parser.s "library")
+                , Parser.map LearningMaterials (Parser.s "learning-materials")
                 , Parser.map Cv (Parser.s "cv")
-                , Parser.map Recommendations (Parser.s "recommendations")
                 ]
     )
         |> Parser.map (\a b -> ( a, b ))

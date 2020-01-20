@@ -10,6 +10,12 @@ lightGrey : Color
 lightGrey =
     hex "E5E7E9"
 
+{-| Background for secondary content and text color on dark
+-}
+secondaryLightGrey : Color
+secondaryLightGrey =
+    hex "D7DBDD"
+
 
 {-| Slightly colored background around favorite books
 -}
@@ -98,11 +104,13 @@ pageSelection =
         ++ fromInt selectionSrc.b
         ++ ", 0.71)"
 
+
 {-| ... and text color for dark stickers
 -}
 selection : Color
 selection =
     rgb selectionSrc.r selectionSrc.g selectionSrc.b
+
 
 {-| Background for stickers
 -}

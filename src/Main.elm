@@ -1,6 +1,6 @@
 module Main exposing (main)
 
-import Book exposing (..)
+import Book exposing (PersonKind)
 import Browser
 import Browser.Hash exposing (application)
 import Browser.Navigation as Nav
@@ -8,37 +8,57 @@ import Colors
 import Css exposing (..)
 import Css.Global exposing (global, selector)
 import Cv
-import Dataset exposing (..)
-import Dict exposing (Dict)
+import Dataset
 import Html.Styled exposing (..)
-import Html.Styled.Attributes as Attributes exposing (alt, css, href, id, src, title)
-import Html.Styled.Events exposing (onClick)
+import Html.Styled.Attributes as Attributes exposing (alt, css, href, src, title)
 import Json.Decode as D
 import Language exposing (Language(..), enRu)
-import List.Extra exposing (stableSortWith)
-import Maybe.Extra exposing (toList, values)
-import Project exposing (..)
-import Route exposing (Route)
-import SharedStyles exposing (..)
+import Page.LearningMaterials
+import Page.Library
+import Page.Projects
+import Route exposing (Route, router_href)
 import Typography exposing (text__)
+import UiElements exposing (..)
+import UiStyles exposing (..)
 import Url exposing (Url)
 import Utils exposing (..)
 
 
-type Msg
-    = LearningMaterialsOnlyFavorites Bool
-    | SetLibrarySpecific (Maybe PersonKind)
-    | RouteChange Url
-    | OnUrlRequest Browser.UrlRequest
+main : Program D.Value Model Msg
+main =
+    application
+        { init = init
+        , view = viewRoute
+        , update = update
+        , subscriptions = always Sub.none
+        , onUrlChange = RouteChange
+        , onUrlRequest = OnUrlRequest
+        }
 
 
 type alias Model =
-    { library : { specific : Maybe PersonKind }
-    , learningMaterials : { onlyFavorite : Bool }
+    { library : Page.Library.Model
+    , learningMaterials : Page.LearningMaterials.Model
     , lang : Language
     , route : Route
     , navKey : Nav.Key
     }
+
+
+{-| Not the same as route, but page + its state
+-}
+type Page
+    = Projects
+    | Library Page.Library.Model
+    | LearningMaterials Page.LearningMaterials.Model
+    | Cv
+
+
+type Msg
+    = GotLearningMaterialsMsg Page.LearningMaterials.Msg
+    | GotLibraryMsg Page.Library.Msg
+    | RouteChange Url
+    | OnUrlRequest Browser.UrlRequest
 
 
 init : D.Value -> Url -> Nav.Key -> ( Model, Cmd Msg )
@@ -63,10 +83,10 @@ init flags url key =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        LearningMaterialsOnlyFavorites x ->
+        GotLearningMaterialsMsg (Page.LearningMaterials.LearningMaterialsOnlyFavorites x) ->
             plain { model | learningMaterials = { onlyFavorite = x } }
 
-        SetLibrarySpecific x ->
+        GotLibraryMsg (Page.Library.SetLibrarySpecific x) ->
             plain { model | library = { specific = x } }
 
         RouteChange url ->
@@ -76,37 +96,41 @@ update msg model =
             in
             ( { model | lang = lang, route = route }, cmd )
 
-        OnUrlRequest _ ->
-            plain model
+        OnUrlRequest urlRequest ->
+            case urlRequest of
+                Browser.Internal url ->
+                    let
+                        ( ( lang, route ), cmd ) =
+                            { url | path = Maybe.withDefault "" url.fragment, fragment = Nothing }
+                                |> Route.parseUrl model.navKey model.lang
+                    in
+                    ( { model | lang = lang, route = route }, cmd )
 
-
-main : Program D.Value Model Msg
-main =
-    application
-        { init = init
-        , view = viewRoute
-        , update = update
-        , subscriptions = always Sub.none
-        , onUrlChange = RouteChange
-        , onUrlRequest = OnUrlRequest
-        }
+                Browser.External url ->
+                    ( model, Nav.load url )
 
 
 viewRoute : Model -> Browser.Document Msg
 viewRoute model =
     case model.route of
-        Route.Home ->
-            mainPage model
+        Route.Projects ->
+            Page.Projects.viewProjects model.lang Dataset.projects
+                |> generalTemplate model
 
-        Route.Recommendations ->
-            mainPage model
+        Route.Library ->
+            Page.Library.viewLibrary model.lang model.library Dataset.knownBooks Dataset.libraryState GotLibraryMsg
+                |> generalTemplate model
+
+        Route.LearningMaterials ->
+            Page.LearningMaterials.viewLearningMaterials model.lang model.learningMaterials Dataset.knownBooks Dataset.learningPath GotLearningMaterialsMsg
+                |> generalTemplate model
 
         Route.Cv ->
             Cv.cv model
 
 
-mainPage : Model -> Browser.Document Msg
-mainPage model =
+generalTemplate : Model -> Html Msg -> Browser.Document Msg
+generalTemplate model content =
     div
         [ css
             [ backgroundColor Colors.lightGrey
@@ -117,16 +141,17 @@ mainPage model =
             ]
         ]
         [ global
-            [ selector "::selection"
+            [ selector "html" [ backgroundColor Colors.lightGrey ]
+            , selector
+                "::selection"
                 [ color Colors.darkGrey
                 , property "background" Colors.pageSelection
                 , textShadow none
                 ]
             ]
         , viewHeader model.lang (viewIntro model.lang)
-        , viewProjects model.lang projects
-        , viewLibrary model.lang model.library.specific knownBooks libraryState
-        , viewLearningMaterials model.lang model.learningMaterials.onlyFavorite knownBooks learningPath
+        , viewNav model.lang
+        , content
         ]
         |> (\html ->
                 { title = "Vladimir Logachev"
@@ -186,7 +211,7 @@ viewIntro lang =
                     "Организатор "
                 )
             , textLinkOnDark [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
-            , text__
+            , text
                 (enRu lang
                     " — FP reading group, meetups, collaborations."
                     " — книжный клуб, митапы, совместные проекты."
@@ -210,364 +235,20 @@ viewIntro lang =
         ]
 
 
-viewProjectImage : Project -> Html Msg
-viewProjectImage (Project { name_i18n, imgFileName }) =
-    case imgFileName of
-        Just filename ->
-            img
-                [ css
-                    [ regularShadow
-                    , maxWidth (px 200)
-                    , maxHeight (px 300)
-                    , borderRadius (px 3)
-                    ]
-                , src <| "/images/projects/" ++ filename
-                , alt name_i18n
-                ]
-                []
-
-        Nothing ->
-            emptyHtml
-
-
-viewTeam : Language -> ProjectTeam -> Html Msg
-viewTeam lang projectTeam =
+viewNav : Language -> Html Msg
+viewNav lang =
     let
-        teamStyle =
-            [ displayFlex
-            , alignItems center
-            , marginTop <| Css.em 0.35
-            , marginRight <| Css.em 0.35
-            , lastChild [ marginRight zero ]
-            ]
+        link route txt =
+            textLink
+                [ css [ marginRight (Css.em 1), lastChild [ marginRight zero ] ]
+                , router_href lang route
+                ]
+                [ text__ txt ]
     in
-    case projectTeam of
-        OnlyMe ->
-            emptyHtml
-
-        Team team ->
-            let
-                allButLast =
-                    team
-                        |> List.Extra.init
-                        |> toList
-                        |> List.concat
-                        |> List.map
-                            (\{ url, userpic, name_i18n } ->
-                                li [ css teamStyle ]
-                                    [ textLink [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , textLink [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
-                                    , text ","
-                                    ]
-                            )
-
-                last =
-                    team
-                        |> List.Extra.last
-                        |> toList
-                        |> List.map
-                            (\{ url, userpic, name_i18n } ->
-                                li [ css teamStyle ]
-                                    [ textLink [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , textLink [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
-                                    ]
-                            )
-            in
-            ul
-                [ css
-                    [ displayFlex
-                    , flexWrap wrap
-                    , flexDirection row
-                    ]
-                ]
-            <|
-                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text__ (enRu lang "Project team:" "Команда проекта:") ] ] ]
-                    ++ allButLast
-                    ++ last
-                    ++ [ li [ css teamStyle ] [ text__ (enRu lang "and me." "и я.") ] ]
-
-
-viewProject : Language -> Project -> Html Msg
-viewProject lang ((Project { name_i18n, description_i18n, team, links }) as project) =
-    let
-        projectSection =
-            section
-                [ css
-                    [ displayFlex
-                    , marginTop (px 32)
-                    , marginBottom (px 72)
-                    , lastChild [ marginBottom zero ]
-                    , mediaSmartphonePortrait [ flexDirection column ]
-                    ]
-                ]
-
-        imageWrapper =
-            div
-                [ css
-                    [ width (px 200)
-                    , flexGrow (num 0)
-                    , flexShrink (num 0)
-                    , textAlign right
-                    , marginRight (px 32)
-                    , marginBottom (px 24)
-                    ]
-                ]
-
-        descriptionWrapper =
-            div [ css [ flexShrink (num 1) ] ]
-
-        splitDescription =
-            description_i18n |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text__ x ]) |> div []
-    in
-    projectSection
-        [ imageWrapper [ viewProjectImage project ]
-        , descriptionWrapper
-            [ header3 []
-                [ text__ name_i18n ]
-            , splitDescription
-            , links
-                |> List.map
-                    (\link ->
-                        buttonLink
-                            [ css
-                                [ marginTop (Css.em 0.7)
-                                , marginBottom (Css.em 0.7)
-                                , marginRight (Css.em 1)
-                                , lastChild [ marginRight zero ]
-                                ]
-                            , href link.url
-                            , Attributes.target "_blank"
-                            ]
-                            [ text__ link.name_i18n ]
-                    )
-                |> div
-                    [ css
-                        [ displayFlex
-                        , flexDirection row
-                        , flexWrap wrap
-                        , alignItems flexStart
-                        ]
-                    ]
-            , viewTeam lang team
-            ]
-        ]
-
-
-viewProjects : Language -> (Language -> List Project) -> Html Msg
-viewProjects lang projs =
-    div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ], id "projects" ]
-        [ article [ css [ innerContainer ] ]
-            [ header2 [] [ text (enRu lang "Projects" "Проекты") ]
-            , div [] <| List.map (viewProject lang) (projs lang)
-            ]
-        ]
-
-
-viewBook : { sticker : Maybe (Html Msg), highlightFavorite : Bool, available : Bool } -> Book -> Html Msg
-viewBook { sticker, highlightFavorite, available } (Book book) =
-    let
-        shadow =
-            ifElse (book.favorite && highlightFavorite && available)
-                itemHighlightShadow
-                regularShadow
-
-        textStyle =
-            ifElse (book.favorite && highlightFavorite && available)
-                [ css [ itemHighlight, backgroundColor Colors.itemHighlight ] ]
-                []
-
-        availabilityStyle =
-            batch <| ifElse available [] [ itemHighlight, property "filter" "grayscale(1)" ]
-
-        {- sticker area is placed in a bottom left corner of the book -}
-        {- use ralative position for sticker to move inside this area -}
-        stickerNode =
-            case sticker of
-                Just x ->
-                    div
-                        [ css
-                            [ position relative
-                            , height zero
-                            , userSelectNone
-                            ]
-                        ]
-                        [ x ]
-
-                Nothing ->
-                    emptyHtml
-    in
-    section
-        [ css
-            [ marginRight (px 32)
-            , width (px 100)
-            , fontSize (px 13)
-            ]
-        ]
-        [ textLink [ href book.url, Attributes.target "_blank" ]
-            [ img
-                [ css
-                    [ availabilityStyle
-                    , shadow
-                    , maxHeight (px 150)
-                    , maxWidth (px 100)
-                    , borderRadius (px 3)
-                    , marginTop (Css.em 2)
-                    ]
-                , src book.coverUrl
-                , alt <| book.author ++ ", " ++ book.title
-                ]
-                []
-            ]
-        , stickerNode
-        , div textStyle
-            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ textLink [ href book.url, Attributes.target "_blank" ] [ text__ book.title ] ]
-            , p [] [ text__ book.author ]
-            ]
-        ]
-
-
-roundSticker : Style
-roundSticker =
-    batch
-        [ -- sticker position
-          position relative
-        , bottom (px 58)
-        , left (px 5)
-        , transform (rotate (deg -10))
-
-        -- sticker itself
-        , displayFlex
-        , width (px 50)
-        , height (px 50)
-        , textAlign center
-        , alignItems center
-        , borderRadius (px 300)
-        , fontSize (px 12)
-        ]
-
-
-viewLibraryBook : Language -> ( Book, BookAvaliability ) -> Html Msg
-viewLibraryBook lang ( b, availability ) =
-    let
-        comingSoon =
-            div
-                [ css
-                    [ roundSticker
-                    , backgroundColor Colors.darkGrey08
-                    , color Colors.selection
-                    ]
-                ]
-                [ text (enRu lang "coming soon" "скоро будет") ]
-
-        givenToSomeone =
-            div
-                [ css
-                    [ roundSticker
-                    , backgroundColor Colors.selection07
-                    , color Colors.darkGrey
-                    ]
-                ]
-                [ text (enRu lang "already taken" "кто-то читает") ]
-    in
-    case availability of
-        Available ->
-            viewBook { sticker = Nothing, highlightFavorite = True, available = True } b
-
-        ComingSoon ->
-            viewBook { sticker = Just comingSoon, highlightFavorite = False, available = False } b
-
-        GivenToSomeone ->
-            viewBook { sticker = Just givenToSomeone, highlightFavorite = False, available = False } b
-
-
-enabledLink : Msg -> String -> Html Msg
-enabledLink e txt =
-    textLink
-        [ css
-            [ linkStyle
-            , borderBottom3 (px 0.5) dashed Colors.link025
-            , hover [ borderBottom3 (px 0.5) dashed Colors.hover025 ]
-            ]
-        , onClick e
-        ]
-        [ text__ txt ]
-
-
-disabledLink : Msg -> String -> Html Msg
-disabledLink _ txt =
-    textLink
-        [ css
-            [ linkStyle
-            , color Colors.darkGrey
-            , cursor default
-            , hover [ color Colors.darkGrey ]
-            ]
-        , Attributes.disabled True
-        ]
-        [ text__ txt ]
-
-
-viewLibrary : Language -> Maybe PersonKind -> Dict String Book -> Dict String BookAvaliability -> Html Msg
-viewLibrary lang specific books libState =
-    let
-        specificPredicate : Book -> Bool
-        specificPredicate (Book { topics }) =
-            case specific of
-                Just s ->
-                    s == personKindFromTopic topics
-
-                Nothing ->
-                    True
-
-        description =
-            enRu lang
-                """I have a tradition of storing my books on my desk in the workplace. Any person can borrow any book from my personal library. This applies not only to my collegues, but to any person who knows me in real life. This is my culture, it works great, and I won't give up on it, so everyone should just accept it."""
-                """У меня есть традиция хранить свои книги на работе, на своём рабочем столе. Любой человек может взять почитать любую книгу из моей библиотеки. Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично. Это моя культура, она великолепно работает и я не намерен от неё отказываться."""
-
-        splitDescription =
-            description
-                |> String.split "\n"
-                |> List.map (\x -> p [] [ text__ x ])
-                |> div [ css [ regularText, marginTop (Css.em 1) ] ]
-    in
-    div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ], id "library" ]
-        [ article [ css [ innerContainer ] ]
-            [ header2 [] [ text__ (enRu lang "My Offline Library, Shared" "Библиотека для коллег и знакомых") ]
-            , splitDescription
-            , p
-                [ css [ marginTop (Css.em 1) ] ]
-                [ ifElse (specific == Nothing) disabledLink enabledLink (SetLibrarySpecific Nothing) (enRu lang "All books" "Все книги")
-                , ifElse (specific == Just Developer) disabledLink enabledLink (SetLibrarySpecific (Just Developer)) (enRu lang "For developers" "Для разработчиков")
-                , ifElse (specific == Just GeneralPerson) disabledLink enabledLink (SetLibrarySpecific (Just GeneralPerson)) (enRu lang "For everyone" "Для всех")
-                , ifElse (specific == Just Musician) disabledLink enabledLink (SetLibrarySpecific (Just Musician)) (enRu lang "For musicians" "Для музыкантов")
-                ]
-            , libState
-                |> Dict.toList
-                |> List.map (\( name, availability ) -> Dict.get name books |> Maybe.map (\b -> ( b, availability )))
-                |> values
-                |> List.filter (Tuple.first >> specificPredicate)
-                |> stableSortWith bookOrdering
-                |> List.map (viewLibraryBook lang)
-                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline, mediaSmartphonePortrait [ spaceEvenly ] ] ]
-            ]
-        ]
-
-
-viewLearningMaterials : Language -> Bool -> Dict String Book -> List LearningMaterial -> Html Msg
-viewLearningMaterials lang onlyFavorite books learnPath =
-    div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ], id "learning-materials" ]
-        [ div [ css [ innerContainer ] ]
-            [ header2 [] [ text__ (enRu lang "My Recommendations on Learning Materials" "Рекомендуемые мной книги и курсы") ]
-            , p
-                [ css [ marginTop (Css.em 1) ] ]
-                [ ifElse (not onlyFavorite) disabledLink enabledLink (LearningMaterialsOnlyFavorites False) (enRu lang "All books and courses" "Все книги и курсы")
-                , ifElse onlyFavorite disabledLink enabledLink (LearningMaterialsOnlyFavorites True) (enRu lang "Only the best" "Только лучшие")
-                ]
-            , learnPath
-                |> List.map (\(BookTitle title) -> title)
-                |> getMany books
-                |> List.filter (\(Book { favorite }) -> ifElse onlyFavorite favorite True)
-                |> List.map (viewBook { sticker = Nothing, highlightFavorite = not onlyFavorite, available = True })
-                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline, mediaSmartphonePortrait [ spaceEvenly ] ] ]
+    div [ css [ fullwidthContainer, backgroundColor (Colors.secondaryLightGrey) ] ]
+        [ article [ css [ navContainer ] ]
+            [ link Route.Projects (enRu lang "Projects" "Проекты")
+            , link Route.Library (enRu lang "Offline Library" "Оффлайн-библиотека")
+            , link Route.LearningMaterials (enRu lang "Learning Materials" "Учебные материалы")
             ]
         ]
