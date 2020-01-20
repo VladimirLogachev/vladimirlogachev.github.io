@@ -99,12 +99,7 @@ update msg model =
         OnUrlRequest urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
-                    let
-                        ( ( lang, route ), cmd ) =
-                            { url | path = Maybe.withDefault "" url.fragment, fragment = Nothing }
-                                |> Route.parseUrl model.navKey model.lang
-                    in
-                    ( { model | lang = lang, route = route }, cmd )
+                    ( model, Nav.replaceUrl model.navKey <| "#" ++ Maybe.withDefault "" url.fragment )
 
                 Browser.External url ->
                     ( model, Nav.load url )
@@ -245,7 +240,7 @@ viewNav lang =
                 ]
                 [ text__ txt ]
     in
-    div [ css [ fullwidthContainer, backgroundColor (Colors.secondaryLightGrey) ] ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.secondaryLightGrey ] ]
         [ article [ css [ navContainer ] ]
             [ link Route.Projects (enRu lang "Projects" "Проекты")
             , link Route.Library (enRu lang "Offline Library" "Оффлайн-библиотека")
