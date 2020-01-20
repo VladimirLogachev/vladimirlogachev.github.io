@@ -1857,7 +1857,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.cp,
+		impl.cq,
 		impl.cE,
 		impl.cC,
 		function() { return function() {} }
@@ -3928,7 +3928,7 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.cp,
+		impl.cq,
 		impl.cE,
 		impl.cC,
 		function(sendToApp, initialModel) {
@@ -3964,7 +3964,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.cp,
+		impl.cq,
 		impl.cE,
 		impl.cC,
 		function(sendToApp, initialModel) {
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.ct;
-	var onUrlRequest = impl.cu;
+	var onUrlChange = impl.cu;
+	var onUrlRequest = impl.cv;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4060,7 +4060,7 @@ function _Browser_application(impl)
 					sendToApp(onUrlRequest(
 						(next
 							&& curr.bQ === next.bQ
-							&& curr.bC === next.bC
+							&& curr.bB === next.bB
 							&& curr.bN.a === next.bN.a
 						)
 							? $elm$browser$Browser$Internal(next)
@@ -4069,9 +4069,9 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		cp: function(flags)
+		cq: function(flags)
 		{
-			return A3(impl.cp, flags, _Browser_getUrl(), key);
+			return A3(impl.cq, flags, _Browser_getUrl(), key);
 		},
 		cG: impl.cG,
 		cE: impl.cE,
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { cl: 'hidden', ce: 'visibilitychange' }
+		? { cm: 'hidden', ce: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { cl: 'mozHidden', ce: 'mozvisibilitychange' }
+		? { cm: 'mozHidden', ce: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { cl: 'msHidden', ce: 'msvisibilitychange' }
+		? { cm: 'msHidden', ce: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { cl: 'webkitHidden', ce: 'webkitvisibilitychange' }
-		: { cl: 'hidden', ce: 'visibilitychange' };
+		? { cm: 'webkitHidden', ce: 'webkitvisibilitychange' }
+		: { cm: 'hidden', ce: 'visibilitychange' };
 }
 
 
@@ -4237,7 +4237,7 @@ function _Browser_getViewport()
 			b6: _Browser_window.pageXOffset,
 			b7: _Browser_window.pageYOffset,
 			b5: _Browser_doc.documentElement.clientWidth,
-			bB: _Browser_doc.documentElement.clientHeight
+			bA: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4248,7 +4248,7 @@ function _Browser_getScene()
 	var elem = _Browser_doc.documentElement;
 	return {
 		b5: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		bB: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		bA: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4273,13 +4273,13 @@ function _Browser_getViewportOf(id)
 		return {
 			bV: {
 				b5: node.scrollWidth,
-				bB: node.scrollHeight
+				bA: node.scrollHeight
 			},
 			b4: {
 				b6: node.scrollLeft,
 				b7: node.scrollTop,
 				b5: node.clientWidth,
-				bB: node.clientHeight
+				bA: node.clientHeight
 			}
 		};
 	});
@@ -4314,13 +4314,13 @@ function _Browser_getElement(id)
 				b6: x,
 				b7: y,
 				b5: _Browser_doc.documentElement.clientWidth,
-				bB: _Browser_doc.documentElement.clientHeight
+				bA: _Browser_doc.documentElement.clientHeight
 			},
 			cj: {
 				b6: x + rect.left,
 				b7: y + rect.top,
 				b5: rect.width,
-				bB: rect.height
+				bA: rect.height
 			}
 		};
 	});
@@ -4923,7 +4923,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {bA: fragment, bC: host, cw: path, bN: port_, bQ: protocol, bR: query};
+		return {cl: fragment, bB: host, bL: path, bN: port_, bQ: protocol, bR: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5209,7 +5209,7 @@ var $elm$core$Basics$composeL = F3(
 	});
 var $mthadley$elm_hash_routing$Browser$Hash$Internal$fixPathQuery = function (url) {
 	var _v0 = function () {
-		var _v1 = A2($elm$core$String$split, '?', url.cw);
+		var _v1 = A2($elm$core$String$split, '?', url.bL);
 		if (_v1.b && _v1.b.b) {
 			var path = _v1.a;
 			var _v2 = _v1.b;
@@ -5218,14 +5218,14 @@ var $mthadley$elm_hash_routing$Browser$Hash$Internal$fixPathQuery = function (ur
 				path,
 				$elm$core$Maybe$Just(query));
 		} else {
-			return _Utils_Tuple2(url.cw, url.bR);
+			return _Utils_Tuple2(url.bL, url.bR);
 		}
 	}();
 	var newPath = _v0.a;
 	var newQuery = _v0.b;
 	return _Utils_update(
 		url,
-		{cw: newPath, bR: newQuery});
+		{bL: newPath, bR: newQuery});
 };
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
@@ -5240,24 +5240,24 @@ var $mthadley$elm_hash_routing$Browser$Hash$Internal$pathFromFragment = function
 	return _Utils_update(
 		url,
 		{
-			bA: $elm$core$Maybe$Nothing,
-			cw: A2($elm$core$Maybe$withDefault, '', url.bA)
+			cl: $elm$core$Maybe$Nothing,
+			bL: A2($elm$core$Maybe$withDefault, '', url.cl)
 		});
 };
 var $mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl = A2($elm$core$Basics$composeL, $mthadley$elm_hash_routing$Browser$Hash$Internal$fixPathQuery, $mthadley$elm_hash_routing$Browser$Hash$Internal$pathFromFragment);
 var $mthadley$elm_hash_routing$Browser$Hash$application = function (config) {
 	return $elm$browser$Browser$application(
 		{
-			cp: F3(
+			cq: F3(
 				function (flags, url, key) {
 					return A3(
-						config.cp,
+						config.cq,
 						flags,
 						$mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl(url),
 						key);
 				}),
-			ct: A2($elm$core$Basics$composeL, config.ct, $mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl),
-			cu: config.cu,
+			cu: A2($elm$core$Basics$composeL, config.cu, $mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl),
+			cv: config.cv,
 			cC: config.cC,
 			cE: config.cE,
 			cG: config.cG
@@ -5919,9 +5919,9 @@ var $elm$url$Url$Parser$parse = F2(
 				A5(
 					$elm$url$Url$Parser$State,
 					_List_Nil,
-					$elm$url$Url$Parser$preparePath(url.cw),
+					$elm$url$Url$Parser$preparePath(url.bL),
 					$elm$url$Url$Parser$prepareQuery(url.bR),
-					url.bA,
+					url.cl,
 					$elm$core$Basics$identity)));
 	});
 var $author$project$Route$Cv = 3;
@@ -6174,17 +6174,18 @@ var $author$project$Main$init = F3(
 		var cmd = _v0.b;
 		return _Utils_Tuple2(
 			{
-				q: lang,
-				aO: {bL: true},
-				aP: {bX: $elm$core$Maybe$Nothing},
-				aR: key,
-				aA: route
+				s: lang,
+				aN: {bK: true},
+				aO: {bX: $elm$core$Maybe$Nothing},
+				aQ: key,
+				aX: route
 			},
 			cmd);
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $elm$browser$Browser$Navigation$load = _Browser_load;
+var $elm$browser$Browser$Navigation$replaceUrl = _Browser_replaceUrl;
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
@@ -6194,7 +6195,7 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{
-							aO: {bL: x}
+							aN: {bK: x}
 						}));
 			case 1:
 				var x = msg.a;
@@ -6202,11 +6203,11 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{
-							aP: {bX: x}
+							aO: {bX: x}
 						}));
 			case 2:
 				var url = msg.a;
-				var _v1 = A3($author$project$Route$parseUrl, model.aR, model.q, url);
+				var _v1 = A3($author$project$Route$parseUrl, model.aQ, model.s, url);
 				var _v2 = _v1.a;
 				var lang = _v2.a;
 				var route = _v2.b;
@@ -6214,31 +6215,18 @@ var $author$project$Main$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{q: lang, aA: route}),
+						{s: lang, aX: route}),
 					cmd);
 			default:
 				var urlRequest = msg.a;
 				if (!urlRequest.$) {
 					var url = urlRequest.a;
-					var _v4 = A3(
-						$author$project$Route$parseUrl,
-						model.aR,
-						model.q,
-						_Utils_update(
-							url,
-							{
-								bA: $elm$core$Maybe$Nothing,
-								cw: A2($elm$core$Maybe$withDefault, '', url.bA)
-							}));
-					var _v5 = _v4.a;
-					var lang = _v5.a;
-					var route = _v5.b;
-					var cmd = _v4.b;
 					return _Utils_Tuple2(
-						_Utils_update(
-							model,
-							{q: lang, aA: route}),
-						cmd);
+						model,
+						A2(
+							$elm$browser$Browser$Navigation$replaceUrl,
+							model.aQ,
+							'#' + A2($elm$core$Maybe$withDefault, '', url.cl)));
 				} else {
 					var url = urlRequest.a;
 					return _Utils_Tuple2(
@@ -6628,7 +6616,7 @@ var $rtfeldman$elm_css$Css$Structure$compactHelp = F2(
 			case 6:
 				var record = declaration.a;
 				return $elm$core$String$isEmpty(record.cg) ? _Utils_Tuple2(keyframesByName, declarations) : _Utils_Tuple2(
-					A3($elm$core$Dict$insert, record.cs, record.cg, keyframesByName),
+					A3($elm$core$Dict$insert, record.ct, record.cg, keyframesByName),
 					declarations);
 			case 7:
 				var properties = declaration.a;
@@ -6666,15 +6654,15 @@ var $rtfeldman$elm_css$Css$Structure$withKeyframeDeclarations = F2(
 					var name = _v0.a;
 					var decl = _v0.b;
 					return $rtfeldman$elm_css$Css$Structure$Keyframes(
-						{cg: decl, cs: name});
+						{cg: decl, ct: name});
 				},
 				$elm$core$Dict$toList(keyframesByName)),
 			compactedDeclarations);
 	});
 var $rtfeldman$elm_css$Css$Structure$compactStylesheet = function (_v0) {
 	var charset = _v0.bu;
-	var imports = _v0.bD;
-	var namespaces = _v0.bJ;
+	var imports = _v0.bC;
+	var namespaces = _v0.bI;
 	var declarations = _v0.ch;
 	var _v1 = A3(
 		$elm$core$List$foldr,
@@ -6684,7 +6672,7 @@ var $rtfeldman$elm_css$Css$Structure$compactStylesheet = function (_v0) {
 	var keyframesByName = _v1.a;
 	var compactedDeclarations = _v1.b;
 	var finalDeclarations = A2($rtfeldman$elm_css$Css$Structure$withKeyframeDeclarations, keyframesByName, compactedDeclarations);
-	return {bu: charset, ch: finalDeclarations, bD: imports, bJ: namespaces};
+	return {bu: charset, ch: finalDeclarations, bC: imports, bI: namespaces};
 };
 var $rtfeldman$elm_css$Css$Structure$Output$charsetToString = function (charset) {
 	return A2(
@@ -6957,7 +6945,7 @@ var $rtfeldman$elm_css$Css$Structure$Output$prettyPrintDeclaration = function (d
 		case 5:
 			return 'TODO';
 		case 6:
-			var name = decl.a.cs;
+			var name = decl.a.ct;
 			var declaration = decl.a.cg;
 			return '@keyframes ' + (name + (' {\n' + (declaration + '\n}')));
 		case 7:
@@ -6970,8 +6958,8 @@ var $rtfeldman$elm_css$Css$Structure$Output$prettyPrintDeclaration = function (d
 };
 var $rtfeldman$elm_css$Css$Structure$Output$prettyPrint = function (_v0) {
 	var charset = _v0.bu;
-	var imports = _v0.bD;
-	var namespaces = _v0.bJ;
+	var imports = _v0.bC;
+	var namespaces = _v0.bI;
 	var declarations = _v0.ch;
 	return A2(
 		$elm$core$String$join,
@@ -8058,7 +8046,7 @@ var $rtfeldman$elm_css$Css$Preprocess$Resolve$applyStyles = F2(
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Css$Structure$Keyframes(
-								{cg: str, cs: name})
+								{cg: str, ct: name})
 							]));
 				case 4:
 					var _v12 = styles.a;
@@ -8194,12 +8182,12 @@ var $rtfeldman$elm_css$Css$Preprocess$Resolve$toDeclarations = function (snippet
 };
 var $rtfeldman$elm_css$Css$Preprocess$Resolve$toStructure = function (_v0) {
 	var charset = _v0.bu;
-	var imports = _v0.bD;
-	var namespaces = _v0.bJ;
+	var imports = _v0.bC;
+	var namespaces = _v0.bI;
 	var snippets = _v0.bW;
 	var declarations = $rtfeldman$elm_css$Css$Preprocess$Resolve$extract(
 		A2($elm$core$List$concatMap, $rtfeldman$elm_css$Css$Preprocess$unwrapSnippet, snippets));
-	return {bu: charset, ch: declarations, bD: imports, bJ: namespaces};
+	return {bu: charset, ch: declarations, bC: imports, bI: namespaces};
 };
 var $rtfeldman$elm_css$Css$Preprocess$Resolve$compileHelp = function (sheet) {
 	return $rtfeldman$elm_css$Css$Structure$Output$prettyPrint(
@@ -8245,7 +8233,7 @@ var $rtfeldman$elm_css$VirtualDom$Styled$snippetFromPair = function (_v0) {
 				])));
 };
 var $rtfeldman$elm_css$Css$Preprocess$stylesheet = function (snippets) {
-	return {bu: $elm$core$Maybe$Nothing, bD: _List_Nil, bJ: _List_Nil, bW: snippets};
+	return {bu: $elm$core$Maybe$Nothing, bC: _List_Nil, bI: _List_Nil, bW: snippets};
 };
 var $rtfeldman$elm_css$VirtualDom$Styled$toDeclaration = function (dict) {
 	return $rtfeldman$elm_css$Css$Preprocess$Resolve$compile(
@@ -8567,14 +8555,14 @@ var $rtfeldman$elm_css$Css$UnitlessInteger = 0;
 var $rtfeldman$elm_css$Css$int = function (val) {
 	return {
 		F: 0,
-		aN: 0,
+		aM: 0,
 		P: 0,
 		y: 0,
 		ax: 0,
-		aS: 0,
+		aR: 0,
 		I: val,
 		an: '',
-		aF: 0,
+		aE: 0,
 		A: $elm$core$String$fromInt(val)
 	};
 };
@@ -8954,7 +8942,7 @@ var $rtfeldman$elm_css$Css$hex = function (str) {
 };
 var $author$project$Colors$lightGrey = $rtfeldman$elm_css$Css$hex('E5E7E9');
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
-var $rtfeldman$elm_css$Css$none = {W: 0, bq: 0, n: 0, a: 0, f: 0, cn: 0, bF: 0, a5: 0, ag: 0, O: 0, y: 0, c: 0, b: 0, a9: 0, aU: 0, cx: 0, v: 0, aW: 0, cz: 0, ak: 0, U: 0, r: 0, e: 0, cF: 0, A: 'none'};
+var $rtfeldman$elm_css$Css$none = {W: 0, bq: 0, n: 0, a: 0, f: 0, co: 0, bE: 0, a5: 0, ag: 0, O: 0, y: 0, c: 0, b: 0, a9: 0, aT: 0, cx: 0, v: 0, aV: 0, cz: 0, ak: 0, U: 0, q: 0, e: 0, cF: 0, A: 'none'};
 var $rtfeldman$elm_css$Css$UnitlessFloat = 0;
 var $elm$core$String$fromFloat = _String_fromNumber;
 var $rtfeldman$elm_css$Css$num = function (val) {
@@ -8962,15 +8950,15 @@ var $rtfeldman$elm_css$Css$num = function (val) {
 		P: 0,
 		y: 0,
 		ax: 0,
-		aS: 0,
+		aR: 0,
 		I: val,
 		an: '',
-		aF: 0,
+		aE: 0,
 		A: $elm$core$String$fromFloat(val)
 	};
 };
-var $author$project$Colors$selectionSrc = {aI: 0, aM: 152, aV: 255};
-var $author$project$Colors$pageSelection = 'rgba(' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aV) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aM) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aI) + ', 0.71)')))));
+var $author$project$Colors$selectionSrc = {aH: 0, aL: 152, aU: 255};
+var $author$project$Colors$pageSelection = 'rgba(' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aU) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aL) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aH) + ', 0.71)')))));
 var $rtfeldman$elm_css$Css$Global$selector = F2(
 	function (selectorStr, styles) {
 		return A2(
@@ -9073,7 +9061,7 @@ var $rtfeldman$elm_css$Css$Internal$lengthConverter = F3(
 			I: numericValue,
 			al: 0,
 			an: unitLabel,
-			aF: units,
+			aE: units,
 			A: _Utils_ap(
 				$elm$core$String$fromFloat(numericValue),
 				unitLabel)
@@ -9150,7 +9138,7 @@ var $rtfeldman$elm_css$Css$Media$only = $rtfeldman$elm_css$Css$Structure$OnlyQue
 var $rtfeldman$elm_css$Css$Media$orientation = function (value) {
 	return A2($rtfeldman$elm_css$Css$Media$feature, 'orientation', value);
 };
-var $rtfeldman$elm_css$Css$Media$portrait = {aT: 0, A: 'portrait'};
+var $rtfeldman$elm_css$Css$Media$portrait = {aS: 0, A: 'portrait'};
 var $rtfeldman$elm_css$Css$Structure$Screen = 1;
 var $rtfeldman$elm_css$Css$Media$screen = 1;
 var $rtfeldman$elm_css$Css$Preprocess$WithMedia = F2(
@@ -9357,7 +9345,7 @@ var $rtfeldman$elm_css$Css$Transitions$Border = 4;
 var $rtfeldman$elm_css$Css$Transitions$Transition = $elm$core$Basics$identity;
 var $rtfeldman$elm_css$Css$Transitions$durationTransition = F2(
 	function (animation, duration) {
-		return {aH: animation, aK: $elm$core$Maybe$Nothing, bw: duration, a_: $elm$core$Maybe$Nothing};
+		return {aG: animation, aJ: $elm$core$Maybe$Nothing, bw: duration, a_: $elm$core$Maybe$Nothing};
 	});
 var $rtfeldman$elm_css$Css$Transitions$border = $rtfeldman$elm_css$Css$Transitions$durationTransition(4);
 var $rtfeldman$elm_css$Css$Transitions$Color = 29;
@@ -9610,9 +9598,9 @@ var $rtfeldman$elm_css$Css$Transitions$transition = function (options) {
 			$elm$core$List$foldl,
 			F2(
 				function (_v0, s) {
-					var animation = _v0.aH;
+					var animation = _v0.aG;
 					var duration = _v0.bw;
-					var delay = _v0.aK;
+					var delay = _v0.aJ;
 					var timing = _v0.a_;
 					return s + (A2(
 						$elm$core$String$join,
@@ -9849,7 +9837,7 @@ var $author$project$UiElements$textLink = A2(
 						]))
 				]))
 		]));
-var $rtfeldman$elm_css$Css$zero = {av: 0, ae: 0, G: 0, af: 0, ag: 0, O: 0, P: 0, ax: 0, I: 0, aU: 0, an: '', aF: 0, A: '0'};
+var $rtfeldman$elm_css$Css$zero = {av: 0, ae: 0, G: 0, af: 0, ag: 0, O: 0, P: 0, ax: 0, I: 0, aT: 0, an: '', aE: 0, A: '0'};
 var $author$project$Main$viewNav = function (lang) {
 	var link = F2(
 		function (route, txt) {
@@ -9966,9 +9954,9 @@ var $author$project$Main$generalTemplate = F2(
 							])),
 						A2(
 						$author$project$Main$viewHeader,
-						model.q,
-						$author$project$Main$viewIntro(model.q)),
-						$author$project$Main$viewNav(model.q),
+						model.s,
+						$author$project$Main$viewIntro(model.s)),
+						$author$project$Main$viewNav(model.s),
 						content
 					])));
 	});
@@ -10448,7 +10436,7 @@ var $author$project$UiStyles$userSelectNone = A2($rtfeldman$elm_css$Css$property
 var $author$project$Book$view = F2(
 	function (_v0, _v1) {
 		var sticker = _v0.cB;
-		var highlightFavorite = _v0.cm;
+		var highlightFavorite = _v0.cn;
 		var available = _v0.cc;
 		var book = _v1;
 		var textStyle = A3(
@@ -10588,10 +10576,10 @@ var $author$project$Book$view = F2(
 						]))
 				]));
 	});
-var $rtfeldman$elm_css$Css$wrap = {at: 0, aL: 0, A: 'wrap'};
+var $rtfeldman$elm_css$Css$wrap = {at: 0, aK: 0, A: 'wrap'};
 var $author$project$Page$LearningMaterials$viewLearningMaterials = F5(
 	function (lang, _v0, books, learnPath, wrapper) {
-		var onlyFavorite = _v0.bL;
+		var onlyFavorite = _v0.bK;
 		return A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_fromArray(
@@ -10669,7 +10657,7 @@ var $author$project$Page$LearningMaterials$viewLearningMaterials = F5(
 							A2(
 								$elm$core$List$map,
 								$author$project$Book$view(
-									{cc: true, cm: !onlyFavorite, cB: $elm$core$Maybe$Nothing}),
+									{cc: true, cn: !onlyFavorite, cB: $elm$core$Maybe$Nothing}),
 								A2(
 									$elm$core$List$filter,
 									function (_v2) {
@@ -10941,8 +10929,8 @@ var $author$project$Page$Library$roundSticker = $rtfeldman$elm_css$Css$batch(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(12))
 		]));
-var $author$project$Colors$selection = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$selectionSrc.aV, $author$project$Colors$selectionSrc.aM, $author$project$Colors$selectionSrc.aI);
-var $author$project$Colors$selection07 = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$selectionSrc.aV, $author$project$Colors$selectionSrc.aM, $author$project$Colors$selectionSrc.aI, 0.7);
+var $author$project$Colors$selection = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$selectionSrc.aU, $author$project$Colors$selectionSrc.aL, $author$project$Colors$selectionSrc.aH);
+var $author$project$Colors$selection07 = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$selectionSrc.aU, $author$project$Colors$selectionSrc.aL, $author$project$Colors$selectionSrc.aH, 0.7);
 var $author$project$Page$Library$viewLibraryBook = F2(
 	function (lang, _v0) {
 		var b = _v0.a;
@@ -10985,14 +10973,14 @@ var $author$project$Page$Library$viewLibraryBook = F2(
 			case 0:
 				return A2(
 					$author$project$Book$view,
-					{cc: true, cm: true, cB: $elm$core$Maybe$Nothing},
+					{cc: true, cn: true, cB: $elm$core$Maybe$Nothing},
 					b);
 			case 1:
 				return A2(
 					$author$project$Book$view,
 					{
 						cc: false,
-						cm: false,
+						cn: false,
 						cB: $elm$core$Maybe$Just(comingSoon)
 					},
 					b);
@@ -11001,7 +10989,7 @@ var $author$project$Page$Library$viewLibraryBook = F2(
 					$author$project$Book$view,
 					{
 						cc: false,
-						cm: false,
+						cn: false,
 						cB: $elm$core$Maybe$Just(givenToSomeone)
 					},
 					b);
@@ -11693,32 +11681,32 @@ var $author$project$Page$Projects$viewProjects = F2(
 				]));
 	});
 var $author$project$Main$viewRoute = function (model) {
-	var _v0 = model.aA;
+	var _v0 = model.aX;
 	switch (_v0) {
 		case 0:
 			return A2(
 				$author$project$Main$generalTemplate,
 				model,
-				A2($author$project$Page$Projects$viewProjects, model.q, $author$project$Dataset$projects));
+				A2($author$project$Page$Projects$viewProjects, model.s, $author$project$Dataset$projects));
 		case 1:
 			return A2(
 				$author$project$Main$generalTemplate,
 				model,
-				A5($author$project$Page$Library$viewLibrary, model.q, model.aP, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState, $author$project$Main$GotLibraryMsg));
+				A5($author$project$Page$Library$viewLibrary, model.s, model.aO, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState, $author$project$Main$GotLibraryMsg));
 		case 2:
 			return A2(
 				$author$project$Main$generalTemplate,
 				model,
-				A5($author$project$Page$LearningMaterials$viewLearningMaterials, model.q, model.aO, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath, $author$project$Main$GotLearningMaterialsMsg));
+				A5($author$project$Page$LearningMaterials$viewLearningMaterials, model.s, model.aN, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath, $author$project$Main$GotLearningMaterialsMsg));
 		default:
 			return $author$project$Cv$cv(model);
 	}
 };
 var $author$project$Main$main = $mthadley$elm_hash_routing$Browser$Hash$application(
 	{
-		cp: $author$project$Main$init,
-		ct: $author$project$Main$RouteChange,
-		cu: $author$project$Main$OnUrlRequest,
+		cq: $author$project$Main$init,
+		cu: $author$project$Main$RouteChange,
+		cv: $author$project$Main$OnUrlRequest,
 		cC: $elm$core$Basics$always($elm$core$Platform$Sub$none),
 		cE: $author$project$Main$update,
 		cG: $author$project$Main$viewRoute
