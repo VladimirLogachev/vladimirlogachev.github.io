@@ -20,13 +20,13 @@ regularShadow =
     0px 3px 3px rgba(0, 0, 0, 0.1)"""
 
 
-highlightShadow : Style
-highlightShadow =
+itemHighlightShadow : Style
+itemHighlightShadow =
     property "box-shadow" <| """rgba(0, 0, 0, 0.1) 0px -1px 1px,
     rgba(0, 0, 0, 0.1) 0px 1px 1px,
     rgba(0, 0, 0, 0.1) 0px 2px 2px,
     rgba(0, 0, 0, 0.1) 0px 3px 3px, 
-    #""" ++ Colors.highlightHex ++ " 0px 0px 5px 10px"
+    #""" ++ Colors.itemHighlightHex ++ " 0px 0px 5px 10px"
 
 
 {-| Missing in elm-css
@@ -36,9 +36,9 @@ spaceEvenly =
     property "justify-content" "space-evenly"
 
 
-highlight : Style
-highlight =
-    boxShadow5 (px 0) (px 0) (px 5) (px 10) Colors.highlight
+itemHighlight : Style
+itemHighlight =
+    boxShadow5 (px 0) (px 0) (px 5) (px 10) Colors.itemHighlight
 
 
 fullwidthContainer : Style
@@ -48,7 +48,7 @@ fullwidthContainer =
         , flexDirection row
         , justifyContent center
         , borderBottom3 (px 1) solid (rgba 0 0 0 0.15)
-        , lastChild [ borderBottom zero]
+        , lastChild [ borderBottom zero ]
         ]
 
 
@@ -121,19 +121,18 @@ textLink =
             ]
         ]
 
+
 textLinkOnDark : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
 textLinkOnDark =
     styled a
         [ textDecoration none
-        , color Colors.linkOnBlack
+        , color Colors.linkOnDark
         , transition [ Transitions.color 150, Transitions.border 150 ]
         , hover
-            [ color Colors.hover
+            [ color Colors.hoverOnDark
             , transition [ Transitions.color 150, Transitions.border 150 ]
             ]
         ]
-
-
 
 
 buttonLink : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
@@ -141,12 +140,12 @@ buttonLink =
     styled a
         [ textDecoration none
         , padding4 (px 8) (px 12) (px 8) (px 12)
-        , color Colors.light1
+        , color Colors.lightGrey
         , backgroundColor Colors.link
         , borderRadius (px 3)
         , regularShadow
         , flexShrink zero
-        , transition [ Transitions.backgroundColor 150]
+        , transition [ Transitions.backgroundColor 150 ]
         , hover
             [ backgroundColor Colors.hover
             , transition [ Transitions.backgroundColor 150 ]

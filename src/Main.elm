@@ -109,17 +109,17 @@ mainPage : Model -> Browser.Document Msg
 mainPage model =
     div
         [ css
-            [ backgroundColor Colors.light1
+            [ backgroundColor Colors.lightGrey
             , fontFamilies [ "Nunito", "sans-serif" ]
             , fontWeight (int 400)
             , lineHeight (num 1.1)
-            , color Colors.dark2
+            , color Colors.darkGrey
             ]
         ]
         [ global
             [ selector "::selection"
-                [ color Colors.dark2
-                , property "background" Colors.selection1
+                [ color Colors.darkGrey
+                , property "background" Colors.pageSelection
                 , textShadow none
                 ]
             ]
@@ -140,12 +140,12 @@ viewHeader lang content =
     header
         [ css
             [ fullwidthContainer
-            , backgroundColor Colors.dark1
-            , color Colors.light2
+            , backgroundColor Colors.darkGrey
+            , color Colors.lightGrey
             ]
         ]
         [ div [ css [ innerContainer ] ]
-            [ header1 [ css [ color Colors.light1 ] ]
+            [ header1 [ css [ color Colors.lightGrey ] ]
                 [ text__ (enRu lang "Vladimir Logachev" "Владимир Логачев") ]
             , content
             ]
@@ -355,7 +355,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
 
 viewProjects : Language -> (Language -> List Project) -> Html Msg
 viewProjects lang projs =
-    div [ css [ fullwidthContainer, backgroundColor Colors.light1 ], id "projects" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ], id "projects" ]
         [ article [ css [ innerContainer ] ]
             [ header2 [] [ text (enRu lang "Projects" "Проекты") ]
             , div [] <| List.map (viewProject lang) (projs lang)
@@ -368,16 +368,16 @@ viewBook { sticker, highlightFavorite, available } (Book book) =
     let
         shadow =
             ifElse (book.favorite && highlightFavorite && available)
-                highlightShadow
+                itemHighlightShadow
                 regularShadow
 
         textStyle =
             ifElse (book.favorite && highlightFavorite && available)
-                [ css [ highlight, backgroundColor Colors.highlight ] ]
+                [ css [ itemHighlight, backgroundColor Colors.itemHighlight ] ]
                 []
 
         availabilityStyle =
-            batch <| ifElse available [] [ highlight, property "filter" "grayscale(1)" ]
+            batch <| ifElse available [] [ itemHighlight, property "filter" "grayscale(1)" ]
 
         {- sticker area is placed in a bottom left corner of the book -}
         {- use ralative position for sticker to move inside this area -}
@@ -453,8 +453,8 @@ viewLibraryBook lang ( b, availability ) =
             div
                 [ css
                     [ roundSticker
-                    , backgroundColor Colors.dark1b
-                    , color Colors.selection1a
+                    , backgroundColor Colors.darkGrey08
+                    , color Colors.selection
                     ]
                 ]
                 [ text (enRu lang "coming soon" "скоро будет") ]
@@ -463,8 +463,8 @@ viewLibraryBook lang ( b, availability ) =
             div
                 [ css
                     [ roundSticker
-                    , backgroundColor Colors.selection1b
-                    , color Colors.dark1
+                    , backgroundColor Colors.selection07
+                    , color Colors.darkGrey
                     ]
                 ]
                 [ text (enRu lang "already taken" "кто-то читает") ]
@@ -485,7 +485,7 @@ enabledLink e txt =
     textLink
         [ css
             [ linkStyle
-            , borderBottom3 (px 0.5) dashed Colors.linkAlpha025
+            , borderBottom3 (px 0.5) dashed Colors.link025
             , hover [ borderBottom3 (px 0.5) dashed Colors.hover025 ]
             ]
         , onClick e
@@ -498,9 +498,9 @@ disabledLink _ txt =
     textLink
         [ css
             [ linkStyle
-            , color Colors.dark2
+            , color Colors.darkGrey
             , cursor default
-            , hover [ color Colors.dark2 ]
+            , hover [ color Colors.darkGrey ]
             ]
         , Attributes.disabled True
         ]
@@ -530,7 +530,7 @@ viewLibrary lang specific books libState =
                 |> List.map (\x -> p [] [ text__ x ])
                 |> div [ css [ regularText, marginTop (Css.em 1) ] ]
     in
-    div [ css [ fullwidthContainer, backgroundColor Colors.light1 ], id "library" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ], id "library" ]
         [ article [ css [ innerContainer ] ]
             [ header2 [] [ text__ (enRu lang "My Offline Library, Shared" "Библиотека для коллег и знакомых") ]
             , splitDescription
@@ -555,7 +555,7 @@ viewLibrary lang specific books libState =
 
 viewLearningMaterials : Language -> Bool -> Dict String Book -> List LearningMaterial -> Html Msg
 viewLearningMaterials lang onlyFavorite books learnPath =
-    div [ css [ fullwidthContainer, backgroundColor Colors.light1 ], id "learning-materials" ]
+    div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ], id "learning-materials" ]
         [ div [ css [ innerContainer ] ]
             [ header2 [] [ text__ (enRu lang "My Recommendations on Learning Materials" "Рекомендуемые мной книги и курсы") ]
             , p
