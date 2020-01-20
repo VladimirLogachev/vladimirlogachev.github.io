@@ -8475,8 +8475,7 @@ var $rtfeldman$elm_css$Css$rgb = F3(
 						[r, g, b])))
 		};
 	});
-var $author$project$Colors$dark1 = A3($rtfeldman$elm_css$Css$rgb, 18, 25, 33);
-var $author$project$Colors$dark2 = $author$project$Colors$dark1;
+var $author$project$Colors$darkGrey = A3($rtfeldman$elm_css$Css$rgb, 18, 25, 33);
 var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
 	function (a, b, c) {
 		return {$: 0, a: a, b: b, c: c};
@@ -9023,7 +9022,7 @@ var $rtfeldman$elm_css$Css$hex = function (str) {
 	}
 	return $rtfeldman$elm_css$Css$erroneousHex(str);
 };
-var $author$project$Colors$light1 = $rtfeldman$elm_css$Css$hex('E5E7E9');
+var $author$project$Colors$lightGrey = $rtfeldman$elm_css$Css$hex('E5E7E9');
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
 var $rtfeldman$elm_css$Css$none = {Z: 0, bw: 0, q: 0, d: 0, i: 0, co: 0, bL: 0, a9: 0, aj: 0, R: 0, B: 0, f: 0, e: 0, be: 0, aY: 0, cx: 0, x: 0, a_: 0, cz: 0, an: 0, X: 0, t: 0, h: 0, cF: 0, D: 'none'};
 var $rtfeldman$elm_css$Css$UnitlessFloat = 0;
@@ -9040,6 +9039,8 @@ var $rtfeldman$elm_css$Css$num = function (val) {
 		D: $elm$core$String$fromFloat(val)
 	};
 };
+var $author$project$Colors$selectionSrc = {aN: 0, aR: 152, aZ: 255};
+var $author$project$Colors$pageSelection = 'rgba(' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aZ) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aR) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aN) + ', 0.71)')))));
 var $author$project$Project$GitHubUserId = function (a) {
 	return {$: 1, a: a};
 };
@@ -9171,8 +9172,6 @@ var $author$project$Dataset$projects = function (lang) {
 		}
 		]);
 };
-var $author$project$Colors$sel1rgb = {aN: 0, aR: 152, aZ: 255};
-var $author$project$Colors$selection1 = 'rgba(' + ($elm$core$String$fromInt($author$project$Colors$sel1rgb.aZ) + (', ' + ($elm$core$String$fromInt($author$project$Colors$sel1rgb.aR) + (', ' + ($elm$core$String$fromInt($author$project$Colors$sel1rgb.aN) + ', 0.71)')))));
 var $rtfeldman$elm_css$Css$Global$selector = F2(
 	function (selectorStr, styles) {
 		return A2(
@@ -9464,7 +9463,6 @@ var $author$project$SharedStyles$innerContainer = $rtfeldman$elm_css$Css$batch(
 					$rtfeldman$elm_css$Css$px(16))
 				]))
 		]));
-var $author$project$Colors$light2 = $rtfeldman$elm_css$Css$hex('E5E7E9');
 var $elm$core$String$lines = _String_lines;
 var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
 var $elm$core$Set$empty = $elm$core$Dict$empty;
@@ -9530,8 +9528,8 @@ var $author$project$Main$viewHeader = F2(
 					_List_fromArray(
 						[
 							$author$project$SharedStyles$fullwidthContainer,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$dark1),
-							$rtfeldman$elm_css$Css$color($author$project$Colors$light2)
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$darkGrey),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey)
 						]))
 				]),
 			_List_fromArray(
@@ -9553,7 +9551,7 @@ var $author$project$Main$viewHeader = F2(
 									$rtfeldman$elm_css$Html$Styled$Attributes$css(
 									_List_fromArray(
 										[
-											$rtfeldman$elm_css$Css$color($author$project$Colors$light1)
+											$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey)
 										]))
 								]),
 							_List_fromArray(
@@ -9617,9 +9615,10 @@ var $rtfeldman$elm_css$Css$Transitions$durationTransition = F2(
 var $rtfeldman$elm_css$Css$Transitions$border = $rtfeldman$elm_css$Css$Transitions$durationTransition(4);
 var $rtfeldman$elm_css$Css$Transitions$Color = 29;
 var $rtfeldman$elm_css$Css$Transitions$color = $rtfeldman$elm_css$Css$Transitions$durationTransition(29);
-var $author$project$Colors$hover = A3($rtfeldman$elm_css$Css$rgb, 194, 78, 59);
 var $rtfeldman$elm_css$Css$hover = $rtfeldman$elm_css$Css$pseudoClass('hover');
-var $author$project$Colors$linkOnBlack = A3($rtfeldman$elm_css$Css$rgb, 97, 185, 214);
+var $author$project$Colors$hover = A3($rtfeldman$elm_css$Css$rgb, 194, 78, 59);
+var $author$project$Colors$hoverOnDark = $author$project$Colors$hover;
+var $author$project$Colors$linkOnDark = A3($rtfeldman$elm_css$Css$rgb, 97, 185, 214);
 var $rtfeldman$elm_css$Css$textDecoration = $rtfeldman$elm_css$Css$prop1('text-decoration');
 var $rtfeldman$elm_css$Css$Transitions$propToString = function (prop) {
 	switch (prop) {
@@ -9884,7 +9883,7 @@ var $author$project$SharedStyles$textLinkOnDark = A2(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
-			$rtfeldman$elm_css$Css$color($author$project$Colors$linkOnBlack),
+			$rtfeldman$elm_css$Css$color($author$project$Colors$linkOnDark),
 			$rtfeldman$elm_css$Css$Transitions$transition(
 			_List_fromArray(
 				[
@@ -9894,7 +9893,7 @@ var $author$project$SharedStyles$textLinkOnDark = A2(
 			$rtfeldman$elm_css$Css$hover(
 			_List_fromArray(
 				[
-					$rtfeldman$elm_css$Css$color($author$project$Colors$hover),
+					$rtfeldman$elm_css$Css$color($author$project$Colors$hoverOnDark),
 					$rtfeldman$elm_css$Css$Transitions$transition(
 					_List_fromArray(
 						[
@@ -10104,12 +10103,12 @@ var $author$project$Main$disabledLink = F2(
 					_List_fromArray(
 						[
 							$author$project$SharedStyles$linkStyle,
-							$rtfeldman$elm_css$Css$color($author$project$Colors$dark2),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey),
 							$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$default),
 							$rtfeldman$elm_css$Css$hover(
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Css$color($author$project$Colors$dark2)
+									$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey)
 								]))
 						])),
 					$rtfeldman$elm_css$Html$Styled$Attributes$disabled(true)
@@ -10121,7 +10120,7 @@ var $author$project$Main$disabledLink = F2(
 	});
 var $rtfeldman$elm_css$Css$dashed = {q: 0, W: 0, D: 'dashed'};
 var $author$project$Colors$hover025 = A4($rtfeldman$elm_css$Css$rgba, 194, 78, 59, 0.25);
-var $author$project$Colors$linkAlpha025 = A4($rtfeldman$elm_css$Css$rgba, 0, 72, 96, 0.25);
+var $author$project$Colors$link025 = A4($rtfeldman$elm_css$Css$rgba, 0, 72, 96, 0.25);
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -10161,7 +10160,7 @@ var $author$project$Main$enabledLink = F2(
 							$rtfeldman$elm_css$Css$borderBottom3,
 							$rtfeldman$elm_css$Css$px(0.5),
 							$rtfeldman$elm_css$Css$dashed,
-							$author$project$Colors$linkAlpha025),
+							$author$project$Colors$link025),
 							$rtfeldman$elm_css$Css$hover(
 							_List_fromArray(
 								[
@@ -10215,8 +10214,8 @@ var $author$project$SharedStyles$spaceEvenly = A2($rtfeldman$elm_css$Css$propert
 var $rtfeldman$elm_css$Css$borderRadius = $rtfeldman$elm_css$Css$prop1('border-radius');
 var $author$project$Utils$emptyHtml = $rtfeldman$elm_css$Html$Styled$text('');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
-var $author$project$Colors$highlightHex = 'F7DC6F66';
-var $author$project$Colors$highlight = $rtfeldman$elm_css$Css$hex($author$project$Colors$highlightHex);
+var $author$project$Colors$itemHighlightHex = 'F7DC6F66';
+var $author$project$Colors$itemHighlight = $rtfeldman$elm_css$Css$hex($author$project$Colors$itemHighlightHex);
 var $rtfeldman$elm_css$Css$prop5 = F6(
 	function (key, argA, argB, argC, argD, argE) {
 		return A2(
@@ -10229,14 +10228,14 @@ var $rtfeldman$elm_css$Css$prop5 = F6(
 					[argA.D, argB.D, argC.D, argD.D, argE.D])));
 	});
 var $rtfeldman$elm_css$Css$boxShadow5 = $rtfeldman$elm_css$Css$prop5('box-shadow');
-var $author$project$SharedStyles$highlight = A5(
+var $author$project$SharedStyles$itemHighlight = A5(
 	$rtfeldman$elm_css$Css$boxShadow5,
 	$rtfeldman$elm_css$Css$px(0),
 	$rtfeldman$elm_css$Css$px(0),
 	$rtfeldman$elm_css$Css$px(5),
 	$rtfeldman$elm_css$Css$px(10),
-	$author$project$Colors$highlight);
-var $author$project$SharedStyles$highlightShadow = A2($rtfeldman$elm_css$Css$property, 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px -1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 2px 2px,\n    rgba(0, 0, 0, 0.1) 0px 3px 3px, \n    #' + ($author$project$Colors$highlightHex + ' 0px 0px 5px 10px'));
+	$author$project$Colors$itemHighlight);
+var $author$project$SharedStyles$itemHighlightShadow = A2($rtfeldman$elm_css$Css$property, 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px -1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 1px 1px,\n    rgba(0, 0, 0, 0.1) 0px 2px 2px,\n    rgba(0, 0, 0, 0.1) 0px 3px 3px, \n    #' + ($author$project$Colors$itemHighlightHex + ' 0px 0px 5px 10px'));
 var $rtfeldman$elm_css$Css$prop2 = F3(
 	function (key, argA, argB) {
 		return A2(
@@ -10266,8 +10265,8 @@ var $author$project$Main$viewBook = F2(
 					$rtfeldman$elm_css$Html$Styled$Attributes$css(
 					_List_fromArray(
 						[
-							$author$project$SharedStyles$highlight,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$highlight)
+							$author$project$SharedStyles$itemHighlight,
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$itemHighlight)
 						]))
 				]),
 			_List_Nil);
@@ -10292,7 +10291,7 @@ var $author$project$Main$viewBook = F2(
 				return $author$project$Utils$emptyHtml;
 			}
 		}();
-		var shadow = A3($author$project$Utils$ifElse, book.cm && (highlightFavorite && available), $author$project$SharedStyles$highlightShadow, $author$project$SharedStyles$regularShadow);
+		var shadow = A3($author$project$Utils$ifElse, book.cm && (highlightFavorite && available), $author$project$SharedStyles$itemHighlightShadow, $author$project$SharedStyles$regularShadow);
 		var availabilityStyle = $rtfeldman$elm_css$Css$batch(
 			A3(
 				$author$project$Utils$ifElse,
@@ -10300,7 +10299,7 @@ var $author$project$Main$viewBook = F2(
 				_List_Nil,
 				_List_fromArray(
 					[
-						$author$project$SharedStyles$highlight,
+						$author$project$SharedStyles$itemHighlight,
 						A2($rtfeldman$elm_css$Css$property, 'filter', 'grayscale(1)')
 					])));
 		return A2(
@@ -10406,7 +10405,7 @@ var $author$project$Main$viewLearningMaterials = F4(
 					_List_fromArray(
 						[
 							$author$project$SharedStyles$fullwidthContainer,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$light1)
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$lightGrey)
 						])),
 					$rtfeldman$elm_css$Html$Styled$Attributes$id('learning-materials')
 				]),
@@ -10674,7 +10673,7 @@ var $elm_community$list_extra$List$Extra$stableSortWith = F2(
 			$elm$core$Tuple$first,
 			A2($elm$core$List$sortWith, predWithIndex, listWithIndex));
 	});
-var $author$project$Colors$dark1b = A4($rtfeldman$elm_css$Css$rgba, 18, 25, 33, 0.8);
+var $author$project$Colors$darkGrey08 = A4($rtfeldman$elm_css$Css$rgba, 18, 25, 33, 0.8);
 var $rtfeldman$elm_css$Css$bottom = $rtfeldman$elm_css$Css$prop1('bottom');
 var $rtfeldman$elm_css$Css$angleConverter = F2(
 	function (suffix, angleVal) {
@@ -10751,8 +10750,8 @@ var $author$project$Main$roundSticker = $rtfeldman$elm_css$Css$batch(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(12))
 		]));
-var $author$project$Colors$selection1a = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$sel1rgb.aZ, $author$project$Colors$sel1rgb.aR, $author$project$Colors$sel1rgb.aN);
-var $author$project$Colors$selection1b = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$sel1rgb.aZ, $author$project$Colors$sel1rgb.aR, $author$project$Colors$sel1rgb.aN, 0.7);
+var $author$project$Colors$selection = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$selectionSrc.aZ, $author$project$Colors$selectionSrc.aR, $author$project$Colors$selectionSrc.aN);
+var $author$project$Colors$selection07 = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$selectionSrc.aZ, $author$project$Colors$selectionSrc.aR, $author$project$Colors$selectionSrc.aN, 0.7);
 var $author$project$Main$viewLibraryBook = F2(
 	function (lang, _v0) {
 		var b = _v0.a;
@@ -10765,8 +10764,8 @@ var $author$project$Main$viewLibraryBook = F2(
 					_List_fromArray(
 						[
 							$author$project$Main$roundSticker,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$selection1b),
-							$rtfeldman$elm_css$Css$color($author$project$Colors$dark1)
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$selection07),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey)
 						]))
 				]),
 			_List_fromArray(
@@ -10782,8 +10781,8 @@ var $author$project$Main$viewLibraryBook = F2(
 					_List_fromArray(
 						[
 							$author$project$Main$roundSticker,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$dark1b),
-							$rtfeldman$elm_css$Css$color($author$project$Colors$selection1a)
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$darkGrey08),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$selection)
 						]))
 				]),
 			_List_fromArray(
@@ -10863,7 +10862,7 @@ var $author$project$Main$viewLibrary = F4(
 					_List_fromArray(
 						[
 							$author$project$SharedStyles$fullwidthContainer,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$light1)
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$lightGrey)
 						])),
 					$rtfeldman$elm_css$Html$Styled$Attributes$id('library')
 				]),
@@ -10995,7 +10994,7 @@ var $author$project$SharedStyles$buttonLink = A2(
 			$rtfeldman$elm_css$Css$px(12),
 			$rtfeldman$elm_css$Css$px(8),
 			$rtfeldman$elm_css$Css$px(12)),
-			$rtfeldman$elm_css$Css$color($author$project$Colors$light1),
+			$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey),
 			$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$link),
 			$rtfeldman$elm_css$Css$borderRadius(
 			$rtfeldman$elm_css$Css$px(3)),
@@ -11470,7 +11469,7 @@ var $author$project$Main$viewProjects = F2(
 					_List_fromArray(
 						[
 							$author$project$SharedStyles$fullwidthContainer,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$light1)
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$lightGrey)
 						])),
 					$rtfeldman$elm_css$Html$Styled$Attributes$id('projects')
 				]),
@@ -11521,7 +11520,7 @@ var $author$project$Main$mainPage = function (model) {
 					$rtfeldman$elm_css$Html$Styled$Attributes$css(
 					_List_fromArray(
 						[
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$light1),
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$lightGrey),
 							$rtfeldman$elm_css$Css$fontFamilies(
 							_List_fromArray(
 								['Nunito', 'sans-serif'])),
@@ -11529,7 +11528,7 @@ var $author$project$Main$mainPage = function (model) {
 							$rtfeldman$elm_css$Css$int(400)),
 							$rtfeldman$elm_css$Css$lineHeight(
 							$rtfeldman$elm_css$Css$num(1.1)),
-							$rtfeldman$elm_css$Css$color($author$project$Colors$dark2)
+							$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey)
 						]))
 				]),
 			_List_fromArray(
@@ -11542,8 +11541,8 @@ var $author$project$Main$mainPage = function (model) {
 							'::selection',
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Css$color($author$project$Colors$dark2),
-									A2($rtfeldman$elm_css$Css$property, 'background', $author$project$Colors$selection1),
+									$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey),
+									A2($rtfeldman$elm_css$Css$property, 'background', $author$project$Colors$pageSelection),
 									$rtfeldman$elm_css$Css$textShadow($rtfeldman$elm_css$Css$none)
 								]))
 						])),
