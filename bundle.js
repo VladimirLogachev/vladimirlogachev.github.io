@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.cq,
-		impl.cE,
-		impl.cC,
+		impl.cp,
+		impl.cD,
+		impl.cB,
 		function() { return function() {} }
 	);
 });
@@ -3928,9 +3928,9 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.cq,
-		impl.cE,
-		impl.cC,
+		impl.cp,
+		impl.cD,
+		impl.cB,
 		function(sendToApp, initialModel) {
 			var view = impl.cG;
 			/**/
@@ -3964,9 +3964,9 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.cq,
-		impl.cE,
-		impl.cC,
+		impl.cp,
+		impl.cD,
+		impl.cB,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.bd && impl.bd(sendToApp)
 			var view = impl.cG;
@@ -3977,7 +3977,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.cd);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.cc);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.cu;
-	var onUrlRequest = impl.cv;
+	var onUrlChange = impl.ct;
+	var onUrlRequest = impl.cu;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		cq: function(flags)
+		cp: function(flags)
 		{
-			return A3(impl.cq, flags, _Browser_getUrl(), key);
+			return A3(impl.cp, flags, _Browser_getUrl(), key);
 		},
 		cG: impl.cG,
-		cE: impl.cE,
-		cC: impl.cC
+		cD: impl.cD,
+		cB: impl.cB
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { cm: 'hidden', ce: 'visibilitychange' }
+		? { cl: 'hidden', cd: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { cm: 'mozHidden', ce: 'mozvisibilitychange' }
+		? { cl: 'mozHidden', cd: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { cm: 'msHidden', ce: 'msvisibilitychange' }
+		? { cl: 'msHidden', cd: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { cm: 'webkitHidden', ce: 'webkitvisibilitychange' }
-		: { cm: 'hidden', ce: 'visibilitychange' };
+		? { cl: 'webkitHidden', cd: 'webkitvisibilitychange' }
+		: { cl: 'hidden', cd: 'visibilitychange' };
 }
 
 
@@ -4233,10 +4233,10 @@ function _Browser_getViewport()
 {
 	return {
 		bV: _Browser_getScene(),
-		b4: {
-			b6: _Browser_window.pageXOffset,
-			b7: _Browser_window.pageYOffset,
-			b5: _Browser_doc.documentElement.clientWidth,
+		b3: {
+			b5: _Browser_window.pageXOffset,
+			b6: _Browser_window.pageYOffset,
+			b4: _Browser_doc.documentElement.clientWidth,
 			bA: _Browser_doc.documentElement.clientHeight
 		}
 	};
@@ -4247,7 +4247,7 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		b5: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		b4: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
 		bA: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
@@ -4272,13 +4272,13 @@ function _Browser_getViewportOf(id)
 	{
 		return {
 			bV: {
-				b5: node.scrollWidth,
+				b4: node.scrollWidth,
 				bA: node.scrollHeight
 			},
-			b4: {
-				b6: node.scrollLeft,
-				b7: node.scrollTop,
-				b5: node.clientWidth,
+			b3: {
+				b5: node.scrollLeft,
+				b6: node.scrollTop,
+				b4: node.clientWidth,
 				bA: node.clientHeight
 			}
 		};
@@ -4310,16 +4310,16 @@ function _Browser_getElement(id)
 		var y = _Browser_window.pageYOffset;
 		return {
 			bV: _Browser_getScene(),
-			b4: {
-				b6: x,
-				b7: y,
-				b5: _Browser_doc.documentElement.clientWidth,
+			b3: {
+				b5: x,
+				b6: y,
+				b4: _Browser_doc.documentElement.clientWidth,
 				bA: _Browser_doc.documentElement.clientHeight
 			},
-			cj: {
-				b6: x + rect.left,
-				b7: y + rect.top,
-				b5: rect.width,
+			ci: {
+				b5: x + rect.left,
+				b6: y + rect.top,
+				b4: rect.width,
 				bA: rect.height
 			}
 		};
@@ -4923,7 +4923,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {cl: fragment, bB: host, bL: path, bN: port_, bQ: protocol, bR: query};
+		return {ck: fragment, bB: host, bL: path, bN: port_, bQ: protocol, bR: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5240,26 +5240,26 @@ var $mthadley$elm_hash_routing$Browser$Hash$Internal$pathFromFragment = function
 	return _Utils_update(
 		url,
 		{
-			cl: $elm$core$Maybe$Nothing,
-			bL: A2($elm$core$Maybe$withDefault, '', url.cl)
+			ck: $elm$core$Maybe$Nothing,
+			bL: A2($elm$core$Maybe$withDefault, '', url.ck)
 		});
 };
 var $mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl = A2($elm$core$Basics$composeL, $mthadley$elm_hash_routing$Browser$Hash$Internal$fixPathQuery, $mthadley$elm_hash_routing$Browser$Hash$Internal$pathFromFragment);
 var $mthadley$elm_hash_routing$Browser$Hash$application = function (config) {
 	return $elm$browser$Browser$application(
 		{
-			cq: F3(
+			cp: F3(
 				function (flags, url, key) {
 					return A3(
-						config.cq,
+						config.cp,
 						flags,
 						$mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl(url),
 						key);
 				}),
-			cu: A2($elm$core$Basics$composeL, config.cu, $mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl),
-			cv: config.cv,
-			cC: config.cC,
-			cE: config.cE,
+			ct: A2($elm$core$Basics$composeL, config.ct, $mthadley$elm_hash_routing$Browser$Hash$Internal$updateUrl),
+			cu: config.cu,
+			cB: config.cB,
+			cD: config.cD,
 			cG: config.cG
 		});
 };
@@ -5921,7 +5921,7 @@ var $elm$url$Url$Parser$parse = F2(
 					_List_Nil,
 					$elm$url$Url$Parser$preparePath(url.bL),
 					$elm$url$Url$Parser$prepareQuery(url.bR),
-					url.cl,
+					url.ck,
 					$elm$core$Basics$identity)));
 	});
 var $author$project$Route$Cv = 3;
@@ -6175,10 +6175,10 @@ var $author$project$Main$init = F3(
 		return _Utils_Tuple2(
 			{
 				s: lang,
-				aN: {bK: true},
-				aO: {bX: $elm$core$Maybe$Nothing},
-				aQ: key,
-				aX: route
+				aO: {bK: true},
+				aP: {bX: $elm$core$Maybe$Nothing},
+				aR: key,
+				aA: route
 			},
 			cmd);
 	});
@@ -6195,7 +6195,7 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{
-							aN: {bK: x}
+							aO: {bK: x}
 						}));
 			case 1:
 				var x = msg.a;
@@ -6203,11 +6203,11 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{
-							aO: {bX: x}
+							aP: {bX: x}
 						}));
 			case 2:
 				var url = msg.a;
-				var _v1 = A3($author$project$Route$parseUrl, model.aQ, model.s, url);
+				var _v1 = A3($author$project$Route$parseUrl, model.aR, model.s, url);
 				var _v2 = _v1.a;
 				var lang = _v2.a;
 				var route = _v2.b;
@@ -6215,7 +6215,7 @@ var $author$project$Main$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{s: lang, aX: route}),
+						{s: lang, aA: route}),
 					cmd);
 			default:
 				var urlRequest = msg.a;
@@ -6225,8 +6225,8 @@ var $author$project$Main$update = F2(
 						model,
 						A2(
 							$elm$browser$Browser$Navigation$replaceUrl,
-							model.aQ,
-							'#' + A2($elm$core$Maybe$withDefault, '', url.cl)));
+							model.aR,
+							'#' + A2($elm$core$Maybe$withDefault, '', url.ck)));
 				} else {
 					var url = urlRequest.a;
 					return _Utils_Tuple2(
@@ -6615,8 +6615,8 @@ var $rtfeldman$elm_css$Css$Structure$compactHelp = F2(
 					A2($elm$core$List$cons, declaration, declarations));
 			case 6:
 				var record = declaration.a;
-				return $elm$core$String$isEmpty(record.cg) ? _Utils_Tuple2(keyframesByName, declarations) : _Utils_Tuple2(
-					A3($elm$core$Dict$insert, record.ct, record.cg, keyframesByName),
+				return $elm$core$String$isEmpty(record.cf) ? _Utils_Tuple2(keyframesByName, declarations) : _Utils_Tuple2(
+					A3($elm$core$Dict$insert, record.cs, record.cf, keyframesByName),
 					declarations);
 			case 7:
 				var properties = declaration.a;
@@ -6654,7 +6654,7 @@ var $rtfeldman$elm_css$Css$Structure$withKeyframeDeclarations = F2(
 					var name = _v0.a;
 					var decl = _v0.b;
 					return $rtfeldman$elm_css$Css$Structure$Keyframes(
-						{cg: decl, ct: name});
+						{cf: decl, cs: name});
 				},
 				$elm$core$Dict$toList(keyframesByName)),
 			compactedDeclarations);
@@ -6663,7 +6663,7 @@ var $rtfeldman$elm_css$Css$Structure$compactStylesheet = function (_v0) {
 	var charset = _v0.bu;
 	var imports = _v0.bC;
 	var namespaces = _v0.bI;
-	var declarations = _v0.ch;
+	var declarations = _v0.cg;
 	var _v1 = A3(
 		$elm$core$List$foldr,
 		$rtfeldman$elm_css$Css$Structure$compactHelp,
@@ -6672,7 +6672,7 @@ var $rtfeldman$elm_css$Css$Structure$compactStylesheet = function (_v0) {
 	var keyframesByName = _v1.a;
 	var compactedDeclarations = _v1.b;
 	var finalDeclarations = A2($rtfeldman$elm_css$Css$Structure$withKeyframeDeclarations, keyframesByName, compactedDeclarations);
-	return {bu: charset, ch: finalDeclarations, bC: imports, bI: namespaces};
+	return {bu: charset, cg: finalDeclarations, bC: imports, bI: namespaces};
 };
 var $rtfeldman$elm_css$Css$Structure$Output$charsetToString = function (charset) {
 	return A2(
@@ -6945,8 +6945,8 @@ var $rtfeldman$elm_css$Css$Structure$Output$prettyPrintDeclaration = function (d
 		case 5:
 			return 'TODO';
 		case 6:
-			var name = decl.a.ct;
-			var declaration = decl.a.cg;
+			var name = decl.a.cs;
+			var declaration = decl.a.cf;
 			return '@keyframes ' + (name + (' {\n' + (declaration + '\n}')));
 		case 7:
 			return 'TODO';
@@ -6960,7 +6960,7 @@ var $rtfeldman$elm_css$Css$Structure$Output$prettyPrint = function (_v0) {
 	var charset = _v0.bu;
 	var imports = _v0.bC;
 	var namespaces = _v0.bI;
-	var declarations = _v0.ch;
+	var declarations = _v0.cg;
 	return A2(
 		$elm$core$String$join,
 		'\n\n',
@@ -8046,7 +8046,7 @@ var $rtfeldman$elm_css$Css$Preprocess$Resolve$applyStyles = F2(
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Css$Structure$Keyframes(
-								{cg: str, ct: name})
+								{cf: str, cs: name})
 							]));
 				case 4:
 					var _v12 = styles.a;
@@ -8187,7 +8187,7 @@ var $rtfeldman$elm_css$Css$Preprocess$Resolve$toStructure = function (_v0) {
 	var snippets = _v0.bW;
 	var declarations = $rtfeldman$elm_css$Css$Preprocess$Resolve$extract(
 		A2($elm$core$List$concatMap, $rtfeldman$elm_css$Css$Preprocess$unwrapSnippet, snippets));
-	return {bu: charset, ch: declarations, bC: imports, bI: namespaces};
+	return {bu: charset, cg: declarations, bC: imports, bI: namespaces};
 };
 var $rtfeldman$elm_css$Css$Preprocess$Resolve$compileHelp = function (sheet) {
 	return $rtfeldman$elm_css$Css$Structure$Output$prettyPrint(
@@ -8422,7 +8422,7 @@ var $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled = function (vdom) {
 var $rtfeldman$elm_css$Html$Styled$toUnstyled = $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled;
 var $author$project$Cv$cv = function (_v0) {
 	return {
-		cd: _List_fromArray(
+		cc: _List_fromArray(
 			[
 				$rtfeldman$elm_css$Html$Styled$toUnstyled(
 				$rtfeldman$elm_css$Html$Styled$text('Cv content'))
@@ -8555,14 +8555,14 @@ var $rtfeldman$elm_css$Css$UnitlessInteger = 0;
 var $rtfeldman$elm_css$Css$int = function (val) {
 	return {
 		F: 0,
-		aM: 0,
+		aN: 0,
 		P: 0,
 		y: 0,
 		ax: 0,
-		aR: 0,
+		aS: 0,
 		I: val,
 		an: '',
-		aE: 0,
+		aF: 0,
 		A: $elm$core$String$fromInt(val)
 	};
 };
@@ -8942,7 +8942,7 @@ var $rtfeldman$elm_css$Css$hex = function (str) {
 };
 var $author$project$Colors$lightGrey = $rtfeldman$elm_css$Css$hex('E5E7E9');
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
-var $rtfeldman$elm_css$Css$none = {W: 0, bq: 0, n: 0, a: 0, f: 0, co: 0, bE: 0, a5: 0, ag: 0, O: 0, y: 0, c: 0, b: 0, a9: 0, aT: 0, cx: 0, v: 0, aV: 0, cz: 0, ak: 0, U: 0, q: 0, e: 0, cF: 0, A: 'none'};
+var $rtfeldman$elm_css$Css$none = {W: 0, bq: 0, n: 0, a: 0, f: 0, cn: 0, bE: 0, a5: 0, ag: 0, O: 0, y: 0, c: 0, b: 0, a9: 0, aU: 0, cw: 0, v: 0, aW: 0, cy: 0, ak: 0, U: 0, q: 0, e: 0, cE: 0, A: 'none'};
 var $rtfeldman$elm_css$Css$UnitlessFloat = 0;
 var $elm$core$String$fromFloat = _String_fromNumber;
 var $rtfeldman$elm_css$Css$num = function (val) {
@@ -8950,15 +8950,15 @@ var $rtfeldman$elm_css$Css$num = function (val) {
 		P: 0,
 		y: 0,
 		ax: 0,
-		aR: 0,
+		aS: 0,
 		I: val,
 		an: '',
-		aE: 0,
+		aF: 0,
 		A: $elm$core$String$fromFloat(val)
 	};
 };
-var $author$project$Colors$selectionSrc = {aH: 0, aL: 152, aU: 255};
-var $author$project$Colors$pageSelection = 'rgba(' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aU) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aL) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aH) + ', 0.71)')))));
+var $author$project$Colors$selectionSrc = {aI: 0, aM: 152, aV: 255};
+var $author$project$Colors$pageSelection = 'rgba(' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aV) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aM) + (', ' + ($elm$core$String$fromInt($author$project$Colors$selectionSrc.aI) + ', 0.71)')))));
 var $rtfeldman$elm_css$Css$Global$selector = F2(
 	function (selectorStr, styles) {
 		return A2(
@@ -9061,7 +9061,7 @@ var $rtfeldman$elm_css$Css$Internal$lengthConverter = F3(
 			I: numericValue,
 			al: 0,
 			an: unitLabel,
-			aE: units,
+			aF: units,
 			A: _Utils_ap(
 				$elm$core$String$fromFloat(numericValue),
 				unitLabel)
@@ -9138,7 +9138,7 @@ var $rtfeldman$elm_css$Css$Media$only = $rtfeldman$elm_css$Css$Structure$OnlyQue
 var $rtfeldman$elm_css$Css$Media$orientation = function (value) {
 	return A2($rtfeldman$elm_css$Css$Media$feature, 'orientation', value);
 };
-var $rtfeldman$elm_css$Css$Media$portrait = {aS: 0, A: 'portrait'};
+var $rtfeldman$elm_css$Css$Media$portrait = {aT: 0, A: 'portrait'};
 var $rtfeldman$elm_css$Css$Structure$Screen = 1;
 var $rtfeldman$elm_css$Css$Media$screen = 1;
 var $rtfeldman$elm_css$Css$Preprocess$WithMedia = F2(
@@ -9187,7 +9187,7 @@ var $author$project$UiStyles$innerContainer = $rtfeldman$elm_css$Css$batch(
 			$rtfeldman$elm_css$Css$padding4,
 			$rtfeldman$elm_css$Css$px(48),
 			$rtfeldman$elm_css$Css$px(16),
-			$rtfeldman$elm_css$Css$px(48),
+			$rtfeldman$elm_css$Css$px(32),
 			$rtfeldman$elm_css$Css$px(32)),
 			$author$project$UiStyles$mediaSmartphonePortrait(
 			_List_fromArray(
@@ -9316,6 +9316,7 @@ var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
 var $rtfeldman$elm_css$Html$Styled$Attributes$alt = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('alt');
 var $rtfeldman$elm_css$Css$EmUnits = 0;
 var $rtfeldman$elm_css$Css$em = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, 'em');
+var $rtfeldman$elm_css$Css$flexWrap = $rtfeldman$elm_css$Css$prop1('flex-wrap');
 var $rtfeldman$elm_css$Html$Styled$Attributes$href = function (url) {
 	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'href', url);
 };
@@ -9345,7 +9346,7 @@ var $rtfeldman$elm_css$Css$Transitions$Border = 4;
 var $rtfeldman$elm_css$Css$Transitions$Transition = $elm$core$Basics$identity;
 var $rtfeldman$elm_css$Css$Transitions$durationTransition = F2(
 	function (animation, duration) {
-		return {aG: animation, aJ: $elm$core$Maybe$Nothing, bw: duration, a_: $elm$core$Maybe$Nothing};
+		return {aH: animation, aK: $elm$core$Maybe$Nothing, bw: duration, a_: $elm$core$Maybe$Nothing};
 	});
 var $rtfeldman$elm_css$Css$Transitions$border = $rtfeldman$elm_css$Css$Transitions$durationTransition(4);
 var $rtfeldman$elm_css$Css$Transitions$Color = 29;
@@ -9364,6 +9365,7 @@ var $rtfeldman$elm_css$Css$pseudoClass = function (_class) {
 var $rtfeldman$elm_css$Css$hover = $rtfeldman$elm_css$Css$pseudoClass('hover');
 var $author$project$Colors$hover = A3($rtfeldman$elm_css$Css$rgb, 194, 78, 59);
 var $author$project$Colors$hoverOnDark = $author$project$Colors$hover;
+var $rtfeldman$elm_css$Css$lastChild = $rtfeldman$elm_css$Css$pseudoClass('last-child');
 var $author$project$Colors$linkOnDark = A3($rtfeldman$elm_css$Css$rgb, 97, 185, 214);
 var $rtfeldman$elm_css$Css$textDecoration = $rtfeldman$elm_css$Css$prop1('text-decoration');
 var $rtfeldman$elm_css$Css$Transitions$propToString = function (prop) {
@@ -9598,9 +9600,9 @@ var $rtfeldman$elm_css$Css$Transitions$transition = function (options) {
 			$elm$core$List$foldl,
 			F2(
 				function (_v0, s) {
-					var animation = _v0.aG;
+					var animation = _v0.aH;
 					var duration = _v0.bw;
-					var delay = _v0.aJ;
+					var delay = _v0.aK;
 					var timing = _v0.a_;
 					return s + (A2(
 						$elm$core$String$join,
@@ -9623,6 +9625,7 @@ var $rtfeldman$elm_css$Css$Transitions$transition = function (options) {
 			options));
 	return A2($rtfeldman$elm_css$Css$property, 'transition', v);
 };
+var $rtfeldman$elm_css$Css$zero = {av: 0, ae: 0, G: 0, af: 0, ag: 0, O: 0, P: 0, ax: 0, I: 0, aU: 0, an: '', aF: 0, A: '0'};
 var $author$project$UiElements$textLinkOnDark = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$a,
@@ -9630,6 +9633,15 @@ var $author$project$UiElements$textLinkOnDark = A2(
 		[
 			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
 			$rtfeldman$elm_css$Css$color($author$project$Colors$linkOnDark),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$lastChild(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$marginRight($rtfeldman$elm_css$Css$zero)
+				])),
 			$rtfeldman$elm_css$Css$Transitions$transition(
 			_List_fromArray(
 				[
@@ -9649,6 +9661,7 @@ var $author$project$UiElements$textLinkOnDark = A2(
 				]))
 		]));
 var $rtfeldman$elm_css$Html$Styled$Attributes$title = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('title');
+var $rtfeldman$elm_css$Css$wrap = {at: 0, aL: 0, A: 'wrap'};
 var $author$project$Main$viewIntro = function (lang) {
 	var link = F2(
 		function (url, txt) {
@@ -9661,7 +9674,7 @@ var $author$project$Main$viewIntro = function (lang) {
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Css$marginRight(
-								$rtfeldman$elm_css$Css$em(0.5))
+								$rtfeldman$elm_css$Css$em(1))
 							])),
 						$rtfeldman$elm_css$Html$Styled$Attributes$href(url)
 					]),
@@ -9764,10 +9777,8 @@ var $author$project$Main$viewIntro = function (lang) {
 						$rtfeldman$elm_css$Html$Styled$Attributes$css(
 						_List_fromArray(
 							[
-								$rtfeldman$elm_css$Css$marginTop(
-								$rtfeldman$elm_css$Css$em(0.8)),
-								$rtfeldman$elm_css$Css$marginRight(
-								$rtfeldman$elm_css$Css$em(0.5))
+								$rtfeldman$elm_css$Css$displayFlex,
+								$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap)
 							]))
 					]),
 				_List_fromArray(
@@ -9782,42 +9793,72 @@ var $author$project$Main$viewIntro = function (lang) {
 			]));
 };
 var $rtfeldman$elm_css$Html$Styled$article = $rtfeldman$elm_css$Html$Styled$node('article');
-var $rtfeldman$elm_css$Css$lastChild = $rtfeldman$elm_css$Css$pseudoClass('last-child');
-var $author$project$UiStyles$navContainer = $rtfeldman$elm_css$Css$batch(
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(100)),
-			$rtfeldman$elm_css$Css$maxWidth(
-			$rtfeldman$elm_css$Css$px(1000)),
-			A4(
-			$rtfeldman$elm_css$Css$padding4,
-			$rtfeldman$elm_css$Css$px(16),
-			$rtfeldman$elm_css$Css$px(16),
-			$rtfeldman$elm_css$Css$px(16),
-			$rtfeldman$elm_css$Css$px(32)),
-			$author$project$UiStyles$mediaSmartphonePortrait(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$paddingLeft(
-					$rtfeldman$elm_css$Css$px(16)),
-					$rtfeldman$elm_css$Css$paddingRight(
-					$rtfeldman$elm_css$Css$px(16))
-				]))
-		]));
-var $author$project$Route$router_href = F2(
-	function (lang, targetRoute) {
-		return $rtfeldman$elm_css$Html$Styled$Attributes$href(
-			A2($author$project$Route$routeToString, lang, targetRoute));
+var $rtfeldman$elm_css$Css$prop3 = F4(
+	function (key, argA, argB, argC) {
+		return A2(
+			$rtfeldman$elm_css$Css$property,
+			key,
+			A2(
+				$elm$core$String$join,
+				' ',
+				_List_fromArray(
+					[argA.A, argB.A, argC.A])));
 	});
-var $author$project$Colors$secondaryLightGrey = $rtfeldman$elm_css$Css$hex('D7DBDD');
+var $rtfeldman$elm_css$Css$borderBottom3 = $rtfeldman$elm_css$Css$prop3('border-bottom');
+var $rtfeldman$elm_css$Css$cursor = $rtfeldman$elm_css$Css$prop1('cursor');
+var $rtfeldman$elm_css$Css$dashed = {n: 0, T: 0, A: 'dashed'};
+var $rtfeldman$elm_css$Css$rgba = F4(
+	function (r, g, b, alpha) {
+		return {
+			aq: alpha,
+			as: b,
+			x: 0,
+			au: g,
+			az: r,
+			A: A2(
+				$rtfeldman$elm_css$Css$cssFunction,
+				'rgba',
+				_Utils_ap(
+					A2(
+						$elm$core$List$map,
+						$elm$core$String$fromInt,
+						_List_fromArray(
+							[r, g, b])),
+					_List_fromArray(
+						[
+							$elm$core$String$fromFloat(alpha)
+						])))
+		};
+	});
+var $author$project$Colors$hover025 = A4($rtfeldman$elm_css$Css$rgba, 194, 78, 59, 0.25);
 var $author$project$Colors$link = A3($rtfeldman$elm_css$Css$rgb, 0, 72, 96);
-var $author$project$UiElements$textLink = A2(
-	$rtfeldman$elm_css$Html$Styled$styled,
-	$rtfeldman$elm_css$Html$Styled$a,
+var $author$project$Colors$link025 = A4($rtfeldman$elm_css$Css$rgba, 0, 72, 96, 0.25);
+var $rtfeldman$elm_css$Css$pointer = {a: 0, A: 'pointer'};
+var $author$project$UiStyles$userSelectNone = A2($rtfeldman$elm_css$Css$property, 'user-select', 'none');
+var $author$project$UiElements$navStyle = $rtfeldman$elm_css$Css$batch(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$author$project$UiStyles$userSelectNone,
+			$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$pointer),
+			A3(
+			$rtfeldman$elm_css$Css$borderBottom3,
+			$rtfeldman$elm_css$Css$px(0.5),
+			$rtfeldman$elm_css$Css$dashed,
+			$author$project$Colors$link025),
+			$rtfeldman$elm_css$Css$hover(
+			_List_fromArray(
+				[
+					A3(
+					$rtfeldman$elm_css$Css$borderBottom3,
+					$rtfeldman$elm_css$Css$px(0.5),
+					$rtfeldman$elm_css$Css$dashed,
+					$author$project$Colors$hover025)
+				])),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$em(1)),
 			$rtfeldman$elm_css$Css$color($author$project$Colors$link),
 			$rtfeldman$elm_css$Css$Transitions$transition(
 			_List_fromArray(
@@ -9837,75 +9878,149 @@ var $author$project$UiElements$textLink = A2(
 						]))
 				]))
 		]));
-var $rtfeldman$elm_css$Css$zero = {av: 0, ae: 0, G: 0, af: 0, ag: 0, O: 0, P: 0, ax: 0, I: 0, aT: 0, an: '', aE: 0, A: '0'};
-var $author$project$Main$viewNav = function (lang) {
-	var link = F2(
-		function (route, txt) {
-			return A2(
-				$author$project$UiElements$textLink,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Css$marginRight(
-								$rtfeldman$elm_css$Css$em(1)),
-								$rtfeldman$elm_css$Css$lastChild(
-								_List_fromArray(
-									[
-										$rtfeldman$elm_css$Css$marginRight($rtfeldman$elm_css$Css$zero)
-									]))
-							])),
-						A2($author$project$Route$router_href, lang, route)
-					]),
-				_List_fromArray(
-					[
-						$author$project$Typography$text__(txt)
-					]));
-		});
-	return A2(
-		$rtfeldman$elm_css$Html$Styled$div,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$author$project$UiStyles$fullwidthContainer,
-						$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$secondaryLightGrey)
-					]))
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$rtfeldman$elm_css$Html$Styled$article,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Attributes$css(
-						_List_fromArray(
-							[$author$project$UiStyles$navContainer]))
-					]),
-				_List_fromArray(
-					[
-						A2(
-						link,
-						0,
-						A3($author$project$Language$enRu, lang, 'Projects', 'Проекты')),
-						A2(
-						link,
-						1,
-						A3($author$project$Language$enRu, lang, 'Offline Library', 'Оффлайн-библиотека')),
-						A2(
-						link,
-						2,
-						A3($author$project$Language$enRu, lang, 'Learning Materials', 'Учебные материалы'))
-					]))
-			]));
-};
+var $author$project$UiElements$navLink = F2(
+	function (url, txt) {
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$a,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[$author$project$UiElements$navStyle])),
+					$rtfeldman$elm_css$Html$Styled$Attributes$href(url)
+				]),
+			_List_fromArray(
+				[
+					$author$project$Typography$text__(txt)
+				]));
+	});
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty = F2(
+	function (key, bool) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$property,
+			key,
+			$elm$json$Json$Encode$bool(bool));
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$disabled = $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty('disabled');
+var $rtfeldman$elm_css$Css$default = {a: 0, A: 'default'};
+var $author$project$UiElements$navDisabledStyle = $rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$author$project$UiStyles$userSelectNone,
+			$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$default),
+			$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$rtfeldman$elm_css$Css$Transitions$transition(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$Transitions$color(150),
+					$rtfeldman$elm_css$Css$Transitions$border(150)
+				]))
+		]));
+var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
+var $author$project$UiElements$navLinkDisabled = F2(
+	function (_v0, txt) {
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$span,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[$author$project$UiElements$navDisabledStyle])),
+					$rtfeldman$elm_css$Html$Styled$Attributes$disabled(true)
+				]),
+			_List_fromArray(
+				[
+					$author$project$Typography$text__(txt)
+				]));
+	});
+var $author$project$Colors$secondaryLightGrey = $rtfeldman$elm_css$Css$hex('D7DBDD');
+var $author$project$Route$toUrl = F2(
+	function (lang, targetRoute) {
+		return A2($author$project$Route$routeToString, lang, targetRoute);
+	});
+var $author$project$Main$viewNav = F2(
+	function (lang, currentRoute) {
+		var link = F2(
+			function (route, txt) {
+				return A5(
+					$author$project$Utils$ifElse,
+					_Utils_eq(currentRoute, route),
+					$author$project$UiElements$navLinkDisabled,
+					$author$project$UiElements$navLink,
+					A2($author$project$Route$toUrl, lang, route),
+					txt);
+			});
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$div,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$UiStyles$fullwidthContainer,
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$secondaryLightGrey)
+						]))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$rtfeldman$elm_css$Html$Styled$article,
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$Attributes$css(
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Css$displayFlex,
+									$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap),
+									$rtfeldman$elm_css$Css$width(
+									$rtfeldman$elm_css$Css$pct(100)),
+									$rtfeldman$elm_css$Css$maxWidth(
+									$rtfeldman$elm_css$Css$px(1000)),
+									A4(
+									$rtfeldman$elm_css$Css$padding4,
+									$rtfeldman$elm_css$Css$zero,
+									$rtfeldman$elm_css$Css$px(16),
+									$rtfeldman$elm_css$Css$px(16),
+									$rtfeldman$elm_css$Css$px(32)),
+									$author$project$UiStyles$mediaSmartphonePortrait(
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Css$paddingLeft(
+											$rtfeldman$elm_css$Css$px(16)),
+											$rtfeldman$elm_css$Css$paddingRight(
+											$rtfeldman$elm_css$Css$px(16))
+										]))
+								]))
+						]),
+					_List_fromArray(
+						[
+							A2(
+							link,
+							0,
+							A3($author$project$Language$enRu, lang, 'Projects', 'Проекты')),
+							A2(
+							link,
+							1,
+							A3($author$project$Language$enRu, lang, 'Offline Library', 'Оффлайн-библиотека')),
+							A2(
+							link,
+							2,
+							A3($author$project$Language$enRu, lang, 'Learning Materials', 'Учебные материалы'))
+						]))
+				]));
+	});
 var $author$project$Main$generalTemplate = F2(
 	function (model, content) {
 		return function (html) {
 			return {
-				cd: _List_fromArray(
+				cc: _List_fromArray(
 					[
 						$rtfeldman$elm_css$Html$Styled$toUnstyled(html)
 					]),
@@ -9956,7 +10071,7 @@ var $author$project$Main$generalTemplate = F2(
 						$author$project$Main$viewHeader,
 						model.s,
 						$author$project$Main$viewIntro(model.s)),
-						$author$project$Main$viewNav(model.s),
+						A2($author$project$Main$viewNav, model.s, model.aA),
 						content
 					])));
 	});
@@ -9995,54 +10110,54 @@ var $author$project$Dataset$knownBooks = $elm$core$Dict$fromList(
 		},
 		_List_fromArray(
 			[
-				{bm: 'Miran Lipovača', cf: 'https://images-na.ssl-images-amazon.com/images/I/41OnGOPKW3L._SX376_BO1,204,203,200_.jpg', a1: true, b$: 'Learn You a Haskell for Great Good!', cD: 1, b2: 'http://learnyouahaskell.com/'},
-				{bm: 'Brian Lonsdorf', cf: 'https://github.com/MostlyAdequate/mostly-adequate-guide/raw/master/images/cover.png', a1: true, b$: 'Mostly Adequate Guide to Functional Programming', cD: 4, b2: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
-				{bm: 'Douglas Crockford', cf: 'https://covers.oreillystatic.com/images/9780596517748/cat.gif', a1: false, b$: 'JavaScript: The Good Parts', cD: 4, b2: 'http://shop.oreilly.com/product/9780596517748.do'},
-				{bm: 'Luis Atencio', cf: 'https://images.manning.com/720/960/resize/book/5/c5bd123-f4fd-4a03-9069-9309c782ea7e/Atencio_hires_Fc.png', a1: true, b$: 'Functional Programming in JavaScript', cD: 4, b2: 'https://www.manning.com/books/functional-programming-in-javascript'},
-				{bm: 'Sam Newman', cf: 'https://covers.oreillystatic.com/images/0636920033158/cat.gif', a1: true, b$: 'Building Microservices', cD: 0, b2: 'http://shop.oreilly.com/product/0636920033158.do'},
-				{bm: 'Alvin Alexander', cf: '/images/book_covers/alvin_scala.png', a1: false, b$: 'Learning Functional Programming in Scala', cD: 2, b2: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
-				{bm: 'Kyle Simpson', cf: 'https://images-na.ssl-images-amazon.com/images/I/91w8pQAh21L._SY300_.jpg', a1: false, b$: 'You Don\'t Know JS (book series) 1, 2, 3, 4', cD: 4, b2: 'https://github.com/getify/You-Dont-Know-JS'},
-				{bm: 'Bruce Eckel, Dianne Marsh', cf: 'https://static-2.gumroad.com/res/gumroad/2484219515800/asset_previews/baa9edfdda1f0636d3141c6336006e1c/original/scala_20ebook_20cover_20web.gif', a1: false, b$: 'Atomic Scala', cD: 2, b2: 'http://www.atomicscala.com'},
-				{bm: 'Robert Martin', cf: 'https://images-na.ssl-images-amazon.com/images/I/51d1qVhmAmL._SX373_BO1,204,203,200_.jpg', a1: true, b$: 'Clean Code. A Handbook of Agile Software Craftsmanship', cD: 0, b2: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
-				{bm: 'Максим Пацианский', cf: '/images/book_covers/router.png', a1: false, b$: 'Роутинг в react-приложениях', cD: 4, b2: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
-				{bm: 'Максим Пацианский', cf: '/images/book_covers/redux.jpeg', a1: false, b$: 'React Redux курс для начинающих', cD: 4, b2: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
-				{bm: 'Максим Пацианский', cf: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1484152353l/33838152._SX318_.jpg', a1: false, b$: 'React.js курс для начинающих', cD: 4, b2: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
-				{bm: 'Stoyan Stefanov', cf: 'https://covers.oreillystatic.com/images/9780596806767/cat.gif', a1: false, b$: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', cD: 4, b2: 'https://shop.oreilly.com/product/9780596806767.do'},
-				{bm: 'David Sawyer McFarland', cf: 'https://m.media-amazon.com/images/I/61wK+-BXYUL._AC_UY218_ML3_.jpg', a1: true, b$: 'CSS: The Missing Manual', cD: 5, b2: 'https://shop.oreilly.com/product/0636920036357.do'},
-				{bm: 'Rebecca Hagen, Kim Golombisky', cf: 'https://m.media-amazon.com/images/I/41xlqwc2nUL._AC_UY218_ML3_.jpg', a1: false, b$: 'White Space Is Not Your Enemy', cD: 6, b2: 'http://cw.routledge.com/textbooks/9780240824147'},
-				{bm: 'Артемий Лебедев', cf: 'https://www.artlebedev.ru/kovodstvo/sections/ekovodstvo.png', a1: false, b$: 'Ководство', cD: 6, b2: 'https://www.artlebedev.ru/kovodstvo/sections/'},
-				{bm: 'Эрин Киссейн', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/51/4351/1.00x-thumb.png', a1: false, b$: 'Основы контентной стратегии', cD: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/'},
-				{bm: 'Аарон Уолтер', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png', a1: false, b$: 'Эмоциональный веб-дизайн', cD: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/'},
-				{bm: 'Итан Маркотт', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/60/4360/1.00x-thumb.png', a1: false, b$: 'Отзывчивый веб-дизайн', cD: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/'},
-				{bm: 'Aspen Pittman', cf: 'https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg', a1: false, b$: 'The Tube Amp Book - Deluxe Revised Edition', cD: 12, b2: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
-				{bm: 'Donald Brosnac', cf: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', a1: false, b$: 'Guitar Electronics for Musicians', cD: 12, b2: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
-				{bm: 'Hideo Kamimoto', cf: 'https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg', a1: false, b$: 'Complete Guitar Repair', cD: 12, b2: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
-				{bm: 'Roger H. Siminoff', cf: 'https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg', a1: true, b$: 'The Luthier\'s Handbook', cD: 12, b2: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
-				{bm: 'Paul Balmer', cf: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', a1: false, b$: 'The Gibson Les Paul Handbook', cD: 12, b2: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
-				{bm: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', cf: 'https://images-na.ssl-images-amazon.com/images/I/51kuc0iWoKL._SX326_BO1,204,203,200_.jpg', a1: false, b$: 'Design Patterns: Elements of Reusable Object-Oriented Software', cD: 0, b2: 'https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8'},
-				{bm: 'Pat Brisbin', cf: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427714317l/25249192.jpg', a1: false, b$: 'Maybe Haskell', cD: 1, b2: 'https://books.thoughtbot.com/assets/maybe-haskell.pdf'},
-				{bm: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', cf: 'https://images-na.ssl-images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg', a1: false, b$: 'Structure and Interpretation of Computer Programs', cD: 3, b2: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
-				{bm: 'Bartosz Milewski', cf: 'https://blurb-pdf-processing-service-prod-preflight.s3.amazonaws.com/default/blurb/P14850377/preview_72dpi/cover-trim-no-fold-front_cover-f21dfbed-5945-4d12-be90-0eb565aba6ad.jpg', a1: true, b$: 'Category Theory for Programmers', cD: 1, b2: 'https://github.com/hmemcpy/milewski-ctfp-pdf'},
-				{bm: 'Noel Welsh, Dave Gurnell', cf: 'https://underscore.io/images/books/essential-scala.png', a1: false, b$: 'Essential Scala', cD: 2, b2: 'https://underscore.io/books/essential-scala/'},
-				{bm: 'Noel Welsh, Dave Gurnell', cf: 'https://underscore.io/images/books/scala-with-cats.png', a1: true, b$: 'Scala with Cats', cD: 2, b2: 'https://underscore.io/books/scala-with-cats/'},
-				{bm: 'Vitaly Bragilevsky', cf: 'https://images.manning.com/720/960/resize/book/9/16e1d67-4262-4e32-83c3-5cf65467e91e/Bragilevsky-Haskell-MEAP-HI.png', a1: false, b$: 'Haskell in Depth', cD: 1, b2: 'https://www.manning.com/books/haskell-in-depth'},
-				{bm: 'Дэйв Логан, Джон Кинг, Хэли Фишер-Райт', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/59/17759/0.50x-thumb.png', a1: true, b$: 'Лидер и племя', cD: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/'},
-				{bm: 'Фредерик Лалу', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/86/15686/0.50x-thumb.png', a1: true, b$: 'Открывая организации будущего', cD: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/'},
-				{bm: 'Питер Брегман', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/93/23793/0.50x-thumb.png', a1: false, b$: 'Эмоциональная смелость', cD: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/'},
-				{bm: 'Джон Хеннесси', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/32/24032/0.50x-thumb.png', a1: false, b$: 'Принципы лидера', cD: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/'},
-				{bm: 'Ричард Пулин', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/08/23308/0.50x-thumb.png', a1: false, b$: 'Школа дизайна: шрифт', cD: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/'},
-				{bm: 'Кейт Феррацци, Тал Рэз', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/89/2589/0.50x-thumb.png', a1: false, b$: 'Никогда не ешьте в одиночку', cD: 9, b2: 'https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/'},
-				{bm: 'Джон Дорр', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/18/22218/0.50x-thumb.png', a1: false, b$: 'Измеряйте самое важное', cD: 7, b2: 'https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/'},
-				{bm: 'Рэй Далио', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/85/20585/0.50x-thumb.png', a1: false, b$: 'Принципы', cD: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/princzipyi/'},
-				{bm: 'Ричард Пулин', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png', a1: false, b$: 'Школа дизайна: макет', cD: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'},
-				{bm: 'Бернхард Ретцель', cf: 'https://cdn1.ozone.ru/multimedia/c1200/1001551788.jpg', a1: false, b$: 'Джентльмен. Путеводитель по стилю и моде для мужчин', cD: 10, b2: 'https://www.ozon.ru/context/detail/id/4993260/'},
-				{bm: 'Максим Котин', cf: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/48/11448/1.00x-thumb.png', a1: false, b$: 'И ботаники делают бизнес 1+2', cD: 11, b2: 'https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/'},
-				{bm: 'Эмилио Пухоль', cf: 'https://img-gorod.ru/21/581/2158108_detail.jpg', a1: true, b$: 'Школа игры на шестиструнной гитаре', cD: 12, b2: 'https://www.chitai-gorod.ru/catalog/book/358478/'},
-				{bm: 'freeCodeCamp', cf: '/images/course_covers/freecodecamp.png', a1: false, b$: 'Frontend Developer Specialization', cD: 4, b2: 'https://www.freecodecamp.org/'},
-				{bm: 'Денис Москвин, Computer Science Center', cf: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', a1: true, b$: 'Функциональное программирование на языке Haskell', cD: 1, b2: 'https://stepik.org/course/75'},
-				{bm: 'Денис Москвин, Computer Science Center', cf: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', a1: true, b$: 'Функциональное программирование на языке Haskell (часть 2)', cD: 1, b2: 'https://stepik.org/course/693'},
-				{bm: 'Tinkoff.ru', cf: 'https://stepik.org/media/cache/images/courses/16243/cover_MdfnLfH/471712250971b734e490e6c554c72105.png', a1: false, b$: 'Введение в Scala', cD: 2, b2: 'https://stepik.org/course/16243'},
-				{bm: 'Samuel Gélineau', cf: 'https://covers.oreillystatic.com/images/0636920080893/lrg.jpg', a1: false, b$: 'Mastering Haskell Programming', cD: 1, b2: 'https://www.udemy.com/course/mastering-haskell-programming/'}
+				{bm: 'Miran Lipovača', ce: 'https://images-na.ssl-images-amazon.com/images/I/41OnGOPKW3L._SX376_BO1,204,203,200_.jpg', a1: true, b$: 'Learn You a Haskell for Great Good!', cC: 1, b2: 'http://learnyouahaskell.com/'},
+				{bm: 'Brian Lonsdorf', ce: 'https://github.com/MostlyAdequate/mostly-adequate-guide/raw/master/images/cover.png', a1: true, b$: 'Mostly Adequate Guide to Functional Programming', cC: 4, b2: 'https://mostly-adequate.gitbooks.io/mostly-adequate-guide/'},
+				{bm: 'Douglas Crockford', ce: 'https://covers.oreillystatic.com/images/9780596517748/cat.gif', a1: false, b$: 'JavaScript: The Good Parts', cC: 4, b2: 'http://shop.oreilly.com/product/9780596517748.do'},
+				{bm: 'Luis Atencio', ce: 'https://images.manning.com/720/960/resize/book/5/c5bd123-f4fd-4a03-9069-9309c782ea7e/Atencio_hires_Fc.png', a1: true, b$: 'Functional Programming in JavaScript', cC: 4, b2: 'https://www.manning.com/books/functional-programming-in-javascript'},
+				{bm: 'Sam Newman', ce: 'https://covers.oreillystatic.com/images/0636920033158/cat.gif', a1: true, b$: 'Building Microservices', cC: 0, b2: 'http://shop.oreilly.com/product/0636920033158.do'},
+				{bm: 'Alvin Alexander', ce: '/images/book_covers/alvin_scala.png', a1: false, b$: 'Learning Functional Programming in Scala', cC: 2, b2: 'https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf'},
+				{bm: 'Kyle Simpson', ce: 'https://images-na.ssl-images-amazon.com/images/I/91w8pQAh21L._SY300_.jpg', a1: false, b$: 'You Don\'t Know JS (book series) 1, 2, 3, 4', cC: 4, b2: 'https://github.com/getify/You-Dont-Know-JS'},
+				{bm: 'Bruce Eckel, Dianne Marsh', ce: 'https://static-2.gumroad.com/res/gumroad/2484219515800/asset_previews/baa9edfdda1f0636d3141c6336006e1c/original/scala_20ebook_20cover_20web.gif', a1: false, b$: 'Atomic Scala', cC: 2, b2: 'http://www.atomicscala.com'},
+				{bm: 'Robert Martin', ce: 'https://images-na.ssl-images-amazon.com/images/I/51d1qVhmAmL._SX373_BO1,204,203,200_.jpg', a1: true, b$: 'Clean Code. A Handbook of Agile Software Craftsmanship', cC: 0, b2: 'https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM'},
+				{bm: 'Максим Пацианский', ce: '/images/book_covers/router.png', a1: false, b$: 'Роутинг в react-приложениях', cC: 4, b2: 'https://maxfarseer.gitbooks.io/react-router-course-ru/content'},
+				{bm: 'Максим Пацианский', ce: '/images/book_covers/redux.jpeg', a1: false, b$: 'React Redux курс для начинающих', cC: 4, b2: 'https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/'},
+				{bm: 'Максим Пацианский', ce: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1484152353l/33838152._SX318_.jpg', a1: false, b$: 'React.js курс для начинающих', cC: 4, b2: 'https://maxfarseer.gitbooks.io/react-course-ru-v2/content/'},
+				{bm: 'Stoyan Stefanov', ce: 'https://covers.oreillystatic.com/images/9780596806767/cat.gif', a1: false, b$: 'JavaScript Patterns: Build Better Applications with Coding and Design Patterns', cC: 4, b2: 'https://shop.oreilly.com/product/9780596806767.do'},
+				{bm: 'David Sawyer McFarland', ce: 'https://m.media-amazon.com/images/I/61wK+-BXYUL._AC_UY218_ML3_.jpg', a1: true, b$: 'CSS: The Missing Manual', cC: 5, b2: 'https://shop.oreilly.com/product/0636920036357.do'},
+				{bm: 'Rebecca Hagen, Kim Golombisky', ce: 'https://m.media-amazon.com/images/I/41xlqwc2nUL._AC_UY218_ML3_.jpg', a1: false, b$: 'White Space Is Not Your Enemy', cC: 6, b2: 'http://cw.routledge.com/textbooks/9780240824147'},
+				{bm: 'Артемий Лебедев', ce: 'https://www.artlebedev.ru/kovodstvo/sections/ekovodstvo.png', a1: false, b$: 'Ководство', cC: 6, b2: 'https://www.artlebedev.ru/kovodstvo/sections/'},
+				{bm: 'Эрин Киссейн', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/51/4351/1.00x-thumb.png', a1: false, b$: 'Основы контентной стратегии', cC: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/'},
+				{bm: 'Аарон Уолтер', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png', a1: false, b$: 'Эмоциональный веб-дизайн', cC: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/'},
+				{bm: 'Итан Маркотт', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/60/4360/1.00x-thumb.png', a1: false, b$: 'Отзывчивый веб-дизайн', cC: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/'},
+				{bm: 'Aspen Pittman', ce: 'https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg', a1: false, b$: 'The Tube Amp Book - Deluxe Revised Edition', cC: 12, b2: 'https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676'},
+				{bm: 'Donald Brosnac', ce: 'https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg', a1: false, b$: 'Guitar Electronics for Musicians', cC: 12, b2: 'https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321'},
+				{bm: 'Hideo Kamimoto', ce: 'https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg', a1: false, b$: 'Complete Guitar Repair', cC: 12, b2: 'https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568'},
+				{bm: 'Roger H. Siminoff', ce: 'https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg', a1: true, b$: 'The Luthier\'s Handbook', cC: 12, b2: 'https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook'},
+				{bm: 'Paul Balmer', ce: 'https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg', a1: false, b$: 'The Gibson Les Paul Handbook', cC: 12, b2: 'https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706'},
+				{bm: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', ce: 'https://images-na.ssl-images-amazon.com/images/I/51kuc0iWoKL._SX326_BO1,204,203,200_.jpg', a1: false, b$: 'Design Patterns: Elements of Reusable Object-Oriented Software', cC: 0, b2: 'https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8'},
+				{bm: 'Pat Brisbin', ce: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427714317l/25249192.jpg', a1: false, b$: 'Maybe Haskell', cC: 1, b2: 'https://books.thoughtbot.com/assets/maybe-haskell.pdf'},
+				{bm: 'Harold Abelson, Gerald Jay Sussman, Julie Sussman', ce: 'https://images-na.ssl-images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg', a1: false, b$: 'Structure and Interpretation of Computer Programs', cC: 3, b2: 'https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871'},
+				{bm: 'Bartosz Milewski', ce: 'https://blurb-pdf-processing-service-prod-preflight.s3.amazonaws.com/default/blurb/P14850377/preview_72dpi/cover-trim-no-fold-front_cover-f21dfbed-5945-4d12-be90-0eb565aba6ad.jpg', a1: true, b$: 'Category Theory for Programmers', cC: 1, b2: 'https://github.com/hmemcpy/milewski-ctfp-pdf'},
+				{bm: 'Noel Welsh, Dave Gurnell', ce: 'https://underscore.io/images/books/essential-scala.png', a1: false, b$: 'Essential Scala', cC: 2, b2: 'https://underscore.io/books/essential-scala/'},
+				{bm: 'Noel Welsh, Dave Gurnell', ce: 'https://underscore.io/images/books/scala-with-cats.png', a1: true, b$: 'Scala with Cats', cC: 2, b2: 'https://underscore.io/books/scala-with-cats/'},
+				{bm: 'Vitaly Bragilevsky', ce: 'https://images.manning.com/720/960/resize/book/9/16e1d67-4262-4e32-83c3-5cf65467e91e/Bragilevsky-Haskell-MEAP-HI.png', a1: false, b$: 'Haskell in Depth', cC: 1, b2: 'https://www.manning.com/books/haskell-in-depth'},
+				{bm: 'Дэйв Логан, Джон Кинг, Хэли Фишер-Райт', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/59/17759/0.50x-thumb.png', a1: true, b$: 'Лидер и племя', cC: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/'},
+				{bm: 'Фредерик Лалу', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/86/15686/0.50x-thumb.png', a1: true, b$: 'Открывая организации будущего', cC: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/'},
+				{bm: 'Питер Брегман', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/93/23793/0.50x-thumb.png', a1: false, b$: 'Эмоциональная смелость', cC: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/'},
+				{bm: 'Джон Хеннесси', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/32/24032/0.50x-thumb.png', a1: false, b$: 'Принципы лидера', cC: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/'},
+				{bm: 'Ричард Пулин', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/08/23308/0.50x-thumb.png', a1: false, b$: 'Школа дизайна: шрифт', cC: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/'},
+				{bm: 'Кейт Феррацци, Тал Рэз', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/89/2589/0.50x-thumb.png', a1: false, b$: 'Никогда не ешьте в одиночку', cC: 9, b2: 'https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/'},
+				{bm: 'Джон Дорр', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/18/22218/0.50x-thumb.png', a1: false, b$: 'Измеряйте самое важное', cC: 7, b2: 'https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/'},
+				{bm: 'Рэй Далио', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/85/20585/0.50x-thumb.png', a1: false, b$: 'Принципы', cC: 8, b2: 'https://www.mann-ivanov-ferber.ru/books/princzipyi/'},
+				{bm: 'Ричард Пулин', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png', a1: false, b$: 'Школа дизайна: макет', cC: 6, b2: 'https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/'},
+				{bm: 'Бернхард Ретцель', ce: 'https://cdn1.ozone.ru/multimedia/c1200/1001551788.jpg', a1: false, b$: 'Джентльмен. Путеводитель по стилю и моде для мужчин', cC: 10, b2: 'https://www.ozon.ru/context/detail/id/4993260/'},
+				{bm: 'Максим Котин', ce: 'https://www.mann-ivanov-ferber.ru/assets/images/covers/48/11448/1.00x-thumb.png', a1: false, b$: 'И ботаники делают бизнес 1+2', cC: 11, b2: 'https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/'},
+				{bm: 'Эмилио Пухоль', ce: 'https://img-gorod.ru/21/581/2158108_detail.jpg', a1: true, b$: 'Школа игры на шестиструнной гитаре', cC: 12, b2: 'https://www.chitai-gorod.ru/catalog/book/358478/'},
+				{bm: 'freeCodeCamp', ce: '/images/course_covers/freecodecamp.png', a1: false, b$: 'Frontend Developer Specialization', cC: 4, b2: 'https://www.freecodecamp.org/'},
+				{bm: 'Денис Москвин, Computer Science Center', ce: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', a1: true, b$: 'Функциональное программирование на языке Haskell', cC: 1, b2: 'https://stepik.org/course/75'},
+				{bm: 'Денис Москвин, Computer Science Center', ce: 'https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png', a1: true, b$: 'Функциональное программирование на языке Haskell (часть 2)', cC: 1, b2: 'https://stepik.org/course/693'},
+				{bm: 'Tinkoff.ru', ce: 'https://stepik.org/media/cache/images/courses/16243/cover_MdfnLfH/471712250971b734e490e6c554c72105.png', a1: false, b$: 'Введение в Scala', cC: 2, b2: 'https://stepik.org/course/16243'},
+				{bm: 'Samuel Gélineau', ce: 'https://covers.oreillystatic.com/images/0636920080893/lrg.jpg', a1: false, b$: 'Mastering Haskell Programming', cC: 1, b2: 'https://www.udemy.com/course/mastering-haskell-programming/'}
 			])));
 var $author$project$Book$BookTitle = $elm$core$Basics$identity;
 var $author$project$Dataset$learningPath = _List_fromArray(
@@ -10087,7 +10202,7 @@ var $author$project$Project$Team = function (a) {
 };
 var $author$project$Project$TeamMate = F3(
 	function (name_i18n, userpic, url) {
-		return {a8: name_i18n, b2: url, b3: userpic};
+		return {a8: name_i18n, b2: url, cF: userpic};
 	});
 var $author$project$Dataset$projects = function (lang) {
 	return _List_fromArray(
@@ -10204,7 +10319,6 @@ var $rtfeldman$elm_css$Css$alignItems = function (fn) {
 		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
 };
 var $rtfeldman$elm_css$Css$baseline = $rtfeldman$elm_css$Css$prop1('baseline');
-var $rtfeldman$elm_css$Css$flexWrap = $rtfeldman$elm_css$Css$prop1('flex-wrap');
 var $elm_community$maybe_extra$Maybe$Extra$cons = F2(
 	function (item, list) {
 		if (!item.$) {
@@ -10235,45 +10349,6 @@ var $author$project$UiElements$header2 = A2(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(32))
 		]));
-var $rtfeldman$elm_css$Css$prop3 = F4(
-	function (key, argA, argB, argC) {
-		return A2(
-			$rtfeldman$elm_css$Css$property,
-			key,
-			A2(
-				$elm$core$String$join,
-				' ',
-				_List_fromArray(
-					[argA.A, argB.A, argC.A])));
-	});
-var $rtfeldman$elm_css$Css$borderBottom3 = $rtfeldman$elm_css$Css$prop3('border-bottom');
-var $rtfeldman$elm_css$Css$cursor = $rtfeldman$elm_css$Css$prop1('cursor');
-var $rtfeldman$elm_css$Css$dashed = {n: 0, T: 0, A: 'dashed'};
-var $rtfeldman$elm_css$Css$rgba = F4(
-	function (r, g, b, alpha) {
-		return {
-			aq: alpha,
-			as: b,
-			x: 0,
-			au: g,
-			az: r,
-			A: A2(
-				$rtfeldman$elm_css$Css$cssFunction,
-				'rgba',
-				_Utils_ap(
-					A2(
-						$elm$core$List$map,
-						$elm$core$String$fromInt,
-						_List_fromArray(
-							[r, g, b])),
-					_List_fromArray(
-						[
-							$elm$core$String$fromFloat(alpha)
-						])))
-		};
-	});
-var $author$project$Colors$hover025 = A4($rtfeldman$elm_css$Css$rgba, 194, 78, 59, 0.25);
-var $author$project$Colors$link025 = A4($rtfeldman$elm_css$Css$rgba, 0, 72, 96, 0.25);
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -10299,70 +10374,22 @@ var $rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
 		'click',
 		$elm$json$Json$Decode$succeed(msg));
 };
-var $rtfeldman$elm_css$Css$pointer = {a: 0, A: 'pointer'};
-var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
 var $author$project$UiElements$navButton = F2(
-	function (e, txt) {
+	function (msg, txt) {
 		return A2(
 			$rtfeldman$elm_css$Html$Styled$span,
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$css(
 					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$pointer),
-							A3(
-							$rtfeldman$elm_css$Css$borderBottom3,
-							$rtfeldman$elm_css$Css$px(0.5),
-							$rtfeldman$elm_css$Css$dashed,
-							$author$project$Colors$link025),
-							$rtfeldman$elm_css$Css$hover(
-							_List_fromArray(
-								[
-									A3(
-									$rtfeldman$elm_css$Css$borderBottom3,
-									$rtfeldman$elm_css$Css$px(0.5),
-									$rtfeldman$elm_css$Css$dashed,
-									$author$project$Colors$hover025)
-								])),
-							$rtfeldman$elm_css$Css$marginRight(
-							$rtfeldman$elm_css$Css$em(1)),
-							$rtfeldman$elm_css$Css$color($author$project$Colors$link),
-							$rtfeldman$elm_css$Css$Transitions$transition(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Css$Transitions$color(150),
-									$rtfeldman$elm_css$Css$Transitions$border(150)
-								])),
-							$rtfeldman$elm_css$Css$hover(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Css$color($author$project$Colors$hover),
-									$rtfeldman$elm_css$Css$Transitions$transition(
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Css$Transitions$color(150),
-											$rtfeldman$elm_css$Css$Transitions$border(150)
-										]))
-								]))
-						])),
-					$rtfeldman$elm_css$Html$Styled$Events$onClick(e)
+						[$author$project$UiElements$navStyle])),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick(msg)
 				]),
 			_List_fromArray(
 				[
 					$author$project$Typography$text__(txt)
 				]));
 	});
-var $rtfeldman$elm_css$Css$default = {a: 0, A: 'default'};
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$property,
-			key,
-			$elm$json$Json$Encode$bool(bool));
-	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$disabled = $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty('disabled');
 var $author$project$UiElements$navButtonDisabled = F2(
 	function (_v0, txt) {
 		return A2(
@@ -10371,19 +10398,7 @@ var $author$project$UiElements$navButtonDisabled = F2(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$css(
 					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey),
-							$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$default),
-							$rtfeldman$elm_css$Css$marginRight(
-							$rtfeldman$elm_css$Css$em(1)),
-							$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
-							$rtfeldman$elm_css$Css$Transitions$transition(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Css$Transitions$color(150),
-									$rtfeldman$elm_css$Css$Transitions$border(150)
-								]))
-						])),
+						[$author$project$UiElements$navDisabledStyle])),
 					$rtfeldman$elm_css$Html$Styled$Attributes$disabled(true)
 				]),
 			_List_fromArray(
@@ -10391,7 +10406,6 @@ var $author$project$UiElements$navButtonDisabled = F2(
 					$author$project$Typography$text__(txt)
 				]));
 	});
-var $author$project$UiStyles$spaceEvenly = A2($rtfeldman$elm_css$Css$property, 'justify-content', 'space-evenly');
 var $rtfeldman$elm_css$Css$borderRadius = $rtfeldman$elm_css$Css$prop1('border-radius');
 var $author$project$Utils$emptyHtml = $rtfeldman$elm_css$Html$Styled$text('');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
@@ -10432,12 +10446,45 @@ var $rtfeldman$elm_css$Css$margin2 = $rtfeldman$elm_css$Css$prop2('margin');
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
 var $author$project$UiStyles$regularShadow = A2($rtfeldman$elm_css$Css$property, 'box-shadow', '0px -1px 1px rgba(0, 0, 0, 0.1), \n    0px 1px 1px rgba(0, 0, 0, 0.1),\n    0px 2px 2px rgba(0, 0, 0, 0.1), \n    0px 3px 3px rgba(0, 0, 0, 0.1)');
 var $rtfeldman$elm_css$Css$relative = {ay: 0, A: 'relative'};
-var $author$project$UiStyles$userSelectNone = A2($rtfeldman$elm_css$Css$property, 'user-select', 'none');
+var $author$project$UiElements$textLink = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$a,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$rtfeldman$elm_css$Css$color($author$project$Colors$link),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(0.5)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$em(0.5)),
+			$rtfeldman$elm_css$Css$lastChild(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$marginRight($rtfeldman$elm_css$Css$zero)
+				])),
+			$rtfeldman$elm_css$Css$Transitions$transition(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$Transitions$color(150),
+					$rtfeldman$elm_css$Css$Transitions$border(150)
+				])),
+			$rtfeldman$elm_css$Css$hover(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$color($author$project$Colors$hover),
+					$rtfeldman$elm_css$Css$Transitions$transition(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$Transitions$color(150),
+							$rtfeldman$elm_css$Css$Transitions$border(150)
+						]))
+				]))
+		]));
 var $author$project$Book$view = F2(
 	function (_v0, _v1) {
-		var sticker = _v0.cB;
-		var highlightFavorite = _v0.cn;
-		var available = _v0.cc;
+		var sticker = _v0.cA;
+		var highlightFavorite = _v0.cm;
+		var available = _v0.cb;
 		var book = _v1;
 		var textStyle = A3(
 			$author$project$Utils$ifElse,
@@ -10528,7 +10575,7 @@ var $author$project$Book$view = F2(
 											$rtfeldman$elm_css$Css$marginTop(
 											$rtfeldman$elm_css$Css$em(2))
 										])),
-									$rtfeldman$elm_css$Html$Styled$Attributes$src(book.cf),
+									$rtfeldman$elm_css$Html$Styled$Attributes$src(book.ce),
 									$rtfeldman$elm_css$Html$Styled$Attributes$alt(book.bm + (', ' + book.b$))
 								]),
 							_List_Nil)
@@ -10576,7 +10623,6 @@ var $author$project$Book$view = F2(
 						]))
 				]));
 	});
-var $rtfeldman$elm_css$Css$wrap = {at: 0, aK: 0, A: 'wrap'};
 var $author$project$Page$LearningMaterials$viewLearningMaterials = F5(
 	function (lang, _v0, books, learnPath, wrapper) {
 		var onlyFavorite = _v0.bK;
@@ -10618,8 +10664,8 @@ var $author$project$Page$LearningMaterials$viewLearningMaterials = F5(
 									$rtfeldman$elm_css$Html$Styled$Attributes$css(
 									_List_fromArray(
 										[
-											$rtfeldman$elm_css$Css$marginTop(
-											$rtfeldman$elm_css$Css$em(1))
+											$rtfeldman$elm_css$Css$displayFlex,
+											$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap)
 										]))
 								]),
 							_List_fromArray(
@@ -10648,16 +10694,13 @@ var $author$project$Page$LearningMaterials$viewLearningMaterials = F5(
 										[
 											$rtfeldman$elm_css$Css$displayFlex,
 											$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap),
-											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline),
-											$author$project$UiStyles$mediaSmartphonePortrait(
-											_List_fromArray(
-												[$author$project$UiStyles$spaceEvenly]))
+											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline)
 										]))
 								]),
 							A2(
 								$elm$core$List$map,
 								$author$project$Book$view(
-									{cc: true, cn: !onlyFavorite, cB: $elm$core$Maybe$Nothing}),
+									{cb: true, cm: !onlyFavorite, cA: $elm$core$Maybe$Nothing}),
 								A2(
 									$elm$core$List$filter,
 									function (_v2) {
@@ -10820,7 +10863,7 @@ var $author$project$Book$bookOrdering = A2(
 			$matthewsj$elm_ordering$Ordering$byFieldWith,
 			$author$project$Book$personKindOrdering,
 			function (_v0) {
-				var topics = _v0.a.cD;
+				var topics = _v0.a.cC;
 				return $author$project$Book$personKindFromTopic(topics);
 			}),
 		A2($matthewsj$elm_ordering$Ordering$byFieldWith, $author$project$Book$avaliabilityOrdering, $elm$core$Tuple$second)));
@@ -10857,7 +10900,7 @@ var $rtfeldman$elm_css$Css$bottom = $rtfeldman$elm_css$Css$prop1('bottom');
 var $rtfeldman$elm_css$Css$angleConverter = F2(
 	function (suffix, angleVal) {
 		return {
-			ca: 0,
+			b9: 0,
 			w: 0,
 			A: _Utils_ap(
 				$elm$core$String$fromFloat(angleVal),
@@ -10929,8 +10972,8 @@ var $author$project$Page$Library$roundSticker = $rtfeldman$elm_css$Css$batch(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(12))
 		]));
-var $author$project$Colors$selection = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$selectionSrc.aU, $author$project$Colors$selectionSrc.aL, $author$project$Colors$selectionSrc.aH);
-var $author$project$Colors$selection07 = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$selectionSrc.aU, $author$project$Colors$selectionSrc.aL, $author$project$Colors$selectionSrc.aH, 0.7);
+var $author$project$Colors$selection = A3($rtfeldman$elm_css$Css$rgb, $author$project$Colors$selectionSrc.aV, $author$project$Colors$selectionSrc.aM, $author$project$Colors$selectionSrc.aI);
+var $author$project$Colors$selection07 = A4($rtfeldman$elm_css$Css$rgba, $author$project$Colors$selectionSrc.aV, $author$project$Colors$selectionSrc.aM, $author$project$Colors$selectionSrc.aI, 0.7);
 var $author$project$Page$Library$viewLibraryBook = F2(
 	function (lang, _v0) {
 		var b = _v0.a;
@@ -10973,24 +11016,24 @@ var $author$project$Page$Library$viewLibraryBook = F2(
 			case 0:
 				return A2(
 					$author$project$Book$view,
-					{cc: true, cn: true, cB: $elm$core$Maybe$Nothing},
+					{cb: true, cm: true, cA: $elm$core$Maybe$Nothing},
 					b);
 			case 1:
 				return A2(
 					$author$project$Book$view,
 					{
-						cc: false,
-						cn: false,
-						cB: $elm$core$Maybe$Just(comingSoon)
+						cb: false,
+						cm: false,
+						cA: $elm$core$Maybe$Just(comingSoon)
 					},
 					b);
 			default:
 				return A2(
 					$author$project$Book$view,
 					{
-						cc: false,
-						cn: false,
-						cB: $elm$core$Maybe$Just(givenToSomeone)
+						cb: false,
+						cm: false,
+						cA: $elm$core$Maybe$Just(givenToSomeone)
 					},
 					b);
 		}
@@ -10999,7 +11042,7 @@ var $author$project$Page$Library$viewLibrary = F5(
 	function (lang, _v0, books, libState, wrapper) {
 		var specific = _v0.bX;
 		var specificPredicate = function (_v3) {
-			var topics = _v3.cD;
+			var topics = _v3.cC;
 			if (!specific.$) {
 				var s = specific.a;
 				return _Utils_eq(
@@ -11073,8 +11116,8 @@ var $author$project$Page$Library$viewLibrary = F5(
 									$rtfeldman$elm_css$Html$Styled$Attributes$css(
 									_List_fromArray(
 										[
-											$rtfeldman$elm_css$Css$marginTop(
-											$rtfeldman$elm_css$Css$em(1))
+											$rtfeldman$elm_css$Css$displayFlex,
+											$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap)
 										]))
 								]),
 							_List_fromArray(
@@ -11126,10 +11169,7 @@ var $author$project$Page$Library$viewLibrary = F5(
 										[
 											$rtfeldman$elm_css$Css$displayFlex,
 											$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap),
-											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline),
-											$author$project$UiStyles$mediaSmartphonePortrait(
-											_List_fromArray(
-												[$author$project$UiStyles$spaceEvenly]))
+											$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$baseline)
 										]))
 								]),
 							A2(
@@ -11167,6 +11207,7 @@ var $author$project$UiElements$buttonLink = A2(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$author$project$UiStyles$userSelectNone,
 			A4(
 			$rtfeldman$elm_css$Css$padding4,
 			$rtfeldman$elm_css$Css$px(8),
@@ -11269,7 +11310,6 @@ var $elm_community$list_extra$List$Extra$last = function (items) {
 		}
 	}
 };
-var $rtfeldman$elm_css$Html$Styled$li = $rtfeldman$elm_css$Html$Styled$node('li');
 var $elm_community$maybe_extra$Maybe$Extra$toList = function (m) {
 	if (m.$ === 1) {
 		return _List_Nil;
@@ -11279,7 +11319,6 @@ var $elm_community$maybe_extra$Maybe$Extra$toList = function (m) {
 			[x]);
 	}
 };
-var $rtfeldman$elm_css$Html$Styled$ul = $rtfeldman$elm_css$Html$Styled$node('ul');
 var $author$project$Page$Projects$viewUserPic = function (userpic) {
 	var userpicSize = 22;
 	var userpicSrcSize = userpicSize * 3;
@@ -11322,117 +11361,49 @@ var $author$project$Page$Projects$viewTeam = F2(
 		var teamStyle = _List_fromArray(
 			[
 				$rtfeldman$elm_css$Css$displayFlex,
-				$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-				$rtfeldman$elm_css$Css$marginTop(
-				$rtfeldman$elm_css$Css$em(0.35)),
-				$rtfeldman$elm_css$Css$marginRight(
-				$rtfeldman$elm_css$Css$em(0.35)),
-				$rtfeldman$elm_css$Css$lastChild(
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Css$marginRight($rtfeldman$elm_css$Css$zero)
-					]))
+				$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
 			]);
+		var viewTeammate = F2(
+			function (isLast, _v1) {
+				var url = _v1.b2;
+				var userpic = _v1.cF;
+				var name_i18n = _v1.a8;
+				return A2(
+					$author$project$UiElements$textLink,
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle),
+							$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
+							$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
+						]),
+					_List_fromArray(
+						[
+							$author$project$Page$Projects$viewUserPic(userpic),
+							$author$project$Typography$text__(name_i18n),
+							A3(
+							$author$project$Utils$ifElse,
+							isLast,
+							$author$project$Utils$emptyHtml,
+							$rtfeldman$elm_css$Html$Styled$text(','))
+						]));
+			});
 		if (!projectTeam.$) {
 			return $author$project$Utils$emptyHtml;
 		} else {
 			var team = projectTeam.a;
 			var last = A2(
 				$elm$core$List$map,
-				function (_v2) {
-					var url = _v2.b2;
-					var userpic = _v2.b3;
-					var name_i18n = _v2.a8;
-					return A2(
-						$rtfeldman$elm_css$Html$Styled$li,
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$author$project$UiElements$textLink,
-								_List_fromArray(
-									[
-										$rtfeldman$elm_css$Html$Styled$Attributes$css(
-										_List_fromArray(
-											[
-												$rtfeldman$elm_css$Css$lineHeight(
-												$rtfeldman$elm_css$Css$num(0))
-											])),
-										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-									]),
-								_List_fromArray(
-									[
-										$author$project$Page$Projects$viewUserPic(userpic)
-									])),
-								A2(
-								$author$project$UiElements$textLink,
-								_List_fromArray(
-									[
-										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-									]),
-								_List_fromArray(
-									[
-										$author$project$Typography$text__(name_i18n)
-									]))
-							]));
-				},
+				viewTeammate(true),
 				$elm_community$maybe_extra$Maybe$Extra$toList(
 					$elm_community$list_extra$List$Extra$last(team)));
 			var allButLast = A2(
 				$elm$core$List$map,
-				function (_v1) {
-					var url = _v1.b2;
-					var userpic = _v1.b3;
-					var name_i18n = _v1.a8;
-					return A2(
-						$rtfeldman$elm_css$Html$Styled$li,
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$author$project$UiElements$textLink,
-								_List_fromArray(
-									[
-										$rtfeldman$elm_css$Html$Styled$Attributes$css(
-										_List_fromArray(
-											[
-												$rtfeldman$elm_css$Css$lineHeight(
-												$rtfeldman$elm_css$Css$num(0))
-											])),
-										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-									]),
-								_List_fromArray(
-									[
-										$author$project$Page$Projects$viewUserPic(userpic)
-									])),
-								A2(
-								$author$project$UiElements$textLink,
-								_List_fromArray(
-									[
-										$rtfeldman$elm_css$Html$Styled$Attributes$href(url),
-										$rtfeldman$elm_css$Html$Styled$Attributes$target('_blank')
-									]),
-								_List_fromArray(
-									[
-										$author$project$Typography$text__(name_i18n)
-									])),
-								$rtfeldman$elm_css$Html$Styled$text(',')
-							]));
-				},
+				viewTeammate(false),
 				$elm$core$List$concat(
 					$elm_community$maybe_extra$Maybe$Extra$toList(
 						$elm_community$list_extra$List$Extra$init(team))));
 			return A2(
-				$rtfeldman$elm_css$Html$Styled$ul,
+				$rtfeldman$elm_css$Html$Styled$div,
 				_List_fromArray(
 					[
 						$rtfeldman$elm_css$Html$Styled$Attributes$css(
@@ -11440,36 +11411,32 @@ var $author$project$Page$Projects$viewTeam = F2(
 							[
 								$rtfeldman$elm_css$Css$displayFlex,
 								$rtfeldman$elm_css$Css$flexWrap($rtfeldman$elm_css$Css$wrap),
-								$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$row)
+								$rtfeldman$elm_css$Css$flexDirection($rtfeldman$elm_css$Css$row),
+								$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
 							]))
 					]),
 				_Utils_ap(
 					_List_fromArray(
 						[
 							A2(
-							$rtfeldman$elm_css$Html$Styled$li,
+							$rtfeldman$elm_css$Html$Styled$span,
 							_List_fromArray(
 								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
+									$rtfeldman$elm_css$Html$Styled$Attributes$css(
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Css$fontWeight(
+											$rtfeldman$elm_css$Css$int(700)),
+											$rtfeldman$elm_css$Css$marginTop(
+											$rtfeldman$elm_css$Css$em(0.5)),
+											$rtfeldman$elm_css$Css$marginRight(
+											$rtfeldman$elm_css$Css$em(0.5))
+										]))
 								]),
 							_List_fromArray(
 								[
-									A2(
-									$rtfeldman$elm_css$Html$Styled$span,
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Html$Styled$Attributes$css(
-											_List_fromArray(
-												[
-													$rtfeldman$elm_css$Css$fontWeight(
-													$rtfeldman$elm_css$Css$int(700))
-												]))
-										]),
-									_List_fromArray(
-										[
-											$author$project$Typography$text__(
-											A3($author$project$Language$enRu, lang, 'Project team:', 'Команда проекта:'))
-										]))
+									$author$project$Typography$text__(
+									A3($author$project$Language$enRu, lang, 'Project team:', 'Команда проекта:'))
 								]))
 						]),
 					_Utils_ap(
@@ -11479,10 +11446,15 @@ var $author$project$Page$Projects$viewTeam = F2(
 							_List_fromArray(
 								[
 									A2(
-									$rtfeldman$elm_css$Html$Styled$li,
+									$rtfeldman$elm_css$Html$Styled$span,
 									_List_fromArray(
 										[
-											$rtfeldman$elm_css$Html$Styled$Attributes$css(teamStyle)
+											$rtfeldman$elm_css$Html$Styled$Attributes$css(
+											_List_fromArray(
+												[
+													$rtfeldman$elm_css$Css$marginTop(
+													$rtfeldman$elm_css$Css$em(0.5))
+												]))
 										]),
 									_List_fromArray(
 										[
@@ -11681,7 +11653,7 @@ var $author$project$Page$Projects$viewProjects = F2(
 				]));
 	});
 var $author$project$Main$viewRoute = function (model) {
-	var _v0 = model.aX;
+	var _v0 = model.aA;
 	switch (_v0) {
 		case 0:
 			return A2(
@@ -11692,23 +11664,23 @@ var $author$project$Main$viewRoute = function (model) {
 			return A2(
 				$author$project$Main$generalTemplate,
 				model,
-				A5($author$project$Page$Library$viewLibrary, model.s, model.aO, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState, $author$project$Main$GotLibraryMsg));
+				A5($author$project$Page$Library$viewLibrary, model.s, model.aP, $author$project$Dataset$knownBooks, $author$project$Dataset$libraryState, $author$project$Main$GotLibraryMsg));
 		case 2:
 			return A2(
 				$author$project$Main$generalTemplate,
 				model,
-				A5($author$project$Page$LearningMaterials$viewLearningMaterials, model.s, model.aN, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath, $author$project$Main$GotLearningMaterialsMsg));
+				A5($author$project$Page$LearningMaterials$viewLearningMaterials, model.s, model.aO, $author$project$Dataset$knownBooks, $author$project$Dataset$learningPath, $author$project$Main$GotLearningMaterialsMsg));
 		default:
 			return $author$project$Cv$cv(model);
 	}
 };
 var $author$project$Main$main = $mthadley$elm_hash_routing$Browser$Hash$application(
 	{
-		cq: $author$project$Main$init,
-		cu: $author$project$Main$RouteChange,
-		cv: $author$project$Main$OnUrlRequest,
-		cC: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		cE: $author$project$Main$update,
+		cp: $author$project$Main$init,
+		ct: $author$project$Main$RouteChange,
+		cu: $author$project$Main$OnUrlRequest,
+		cB: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		cD: $author$project$Main$update,
 		cG: $author$project$Main$viewRoute
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main($elm$json$Json$Decode$value)(0)}});}(this));
