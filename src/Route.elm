@@ -23,9 +23,9 @@ parseUrl key fallbackLang url =
         |> Maybe.withDefault ( ( fallbackLang, Projects ), replaceUrl key fallbackLang Projects )
 
 
-router_href : Language -> Route -> Attribute msg
-router_href lang targetRoute =
-    Attributes.href (routeToString lang targetRoute)
+toUrl : Language -> Route -> String
+toUrl lang targetRoute =
+    routeToString lang targetRoute
 
 
 routeToPieces : Route -> List String

@@ -54,7 +54,10 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
             div [ css [ flexShrink (num 1) ] ]
 
         splitDescription =
-            description_i18n |> String.split "\n" |> List.map (\x -> p [ css [ regularText ] ] [ text__ x ]) |> div []
+            description_i18n
+                |> String.split "\n"
+                |> List.map (\x -> p [ css [ regularText ] ] [ text__ x ])
+                |> div []
     in
     projectSection
         [ imageWrapper [ viewProjectImage project ]
@@ -126,10 +129,7 @@ viewUserPic userpic =
         GitHubUserId githubUserId ->
             img
                 [ css
-                    [ maxHeight (px userpicSize)
-                    , borderRadius (px 3)
-                    , marginRight (Css.em 0.2)
-                    ]
+                    [ maxHeight (px userpicSize), borderRadius (px 3), marginRight (Css.em 0.2) ]
                 , src <|
                     "https://avatars2.githubusercontent.com/u/"
                         ++ String.fromInt githubUserId
@@ -147,12 +147,14 @@ viewTeam : Language -> ProjectTeam -> Html msg
 viewTeam lang projectTeam =
     let
         teamStyle =
-            [ displayFlex
-            , alignItems center
-            , marginTop <| Css.em 0.35
-            , marginRight <| Css.em 0.35
-            , lastChild [ marginRight zero ]
-            ]
+            [ displayFlex , alignItems center ]
+
+        viewTeammate isLast { url, userpic, name_i18n } =
+            textLink [ css teamStyle, href url, Attributes.target "_blank" ]
+                [ viewUserPic userpic
+                , text__ name_i18n
+                , ifElse isLast emptyHtml (text ",")
+                ]
     in
     case projectTeam of
         OnlyMe ->
@@ -165,36 +167,28 @@ viewTeam lang projectTeam =
                         |> List.Extra.init
                         |> toList
                         |> List.concat
-                        |> List.map
-                            (\{ url, userpic, name_i18n } ->
-                                li [ css teamStyle ]
-                                    [ textLink [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , textLink [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
-                                    , text ","
-                                    ]
-                            )
+                        |> List.map (viewTeammate False)
 
                 last =
                     team
                         |> List.Extra.last
                         |> toList
-                        |> List.map
-                            (\{ url, userpic, name_i18n } ->
-                                li [ css teamStyle ]
-                                    [ textLink [ css [ lineHeight (num 0) ], href url, Attributes.target "_blank" ] [ viewUserPic userpic ]
-                                    , textLink [ href url, Attributes.target "_blank" ] [ text__ name_i18n ]
-                                    ]
-                            )
+                        |> List.map (viewTeammate True)
             in
-            ul
+            div
                 [ css
                     [ displayFlex
                     , flexWrap wrap
                     , flexDirection row
+                    , alignItems center
                     ]
                 ]
             <|
-                [ li [ css teamStyle ] [ span [ css [ fontWeight (int 700) ] ] [ text__ (enRu lang "Project team:" "Команда проекта:") ] ] ]
+                [ span [ css [ fontWeight (int 700), marginTop (Css.em 0.5), marginRight (Css.em 0.5) ] ]
+                    [ text__ (enRu lang "Project team:" "Команда проекта:") ]
+                ]
                     ++ allButLast
                     ++ last
-                    ++ [ li [ css teamStyle ] [ text__ (enRu lang "and me." "и я.") ] ]
+                    ++ [ span [ css [ marginTop (Css.em 0.5) ] ]
+                            [ text__ (enRu lang "and me." "и я.") ]
+                       ]

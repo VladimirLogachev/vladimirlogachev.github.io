@@ -27,13 +27,6 @@ itemHighlightShadow =
     #""" ++ Colors.itemHighlightHex ++ " 0px 0px 5px 10px"
 
 
-{-| Missing in elm-css
--}
-spaceEvenly : Style
-spaceEvenly =
-    property "justify-content" "space-evenly"
-
-
 itemHighlight : Style
 itemHighlight =
     boxShadow5 (px 0) (px 0) (px 5) (px 10) Colors.itemHighlight
@@ -45,8 +38,6 @@ fullwidthContainer =
         [ displayFlex
         , flexDirection row
         , justifyContent center
-        -- , borderBottom3 (px 1) solid (rgba 0 0 0 0.15)
-        -- , lastChild [ borderBottom zero ]
         ]
 
 
@@ -55,17 +46,7 @@ innerContainer =
     batch
         [ width (pct 100)
         , maxWidth (px 1000)
-        , padding4 (px 48) (px 16) (px 48) (px 32)
-        , mediaSmartphonePortrait [ paddingLeft (px 16), paddingRight (px 16) ]
-        ]
-
-
-navContainer : Style
-navContainer =
-    batch
-        [ width (pct 100)
-        , maxWidth (px 1000)
-        , padding4 (px 16) (px 16) (px 16) (px 32)
+        , padding4 (px 48) (px 16) (px 32) (px 32)
         , mediaSmartphonePortrait [ paddingLeft (px 16), paddingRight (px 16) ]
         ]
 

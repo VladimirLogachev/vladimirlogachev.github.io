@@ -27,7 +27,7 @@ viewLearningMaterials lang { onlyFavorite } books learnPath wrapper =
         [ div [ css [ innerContainer ] ]
             [ header2 [] [ text__ (enRu lang "Learning Materials" "Учебные материалы") ]
             , p
-                [ css [ marginTop (Css.em 1) ] ]
+                [ css [ displayFlex, flexWrap wrap ] ]
                 [ ifElse onlyFavorite navButtonDisabled navButton (wrapper <| LearningMaterialsOnlyFavorites True) (enRu lang "Recommended by me" "Рекомендуемые мной")
                 , ifElse (not onlyFavorite) navButtonDisabled navButton (wrapper <| LearningMaterialsOnlyFavorites False) (enRu lang "All books and courses" "Все книги и курсы")
                 ]
@@ -36,6 +36,6 @@ viewLearningMaterials lang { onlyFavorite } books learnPath wrapper =
                 |> getMany books
                 |> List.filter (\(Book { favorite }) -> ifElse onlyFavorite favorite True)
                 |> List.map (Book.view { sticker = Nothing, highlightFavorite = not onlyFavorite, available = True })
-                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline, mediaSmartphonePortrait [ spaceEvenly ] ] ]
+                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
         ]

@@ -105,7 +105,7 @@ viewLibrary lang { specific } books libState wrapper =
             [ header2 [] [ text__ (enRu lang "Offline Library" "Оффлайн-библиотека") ]
             , splitDescription
             , p
-                [ css [ marginTop (Css.em 1) ] ]
+                [ css [ displayFlex, flexWrap wrap ] ]
                 [ ifElse (specific == Nothing) navButtonDisabled navButton (wrapper <| SetLibrarySpecific Nothing) (enRu lang "All books" "Все книги")
                 , ifElse (specific == Just Developer) navButtonDisabled navButton (wrapper <| SetLibrarySpecific (Just Developer)) (enRu lang "For developers" "Для разработчиков")
                 , ifElse (specific == Just GeneralPerson) navButtonDisabled navButton (wrapper <| SetLibrarySpecific (Just GeneralPerson)) (enRu lang "For everyone" "Для всех")
@@ -118,6 +118,6 @@ viewLibrary lang { specific } books libState wrapper =
                 |> List.filter (Tuple.first >> specificPredicate)
                 |> stableSortWith bookOrdering
                 |> List.map (viewLibraryBook lang)
-                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline, mediaSmartphonePortrait [ spaceEvenly ] ] ]
+                |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
         ]

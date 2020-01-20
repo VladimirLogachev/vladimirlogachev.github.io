@@ -16,7 +16,7 @@ import Language exposing (Language(..), enRu)
 import Page.LearningMaterials
 import Page.Library
 import Page.Projects
-import Route exposing (Route, router_href)
+import Route exposing (Route, toUrl)
 import Typography exposing (text__)
 import UiElements exposing (..)
 import UiStyles exposing (..)
@@ -145,7 +145,7 @@ generalTemplate model content =
                 ]
             ]
         , viewHeader model.lang (viewIntro model.lang)
-        , viewNav model.lang
+        , viewNav model.lang model.route
         , content
         ]
         |> (\html ->
@@ -187,7 +187,7 @@ viewIntro lang =
         link url txt =
             textLinkOnDark
                 [ Attributes.target "_blank"
-                , css [ marginRight (Css.em 0.5) ]
+                , css [ marginRight (Css.em 1) ]
                 , href url
                 ]
                 [ text__ txt ]
@@ -219,7 +219,7 @@ viewIntro lang =
                     "Открыт для новой работы, совместных проектов и парного программирования."
                 )
             ]
-        , p [ css [ marginTop (Css.em 0.8), marginRight (Css.em 0.5) ] ]
+        , p [ css [ displayFlex, flexWrap wrap ] ]
             [ link "https://github.com/VladimirLogachev" "github"
             , link "mailto:doit@keemail.me" "mail"
             , link "https://t.me/vladimirlogachev" "telegram"
@@ -230,18 +230,23 @@ viewIntro lang =
         ]
 
 
-viewNav : Language -> Html Msg
-viewNav lang =
+viewNav : Language -> Route -> Html Msg
+viewNav lang currentRoute =
     let
         link route txt =
-            textLink
-                [ css [ marginRight (Css.em 1), lastChild [ marginRight zero ] ]
-                , router_href lang route
-                ]
-                [ text__ txt ]
+            ifElse (currentRoute == route) navLinkDisabled navLink (toUrl lang route) txt
     in
     div [ css [ fullwidthContainer, backgroundColor Colors.secondaryLightGrey ] ]
-        [ article [ css [ navContainer ] ]
+        [ article
+            [ css
+                [ displayFlex
+                , flexWrap wrap
+                , width (pct 100)
+                , maxWidth (px 1000)
+                , padding4 zero (px 16) (px 16) (px 32)
+                , mediaSmartphonePortrait [ paddingLeft (px 16), paddingRight (px 16) ]
+                ]
+            ]
             [ link Route.Projects (enRu lang "Projects" "Проекты")
             , link Route.Library (enRu lang "Offline Library" "Оффлайн-библиотека")
             , link Route.LearningMaterials (enRu lang "Learning Materials" "Учебные материалы")
