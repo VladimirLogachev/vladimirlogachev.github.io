@@ -24,7 +24,7 @@ projects lang =
         , imgFileName = Just "scala-with-cats.png"
         , team =
             Team
-                [ TeamMate "klass-ivan" (GitHubUserId 2673108) "https://github.com/klass-ivan"
+                [ TeamMate "ivan-klass" (GitHubUserId 2673108) "https://github.com/ivan-klass"
                 , TeamMate "Vladimir Nizamutdinov" (GitHubUserId 10260495) "https://github.com/astartes91"
                 , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
                 , TeamMate "AntonShtyrkin" (GitHubUserId 15253161) "https://github.com/AntonShtyrkin"
