@@ -14,14 +14,15 @@ import UiStyles exposing (..)
 import Utils exposing (..)
 
 
-viewProjects : Language -> (Language -> List Project) -> Html msg
-viewProjects lang projs =
+view : Language -> (Language -> List Project) -> { title : String, content : Html msg }
+view lang projs =
     div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ] ]
         [ article [ css [ innerContainer ] ]
             [ header2 [] [ text (enRu lang "Projects" "Проекты") ]
             , div [] <| List.map (viewProject lang) (projs lang)
             ]
         ]
+        |> (\x -> { title = enRu lang "Projects" "Проекты", content = x })
 
 
 viewProject : Language -> Project -> Html msg
@@ -147,7 +148,7 @@ viewTeam : Language -> ProjectTeam -> Html msg
 viewTeam lang projectTeam =
     let
         teamStyle =
-            [ displayFlex , alignItems center ]
+            [ displayFlex, alignItems center ]
 
         viewTeammate isLast { url, userpic, name_i18n } =
             textLink [ css teamStyle, href url, Attributes.target "_blank" ]

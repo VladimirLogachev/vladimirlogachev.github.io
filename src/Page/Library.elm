@@ -89,8 +89,8 @@ viewLibraryBook lang ( b, availability ) =
             Book.view { sticker = Just givenToSomeone, highlightFavorite = False, available = False } b
 
 
-viewLibrary : Language -> Model -> Dict String Book -> Dict String BookAvaliability -> (Msg -> msg) -> Html msg
-viewLibrary lang { specific } books libState wrapper =
+view : Language -> Model -> Dict String Book -> Dict String BookAvaliability -> { title : String, content : Html Msg }
+view lang { specific } books libState =
     let
         specificPredicate : Book -> Bool
         specificPredicate (Book { topics }) =
@@ -118,10 +118,10 @@ viewLibrary lang { specific } books libState wrapper =
             , splitDescription
             , p
                 [ css [ displayFlex, flexWrap wrap ] ]
-                [ ifElse (specific == Nothing) navButtonDisabled navButton (wrapper <| SetLibrarySpecific Nothing) (enRu lang "All books" "Все книги")
-                , ifElse (specific == Just Developer) navButtonDisabled navButton (wrapper <| SetLibrarySpecific (Just Developer)) (enRu lang "For developers" "Для разработчиков")
-                , ifElse (specific == Just GeneralPerson) navButtonDisabled navButton (wrapper <| SetLibrarySpecific (Just GeneralPerson)) (enRu lang "For everyone" "Для всех")
-                , ifElse (specific == Just Musician) navButtonDisabled navButton (wrapper <| SetLibrarySpecific (Just Musician)) (enRu lang "For musicians" "Для музыкантов")
+                [ ifElse (specific == Nothing) navButtonDisabled navButton (SetLibrarySpecific Nothing) (enRu lang "All books" "Все книги")
+                , ifElse (specific == Just Developer) navButtonDisabled navButton (SetLibrarySpecific (Just Developer)) (enRu lang "For developers" "Для разработчиков")
+                , ifElse (specific == Just GeneralPerson) navButtonDisabled navButton (SetLibrarySpecific (Just GeneralPerson)) (enRu lang "For everyone" "Для всех")
+                , ifElse (specific == Just Musician) navButtonDisabled navButton (SetLibrarySpecific (Just Musician)) (enRu lang "For musicians" "Для музыкантов")
                 ]
             , libState
                 |> Dict.toList
@@ -133,3 +133,4 @@ viewLibrary lang { specific } books libState wrapper =
                 |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
         ]
+        |> (\x -> { title = enRu lang "Offline Library" "Оффлайн-библиотека", content = x })

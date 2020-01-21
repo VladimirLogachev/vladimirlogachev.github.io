@@ -33,15 +33,15 @@ update msg model =
             plain { model | onlyFavorite = onlyFavorite }
 
 
-viewLearningMaterials : Language -> Model -> Dict String Book -> List LearningMaterial -> (Msg -> msg) -> Html msg
-viewLearningMaterials lang { onlyFavorite } books learnPath wrapper =
+view : Language -> Model -> Dict String Book -> List LearningMaterial -> { title : String, content : Html Msg }
+view lang { onlyFavorite } books learnPath =
     div [ css [ fullwidthContainer, backgroundColor Colors.lightGrey ] ]
         [ div [ css [ innerContainer ] ]
             [ header2 [] [ text__ (enRu lang "Learning Materials" "Учебные материалы") ]
             , p
                 [ css [ displayFlex, flexWrap wrap ] ]
-                [ ifElse onlyFavorite navButtonDisabled navButton (wrapper <| LearningMaterialsOnlyFavorites True) (enRu lang "Recommended by me" "Рекомендуемые мной")
-                , ifElse (not onlyFavorite) navButtonDisabled navButton (wrapper <| LearningMaterialsOnlyFavorites False) (enRu lang "All books and courses" "Все книги и курсы")
+                [ ifElse onlyFavorite navButtonDisabled navButton (LearningMaterialsOnlyFavorites True) (enRu lang "Recommended by me" "Рекомендуемые мной")
+                , ifElse (not onlyFavorite) navButtonDisabled navButton (LearningMaterialsOnlyFavorites False) (enRu lang "All books and courses" "Все книги и курсы")
                 ]
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
@@ -51,3 +51,4 @@ viewLearningMaterials lang { onlyFavorite } books learnPath wrapper =
                 |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
         ]
+        |> (\x -> { title = enRu lang "Learning Materials" "Учебные материалы", content = x })

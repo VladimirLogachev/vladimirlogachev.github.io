@@ -3,30 +3,19 @@ module Main exposing (main)
 import Browser
 import Browser.Hash exposing (application)
 import Browser.Navigation as Nav
-import Colors
-import Css exposing (..)
-import Css.Global exposing (global, selector)
-import Cv
 import Dataset
-import Html.Styled exposing (..)
-import Html.Styled.Attributes as Attributes exposing (alt, css, href, src, title)
+import Html
 import Json.Decode as D
-import Language exposing (Language(..), enRu)
-import Page.LearningMaterials
-import Page.Library
-import Page.Projects
-import Route exposing (Route, toUrl)
-import Typography exposing (text__)
-import UiElements exposing (..)
-import UiStyles exposing (..)
+import Language
+import Page
+import Page.Cv as Cv
+import Page.LearningMaterials as LearningMaterials
+import Page.Library as Library
+import Page.Projects as Projects
+import Route exposing (Route)
+import Session exposing (Session)
 import Url exposing (Url)
 import Utils exposing (..)
-
-
-type alias Session =
-    { lang : Language
-    , navKey : Nav.Key
-    }
 
 
 toSession : Model -> Session
@@ -49,7 +38,7 @@ main : Program D.Value Model Msg
 main =
     application
         { init = init
-        , view = viewRoute
+        , view = view
         , update = update
         , subscriptions = always Sub.none
         , onUrlChange = RouteChange
@@ -59,37 +48,43 @@ main =
 
 type Model
     = Projects Session
-    | Library Session Page.Library.Model
-    | LearningMaterials Session Page.LearningMaterials.Model
+    | Library Session Library.Model
+    | LearningMaterials Session LearningMaterials.Model
     | Cv Session
 
 
 type Msg
-    = GotLearningMaterialsMsg Page.LearningMaterials.Msg
-    | GotLibraryMsg Page.Library.Msg
+    = GotLearningMaterialsMsg LearningMaterials.Msg
+    | GotLibraryMsg Library.Msg
     | RouteChange Url
     | OnUrlRequest Browser.UrlRequest
 
 
-routeToInit : Session -> Route -> ( Model, Cmd Msg )
-routeToInit session route =
+updateWith :
+    (subModel -> Model)
+    -> (subMsg -> Msg)
+    -- -> Model
+    -> ( subModel, Cmd subMsg )
+    -> ( Model, Cmd Msg )
+updateWith toModel toMsg ( subModel, subCmd ) =
+    ( toModel subModel
+    , Cmd.map toMsg subCmd
+    )
+
+
+changeRouteTo : Route -> Session -> ( Model, Cmd Msg )
+changeRouteTo route session =
     case route of
         Route.Projects ->
             plain <| Projects session
 
         Route.Library ->
-            let
-                ( state, cmd ) =
-                    Page.Library.init
-            in
-            ( Library session state, Cmd.map GotLibraryMsg cmd )
+            Library.init
+                |> updateWith (Library session) GotLibraryMsg
 
         Route.LearningMaterials ->
-            let
-                ( state, cmd ) =
-                    Page.LearningMaterials.init
-            in
-            ( LearningMaterials session state, Cmd.map GotLearningMaterialsMsg cmd )
+            LearningMaterials.init
+                |> updateWith (LearningMaterials session) GotLearningMaterialsMsg
 
         Route.Cv ->
             plain <| Cv session
@@ -123,7 +118,7 @@ init flags url key =
             Route.parseUrl key currentLang url
 
         ( newModel, initCmd ) =
-            routeToInit (Session lang key) route
+            changeRouteTo route (Session lang key)
     in
     ( newModel, Cmd.batch [ navCmd, initCmd ] )
 
@@ -131,19 +126,12 @@ init flags url key =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( msg, model ) of
-        ( GotLearningMaterialsMsg m, LearningMaterials session x ) ->
-            let
-                ( newmodel, cmd ) =
-                    Page.LearningMaterials.update m x
-            in
-            ( LearningMaterials session newmodel, Cmd.map GotLearningMaterialsMsg cmd )
-
         ( GotLibraryMsg m, Library session x ) ->
-            let
-                ( newmodel, cmd ) =
-                    Page.Library.update m x
-            in
-            ( Library session newmodel, Cmd.map GotLibraryMsg cmd )
+            Library.update m x |> updateWith (Library session) GotLibraryMsg
+
+        ( GotLearningMaterialsMsg m, LearningMaterials session x ) ->
+            LearningMaterials.update m x
+                |> updateWith (LearningMaterials session) GotLearningMaterialsMsg
 
         ( RouteChange url, _ ) ->
             let
@@ -154,7 +142,7 @@ update msg model =
                     Route.parseUrl prevSession.navKey prevSession.lang url
 
                 ( newModel, initCmd ) =
-                    routeToInit (Session lang prevSession.navKey) route
+                    changeRouteTo route (Session lang prevSession.navKey)
             in
             ( preserveOldState model newModel, Cmd.batch [ navCmd, initCmd ] )
 
@@ -170,169 +158,30 @@ update msg model =
             plain model
 
 
-viewRoute : Model -> Browser.Document Msg
-viewRoute model =
+view : Model -> Browser.Document Msg
+view model =
+    let
+        lang =
+            (toSession model).lang
+
+        viewPage page toMsg config =
+            let
+                { title, body } =
+                    Page.view lang page config
+            in
+            { title = title
+            , body = List.map (Html.map toMsg) body
+            }
+    in
     case model of
-        Projects { lang } ->
-            Page.Projects.viewProjects lang Dataset.projects
-                |> generalTemplate model
+        Projects _ ->
+            viewPage Page.Projects identity (Projects.view lang Dataset.projects)
 
-        Library { lang } state ->
-            Page.Library.viewLibrary lang state Dataset.knownBooks Dataset.libraryState GotLibraryMsg
-                |> generalTemplate model
+        Library _ state ->
+            viewPage Page.Library GotLibraryMsg (Library.view lang state Dataset.knownBooks Dataset.libraryState)
 
-        LearningMaterials { lang } state ->
-            Page.LearningMaterials.viewLearningMaterials lang state Dataset.knownBooks Dataset.learningPath GotLearningMaterialsMsg
-                |> generalTemplate model
+        LearningMaterials _ state ->
+            viewPage Page.LearningMaterials GotLearningMaterialsMsg (LearningMaterials.view lang state Dataset.knownBooks Dataset.learningPath)
 
         Cv _ ->
-            Cv.cv model
-
-
-generalTemplate : Model -> Html Msg -> Browser.Document Msg
-generalTemplate model content =
-    div
-        [ css
-            [ backgroundColor Colors.lightGrey
-            , fontFamilies [ "Nunito", "sans-serif" ]
-            , fontWeight (int 400)
-            , lineHeight (num 1.1)
-            , color Colors.darkGrey
-            ]
-        ]
-        [ global
-            [ selector "html" [ backgroundColor Colors.lightGrey ]
-            , selector
-                "::selection"
-                [ color Colors.darkGrey
-                , property "background" Colors.pageSelection
-                , textShadow none
-                ]
-            ]
-        , viewHeader (toSession model).lang (viewIntro (toSession model).lang)
-        , viewNav (toSession model).lang model
-        , content
-        ]
-        |> (\html ->
-                { title = "Vladimir Logachev"
-                , body = [ toUnstyled html ]
-                }
-           )
-
-
-viewHeader : Language -> Html Msg -> Html Msg
-viewHeader lang content =
-    header
-        [ css
-            [ fullwidthContainer
-            , backgroundColor Colors.darkGrey
-            , color Colors.lightGrey
-            ]
-        ]
-        [ div [ css [ innerContainer ] ]
-            [ header1 [ css [ color Colors.lightGrey ] ]
-                [ text__ (enRu lang "Vladimir Logachev" "Владимир Логачев") ]
-            , content
-            ]
-        ]
-
-
-viewIntro : Language -> Html Msg
-viewIntro lang =
-    let
-        icon filename altText =
-            img
-                [ css [ maxHeight (px 24), marginRight (Css.em 0.5) ]
-                , src <| "/images/logos/" ++ filename
-                , alt altText
-                , title altText
-                ]
-                []
-
-        link url txt =
-            textLinkOnDark
-                [ Attributes.target "_blank"
-                , css [ marginRight (Css.em 1) ]
-                , href url
-                ]
-                [ text__ txt ]
-    in
-    section [ css [ regularText ] ]
-        [ p [ css [ displayFlex, marginTop (Css.em 0.8), marginBottom (Css.em 0.8) ] ]
-            [ icon "haskell.svg" "Haskell"
-            , icon "scala.svg" "Scala"
-            , icon "elm.svg" "Elm"
-            ]
-        , p [] [ text__ (enRu lang "Fullstack developer" "Fullstack-разработчик") ]
-        , p []
-            [ text
-                (enRu lang
-                    "Chief Enthusiast in "
-                    "Организатор "
-                )
-            , textLinkOnDark [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
-            , text
-                (enRu lang
-                    " — FP reading group, meetups, collaborations."
-                    " — книжный клуб, митапы, совместные проекты."
-                )
-            ]
-        , p []
-            [ text__
-                (enRu lang
-                    "Available for hiring, collaboration and pair programming."
-                    "Открыт для новой работы, совместных проектов и парного программирования."
-                )
-            ]
-        , p [ css [ displayFlex, flexWrap wrap ] ]
-            [ link "https://github.com/VladimirLogachev" "github"
-            , link "mailto:doit@keemail.me" "mail"
-            , link "https://t.me/vladimirlogachev" "telegram"
-            , link "https://twitter.com/v__logachev" "twitter"
-            , link "http://www.linkedin.com/in/vladimirlogachev" "linkedin"
-            , link "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" "cv"
-            ]
-        ]
-
-
-isCurrentlyActive : Model -> Route -> Bool
-isCurrentlyActive model route =
-    case ( model, route ) of
-        ( Projects _, Route.Projects ) ->
-            True
-
-        ( Library _ _, Route.Library ) ->
-            True
-
-        ( LearningMaterials _ _, Route.LearningMaterials ) ->
-            True
-
-        ( Cv _, Route.Cv ) ->
-            True
-
-        _ ->
-            False
-
-
-viewNav : Language -> Model -> Html Msg
-viewNav lang model =
-    let
-        link route txt =
-            ifElse (isCurrentlyActive model route) navLinkDisabled navLink (toUrl lang route) txt
-    in
-    div [ css [ fullwidthContainer, backgroundColor Colors.secondaryLightGrey ] ]
-        [ nav
-            [ css
-                [ displayFlex
-                , flexWrap wrap
-                , width (pct 100)
-                , maxWidth (px 1000)
-                , padding4 zero (px 16) (px 16) (px 32)
-                , mediaSmartphonePortrait [ paddingLeft (px 16), paddingRight (px 16) ]
-                ]
-            ]
-            [ link Route.Projects (enRu lang "Projects" "Проекты")
-            , link Route.Library (enRu lang "Offline Library" "Оффлайн-библиотека")
-            , link Route.LearningMaterials (enRu lang "Learning Materials" "Учебные материалы")
-            ]
-        ]
+            viewPage Page.Cv identity (Cv.cv lang)
