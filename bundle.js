@@ -6198,7 +6198,7 @@ var $author$project$Language$toString = function (lang) {
 		return 'ru';
 	}
 };
-var $author$project$Route$routeToString = F2(
+var $author$project$Route$toUrlPath = F2(
 	function (lang, page) {
 		return '#/' + ($author$project$Language$toString(lang) + ('/' + A2(
 			$elm$core$String$join,
@@ -6210,7 +6210,7 @@ var $author$project$Route$replaceUrl = F3(
 		return A2(
 			$elm$browser$Browser$Navigation$pushUrl,
 			key,
-			A2($author$project$Route$routeToString, lang, route));
+			A2($author$project$Route$toUrlPath, lang, route));
 	});
 var $author$project$Route$parseUrl = F3(
 	function (key, fallbackLang, url) {
@@ -8879,6 +8879,7 @@ var $rtfeldman$elm_css$Css$Global$selector = F2(
 			A2($rtfeldman$elm_css$Css$Structure$CustomSelector, selectorStr, _List_Nil));
 	});
 var $rtfeldman$elm_css$Css$textShadow = $rtfeldman$elm_css$Css$prop1('text-shadow');
+var $rtfeldman$elm_css$Css$end = $rtfeldman$elm_css$Css$prop1('end');
 var $rtfeldman$elm_css$Css$Preprocess$ApplyStyles = function (a) {
 	return {$: 6, a: a};
 };
@@ -9102,106 +9103,7 @@ var $author$project$UiStyles$innerContainer = $rtfeldman$elm_css$Css$batch(
 					$rtfeldman$elm_css$Css$px(16))
 				]))
 		]));
-var $elm$core$String$lines = _String_lines;
-var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
-var $elm$core$Set$empty = $elm$core$Dict$empty;
-var $elm$core$Set$insert = F2(
-	function (key, _v0) {
-		var dict = _v0;
-		return A3($elm$core$Dict$insert, key, 0, dict);
-	});
-var $elm$core$Set$fromList = function (list) {
-	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
-};
-var $author$project$Typography$dictionary = $elm$core$Set$fromList(
-	_List_fromArray(
-		['-', '—', '+', 'a', 'about', 'an', 'and', 'any', 'are', 'as', 'at', 'au', 'be', 'bi', 'but', 'by', 'can', 'de', 'do', 'et', 'fit', 'for', 'from', 'give', 'go', 'going', 'had', 'he', 'i', 'if', 'in', 'is', 'it', 'just', 'know', 'la', 'let', 'made', 'may', 'me', 'my', 'no', 'not', 'of', 'on', 'or', 'part', 'real', 'see', 'seek', 'sent', 'so', 'than', 'that', 'the', 'them', 'there', 'this', 'to', 'up', 'upon', 'watch', 'wd', 'we', 'what', 'whether', 'which', 'who', 'why', 'will', 'with', 'а', 'в', 'ваш', 'ваших', 'во', 'все', 'всё', 'где', 'для', 'до', 'ее', 'её', 'если', 'за', 'и', 'из', 'ими', 'их', 'к', 'мой', 'моя', 'мы', 'на', 'наш', 'не', 'ни', 'но', 'о', 'он', 'от', 'по', 'с', 'слов', 'со', 'столь', 'так', 'таким', 'тем', 'теми', 'то', 'той', 'тот', 'у', 'это', 'я']));
-var $elm$core$Dict$member = F2(
-	function (key, dict) {
-		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (!_v0.$) {
-			return true;
-		} else {
-			return false;
-		}
-	});
-var $elm$core$Set$member = F2(
-	function (key, _v0) {
-		var dict = _v0;
-		return A2($elm$core$Dict$member, key, dict);
-	});
-var $author$project$Typography$nbsp = '\u00A0';
-var $elm$core$String$words = _String_words;
-var $author$project$Typography$processLine = A2(
-	$elm$core$Basics$composeR,
-	$elm$core$String$words,
-	A2(
-		$elm$core$List$foldr,
-		F2(
-			function (word, tail) {
-				return A2(
-					$elm$core$Set$member,
-					$elm$core$String$toLower(word),
-					$author$project$Typography$dictionary) ? _Utils_ap(
-					word,
-					_Utils_ap($author$project$Typography$nbsp, tail)) : ((tail === '') ? word : (word + (' ' + tail)));
-			}),
-		''));
-var $author$project$Typography$text__ = A2(
-	$elm$core$Basics$composeR,
-	$elm$core$String$lines,
-	A2(
-		$elm$core$Basics$composeR,
-		$elm$core$List$map($author$project$Typography$processLine),
-		A2(
-			$elm$core$Basics$composeR,
-			$elm$core$String$join('\n'),
-			$rtfeldman$elm_css$Html$Styled$text)));
-var $author$project$Page$viewHeader = F2(
-	function (lang, content) {
-		return A2(
-			$rtfeldman$elm_css$Html$Styled$header,
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$Attributes$css(
-					_List_fromArray(
-						[
-							$author$project$UiStyles$fullwidthContainer,
-							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$darkGrey),
-							$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey)
-						]))
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$rtfeldman$elm_css$Html$Styled$div,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$css(
-							_List_fromArray(
-								[$author$project$UiStyles$innerContainer]))
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$author$project$UiElements$header1,
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$css(
-									_List_fromArray(
-										[
-											$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey)
-										]))
-								]),
-							_List_fromArray(
-								[
-									$author$project$Typography$text__(
-									A3($author$project$Language$enRu, lang, 'Vladimir Logachev', 'Владимир Логачев'))
-								])),
-							content
-						]))
-				]));
-	});
+var $elm$json$Json$Encode$bool = _Json_wrap;
 var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
 	function (key, value) {
 		return A3(
@@ -9210,42 +9112,14 @@ var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
 			_List_Nil,
 			'');
 	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
-	function (key, string) {
+var $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty = F2(
+	function (key, bool) {
 		return A2(
 			$rtfeldman$elm_css$VirtualDom$Styled$property,
 			key,
-			$elm$json$Json$Encode$string(string));
+			$elm$json$Json$Encode$bool(bool));
 	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$alt = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('alt');
-var $rtfeldman$elm_css$Css$EmUnits = 0;
-var $rtfeldman$elm_css$Css$em = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, 'em');
-var $rtfeldman$elm_css$Css$flexWrap = $rtfeldman$elm_css$Css$prop1('flex-wrap');
-var $rtfeldman$elm_css$Html$Styled$Attributes$href = function (url) {
-	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'href', url);
-};
-var $rtfeldman$elm_css$Html$Styled$img = $rtfeldman$elm_css$Html$Styled$node('img');
-var $rtfeldman$elm_css$Css$marginBottom = $rtfeldman$elm_css$Css$prop1('margin-bottom');
-var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
-var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
-var $rtfeldman$elm_css$Css$maxHeight = $rtfeldman$elm_css$Css$prop1('max-height');
-var $rtfeldman$elm_css$Html$Styled$p = $rtfeldman$elm_css$Html$Styled$node('p');
-var $author$project$UiStyles$regularText = $rtfeldman$elm_css$Css$batch(
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$lineHeight(
-			$rtfeldman$elm_css$Css$num(1.3)),
-			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$em(0.4)),
-			$rtfeldman$elm_css$Css$marginBottom(
-			$rtfeldman$elm_css$Css$em(0.4))
-		]));
-var $rtfeldman$elm_css$Html$Styled$section = $rtfeldman$elm_css$Html$Styled$node('section');
-var $rtfeldman$elm_css$Html$Styled$Attributes$src = function (url) {
-	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'src', url);
-};
-var $rtfeldman$elm_css$Html$Styled$Attributes$target = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('target');
-var $rtfeldman$elm_css$Html$Styled$a = $rtfeldman$elm_css$Html$Styled$node('a');
+var $rtfeldman$elm_css$Html$Styled$Attributes$disabled = $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty('disabled');
 var $rtfeldman$elm_css$Css$Transitions$Border = 4;
 var $rtfeldman$elm_css$Css$Transitions$Transition = $elm$core$Basics$identity;
 var $rtfeldman$elm_css$Css$Transitions$durationTransition = F2(
@@ -9255,22 +9129,12 @@ var $rtfeldman$elm_css$Css$Transitions$durationTransition = F2(
 var $rtfeldman$elm_css$Css$Transitions$border = $rtfeldman$elm_css$Css$Transitions$durationTransition(4);
 var $rtfeldman$elm_css$Css$Transitions$Color = 29;
 var $rtfeldman$elm_css$Css$Transitions$color = $rtfeldman$elm_css$Css$Transitions$durationTransition(29);
-var $rtfeldman$elm_css$Css$Preprocess$ExtendSelector = F2(
-	function (a, b) {
-		return {$: 1, a: a, b: b};
-	});
-var $rtfeldman$elm_css$Css$Structure$PseudoClassSelector = function (a) {
-	return {$: 2, a: a};
-};
-var $rtfeldman$elm_css$Css$pseudoClass = function (_class) {
-	return $rtfeldman$elm_css$Css$Preprocess$ExtendSelector(
-		$rtfeldman$elm_css$Css$Structure$PseudoClassSelector(_class));
-};
-var $rtfeldman$elm_css$Css$hover = $rtfeldman$elm_css$Css$pseudoClass('hover');
-var $author$project$Colors$hover = A3($rtfeldman$elm_css$Css$rgb, 194, 78, 59);
-var $author$project$Colors$hoverOnDark = $author$project$Colors$hover;
-var $rtfeldman$elm_css$Css$lastChild = $rtfeldman$elm_css$Css$pseudoClass('last-child');
-var $author$project$Colors$linkOnDark = A3($rtfeldman$elm_css$Css$rgb, 97, 185, 214);
+var $rtfeldman$elm_css$Css$cursor = $rtfeldman$elm_css$Css$prop1('cursor');
+var $rtfeldman$elm_css$Css$default = {a: 0, z: 'default'};
+var $rtfeldman$elm_css$Css$EmUnits = 0;
+var $rtfeldman$elm_css$Css$em = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, 'em');
+var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
+var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
 var $rtfeldman$elm_css$Css$textDecoration = $rtfeldman$elm_css$Css$prop1('text-decoration');
 var $rtfeldman$elm_css$Css$Transitions$propToString = function (prop) {
 	switch (prop) {
@@ -9529,7 +9393,371 @@ var $rtfeldman$elm_css$Css$Transitions$transition = function (options) {
 			options));
 	return A2($rtfeldman$elm_css$Css$property, 'transition', v);
 };
+var $author$project$UiStyles$userSelectNone = A2($rtfeldman$elm_css$Css$property, 'user-select', 'none');
+var $author$project$UiElements$navDisabledStyle = $rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$author$project$UiStyles$userSelectNone,
+			$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$default),
+			$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$rtfeldman$elm_css$Css$Transitions$transition(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$Transitions$color(150),
+					$rtfeldman$elm_css$Css$Transitions$border(150)
+				]))
+		]));
+var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
+var $elm$core$String$lines = _String_lines;
+var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
+var $elm$core$Set$empty = $elm$core$Dict$empty;
+var $elm$core$Set$insert = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A3($elm$core$Dict$insert, key, 0, dict);
+	});
+var $elm$core$Set$fromList = function (list) {
+	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
+};
+var $author$project$Typography$dictionary = $elm$core$Set$fromList(
+	_List_fromArray(
+		['-', '—', '+', 'a', 'about', 'an', 'and', 'any', 'are', 'as', 'at', 'au', 'be', 'bi', 'but', 'by', 'can', 'de', 'do', 'et', 'fit', 'for', 'from', 'give', 'go', 'going', 'had', 'he', 'i', 'if', 'in', 'is', 'it', 'just', 'know', 'la', 'let', 'made', 'may', 'me', 'my', 'no', 'not', 'of', 'on', 'or', 'part', 'real', 'see', 'seek', 'sent', 'so', 'than', 'that', 'the', 'them', 'there', 'this', 'to', 'up', 'upon', 'watch', 'wd', 'we', 'what', 'whether', 'which', 'who', 'why', 'will', 'with', 'а', 'в', 'ваш', 'ваших', 'во', 'все', 'всё', 'где', 'для', 'до', 'ее', 'её', 'если', 'за', 'и', 'из', 'ими', 'их', 'к', 'мой', 'моя', 'мы', 'на', 'наш', 'не', 'ни', 'но', 'о', 'он', 'от', 'по', 'с', 'слов', 'со', 'столь', 'так', 'таким', 'тем', 'теми', 'то', 'той', 'тот', 'у', 'это', 'я']));
+var $elm$core$Dict$member = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$get, key, dict);
+		if (!_v0.$) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var $elm$core$Set$member = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A2($elm$core$Dict$member, key, dict);
+	});
+var $author$project$Typography$nbsp = '\u00A0';
+var $elm$core$String$words = _String_words;
+var $author$project$Typography$processLine = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$words,
+	A2(
+		$elm$core$List$foldr,
+		F2(
+			function (word, tail) {
+				return A2(
+					$elm$core$Set$member,
+					$elm$core$String$toLower(word),
+					$author$project$Typography$dictionary) ? _Utils_ap(
+					word,
+					_Utils_ap($author$project$Typography$nbsp, tail)) : ((tail === '') ? word : (word + (' ' + tail)));
+			}),
+		''));
+var $author$project$Typography$text__ = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$lines,
+	A2(
+		$elm$core$Basics$composeR,
+		$elm$core$List$map($author$project$Typography$processLine),
+		A2(
+			$elm$core$Basics$composeR,
+			$elm$core$String$join('\n'),
+			$rtfeldman$elm_css$Html$Styled$text)));
+var $author$project$UiElements$navLinkDisabledOnDark = F2(
+	function (_v0, txt) {
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$span,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$UiElements$navDisabledStyle,
+							$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey)
+						])),
+					$rtfeldman$elm_css$Html$Styled$Attributes$disabled(true)
+				]),
+			_List_fromArray(
+				[
+					$author$project$Typography$text__(txt)
+				]));
+	});
+var $rtfeldman$elm_css$Html$Styled$a = $rtfeldman$elm_css$Html$Styled$node('a');
+var $rtfeldman$elm_css$Css$borderBottomColor = function (c) {
+	return A2($rtfeldman$elm_css$Css$property, 'border-bottom-color', c.z);
+};
+var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$href = function (url) {
+	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'href', url);
+};
+var $author$project$Colors$linkOnDark = A3($rtfeldman$elm_css$Css$rgb, 97, 185, 214);
+var $rtfeldman$elm_css$Css$rgba = F4(
+	function (r, g, b, alpha) {
+		return {
+			ap: alpha,
+			ar: b,
+			w: 0,
+			at: g,
+			ay: r,
+			z: A2(
+				$rtfeldman$elm_css$Css$cssFunction,
+				'rgba',
+				_Utils_ap(
+					A2(
+						$elm$core$List$map,
+						$elm$core$String$fromInt,
+						_List_fromArray(
+							[r, g, b])),
+					_List_fromArray(
+						[
+							$elm$core$String$fromFloat(alpha)
+						])))
+		};
+	});
+var $author$project$Colors$linkOnDark025 = A4($rtfeldman$elm_css$Css$rgba, 97, 185, 214, 0.25);
+var $rtfeldman$elm_css$Css$prop3 = F4(
+	function (key, argA, argB, argC) {
+		return A2(
+			$rtfeldman$elm_css$Css$property,
+			key,
+			A2(
+				$elm$core$String$join,
+				' ',
+				_List_fromArray(
+					[argA.z, argB.z, argC.z])));
+	});
+var $rtfeldman$elm_css$Css$borderBottom3 = $rtfeldman$elm_css$Css$prop3('border-bottom');
+var $rtfeldman$elm_css$Css$borderLeft = $rtfeldman$elm_css$Css$prop1('border-left');
+var $rtfeldman$elm_css$Css$borderRight = $rtfeldman$elm_css$Css$prop1('border-right');
+var $rtfeldman$elm_css$Css$borderTop = $rtfeldman$elm_css$Css$prop1('border-top');
+var $rtfeldman$elm_css$Css$dashed = {n: 0, S: 0, z: 'dashed'};
+var $author$project$Colors$hover = A3($rtfeldman$elm_css$Css$rgb, 194, 78, 59);
+var $rtfeldman$elm_css$Css$Preprocess$ExtendSelector = F2(
+	function (a, b) {
+		return {$: 1, a: a, b: b};
+	});
+var $rtfeldman$elm_css$Css$Structure$PseudoClassSelector = function (a) {
+	return {$: 2, a: a};
+};
+var $rtfeldman$elm_css$Css$pseudoClass = function (_class) {
+	return $rtfeldman$elm_css$Css$Preprocess$ExtendSelector(
+		$rtfeldman$elm_css$Css$Structure$PseudoClassSelector(_class));
+};
+var $rtfeldman$elm_css$Css$hover = $rtfeldman$elm_css$Css$pseudoClass('hover');
+var $author$project$Colors$hover025 = A4($rtfeldman$elm_css$Css$rgba, 194, 78, 59, 0.25);
+var $author$project$Colors$link = A3($rtfeldman$elm_css$Css$rgb, 0, 72, 96);
+var $author$project$Colors$link025 = A4($rtfeldman$elm_css$Css$rgba, 0, 72, 96, 0.25);
+var $rtfeldman$elm_css$Css$padding = $rtfeldman$elm_css$Css$prop1('padding');
+var $rtfeldman$elm_css$Css$pointer = {a: 0, z: 'pointer'};
+var $rtfeldman$elm_css$Css$transparent = {w: 0, z: 'transparent'};
 var $rtfeldman$elm_css$Css$zero = {au: 0, ad: 0, F: 0, ae: 0, af: 0, N: 0, O: 0, aw: 0, H: 0, aQ: 0, am: '', aD: 0, z: '0'};
+var $author$project$UiElements$navStyle = $rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
+			$author$project$UiStyles$userSelectNone,
+			$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$pointer),
+			$rtfeldman$elm_css$Css$borderTop($rtfeldman$elm_css$Css$zero),
+			$rtfeldman$elm_css$Css$lineHeight(
+			$rtfeldman$elm_css$Css$em(1.1)),
+			$rtfeldman$elm_css$Css$fontSize(
+			$rtfeldman$elm_css$Css$px(16)),
+			$rtfeldman$elm_css$Css$fontFamilies(
+			_List_fromArray(
+				['Nunito', 'sans-serif'])),
+			$rtfeldman$elm_css$Css$padding($rtfeldman$elm_css$Css$zero),
+			$rtfeldman$elm_css$Css$borderRight($rtfeldman$elm_css$Css$zero),
+			$rtfeldman$elm_css$Css$borderLeft($rtfeldman$elm_css$Css$zero),
+			$rtfeldman$elm_css$Css$backgroundColor($rtfeldman$elm_css$Css$transparent),
+			A3(
+			$rtfeldman$elm_css$Css$borderBottom3,
+			$rtfeldman$elm_css$Css$px(0.5),
+			$rtfeldman$elm_css$Css$dashed,
+			$author$project$Colors$link025),
+			$rtfeldman$elm_css$Css$hover(
+			_List_fromArray(
+				[
+					A3(
+					$rtfeldman$elm_css$Css$borderBottom3,
+					$rtfeldman$elm_css$Css$px(0.5),
+					$rtfeldman$elm_css$Css$dashed,
+					$author$project$Colors$hover025)
+				])),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$em(1)),
+			$rtfeldman$elm_css$Css$color($author$project$Colors$link),
+			$rtfeldman$elm_css$Css$Transitions$transition(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$Transitions$color(150),
+					$rtfeldman$elm_css$Css$Transitions$border(150)
+				])),
+			$rtfeldman$elm_css$Css$hover(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$color($author$project$Colors$hover),
+					$rtfeldman$elm_css$Css$Transitions$transition(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$Transitions$color(150),
+							$rtfeldman$elm_css$Css$Transitions$border(150)
+						]))
+				]))
+		]));
+var $author$project$UiElements$navLinkOnDark = F2(
+	function (url, txt) {
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$a,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$UiElements$navStyle,
+							$rtfeldman$elm_css$Css$color($author$project$Colors$linkOnDark),
+							$rtfeldman$elm_css$Css$borderBottomColor($author$project$Colors$linkOnDark025)
+						])),
+					$rtfeldman$elm_css$Html$Styled$Attributes$href(url)
+				]),
+			_List_fromArray(
+				[
+					$author$project$Typography$text__(txt)
+				]));
+	});
+var $rtfeldman$elm_css$Html$Styled$p = $rtfeldman$elm_css$Html$Styled$node('p');
+var $rtfeldman$elm_css$Css$paddingTop = $rtfeldman$elm_css$Css$prop1('padding-top');
+var $rtfeldman$elm_css$Css$textAlign = function (fn) {
+	return A3(
+		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
+		'textAlign',
+		'text-align',
+		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
+};
+var $author$project$Page$toRoute = function (page) {
+	switch (page) {
+		case 0:
+			return 0;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			return 3;
+	}
+};
+var $author$project$Page$viewHeader = F3(
+	function (lang, page, content) {
+		var linkToLang = F2(
+			function (targetLang, caption) {
+				return A5(
+					$author$project$Utils$ifElse,
+					_Utils_eq(lang, targetLang),
+					$author$project$UiElements$navLinkDisabledOnDark,
+					$author$project$UiElements$navLinkOnDark,
+					A2(
+						$author$project$Route$toUrlPath,
+						targetLang,
+						$author$project$Page$toRoute(page)),
+					caption);
+			});
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$header,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$author$project$UiStyles$fullwidthContainer,
+							$rtfeldman$elm_css$Css$backgroundColor($author$project$Colors$darkGrey),
+							$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey)
+						]))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$rtfeldman$elm_css$Html$Styled$div,
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$Attributes$css(
+							_List_fromArray(
+								[
+									$author$project$UiStyles$innerContainer,
+									$rtfeldman$elm_css$Css$paddingTop(
+									$rtfeldman$elm_css$Css$px(32))
+								]))
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$rtfeldman$elm_css$Html$Styled$p,
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Html$Styled$Attributes$css(
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$end)
+										]))
+								]),
+							_List_fromArray(
+								[
+									A2(linkToLang, 0, 'En'),
+									A2(linkToLang, 1, 'Ru')
+								])),
+							A2(
+							$author$project$UiElements$header1,
+							_List_fromArray(
+								[
+									$rtfeldman$elm_css$Html$Styled$Attributes$css(
+									_List_fromArray(
+										[
+											$rtfeldman$elm_css$Css$color($author$project$Colors$lightGrey)
+										]))
+								]),
+							_List_fromArray(
+								[
+									$author$project$Typography$text__(
+									A3($author$project$Language$enRu, lang, 'Vladimir Logachev', 'Владимир Логачев'))
+								])),
+							content
+						]))
+				]));
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$alt = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('alt');
+var $rtfeldman$elm_css$Css$flexWrap = $rtfeldman$elm_css$Css$prop1('flex-wrap');
+var $rtfeldman$elm_css$Html$Styled$img = $rtfeldman$elm_css$Html$Styled$node('img');
+var $rtfeldman$elm_css$Css$marginBottom = $rtfeldman$elm_css$Css$prop1('margin-bottom');
+var $rtfeldman$elm_css$Css$maxHeight = $rtfeldman$elm_css$Css$prop1('max-height');
+var $author$project$UiStyles$regularText = $rtfeldman$elm_css$Css$batch(
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$lineHeight(
+			$rtfeldman$elm_css$Css$num(1.3)),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$em(0.4)),
+			$rtfeldman$elm_css$Css$marginBottom(
+			$rtfeldman$elm_css$Css$em(0.4))
+		]));
+var $rtfeldman$elm_css$Html$Styled$section = $rtfeldman$elm_css$Html$Styled$node('section');
+var $rtfeldman$elm_css$Html$Styled$Attributes$src = function (url) {
+	return A2($rtfeldman$elm_css$Html$Styled$Attributes$stringProperty, 'src', url);
+};
+var $rtfeldman$elm_css$Html$Styled$Attributes$target = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('target');
+var $author$project$Colors$hoverOnDark = $author$project$Colors$hover;
+var $rtfeldman$elm_css$Css$lastChild = $rtfeldman$elm_css$Css$pseudoClass('last-child');
 var $author$project$UiElements$textLinkOnDark = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$a,
@@ -9692,155 +9920,32 @@ var $author$project$Page$viewIntro = function (lang) {
 						A2(link, 'https://t.me/vladimirlogachev', 'telegram'),
 						A2(link, 'https://twitter.com/v__logachev', 'twitter'),
 						A2(link, 'http://www.linkedin.com/in/vladimirlogachev', 'linkedin'),
-						A2(link, 'https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf', 'cv')
+						A2(
+						link,
+						'https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_' + (A3($author$project$Language$enRu, lang, 'en', 'ru') + '.pdf'),
+						A3($author$project$Language$enRu, lang, 'cv', 'резюме'))
 					]))
 			]));
 };
+var $author$project$Page$fromRoute = function (route) {
+	switch (route) {
+		case 0:
+			return 0;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			return 3;
+	}
+};
 var $author$project$Page$isCurrentlyActive = F2(
 	function (page, route) {
-		var _v0 = _Utils_Tuple2(page, route);
-		_v0$4:
-		while (true) {
-			switch (_v0.a) {
-				case 0:
-					if (!_v0.b) {
-						var _v1 = _v0.a;
-						var _v2 = _v0.b;
-						return true;
-					} else {
-						break _v0$4;
-					}
-				case 1:
-					if (_v0.b === 1) {
-						var _v3 = _v0.a;
-						var _v4 = _v0.b;
-						return true;
-					} else {
-						break _v0$4;
-					}
-				case 2:
-					if (_v0.b === 2) {
-						var _v5 = _v0.a;
-						var _v6 = _v0.b;
-						return true;
-					} else {
-						break _v0$4;
-					}
-				default:
-					if (_v0.b === 3) {
-						var _v7 = _v0.a;
-						var _v8 = _v0.b;
-						return true;
-					} else {
-						break _v0$4;
-					}
-			}
-		}
-		return false;
+		return _Utils_eq(
+			$author$project$Page$fromRoute(route),
+			page);
 	});
 var $rtfeldman$elm_css$Html$Styled$nav = $rtfeldman$elm_css$Html$Styled$node('nav');
-var $rtfeldman$elm_css$Css$prop3 = F4(
-	function (key, argA, argB, argC) {
-		return A2(
-			$rtfeldman$elm_css$Css$property,
-			key,
-			A2(
-				$elm$core$String$join,
-				' ',
-				_List_fromArray(
-					[argA.z, argB.z, argC.z])));
-	});
-var $rtfeldman$elm_css$Css$borderBottom3 = $rtfeldman$elm_css$Css$prop3('border-bottom');
-var $rtfeldman$elm_css$Css$borderLeft = $rtfeldman$elm_css$Css$prop1('border-left');
-var $rtfeldman$elm_css$Css$borderRight = $rtfeldman$elm_css$Css$prop1('border-right');
-var $rtfeldman$elm_css$Css$borderTop = $rtfeldman$elm_css$Css$prop1('border-top');
-var $rtfeldman$elm_css$Css$cursor = $rtfeldman$elm_css$Css$prop1('cursor');
-var $rtfeldman$elm_css$Css$dashed = {n: 0, S: 0, z: 'dashed'};
-var $rtfeldman$elm_css$Css$rgba = F4(
-	function (r, g, b, alpha) {
-		return {
-			ap: alpha,
-			ar: b,
-			w: 0,
-			at: g,
-			ay: r,
-			z: A2(
-				$rtfeldman$elm_css$Css$cssFunction,
-				'rgba',
-				_Utils_ap(
-					A2(
-						$elm$core$List$map,
-						$elm$core$String$fromInt,
-						_List_fromArray(
-							[r, g, b])),
-					_List_fromArray(
-						[
-							$elm$core$String$fromFloat(alpha)
-						])))
-		};
-	});
-var $author$project$Colors$hover025 = A4($rtfeldman$elm_css$Css$rgba, 194, 78, 59, 0.25);
-var $author$project$Colors$link = A3($rtfeldman$elm_css$Css$rgb, 0, 72, 96);
-var $author$project$Colors$link025 = A4($rtfeldman$elm_css$Css$rgba, 0, 72, 96, 0.25);
-var $rtfeldman$elm_css$Css$padding = $rtfeldman$elm_css$Css$prop1('padding');
-var $rtfeldman$elm_css$Css$pointer = {a: 0, z: 'pointer'};
-var $rtfeldman$elm_css$Css$transparent = {w: 0, z: 'transparent'};
-var $author$project$UiStyles$userSelectNone = A2($rtfeldman$elm_css$Css$property, 'user-select', 'none');
-var $author$project$UiElements$navStyle = $rtfeldman$elm_css$Css$batch(
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
-			$author$project$UiStyles$userSelectNone,
-			$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$pointer),
-			$rtfeldman$elm_css$Css$borderTop($rtfeldman$elm_css$Css$zero),
-			$rtfeldman$elm_css$Css$lineHeight(
-			$rtfeldman$elm_css$Css$em(1.1)),
-			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(16)),
-			$rtfeldman$elm_css$Css$fontFamilies(
-			_List_fromArray(
-				['Nunito', 'sans-serif'])),
-			$rtfeldman$elm_css$Css$padding($rtfeldman$elm_css$Css$zero),
-			$rtfeldman$elm_css$Css$borderRight($rtfeldman$elm_css$Css$zero),
-			$rtfeldman$elm_css$Css$borderLeft($rtfeldman$elm_css$Css$zero),
-			$rtfeldman$elm_css$Css$backgroundColor($rtfeldman$elm_css$Css$transparent),
-			A3(
-			$rtfeldman$elm_css$Css$borderBottom3,
-			$rtfeldman$elm_css$Css$px(0.5),
-			$rtfeldman$elm_css$Css$dashed,
-			$author$project$Colors$link025),
-			$rtfeldman$elm_css$Css$hover(
-			_List_fromArray(
-				[
-					A3(
-					$rtfeldman$elm_css$Css$borderBottom3,
-					$rtfeldman$elm_css$Css$px(0.5),
-					$rtfeldman$elm_css$Css$dashed,
-					$author$project$Colors$hover025)
-				])),
-			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$em(1)),
-			$rtfeldman$elm_css$Css$marginRight(
-			$rtfeldman$elm_css$Css$em(1)),
-			$rtfeldman$elm_css$Css$color($author$project$Colors$link),
-			$rtfeldman$elm_css$Css$Transitions$transition(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$Transitions$color(150),
-					$rtfeldman$elm_css$Css$Transitions$border(150)
-				])),
-			$rtfeldman$elm_css$Css$hover(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$color($author$project$Colors$hover),
-					$rtfeldman$elm_css$Css$Transitions$transition(
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Css$Transitions$color(150),
-							$rtfeldman$elm_css$Css$Transitions$border(150)
-						]))
-				]))
-		]));
 var $author$project$UiElements$navLink = F2(
 	function (url, txt) {
 		return A2(
@@ -9857,36 +9962,6 @@ var $author$project$UiElements$navLink = F2(
 					$author$project$Typography$text__(txt)
 				]));
 	});
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$property,
-			key,
-			$elm$json$Json$Encode$bool(bool));
-	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$disabled = $rtfeldman$elm_css$Html$Styled$Attributes$boolProperty('disabled');
-var $rtfeldman$elm_css$Css$default = {a: 0, z: 'default'};
-var $author$project$UiElements$navDisabledStyle = $rtfeldman$elm_css$Css$batch(
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
-			$author$project$UiStyles$userSelectNone,
-			$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$default),
-			$rtfeldman$elm_css$Css$color($author$project$Colors$darkGrey),
-			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$em(1)),
-			$rtfeldman$elm_css$Css$marginRight(
-			$rtfeldman$elm_css$Css$em(1)),
-			$rtfeldman$elm_css$Css$textDecoration($rtfeldman$elm_css$Css$none),
-			$rtfeldman$elm_css$Css$Transitions$transition(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$Transitions$color(150),
-					$rtfeldman$elm_css$Css$Transitions$border(150)
-				]))
-		]));
-var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
 var $author$project$UiElements$navLinkDisabled = F2(
 	function (_v0, txt) {
 		return A2(
@@ -9904,10 +9979,6 @@ var $author$project$UiElements$navLinkDisabled = F2(
 				]));
 	});
 var $author$project$Colors$secondaryLightGrey = $rtfeldman$elm_css$Css$hex('D7DBDD');
-var $author$project$Route$toUrl = F2(
-	function (lang, targetRoute) {
-		return A2($author$project$Route$routeToString, lang, targetRoute);
-	});
 var $author$project$Page$viewNav = F2(
 	function (lang, model) {
 		var link = F2(
@@ -9917,7 +9988,7 @@ var $author$project$Page$viewNav = F2(
 					A2($author$project$Page$isCurrentlyActive, model, route),
 					$author$project$UiElements$navLinkDisabled,
 					$author$project$UiElements$navLink,
-					A2($author$project$Route$toUrl, lang, route),
+					A2($author$project$Route$toUrlPath, lang, route),
 					txt);
 			});
 		return A2(
@@ -10021,9 +10092,10 @@ var $author$project$Page$generalTemplate = F3(
 									$rtfeldman$elm_css$Css$textShadow($rtfeldman$elm_css$Css$none)
 								]))
 						])),
-					A2(
+					A3(
 					$author$project$Page$viewHeader,
 					lang,
+					page,
 					$author$project$Page$viewIntro(lang)),
 					A2($author$project$Page$viewNav, lang, page),
 					content
@@ -11136,13 +11208,6 @@ var $rtfeldman$elm_css$Css$rotate = function (_v0) {
 			_List_fromArray(
 				[value]))
 	};
-};
-var $rtfeldman$elm_css$Css$textAlign = function (fn) {
-	return A3(
-		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
-		'textAlign',
-		'text-align',
-		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
 };
 var $rtfeldman$elm_css$Css$valuesOrNone = function (list) {
 	return $elm$core$List$isEmpty(list) ? {z: 'none'} : {
