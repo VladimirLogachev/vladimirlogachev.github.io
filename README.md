@@ -1,18 +1,26 @@
-# portfolio site
+# [vladimirlogachev.github.io](https://vladimirlogachev.github.io)
 
-## local dev
+## Run locally
 
-### required 
+### Successfully runs on:
 
-- node 10
+- Ubuntu 19.10
+- Node 10
+- ImageMagick 6.9.10-23
+
+### Required commands in path for local development:
+- `convert` (ImageMagick)
 - `elm`
 - `elm-live` (npm, global)
 
-### optional
+### Optional, useful
 
 - `elm-format`
 
-### run
+### Run
 
-- `bash localdev.sh` - reloads on changes in elm files. Requires manual re-run when changing assets.
+- `bash localdev.sh` - runs dev server, watches  changes in `.elm` files. Requires manual re-run when changing images, html and other assets.
 
+## Deploy
+
+- see `.github/` for details

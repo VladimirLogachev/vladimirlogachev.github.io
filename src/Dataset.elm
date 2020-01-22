@@ -164,7 +164,7 @@ knownBooks =
         , title = "React Redux курс для начинающих"
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
-        , coverUrl = "/images/book_covers/redux.jpeg"
+        , coverUrl = "/images/book_covers/redux.jpg"
         , favorite = False
         }
     , Book

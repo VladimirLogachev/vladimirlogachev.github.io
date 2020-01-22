@@ -16,11 +16,11 @@ jobs:
       - name: Move files
         run: mv "./src/static" "./build"
       - name: Elm Make
-        run: elm make --optimize --output="./build/bundle.src.js" src/Main.elm
+        run: elm make --optimize --output="./bundle.js" src/Main.elm
       - name: Uglify-js
-        run: npx uglify-js "./build/bundle.src.js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | npx uglify-js --mangle --output="./build/bundle.js"
-      - name: Remove redundant file
-        run: rm ./build/bundle.src.js
+        run: npx uglify-js@3.7.6 "./bundle.js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | npx uglify-js@3.7.6 --mangle --output="./build/bundle.js"
+      - name: Resize raster images with width greater than 200 px
+        run: for filename in $(find ./build/images -name '*.jpg' -or -name '*.png' -or -name '*.gif' -or -name '*.jpeg'); do convert "$filename" -resize '200x100000>' "$filename"; done
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.7.0-1
         env:
