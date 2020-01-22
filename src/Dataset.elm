@@ -124,7 +124,7 @@ knownBooks =
         , title = "Learning Functional Programming in Scala"
         , topics = SCALA
         , url = "https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf"
-        , coverUrl = "/images/book_covers/alvin_scala.png"
+        , coverUrl = "/images/book_covers/alvin_scala.webp"
         , favorite = False
         }
     , Book
@@ -156,7 +156,7 @@ knownBooks =
         , title = "Роутинг в react-приложениях"
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/react-router-course-ru/content"
-        , coverUrl = "/images/book_covers/router.png"
+        , coverUrl = "/images/book_covers/router.webp"
         , favorite = False
         }
     , Book
@@ -164,7 +164,7 @@ knownBooks =
         , title = "React Redux курс для начинающих"
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
-        , coverUrl = "/images/book_covers/redux.jpg"
+        , coverUrl = "/images/book_covers/redux.webp"
         , favorite = False
         }
     , Book
@@ -428,7 +428,7 @@ knownBooks =
         , title = "Frontend Developer Specialization"
         , topics = JS
         , url = "https://www.freecodecamp.org/"
-        , coverUrl = "/images/course_covers/freecodecamp.png"
+        , coverUrl = "/images/course_covers/freecodecamp.webp"
         , favorite = False
         }
     , Book
