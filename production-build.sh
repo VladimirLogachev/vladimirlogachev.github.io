@@ -7,8 +7,13 @@ rm -rf "./build"
 cp -r "./src/static" "./build"
 
 # Resize and optimize all raster images, which have width >200px
+# for filename in $(find ./build/images -name '*.jpg' -or -name '*.png' -or -name '*.gif' -or -name '*.jpeg' -or -name '*.webp'); do
+#   convert "$filename" -resize '400x100000>' -quality 80 -define webp:lossless=false "$filename"
+# done
+
+# Resize and optimize all raster images, which have width >200px
 for filename in $(find ./build/images -name '*.jpg' -or -name '*.png' -or -name '*.gif' -or -name '*.jpeg' -or -name '*.webp'); do
-  convert "$filename" -resize '400x100000>' -quality 80 -define webp:lossless=false "$filename"
+  convert "$filename" -resize '400x100000>' "${filename}.justfortest.webp"
 done
 
 # Show stats
