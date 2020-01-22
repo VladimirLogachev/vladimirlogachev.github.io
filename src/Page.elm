@@ -5,7 +5,7 @@ import Colors
 import Css exposing (..)
 import Css.Global exposing (global, selector)
 import Html.Styled exposing (..)
-import Html.Styled.Attributes as Attributes exposing (alt, css, href, src, title)
+import Html.Styled.Attributes as Attributes exposing (alt, css, href, src, title, attribute)
 import Language exposing (Language(..), enRu)
 import Route exposing (Route)
 import Typography exposing (text__)
@@ -73,6 +73,7 @@ generalTemplate lang page content =
             , lineHeight (num 1.1)
             , color Colors.darkGrey
             ]
+        , attribute "lang" (enRu lang "en" "ru")
         ]
         [ global
             [ selector "html" [ backgroundColor Colors.lightGrey ]

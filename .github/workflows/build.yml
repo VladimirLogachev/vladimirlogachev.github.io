@@ -13,16 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up elm
         uses: justgook/setup-elm@v1
-      - name: Do some things sequentially
-        run: bash build.sh
-      # - name: Move files
-      #   run: mv "./src/static" "./build"
-      # - name: Elm Make
-      #   run: elm make --optimize --output="./bundle.js" src/Main.elm
-      # - name: Uglify-js
-      #   run: npx uglify-js@3.7.6 "./bundle.js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | npx uglify-js@3.7.6 --mangle --output="./build/bundle.js"
-      # - name: Resize raster images
-      #   run: for filename in $(find ./build/images -name '*.jpg' -or -name '*.png' -or -name '*.gif' -or -name '*.jpeg' -or -name '*.webp'); do convert "$filename" -resize '400x100000>' -quality 80 -define webp:lossless=false -define webp:method=6 -define webp:partitions=3 -define webp:auto-filter=true "$filename"; done
+      - name: Do some things strictly sequentially
+        run: bash production-build.sh
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.7.0-1
         env:
