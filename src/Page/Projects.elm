@@ -66,6 +66,7 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
             [ header3 []
                 [ text__ name_i18n ]
             , splitDescription
+            , viewTeam lang team
             , links
                 |> List.map
                     (\link ->
@@ -89,7 +90,6 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                         , alignItems flexStart
                         ]
                     ]
-            , viewTeam lang team
             ]
         ]
 
@@ -114,46 +114,15 @@ viewProjectImage (Project { name_i18n, imgFileName }) =
             emptyHtml
 
 
-viewUserPic : Userpic -> Html a
-viewUserPic userpic =
-    let
-        userpicSize =
-            22
-
-        userpicSrcSize =
-            userpicSize * 3
-    in
-    case userpic of
-        NoPic ->
-            emptyHtml
-
-        GitHubUserId githubUserId ->
-            img
-                [ css
-                    [ maxHeight (px userpicSize), borderRadius (px 3), marginRight (Css.em 0.2) ]
-                , src <|
-                    "https://avatars2.githubusercontent.com/u/"
-                        ++ String.fromInt githubUserId
-                        ++ "?s="
-                        ++ String.fromInt userpicSrcSize
-                        ++ "&v=4"
-                ]
-                []
-
-        DirectUrl url ->
-            img [ src url ] []
-
-
 viewTeam : Language -> ProjectTeam -> Html msg
 viewTeam lang projectTeam =
     let
         teamStyle =
             [ displayFlex, alignItems center ]
 
-        viewTeammate isLast { url, userpic, name_i18n } =
+        viewTeammate isLast { url, name_i18n } =
             textLink [ css teamStyle, href url, Attributes.target "_blank" ]
-                [ viewUserPic userpic
-                , text__ name_i18n
+                [ text__ name_i18n
                 , ifElse isLast emptyHtml (text ",")
                 ]
     in
