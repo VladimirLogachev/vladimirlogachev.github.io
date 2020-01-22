@@ -21,7 +21,7 @@ projects lang =
             [ Link (enRu lang "Russian translation repo (WIP)" "Репозиторий перевода (в процессе)") "https://github.com/fpspecialty/scala-with-cats-ru"
             , Link (enRu lang "Original book" "Оригинал книги на английском") "https://underscore.io/books/scala-with-cats/"
             ]
-        , imgFileName = Just "scala-with-cats.png"
+        , imgFileName = Just "scala-with-cats.webp"
         , team =
             Team
                 [ TeamMate "ivan-klass" (GitHubUserId 2673108) "https://github.com/ivan-klass"
@@ -46,7 +46,7 @@ projects lang =
             [ Link (enRu lang "Russian translation" "Книга на русском") "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/blob/master/SUMMARY-ru.md"
             , Link (enRu lang "Original book" "Оригинал книги на английском") "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
             ]
-        , imgFileName = Just "mostly_adequate_guide_fp_ru.png"
+        , imgFileName = Just "mostly_adequate_guide_fp_ru.webp"
         , team =
             Team
                 [ TeamMate "Maxim Filippov" (GitHubUserId 860283) "https://github.com/maksimf"
@@ -66,7 +66,7 @@ projects lang =
             , Link (enRu lang "Download ePub" "Скачать ePub") "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
             , Link (enRu lang "Read online" "Читать онлайн") "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
             ]
-        , imgFileName = Just "facfaf.jpg"
+        , imgFileName = Just "facfaf.webp"
         , team = OnlyMe
         }
     ]
