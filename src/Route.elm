@@ -1,8 +1,6 @@
 module Route exposing (..)
 
 import Browser.Navigation as Nav
-import Html.Styled exposing (Attribute)
-import Html.Styled.Attributes as Attributes
 import Language exposing (Language(..))
 import Url exposing (Url)
 import Url.Parser as Parser exposing ((</>), Parser, oneOf)
@@ -23,11 +21,6 @@ parseUrl key fallbackLang url =
         |> Maybe.withDefault ( ( fallbackLang, Projects ), replaceUrl key fallbackLang Projects )
 
 
-toUrl : Language -> Route -> String
-toUrl lang targetRoute =
-    routeToString lang targetRoute
-
-
 routeToPieces : Route -> List String
 routeToPieces page =
     case page of
@@ -44,8 +37,8 @@ routeToPieces page =
             [ "cv" ]
 
 
-routeToString : Language -> Route -> String
-routeToString lang page =
+toUrlPath : Language -> Route -> String
+toUrlPath lang page =
     "#/" ++ Language.toString lang ++ "/" ++ String.join "/" (routeToPieces page)
 
 
@@ -69,4 +62,4 @@ parser =
 
 replaceUrl : Nav.Key -> Language -> Route -> Cmd msg
 replaceUrl key lang route =
-    Nav.pushUrl key (routeToString lang route)
+    Nav.pushUrl key (toUrlPath lang route)

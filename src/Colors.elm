@@ -51,6 +51,12 @@ linkOnDark : Color
 linkOnDark =
     rgb 97 185 214
 
+{-| Link decoration for dark backgrounds
+-}
+linkOnDark025 : Color
+linkOnDark025 =
+    rgba 97 185 214 0.25
+
 
 {-| Link (and button) hover color for light backgrounds
 -}

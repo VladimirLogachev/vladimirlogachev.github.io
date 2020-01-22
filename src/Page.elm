@@ -7,13 +7,18 @@ import Css.Global exposing (global, selector)
 import Html.Styled exposing (..)
 import Html.Styled.Attributes as Attributes exposing (alt, css, href, src, title)
 import Language exposing (Language(..), enRu)
-import Route exposing (Route, toUrl)
+import Route exposing (Route)
 import Typography exposing (text__)
 import UiElements exposing (..)
 import UiStyles exposing (..)
 import Utils exposing (..)
 
 
+{-| Same thing as route,
+but not parametrized with anything.
+(this remains true until routes became complex)
+Idea is to use it for navbar.
+-}
 type Page
     = Projects
     | Library
@@ -21,23 +26,41 @@ type Page
     | Cv
 
 
+toRoute : Page -> Route
+toRoute page =
+    case page of
+        Projects ->
+            Route.Projects
+
+        Library ->
+            Route.Library
+
+        LearningMaterials ->
+            Route.LearningMaterials
+
+        Cv ->
+            Route.Cv
+
+
+fromRoute : Route -> Page
+fromRoute route =
+    case route of
+        Route.Projects ->
+            Projects
+
+        Route.Library ->
+            Library
+
+        Route.LearningMaterials ->
+            LearningMaterials
+
+        Route.Cv ->
+            Cv
+
+
 isCurrentlyActive : Page -> Route -> Bool
 isCurrentlyActive page route =
-    case ( page, route ) of
-        ( Projects, Route.Projects ) ->
-            True
-
-        ( Library, Route.Library ) ->
-            True
-
-        ( LearningMaterials, Route.LearningMaterials ) ->
-            True
-
-        ( Cv, Route.Cv ) ->
-            True
-
-        _ ->
-            False
+    fromRoute route == page
 
 
 generalTemplate : Language -> Page -> Html msg -> Html msg
@@ -60,14 +83,22 @@ generalTemplate lang page content =
                 , textShadow none
                 ]
             ]
-        , viewHeader lang (viewIntro lang)
+        , viewHeader lang page (viewIntro lang)
         , viewNav lang page
         , content
         ]
 
 
-viewHeader : Language -> Html msg -> Html msg
-viewHeader lang content =
+viewHeader : Language -> Page -> Html msg -> Html msg
+viewHeader lang page content =
+    let
+        linkToLang targetLang caption =
+            ifElse (lang == targetLang)
+                navLinkDisabledOnDark
+                navLinkOnDark
+                (Route.toUrlPath targetLang (toRoute page))
+                caption
+    in
     header
         [ css
             [ fullwidthContainer
@@ -75,8 +106,12 @@ viewHeader lang content =
             , color Colors.lightGrey
             ]
         ]
-        [ div [ css [ innerContainer ] ]
-            [ header1 [ css [ color Colors.lightGrey ] ]
+        [ div [ css [ innerContainer, paddingTop (px 32) ] ]
+            [ p [ css [ textAlign end ] ]
+                [ linkToLang En "En"
+                , linkToLang Ru "Ru"
+                ]
+            , header1 [ css [ color Colors.lightGrey ] ]
                 [ text__ (enRu lang "Vladimir Logachev" "Владимир Логачев") ]
             , content
             ]
@@ -136,7 +171,12 @@ viewIntro lang =
             , link "https://t.me/vladimirlogachev" "telegram"
             , link "https://twitter.com/v__logachev" "twitter"
             , link "http://www.linkedin.com/in/vladimirlogachev" "linkedin"
-            , link "https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_en.pdf" "cv"
+            , link
+                ("https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_"
+                    ++ enRu lang "en" "ru"
+                    ++ ".pdf"
+                )
+                (enRu lang "cv" "резюме")
             ]
         ]
 
@@ -145,7 +185,7 @@ viewNav : Language -> Page -> Html msg
 viewNav lang model =
     let
         link route txt =
-            ifElse (isCurrentlyActive model route) navLinkDisabled navLink (toUrl lang route) txt
+            ifElse (isCurrentlyActive model route) navLinkDisabled navLink (Route.toUrlPath lang route) txt
     in
     div [ css [ fullwidthContainer, backgroundColor Colors.secondaryLightGrey ] ]
         [ nav

@@ -71,6 +71,16 @@ navLinkDisabled _ txt =
     span [ css [ navDisabledStyle ], Attributes.disabled True ] [ text__ txt ]
 
 
+navLinkOnDark : String -> String -> Html msg
+navLinkOnDark url txt =
+    a [ css [ navStyle, color Colors.linkOnDark, borderBottomColor Colors.linkOnDark025], Attributes.href url ] [ text__ txt ]
+
+
+navLinkDisabledOnDark : a -> String -> Html msg
+navLinkDisabledOnDark _ txt =
+    span [ css [ navDisabledStyle, color Colors.lightGrey ], Attributes.disabled True ] [ text__ txt ]
+
+
 header1 : List (Html.Styled.Attribute msg) -> List (Html.Styled.Html msg) -> Html.Styled.Html msg
 header1 =
     styled h1
