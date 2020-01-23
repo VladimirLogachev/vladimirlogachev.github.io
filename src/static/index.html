@@ -16,7 +16,7 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta
-      name="description"
+      name="escription"
       content="Vladimir Logachev.
     Fullstack developer. Functional programming, Haskell, Scala, Elm. 
     Projects, books, collaborations."
@@ -25,6 +25,29 @@
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script inline type="text/javascript" src="./bundle.js"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      window.ym =
+        window.ym ||
+        function() {
+          (window.ym.a = window.ym.a || []).push(arguments);
+        };
+      window.ym.l = 1 * new Date();
+      ym(40142970, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+        trackHash: true
+      });
+    </script>
+    <script
+      inline
+      type="text/javascript"
+      src="https://mc.yandex.ru/metrika/tag.js"
+    ></script>
+
+    <!-- /Yandex.Metrika counter -->
   </head>
 
   <body>
@@ -37,62 +60,13 @@
       });
     </script>
 
-    <!-- Yandex.Metrika counter -->
-    <script data-cfasync="false" type="text/javascript">
-      (function() {
-        var a = function() {
-            try {
-              return !!window.addEventListener;
-            } catch (e) {
-              return !1;
-            }
-          },
-          b = function(b, c) {
-            a()
-              ? document.addEventListener("load", b, c)
-              : document.attachEvent("onreadystatechange", b);
-          };
-        b(function() {
-          /* Loaded asynchronously */
-          (function(m, e, t, r, i, k, a) {
-            m[i] =
-              m[i] ||
-              function() {
-                (m[i].a = m[i].a || []).push(arguments);
-              };
-            m[i].l = 1 * new Date();
-            (k = e.createElement(t)),
-              (a = e.getElementsByTagName(t)[0]),
-              (k.async = 1),
-              (k.src = r),
-              a.parentNode.insertBefore(k, a);
-          })(
-            window,
-            document,
-            "script",
-            "https://mc.yandex.ru/metrika/tag.js",
-            "ym"
-          );
-          ym(40142970, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true,
-            webvisor: true,
-            trackHash: true
-          });
-          /* end original counter */
-        }, false);
-      })();
-    </script>
-    <noscript>
-      <div>
+    <noscript
+      ><div>
         <img
           src="https://mc.yandex.ru/watch/40142970"
           style="position:absolute; left:-9999px;"
           alt=""
-        />
-      </div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
+        /></div
+    ></noscript>
   </body>
 </html>
