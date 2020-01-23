@@ -5,7 +5,7 @@ import Colors
 import Css exposing (..)
 import Css.Global exposing (global, selector)
 import Html.Styled exposing (..)
-import Html.Styled.Attributes as Attributes exposing (alt, css, href, src, title, attribute)
+import Html.Styled.Attributes as Attributes exposing (alt, attribute, css, href, src, title)
 import Language exposing (Language(..), enRu)
 import Route exposing (Route)
 import Typography exposing (text__)
@@ -133,7 +133,8 @@ viewIntro lang =
 
         link url txt =
             textLinkOnDark
-                [ Attributes.target "_blank"
+                [ targetBlank
+                , noOpener
                 , css [ marginRight (Css.em 1) ]
                 , href url
                 ]
@@ -152,7 +153,7 @@ viewIntro lang =
                     "Chief Enthusiast in "
                     "Организатор "
                 )
-            , textLinkOnDark [ Attributes.target "_blank", href "https://fpspecialty.github.io/" ] [ text "FP Specialty" ]
+            , textLinkOnDark [ href "https://fpspecialty.github.io/", targetBlank, noOpener ] [ text "FP Specialty" ]
             , text
                 (enRu lang
                     " — FP reading group, meetups, collaborations."

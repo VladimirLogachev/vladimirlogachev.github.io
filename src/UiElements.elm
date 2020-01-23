@@ -4,7 +4,7 @@ import Colors
 import Css exposing (..)
 import Css.Transitions as Transitions exposing (transition)
 import Html.Styled exposing (..)
-import Html.Styled.Attributes as Attributes exposing (css)
+import Html.Styled.Attributes as Attributes exposing (attribute, css)
 import Html.Styled.Events exposing (onClick)
 import Typography exposing (text__)
 import UiStyles exposing (..)
@@ -73,7 +73,7 @@ navLinkDisabled _ txt =
 
 navLinkOnDark : String -> String -> Html msg
 navLinkOnDark url txt =
-    a [ css [ navStyle, color Colors.linkOnDark, borderBottomColor Colors.linkOnDark025], Attributes.href url ] [ text__ txt ]
+    a [ css [ navStyle, color Colors.linkOnDark, borderBottomColor Colors.linkOnDark025 ], Attributes.href url ] [ text__ txt ]
 
 
 navLinkDisabledOnDark : a -> String -> Html msg
@@ -154,3 +154,13 @@ buttonLink =
             , transition [ Transitions.backgroundColor 150 ]
             ]
         ]
+
+
+noOpener : Html.Styled.Attribute msg
+noOpener =
+    attribute "rel" "noopener noreferrer"
+
+
+targetBlank : Html.Styled.Attribute msg
+targetBlank =
+    Attributes.target "_blank"

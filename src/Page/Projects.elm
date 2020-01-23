@@ -78,7 +78,8 @@ viewProject lang ((Project { name_i18n, description_i18n, team, links }) as proj
                                 , lastChild [ marginRight zero ]
                                 ]
                             , href link.url
-                            , Attributes.target "_blank"
+                            , targetBlank
+                            , noOpener
                             ]
                             [ text__ link.name_i18n ]
                     )
@@ -121,7 +122,7 @@ viewTeam lang projectTeam =
             [ displayFlex, alignItems center ]
 
         viewTeammate isLast { url, name_i18n } =
-            textLink [ css teamStyle, href url, Attributes.target "_blank" ]
+            textLink [ css teamStyle, href url, targetBlank, noOpener ]
                 [ text__ name_i18n
                 , ifElse isLast emptyHtml (text ",")
                 ]

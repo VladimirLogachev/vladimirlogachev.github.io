@@ -185,7 +185,7 @@ view { sticker, highlightFavorite, available } (Book book) =
             , fontSize (px 13)
             ]
         ]
-        [ textLink [ href book.url, Attributes.target "_blank" ]
+        [ textLink [ href book.url, targetBlank, noOpener ]
             [ img
                 [ css
                     [ availabilityStyle
@@ -202,7 +202,7 @@ view { sticker, highlightFavorite, available } (Book book) =
             ]
         , stickerNode
         , div textStyle
-            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ textLink [ href book.url, Attributes.target "_blank" ] [ text__ book.title ] ]
+            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ textLink [ href book.url, targetBlank, noOpener] [ text__ book.title ] ]
             , p [] [ text__ book.author ]
             ]
         ]
