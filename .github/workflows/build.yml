@@ -31,7 +31,10 @@ jobs:
           echo "Size: build/bundle.js $(du -sk build/bundle.js | cut -f1) kB"
 
       - name: Inline js bundle into html
-        run: npx inline-source-cli@2.0.0 --compress false --root build build/index.html > build/index.html
+        run: |
+          mv build/index.html build/index.src.html
+          npx inline-source-cli@2.0.0 --compress false --root build build/index.src.html > build/index.html
+          rm build/index.src.html
 
       - name: Resize and compress images
         run: |
