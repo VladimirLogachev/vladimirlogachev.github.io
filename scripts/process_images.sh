@@ -11,7 +11,7 @@ echo "MAX_WIDTH: $MAX_WIDTH"
 echo "QUALITY: $QUALITY"
 
 # calculate random string for renaming source file
-uuid=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+random_string=$(date +%s | sha256sum | base64 | head -c 32 ; echo)
 
 echo "Compression results in kB:"
 # Perform actions
@@ -24,7 +24,7 @@ for filename in $(find "${DIR}" -name '*.jpg' -or -name '*.png' -or -name '*.gif
   filename_x1="$dir/$base.$extension"
   filename_x1_5="$dir/${base}_x1_5.$extension"
   filename_x2="$dir/${base}_x2.$extension"
-  src_temp_name="$dir/$base.$uuid.$extension"
+  src_temp_name="$dir/$base.$random_string.$extension"
 
   # rename src file and memorize initial size
   mv $filename $src_temp_name
