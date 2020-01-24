@@ -3,6 +3,7 @@ module Utils exposing (..)
 import Css exposing (..)
 import Dict exposing (Dict)
 import Html.Styled exposing (..)
+import List.Extra
 import Maybe.Extra
 
 
@@ -44,3 +45,13 @@ plain m =
     ( m, Cmd.none )
 
 
+{-| Returns either ("path/basename", "extension") or ("path/basename", "")
+TODO: does not handle "something/dir.name/justfile"
+-}
+splitExtension : String -> ( String, String )
+splitExtension filename =
+    filename
+        |> String.split "."
+        |> List.Extra.unconsLast
+        |> Maybe.map (Tuple.mapSecond String.concat)
+        |> Maybe.withDefault ( filename, "" )

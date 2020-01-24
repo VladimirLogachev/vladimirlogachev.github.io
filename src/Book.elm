@@ -195,7 +195,8 @@ view { sticker, highlightFavorite, available } (Book book) =
                     , borderRadius (px 3)
                     , marginTop (Css.em 2)
                     ]
-                , src <| "/images/library/" ++ book.coverUrl
+                , srcSet ("/images/library/" ++ book.coverUrl)
+                , src ("/images/library/" ++ book.coverUrl)
                 , alt <| book.author ++ ", " ++ book.title
                 ]
                 []

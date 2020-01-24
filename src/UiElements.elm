@@ -8,6 +8,7 @@ import Html.Styled.Attributes as Attributes exposing (attribute, css)
 import Html.Styled.Events exposing (onClick)
 import Typography exposing (text__)
 import UiStyles exposing (..)
+import Utils exposing (..)
 
 
 navStyle : Style
@@ -164,3 +165,23 @@ noOpener =
 targetBlank : Html.Styled.Attribute msg
 targetBlank =
     Attributes.target "_blank"
+
+
+{-| Accepts filename, returns srcset for x1, x1\_5, x2
+-}
+srcSet : String -> Html.Styled.Attribute msg
+srcSet filename =
+    let
+        ( ext, basename ) =
+            splitExtension filename
+
+        x1 =
+            filename
+
+        x1_5 =
+            basename ++ "_x1_5." ++ ext ++ " 1.5x"
+
+        x2 =
+            basename ++ "_x2." ++ ext ++ " 2x"
+    in
+    attribute "srcset" (String.join ", " [ x1, x1_5, x2 ])

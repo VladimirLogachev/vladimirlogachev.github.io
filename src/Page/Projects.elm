@@ -3,7 +3,7 @@ module Page.Projects exposing (..)
 import Colors
 import Css exposing (..)
 import Html.Styled exposing (..)
-import Html.Styled.Attributes as Attributes exposing (alt, css, href, src)
+import Html.Styled.Attributes as Attributes exposing (alt, attribute, css, href, src)
 import Language exposing (Language(..), enRu)
 import List.Extra
 import Maybe.Extra exposing (toList)
@@ -106,7 +106,8 @@ viewProjectImage (Project { name_i18n, imgFileName }) =
                     , maxHeight (px 300)
                     , borderRadius (px 3)
                     ]
-                , src <| "/images/projects/" ++ filename
+                , srcSet ("/images/projects/" ++ filename)
+                , src ("/images/projects/" ++ filename)
                 , alt name_i18n
                 ]
                 []
