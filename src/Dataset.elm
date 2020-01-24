@@ -84,7 +84,7 @@ knownBooks =
         , title = "Learn You a Haskell for Great Good!"
         , topics = HASKELL
         , url = "http://learnyouahaskell.com/"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/41OnGOPKW3L._SX376_BO1,204,203,200_.jpg"
+        , coverUrl = "learn_you_a_haskell.webp"
         , favorite = True
         }
     , Book
@@ -92,7 +92,7 @@ knownBooks =
         , title = "Mostly Adequate Guide to Functional Programming"
         , topics = JS
         , url = "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
-        , coverUrl = "https://github.com/MostlyAdequate/mostly-adequate-guide/raw/master/images/cover.png"
+        , coverUrl = "mostly_adequate_guide_fp_ru.webp"
         , favorite = True
         }
     , Book
@@ -100,7 +100,7 @@ knownBooks =
         , title = "JavaScript: The Good Parts"
         , topics = JS
         , url = "http://shop.oreilly.com/product/9780596517748.do"
-        , coverUrl = "https://covers.oreillystatic.com/images/9780596517748/cat.gif"
+        , coverUrl = "js_good_parts.webp"
         , favorite = False
         }
     , Book
@@ -108,7 +108,7 @@ knownBooks =
         , title = "Functional Programming in JavaScript"
         , topics = JS
         , url = "https://www.manning.com/books/functional-programming-in-javascript"
-        , coverUrl = "https://images.manning.com/720/960/resize/book/5/c5bd123-f4fd-4a03-9069-9309c782ea7e/Atencio_hires_Fc.png"
+        , coverUrl = "fp_in_js.webp"
         , favorite = True
         }
     , Book
@@ -116,7 +116,7 @@ knownBooks =
         , title = "Building Microservices"
         , topics = DEV
         , url = "http://shop.oreilly.com/product/0636920033158.do"
-        , coverUrl = "https://covers.oreillystatic.com/images/0636920033158/cat.gif"
+        , coverUrl = "building_microservices.webp"
         , favorite = True
         }
     , Book
@@ -124,7 +124,7 @@ knownBooks =
         , title = "Learning Functional Programming in Scala"
         , topics = SCALA
         , url = "https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf"
-        , coverUrl = "/images/book_covers/alvin_scala.webp"
+        , coverUrl = "alvin_scala.webp"
         , favorite = False
         }
     , Book
@@ -132,7 +132,7 @@ knownBooks =
         , title = "You Don't Know JS (book series) 1, 2, 3, 4"
         , topics = JS
         , url = "https://github.com/getify/You-Dont-Know-JS"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/91w8pQAh21L._SY300_.jpg"
+        , coverUrl = "ydkjs.webp"
         , favorite = False
         }
     , Book
@@ -140,7 +140,7 @@ knownBooks =
         , title = "Atomic Scala"
         , topics = SCALA
         , url = "http://www.atomicscala.com"
-        , coverUrl = "https://static-2.gumroad.com/res/gumroad/2484219515800/asset_previews/baa9edfdda1f0636d3141c6336006e1c/original/scala_20ebook_20cover_20web.gif"
+        , coverUrl = "atomic_scala.webp"
         , favorite = False
         }
     , Book
@@ -148,7 +148,7 @@ knownBooks =
         , title = "Clean Code. A Handbook of Agile Software Craftsmanship"
         , topics = DEV
         , url = "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/51d1qVhmAmL._SX373_BO1,204,203,200_.jpg"
+        , coverUrl = "clean_code.webp"
         , favorite = True
         }
     , Book
@@ -156,7 +156,7 @@ knownBooks =
         , title = "Роутинг в react-приложениях"
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/react-router-course-ru/content"
-        , coverUrl = "/images/book_covers/router.webp"
+        , coverUrl = "router.webp"
         , favorite = False
         }
     , Book
@@ -164,7 +164,7 @@ knownBooks =
         , title = "React Redux курс для начинающих"
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
-        , coverUrl = "/images/book_covers/redux.webp"
+        , coverUrl = "redux.webp"
         , favorite = False
         }
     , Book
@@ -172,7 +172,7 @@ knownBooks =
         , title = "React.js курс для начинающих"
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/react-course-ru-v2/content/"
-        , coverUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1484152353l/33838152._SX318_.jpg"
+        , coverUrl = "react_beginners.webp"
         , favorite = False
         }
     , Book
@@ -180,7 +180,7 @@ knownBooks =
         , title = "JavaScript Patterns: Build Better Applications with Coding and Design Patterns"
         , topics = JS
         , url = "https://shop.oreilly.com/product/9780596806767.do"
-        , coverUrl = "https://covers.oreillystatic.com/images/9780596806767/cat.gif"
+        , coverUrl = "js_patterns.webp"
         , favorite = False
         }
     , Book
@@ -188,7 +188,7 @@ knownBooks =
         , title = "CSS: The Missing Manual"
         , topics = CSS
         , url = "https://shop.oreilly.com/product/0636920036357.do"
-        , coverUrl = "https://m.media-amazon.com/images/I/61wK+-BXYUL._AC_UY218_ML3_.jpg"
+        , coverUrl = "css3.webp"
         , favorite = True
         }
     , Book
@@ -196,7 +196,7 @@ knownBooks =
         , title = "White Space Is Not Your Enemy"
         , topics = DESIGN
         , url = "http://cw.routledge.com/textbooks/9780240824147"
-        , coverUrl = "https://m.media-amazon.com/images/I/41xlqwc2nUL._AC_UY218_ML3_.jpg"
+        , coverUrl = "wsinye.webp"
         , favorite = False
         }
     , Book
@@ -204,7 +204,7 @@ knownBooks =
         , title = "Ководство"
         , topics = DESIGN
         , url = "https://www.artlebedev.ru/kovodstvo/sections/"
-        , coverUrl = "https://www.artlebedev.ru/kovodstvo/sections/ekovodstvo.png"
+        , coverUrl = "kovodstvo.webp"
         , favorite = False
         }
     , Book
@@ -212,7 +212,7 @@ knownBooks =
         , title = "Основы контентной стратегии"
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/51/4351/1.00x-thumb.png"
+        , coverUrl = "content_strategy.webp"
         , favorite = False
         }
     , Book
@@ -220,7 +220,7 @@ knownBooks =
         , title = "Эмоциональный веб-дизайн"
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/95/4295/1.00x-thumb.png"
+        , coverUrl = "emotional_design.webp"
         , favorite = False
         }
     , Book
@@ -228,7 +228,7 @@ knownBooks =
         , title = "Отзывчивый веб-дизайн"
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/60/4360/1.00x-thumb.png"
+        , coverUrl = "responsive_design.webp"
         , favorite = False
         }
     , Book
@@ -236,7 +236,7 @@ knownBooks =
         , title = "The Tube Amp Book - Deluxe Revised Edition"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/513XusQiVJL._SX405_BO1,204,203,200_.jpg"
+        , coverUrl = "tube_amp.webp"
         , favorite = False
         }
     , Book
@@ -244,7 +244,7 @@ knownBooks =
         , title = "Guitar Electronics for Musicians"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/51dgoNDxFnL._SX377_BO1,204,203,200_.jpg"
+        , coverUrl = "guitar_electronics.webp"
         , favorite = False
         }
     , Book
@@ -252,7 +252,7 @@ knownBooks =
         , title = "Complete Guitar Repair"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/51E%2BG7TYQqL._SX356_BO1,204,203,200_.jpg"
+        , coverUrl = "guitar_repair.webp"
         , favorite = False
         }
     , Book
@@ -260,7 +260,7 @@ knownBooks =
         , title = "The Luthier's Handbook"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook"
-        , coverUrl = "https://m.media-amazon.com/images/I/51CRaMUlEbL._AC_UY218_ML3_.jpg"
+        , coverUrl = "luthiers_handbook.webp"
         , favorite = True
         }
     , Book
@@ -268,7 +268,7 @@ knownBooks =
         , title = "The Gibson Les Paul Handbook"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/51hTBrgnPjL._SX379_BO1,204,203,200_.jpg"
+        , coverUrl = "lespaul_handbook.webp"
         , favorite = False
         }
     , Book
@@ -276,7 +276,7 @@ knownBooks =
         , title = "Design Patterns: Elements of Reusable Object-Oriented Software"
         , topics = DEV
         , url = "https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/51kuc0iWoKL._SX326_BO1,204,203,200_.jpg"
+        , coverUrl = "gof.webp"
         , favorite = False
         }
     , Book
@@ -284,7 +284,7 @@ knownBooks =
         , title = "Maybe Haskell"
         , topics = HASKELL
         , url = "https://books.thoughtbot.com/assets/maybe-haskell.pdf"
-        , coverUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427714317l/25249192.jpg"
+        , coverUrl = "maybe_haskell.webp"
         , favorite = False
         }
     , Book
@@ -292,7 +292,7 @@ knownBooks =
         , title = "Structure and Interpretation of Computer Programs"
         , topics = SCHEME
         , url = "https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871"
-        , coverUrl = "https://images-na.ssl-images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg"
+        , coverUrl = "sicp.webp"
         , favorite = False
         }
     , Book
@@ -300,7 +300,7 @@ knownBooks =
         , title = "Category Theory for Programmers"
         , topics = HASKELL
         , url = "https://github.com/hmemcpy/milewski-ctfp-pdf"
-        , coverUrl = "https://blurb-pdf-processing-service-prod-preflight.s3.amazonaws.com/default/blurb/P14850377/preview_72dpi/cover-trim-no-fold-front_cover-f21dfbed-5945-4d12-be90-0eb565aba6ad.jpg"
+        , coverUrl = "category_theory_for_programmers.webp"
         , favorite = True
         }
     , Book
@@ -308,7 +308,7 @@ knownBooks =
         , title = "Essential Scala"
         , topics = SCALA
         , url = "https://underscore.io/books/essential-scala/"
-        , coverUrl = "https://underscore.io/images/books/essential-scala.png"
+        , coverUrl = "essential-scala.webp"
         , favorite = False
         }
     , Book
@@ -316,7 +316,7 @@ knownBooks =
         , title = "Scala with Cats"
         , topics = SCALA
         , url = "https://underscore.io/books/scala-with-cats/"
-        , coverUrl = "https://underscore.io/images/books/scala-with-cats.png"
+        , coverUrl = "scala-with-cats.webp"
         , favorite = True
         }
     , Book
@@ -324,7 +324,7 @@ knownBooks =
         , title = "Haskell in Depth"
         , topics = HASKELL
         , url = "https://www.manning.com/books/haskell-in-depth"
-        , coverUrl = "https://images.manning.com/720/960/resize/book/9/16e1d67-4262-4e32-83c3-5cf65467e91e/Bragilevsky-Haskell-MEAP-HI.png"
+        , coverUrl = "haskell_in_depth.webp"
         , favorite = False
         }
     , Book
@@ -332,7 +332,7 @@ knownBooks =
         , title = "Лидер и племя"
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/59/17759/0.50x-thumb.png"
+        , coverUrl = "leader.webp"
         , favorite = True
         }
     , Book
@@ -340,7 +340,7 @@ knownBooks =
         , title = "Открывая организации будущего"
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/86/15686/0.50x-thumb.png"
+        , coverUrl = "reinventing_organizations.webp"
         , favorite = True
         }
     , Book
@@ -348,7 +348,7 @@ knownBooks =
         , title = "Эмоциональная смелость"
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/93/23793/0.50x-thumb.png"
+        , coverUrl = "emotional.webp"
         , favorite = False
         }
     , Book
@@ -356,7 +356,7 @@ knownBooks =
         , title = "Принципы лидера"
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/32/24032/0.50x-thumb.png"
+        , coverUrl = "leader_principles.webp"
         , favorite = False
         }
     , Book
@@ -364,7 +364,7 @@ knownBooks =
         , title = "Школа дизайна: шрифт"
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/08/23308/0.50x-thumb.png"
+        , coverUrl = "type.webp"
         , favorite = False
         }
     , Book
@@ -372,7 +372,7 @@ knownBooks =
         , title = "Никогда не ешьте в одиночку"
         , topics = COMMUNICATION
         , url = "https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/89/2589/0.50x-thumb.png"
+        , coverUrl = "never_eat_alone.webp"
         , favorite = False
         }
     , Book
@@ -380,7 +380,7 @@ knownBooks =
         , title = "Измеряйте самое важное"
         , topics = MANAGEMENT
         , url = "https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/18/22218/0.50x-thumb.png"
+        , coverUrl = "measure_what_matters.webp"
         , favorite = False
         }
     , Book
@@ -388,7 +388,7 @@ knownBooks =
         , title = "Принципы"
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/princzipyi/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/85/20585/0.50x-thumb.png"
+        , coverUrl = "dalio_principles.webp"
         , favorite = False
         }
     , Book
@@ -396,7 +396,7 @@ knownBooks =
         , title = "Школа дизайна: макет"
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/07/23307/0.50x-thumb.png"
+        , coverUrl = "layout.webp"
         , favorite = False
         }
     , Book
@@ -404,7 +404,7 @@ knownBooks =
         , title = "Джентльмен. Путеводитель по стилю и моде для мужчин"
         , topics = FASHION
         , url = "https://www.ozon.ru/context/detail/id/4993260/"
-        , coverUrl = "https://cdn1.ozone.ru/multimedia/c1200/1001551788.jpg"
+        , coverUrl = "gentleman.webp"
         , favorite = False
         }
     , Book
@@ -412,7 +412,7 @@ knownBooks =
         , title = "И ботаники делают бизнес 1+2"
         , topics = ENTREPRENEURSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/"
-        , coverUrl = "https://www.mann-ivanov-ferber.ru/assets/images/covers/48/11448/1.00x-thumb.png"
+        , coverUrl = "botaniki.webp"
         , favorite = False
         }
     , Book
@@ -420,7 +420,7 @@ knownBooks =
         , title = "Школа игры на шестиструнной гитаре"
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.chitai-gorod.ru/catalog/book/358478/"
-        , coverUrl = "https://img-gorod.ru/21/581/2158108_detail.jpg"
+        , coverUrl = "pujol.webp"
         , favorite = True
         }
     , Book
@@ -428,7 +428,7 @@ knownBooks =
         , title = "Frontend Developer Specialization"
         , topics = JS
         , url = "https://www.freecodecamp.org/"
-        , coverUrl = "/images/course_covers/freecodecamp.webp"
+        , coverUrl = "freecodecamp.webp"
         , favorite = False
         }
     , Book
@@ -436,7 +436,7 @@ knownBooks =
         , title = "Функциональное программирование на языке Haskell"
         , topics = HASKELL
         , url = "https://stepik.org/course/75"
-        , coverUrl = "https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png"
+        , coverUrl = "stepik_haskell.webp"
         , favorite = True
         }
     , Book
@@ -444,7 +444,7 @@ knownBooks =
         , title = "Функциональное программирование на языке Haskell (часть 2)"
         , topics = HASKELL
         , url = "https://stepik.org/course/693"
-        , coverUrl = "https://stepik.org/media/cache/images/courses/693/cover/cc2d1f091548ea0802ab2d39cb5e0340.png"
+        , coverUrl = "stepik_haskell.webp"
         , favorite = True
         }
     , Book
@@ -452,7 +452,7 @@ knownBooks =
         , title = "Введение в Scala"
         , topics = SCALA
         , url = "https://stepik.org/course/16243"
-        , coverUrl = "https://stepik.org/media/cache/images/courses/16243/cover_MdfnLfH/471712250971b734e490e6c554c72105.png"
+        , coverUrl = "tinkoff_scala.webp"
         , favorite = False
         }
     , Book
@@ -460,7 +460,7 @@ knownBooks =
         , title = "Mastering Haskell Programming"
         , topics = HASKELL
         , url = "https://www.udemy.com/course/mastering-haskell-programming/"
-        , coverUrl = "https://covers.oreillystatic.com/images/0636920080893/lrg.jpg"
+        , coverUrl = "mastering_haskell_programming.webp"
         , favorite = False
         }
     ]

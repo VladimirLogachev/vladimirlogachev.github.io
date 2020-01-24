@@ -195,14 +195,14 @@ view { sticker, highlightFavorite, available } (Book book) =
                     , borderRadius (px 3)
                     , marginTop (Css.em 2)
                     ]
-                , src book.coverUrl
+                , src <| "/images/library/" ++ book.coverUrl
                 , alt <| book.author ++ ", " ++ book.title
                 ]
                 []
             ]
         , stickerNode
         , div textStyle
-            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ textLink [ href book.url, targetBlank, noOpener] [ text__ book.title ] ]
+            [ p [ css [ margin2 (Css.em 0.5) zero ] ] [ textLink [ href book.url, targetBlank, noOpener ] [ text__ book.title ] ]
             , p [] [ text__ book.author ]
             ]
         ]
