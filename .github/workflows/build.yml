@@ -38,9 +38,8 @@ jobs:
 
       - name: Resize and compress images
         run: |
-          echo "Size: build/images $(du -sk build/images | cut -f1) kB"
-          for filename in $(find ./build/images -name '*.jpg' -or -name '*.png' -or -name '*.gif' -or -name '*.jpeg' -or -name '*.webp'); do convert "$filename" -resize '400x100000>' -quality 80 -define webp:lossless=false -define webp:method=6 -define webp:partitions=3 -define webp:auto-filter=true "$filename"; done
-          echo "Size: build/images $(du -sk build/images | cut -f1) kB"
+          bash scripts/process_images.sh "./build/images/projects" "400" "80"
+          bash scripts/process_images.sh "./build/images/library" "200" "80"
 
       - name: Deploy build directory to master
         uses: peaceiris/actions-gh-pages@v2.7.0-1

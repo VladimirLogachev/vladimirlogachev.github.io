@@ -19,7 +19,7 @@
 
 ### Run
 
-- `bash localdev.sh` - runs dev server, watches  changes in `.elm` files. Requires manual re-run when changing images, html and other assets.
+- `bash scripts/localdev.sh` - runs dev server, watches  changes in `.elm` files. Requires manual re-run when changing images, html and other assets.
 
 ## Deploy
 
