@@ -7,8 +7,7 @@ rm -rf "./build"
 cp -r "./src/static" "./build"
 
 # Resize and compress raster images
-# bash scripts/process_images.sh "./build/images/projects" "400" "80"
-# bash scripts/process_images.sh "./build/images/library" "200" "80"
+# bash assets.config.sh
 
 # Run elm dev server
 elm-live "src/Main.elm" \

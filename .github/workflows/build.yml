@@ -38,8 +38,7 @@ jobs:
 
       - name: Resize and compress images
         run: |
-          bash scripts/process_images.sh "./build/images/projects" "400" "80"
-          bash scripts/process_images.sh "./build/images/library" "200" "80"
+          bash assets.config.sh
 
       - name: Deploy build directory to master
         uses: peaceiris/actions-gh-pages@v2.7.0-1
