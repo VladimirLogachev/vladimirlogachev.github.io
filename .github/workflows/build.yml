@@ -19,7 +19,7 @@ jobs:
         run: sudo apt-get install -y webp=0.6.1-2
 
       - name: Move static files
-        run: mv "./src/static" "./build"
+        run: mv "./static" "./build"
 
       - name: Elm Make
         run: elm make --optimize --output="./bundle.js" src/Main.elm

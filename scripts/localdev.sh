@@ -4,7 +4,7 @@
 rm -rf "./build"
 
 # Copy static files
-cp -r "./src/static" "./build"
+cp -r "./static" "./build"
 
 # Resize and compress raster images
 # bash assets.config.sh
