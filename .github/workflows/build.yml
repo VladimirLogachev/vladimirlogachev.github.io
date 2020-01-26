@@ -21,7 +21,7 @@ jobs:
       - name: Copy static files
         # We could also move the directory,
         # But if accidentally performed locally, it will remove `static` directory, which is unwanted.
-        run: cp "./static" "./build"
+        run: cp -r "./static" "./build"
 
       - name: Elm Make
         run: elm make --optimize --output="./bundle.temp.js" src/Main.elm
