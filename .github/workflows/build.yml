@@ -18,16 +18,18 @@ jobs:
       - name: Set up packages
         run: sudo apt-get install -y webp=0.6.1-2
 
-      - name: Move static files
-        run: mv "./static" "./build"
+      - name: Copy static files
+        # We could also move the directory,
+        # But if accidentally performed locally, it will remove `static` directory, which is unwanted.
+        run: cp "./static" "./build"
 
       - name: Elm Make
-        run: elm make --optimize --output="./bundle.js" src/Main.elm
+        run: elm make --optimize --output="./bundle.temp.js" src/Main.elm
 
       - name: Compress js bundle
         run: |
-          npx uglify-js@3.7.6 "./bundle.js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | npx uglify-js@3.7.6 --mangle --output="./build/bundle.js"
-          echo "Size: bundle.js $(du -sk bundle.js | cut -f1) kB"
+          npx uglify-js@3.7.6 "./bundle.temp.js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | npx uglify-js@3.7.6 --mangle --output="./build/bundle.js"
+          echo "Size: bundle.temp.js $(du -sk bundle.temp.js | cut -f1) kB"
           echo "Size: build/bundle.js $(du -sk build/bundle.js | cut -f1) kB"
 
       - name: Inline js bundle into html
