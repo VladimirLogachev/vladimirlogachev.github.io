@@ -163,8 +163,8 @@ viewIntro lang =
         , p []
             [ text__
                 (enRu lang
-                    "Available for hiring, collaboration and pair programming."
-                    "Открыт для новой работы, совместных проектов и парного программирования."
+                    "Available for collaboration and pair programming."
+                    "Открыт для совместных проектов и парного программирования."
                 )
             ]
         , p [ css [ displayFlex, flexWrap wrap ] ]
