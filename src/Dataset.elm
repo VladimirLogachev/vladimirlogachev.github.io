@@ -400,14 +400,6 @@ knownBooks =
         , favorite = False
         }
     , Book
-        { author = "Бернхард Ретцель"
-        , title = "Джентльмен. Путеводитель по стилю и моде для мужчин"
-        , topics = FASHION
-        , url = "https://www.ozon.ru/context/detail/id/4993260/"
-        , coverUrl = "gentleman.webp"
-        , favorite = False
-        }
-    , Book
         { author = "Максим Котин"
         , title = "И ботаники делают бизнес 1+2"
         , topics = ENTREPRENEURSHIP
@@ -421,7 +413,7 @@ knownBooks =
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.chitai-gorod.ru/catalog/book/358478/"
         , coverUrl = "pujol.webp"
-        , favorite = True
+        , favorite = False
         }
     , Book
         { author = "freeCodeCamp"
@@ -461,6 +453,14 @@ knownBooks =
         , topics = HASKELL
         , url = "https://www.udemy.com/course/mastering-haskell-programming/"
         , coverUrl = "mastering_haskell_programming.webp"
+        , favorite = False
+        }
+    , Book
+        { author = "Бернхард Ретцель"
+        , title = "Джентльмен. Путеводитель по стилю и моде для мужчин"
+        , topics = FASHION
+        , url = "https://www.ozon.ru/context/detail/id/4993260/"
+        , coverUrl = "gentleman.webp"
         , favorite = False
         }
     ]
