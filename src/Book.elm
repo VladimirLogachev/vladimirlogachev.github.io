@@ -60,9 +60,12 @@ type Topic
     | MANAGEMENT
     | LEADERSHIP
     | COMMUNICATION
+    | RELATIONS
+    | TEXT
     | FASHION
     | ENTREPRENEURSHIP
     | MUSIC_INSTRUMENTS
+    | FICTION
 
 
 type PersonKind
@@ -112,11 +115,20 @@ personKindFromTopic topic =
 
         COMMUNICATION ->
             GeneralPerson
+        
+        RELATIONS ->
+            GeneralPerson
+
+        TEXT ->
+            GeneralPerson
 
         FASHION ->
             GeneralPerson
 
         ENTREPRENEURSHIP ->
+            GeneralPerson
+
+        FICTION ->
             GeneralPerson
 
         MUSIC_INSTRUMENTS ->

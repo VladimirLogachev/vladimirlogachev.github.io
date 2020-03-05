@@ -463,6 +463,86 @@ knownBooks =
         , coverUrl = "gentleman.webp"
         , favorite = False
         }
+    , Book
+        { author = "Айн Рэнд"
+        , title = "Ночью 16 января; Идеал; Подумай дважды"
+        , topics = FICTION
+        , url = "https://ast.ru/book/nochyu-16-yanvarya-ideal-podumay-dvazhdy-028758/"
+        , coverUrl = "three_plays.jpg"
+        , favorite = False
+        }
+    , Book
+        { author = "Айн Рэнд"
+        , title = "Источник"
+        , topics = FICTION
+        , url = "https://www.alpinabook.ru/catalog/book-66478/"
+        , coverUrl = "the_fountainhead.jpg"
+        , favorite = True
+        }
+    , Book
+        { author = "Айн Рэнд"
+        , title = "Атлант расправил плечи"
+        , topics = FICTION
+        , url = "https://www.alpinabook.ru/catalog/book-65392/"
+        , coverUrl = "atlas_shrugged.jpg"
+        , favorite = True
+        }
+    , Book
+        { author = "Айн Рэнд"
+        , title = "Гимн"
+        , topics = FICTION
+        , url = "https://www.alpinabook.ru/catalog/book-61335/"
+        , coverUrl = "anthem.jpg"
+        , favorite = False
+        }
+    , Book
+        { author = "Джон Чемберс"
+        , title = "Соединяя точки"
+        , topics = LEADERSHIP
+        , url = "https://www.mann-ivanov-ferber.ru/books/soedinyaya-tochki/"
+        , coverUrl = "connecting_dots.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Харвилл Хендрикс и Хелен Хант"
+        , title = "Любовь на всю жизнь"
+        , topics = RELATIONS
+        , url = "https://www.mann-ivanov-ferber.ru/books/lyubov-na-vsyu-zhizn/"
+        , coverUrl = "love_you_want.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Рада Агравал"
+        , title = "Вместе"
+        , topics = COMMUNICATION
+        , url = "https://www.mann-ivanov-ferber.ru/books/vmeste/"
+        , coverUrl = "together.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Эмбер Рэй"
+        , title = "Вся правда обо мне"
+        , topics = COMMUNICATION
+        , url = "https://www.mann-ivanov-ferber.ru/books/vsya-pravda-obo-mne/"
+        , coverUrl = "truth_about_me.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Авинаш Диксит и Барри Нейлбафф"
+        , title = "Теория игр"
+        , topics = MANAGEMENT
+        , url = "https://www.mann-ivanov-ferber.ru/books/strategicheskoe_mishlenie/"
+        , coverUrl = "game_theory.png"
+        , favorite = False
+        }
+    , Book
+        { author = "Энн Джензер"
+        , title = "Как писать нон-фикшн"
+        , topics = TEXT
+        , url = "https://www.mann-ivanov-ferber.ru/books/kak-pisat-non-fikshn/"
+        , coverUrl = "non_fiction.png"
+        , favorite = False
+        }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
         |> Dict.fromList
@@ -493,6 +573,16 @@ libraryState =
         , ( "Джентльмен. Путеводитель по стилю и моде для мужчин", Available )
         , ( "И ботаники делают бизнес 1+2", GivenToSomeone )
         , ( "Школа игры на шестиструнной гитаре", Available )
+        , ( "Ночью 16 января; Идеал; Подумай дважды", ComingSoon )
+        , ( "Источник", ComingSoon )
+        , ( "Атлант расправил плечи", Available )
+        , ( "Гимн", Available )
+        , ( "Соединяя точки", ComingSoon )
+        , ( "Любовь на всю жизнь", ComingSoon )
+        , ( "Вместе", ComingSoon )
+        , ( "Вся правда обо мне", ComingSoon )
+        , ( "Теория игр", ComingSoon )
+        , ( "Как писать нон-фикшн", ComingSoon )
         ]
 
 
