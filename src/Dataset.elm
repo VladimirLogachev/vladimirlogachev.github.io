@@ -557,7 +557,7 @@ libraryState =
     Dict.fromList
         [ ( "Лидер и племя", GivenToSomeone )
         , ( "Открывая организации будущего", GivenToSomeone )
-        , ( "Эмоциональная смелость", GivenToSomeone )
+        , ( "Эмоциональная смелость", Available )
         , ( "Принципы лидера", GivenToSomeone )
         , ( "Школа дизайна: шрифт", Available )
         , ( "Никогда не ешьте в одиночку", GivenToSomeone )
