@@ -104,7 +104,7 @@ view lang { specific } books libState =
         description =
             enRu lang
                 """I have a tradition of storing my books on my desk in the workplace. Any person can borrow any book from my personal library. This applies not only to my collegues, but to any person who knows me in real life. This is my culture, it works great, and I won't give up on it, so everyone should just accept it."""
-                """У меня есть традиция хранить свои книги на работе, на своём рабочем столе. Любой человек может взять почитать любую книгу из моей библиотеки. Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично. Это моя культура, она великолепно работает и я не намерен от неё отказываться."""
+                """У меня есть традиция хранить свои книги на работе, на своём рабочем столе. Любой человек может взять почитать любую книгу из моей библиотеки. Это относится не только к моим коллегам, а к любому человеку, который знаком со мной лично. Это моя культура, она великолепно работает и я не намерен от неё отказываться. Уведомления об освободившихся книгах публикуются в telegram-канале logachev_library."""
 
         splitDescription =
             description
