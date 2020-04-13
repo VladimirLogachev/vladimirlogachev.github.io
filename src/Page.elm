@@ -163,7 +163,7 @@ viewIntro lang =
         , p []
             [ text__
                 (enRu lang
-                    "Available for collaboration and pair programming."
+                    "Available for hiring, collaboration and pair programming."
                     "Открыт для совместных проектов и парного программирования."
                 )
             ]
