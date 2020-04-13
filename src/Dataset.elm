@@ -558,7 +558,7 @@ libraryState =
         [ ( "Лидер и племя", GivenToSomeone )
         , ( "Открывая организации будущего", GivenToSomeone )
         , ( "Эмоциональная смелость", Available )
-        , ( "Принципы лидера", Available )
+        , ( "Принципы лидера", GivenToSomeone )
         , ( "Школа дизайна: шрифт", GivenToSomeone )
         , ( "Никогда не ешьте в одиночку", GivenToSomeone )
         , ( "Измеряйте самое важное", GivenToSomeone )
