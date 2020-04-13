@@ -169,7 +169,7 @@ viewIntro lang =
             ]
         , p [ css [ displayFlex, flexWrap wrap ] ]
             [ link "https://github.com/VladimirLogachev" "github"
-            , link "mailto:doit@keemail.me" "mail"
+            , link "mailto:logachev.dev@ya.ru" "mail"
             , link "https://t.me/vladimirlogachev" "telegram"
             , link "https://twitter.com/v__logachev" "twitter"
             , link "http://www.linkedin.com/in/vladimirlogachev" "linkedin"
