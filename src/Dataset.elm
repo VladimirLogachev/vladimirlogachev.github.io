@@ -54,21 +54,6 @@ projects lang =
                 , TeamMate (enRu lang "other contributors" "остальные участники") NoPic "https://github.com/MostlyAdequate/mostly-adequate-guide-ru/graphs/contributors"
                 ]
         }
-    , Project
-        { name_i18n =
-            "♯FACFAF. Quick reference guide"
-        , description_i18n =
-            enRu lang
-                """A small book about Curtis Mayfield “Black Keys” (open F♯) guitar tuning. Contains my own conclusions, which aren't necessarily correct"""
-                """Краткое руководство по гитарному строю «Black Keys» (open F♯), который Curtis Mayfield использовал на протяжении своей музыкальной карьеры. Содержит мои собственные умозаключения, которые не обязательно корректны."""
-        , links =
-            [ Link (enRu lang "Download PDF" "Скачать PDF") "https://www.gitbook.com/download/pdf/book/vladimirlogachev/facfaf"
-            , Link (enRu lang "Download ePub" "Скачать ePub") "https://www.gitbook.com/download/epub/book/vladimirlogachev/facfaf"
-            , Link (enRu lang "Read online" "Читать онлайн") "https://www.gitbook.com/read/book/vladimirlogachev/facfaf"
-            ]
-        , imgFileName = Just "facfaf.webp"
-        , team = OnlyMe
-        }
     ]
 
 
