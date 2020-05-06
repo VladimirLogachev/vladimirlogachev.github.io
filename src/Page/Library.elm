@@ -85,7 +85,7 @@ viewLibraryBook lang ( b, availability ) =
         ComingSoon ->
             Book.view { sticker = Just comingSoon, highlightFavorite = False, available = False } b
 
-        GivenToSomeone ->
+        AlreadyTaken ->
             Book.view { sticker = Just givenToSomeone, highlightFavorite = False, available = False } b
 
 

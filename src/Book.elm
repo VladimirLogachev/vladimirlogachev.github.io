@@ -46,14 +46,14 @@ type LearningMaterial
 type BookAvaliability
     = Available
     | ComingSoon
-    | GivenToSomeone
+    | AlreadyTaken
 
 
 avaliabilityOrdering : Ordering BookAvaliability
 avaliabilityOrdering =
     Ordering.explicit
         [ Available
-        , GivenToSomeone
+        , AlreadyTaken
         , ComingSoon
         ]
 

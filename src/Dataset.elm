@@ -528,6 +528,38 @@ knownBooks =
         , coverUrl = "non_fiction.png"
         , rating = Unknown
         }
+    , Book
+        { author = "Нассим Николас Талеб"
+        , title = "Черный лебедь. Под знаком непредсказуемости"
+        , topics = MANAGEMENT
+        , url = "https://azbooka.ru/books/chernyy-lebed-pod-znakom-nepredskazuemosti-2-e-izd-dopolnennoe-s1va"
+        , coverUrl = "black_swan.jpg"
+        , rating = WorthReading
+        }
+    , Book
+        { author = "Алекс Бэнкс, Ева Порселло"
+        , title = "GraphQL: язык запросов для современных веб-приложений"
+        , topics = DEV
+        , url = "https://www.piter.com/collection/programmirovanie-razrabotka-programnogo-obespecheniya/product/graphql-yazyk-zaprosov-dlya-sovremennyh-veb-prilozheniy"
+        , coverUrl = "graphql.jpg"
+        , rating = WorthReading
+        }
+    , Book
+        { author = "Евгений Моргунов"
+        , title = "PostgreSQL. Основы языка SQL"
+        , topics = DEV
+        , url = "https://bhv.ru/product/postgresql-osnovy-yazyka-sql/"
+        , coverUrl = "postgres.jpg"
+        , rating = WorthReading
+        }
+    , Book
+        { author = "Алексей Локонцев"
+        , title = "История одного мирового бренда"
+        , topics = ENTREPRENEURSHIP
+        , url = "https://topgunbarber.ru/book/"
+        , coverUrl = "topgun.jpg"
+        , rating = Unknown
+        }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
         |> Dict.fromList
@@ -540,15 +572,15 @@ knownBooks =
 libraryState : Dict String BookAvaliability
 libraryState =
     Dict.fromList
-        [ ( "Лидер и племя", GivenToSomeone )
-        , ( "Открывая организации будущего", GivenToSomeone )
+        [ ( "Лидер и племя", AlreadyTaken )
+        , ( "Открывая организации будущего", AlreadyTaken )
         , ( "Эмоциональная смелость", Available )
-        , ( "Принципы лидера", GivenToSomeone )
-        , ( "Школа дизайна: шрифт", GivenToSomeone )
+        , ( "Принципы лидера", AlreadyTaken )
+        , ( "Школа дизайна: шрифт", AlreadyTaken )
         , ( "Никогда не ешьте в одиночку", Available )
-        , ( "Измеряйте самое важное", GivenToSomeone )
-        , ( "Принципы", GivenToSomeone )
-        , ( "Школа дизайна: макет", GivenToSomeone )
+        , ( "Измеряйте самое важное", AlreadyTaken )
+        , ( "Принципы", AlreadyTaken )
+        , ( "Школа дизайна: макет", AlreadyTaken )
         , ( "Haskell in Depth", ComingSoon )
         , ( "The Tube Amp Book - Deluxe Revised Edition", Available )
         , ( "Guitar Electronics for Musicians", Available )
@@ -556,18 +588,22 @@ libraryState =
         , ( "The Luthier's Handbook", Available )
         , ( "The Gibson Les Paul Handbook", Available )
         , ( "Джентльмен. Путеводитель по стилю и моде для мужчин", Available )
-        , ( "И ботаники делают бизнес 1+2", GivenToSomeone )
-        , ( "Школа игры на шестиструнной гитаре", GivenToSomeone )
+        , ( "И ботаники делают бизнес 1+2", AlreadyTaken )
+        , ( "Школа игры на шестиструнной гитаре", AlreadyTaken )
         , ( "Ночью 16 января; Идеал; Подумай дважды", ComingSoon )
         , ( "Источник", ComingSoon )
-        , ( "Атлант расправил плечи", GivenToSomeone )
+        , ( "Атлант расправил плечи", AlreadyTaken )
         , ( "Гимн", Available )
-        , ( "Соединяя точки", GivenToSomeone )
-        , ( "Любовь на всю жизнь", GivenToSomeone )
+        , ( "Соединяя точки", AlreadyTaken )
+        , ( "Любовь на всю жизнь", AlreadyTaken )
         , ( "Вместе", Available )
         , ( "Вся правда обо мне", ComingSoon )
         , ( "Теория игр", ComingSoon )
         , ( "Как писать нон-фикшн", ComingSoon )
+        , ( "Черный лебедь. Под знаком непредсказуемости", ComingSoon )
+        , ( "GraphQL: язык запросов для современных веб-приложений", Available )
+        , ( "PostgreSQL. Основы языка SQL", AlreadyTaken )
+        , ( "История одного мирового бренда", ComingSoon )
         ]
 
 
