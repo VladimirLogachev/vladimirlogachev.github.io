@@ -70,7 +70,7 @@ knownBooks =
         , topics = HASKELL
         , url = "http://learnyouahaskell.com/"
         , coverUrl = "learn_you_a_haskell.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Brian Lonsdorf"
@@ -78,7 +78,7 @@ knownBooks =
         , topics = JS
         , url = "https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
         , coverUrl = "mostly_adequate_guide_fp_ru.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Douglas Crockford"
@@ -86,7 +86,7 @@ knownBooks =
         , topics = JS
         , url = "http://shop.oreilly.com/product/9780596517748.do"
         , coverUrl = "js_good_parts.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Luis Atencio"
@@ -94,7 +94,7 @@ knownBooks =
         , topics = JS
         , url = "https://www.manning.com/books/functional-programming-in-javascript"
         , coverUrl = "fp_in_js.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Sam Newman"
@@ -102,7 +102,7 @@ knownBooks =
         , topics = DEV
         , url = "http://shop.oreilly.com/product/0636920033158.do"
         , coverUrl = "building_microservices.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Alvin Alexander"
@@ -110,7 +110,7 @@ knownBooks =
         , topics = SCALA
         , url = "https://alvinalexander.com/downloads/learning-fp-in-scala-0.1.1.pdf"
         , coverUrl = "alvin_scala.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Kyle Simpson"
@@ -118,7 +118,7 @@ knownBooks =
         , topics = JS
         , url = "https://github.com/getify/You-Dont-Know-JS"
         , coverUrl = "ydkjs.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Bruce Eckel, Dianne Marsh"
@@ -126,7 +126,7 @@ knownBooks =
         , topics = SCALA
         , url = "http://www.atomicscala.com"
         , coverUrl = "atomic_scala.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Robert Martin"
@@ -134,7 +134,7 @@ knownBooks =
         , topics = DEV
         , url = "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM"
         , coverUrl = "clean_code.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Максим Пацианский"
@@ -142,7 +142,7 @@ knownBooks =
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/react-router-course-ru/content"
         , coverUrl = "router.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Максим Пацианский"
@@ -150,7 +150,7 @@ knownBooks =
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/redux-course-ru-v2/content/"
         , coverUrl = "redux.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Максим Пацианский"
@@ -158,7 +158,7 @@ knownBooks =
         , topics = JS
         , url = "https://maxfarseer.gitbooks.io/react-course-ru-v2/content/"
         , coverUrl = "react_beginners.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Stoyan Stefanov"
@@ -166,7 +166,7 @@ knownBooks =
         , topics = JS
         , url = "https://shop.oreilly.com/product/9780596806767.do"
         , coverUrl = "js_patterns.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "David Sawyer McFarland"
@@ -174,7 +174,7 @@ knownBooks =
         , topics = CSS
         , url = "https://shop.oreilly.com/product/0636920036357.do"
         , coverUrl = "css3.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Rebecca Hagen, Kim Golombisky"
@@ -182,7 +182,7 @@ knownBooks =
         , topics = DESIGN
         , url = "http://cw.routledge.com/textbooks/9780240824147"
         , coverUrl = "wsinye.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Артемий Лебедев"
@@ -190,7 +190,7 @@ knownBooks =
         , topics = DESIGN
         , url = "https://www.artlebedev.ru/kovodstvo/sections/"
         , coverUrl = "kovodstvo.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Эрин Киссейн"
@@ -198,7 +198,7 @@ knownBooks =
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/book-apart/elements-content-strategy/"
         , coverUrl = "content_strategy.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Аарон Уолтер"
@@ -206,7 +206,7 @@ knownBooks =
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/book-apart/emotional-web-design/"
         , coverUrl = "emotional_design.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Итан Маркотт"
@@ -214,7 +214,7 @@ knownBooks =
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/book-apart/otzivchivij-web-design/"
         , coverUrl = "responsive_design.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Aspen Pittman"
@@ -222,7 +222,7 @@ knownBooks =
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Tube-Amp-Book-Deluxe-Revised/dp/0879307676"
         , coverUrl = "tube_amp.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Donald Brosnac"
@@ -230,7 +230,7 @@ knownBooks =
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Guitar-Electronics-Musicians-Donald-Brosnac/dp/0711902321"
         , coverUrl = "guitar_electronics.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Hideo Kamimoto"
@@ -238,7 +238,7 @@ knownBooks =
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Complete-Guitar-Repair-Hideo-Kamimoto/dp/0825601568"
         , coverUrl = "guitar_repair.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Roger H. Siminoff"
@@ -246,7 +246,7 @@ knownBooks =
         , topics = MUSIC_INSTRUMENTS
         , url = "https://straightupstrings.com/collections/books-and-drawings/products/the-luthiers-handbook"
         , coverUrl = "luthiers_handbook.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Paul Balmer"
@@ -254,7 +254,7 @@ knownBooks =
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.amazon.com/Gibson-Paul-Handbook-Maintain-Troubleshoot/dp/0760334706"
         , coverUrl = "lespaul_handbook.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides"
@@ -262,7 +262,7 @@ knownBooks =
         , topics = DEV
         , url = "https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8"
         , coverUrl = "gof.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Pat Brisbin"
@@ -270,7 +270,7 @@ knownBooks =
         , topics = HASKELL
         , url = "https://books.thoughtbot.com/assets/maybe-haskell.pdf"
         , coverUrl = "maybe_haskell.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Harold Abelson, Gerald Jay Sussman, Julie Sussman"
@@ -278,7 +278,7 @@ knownBooks =
         , topics = SCHEME
         , url = "https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871"
         , coverUrl = "sicp.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Bartosz Milewski"
@@ -286,7 +286,7 @@ knownBooks =
         , topics = HASKELL
         , url = "https://github.com/hmemcpy/milewski-ctfp-pdf"
         , coverUrl = "category_theory_for_programmers.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Noel Welsh, Dave Gurnell"
@@ -294,7 +294,7 @@ knownBooks =
         , topics = SCALA
         , url = "https://underscore.io/books/essential-scala/"
         , coverUrl = "essential-scala.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Noel Welsh, Dave Gurnell"
@@ -302,7 +302,7 @@ knownBooks =
         , topics = SCALA
         , url = "https://underscore.io/books/scala-with-cats/"
         , coverUrl = "scala-with-cats.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Vitaly Bragilevsky"
@@ -310,7 +310,7 @@ knownBooks =
         , topics = HASKELL
         , url = "https://www.manning.com/books/haskell-in-depth"
         , coverUrl = "haskell_in_depth.webp"
-        , favorite = False
+        , rating = Excellent
         }
     , Book
         { author = "Дэйв Логан, Джон Кинг, Хэли Фишер-Райт"
@@ -318,7 +318,7 @@ knownBooks =
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/lider-i-plemya/"
         , coverUrl = "leader.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Фредерик Лалу"
@@ -326,7 +326,7 @@ knownBooks =
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/novyj-vzglyad-na-organizacii/"
         , coverUrl = "reinventing_organizations.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Питер Брегман"
@@ -334,7 +334,7 @@ knownBooks =
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/emoczionalnaya-smelost/"
         , coverUrl = "emotional.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Джон Хеннесси"
@@ -342,7 +342,7 @@ knownBooks =
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/princzipyi-lidera/"
         , coverUrl = "leader_principles.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Ричард Пулин"
@@ -350,7 +350,7 @@ knownBooks =
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-shrift/"
         , coverUrl = "type.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Кейт Феррацци, Тал Рэз"
@@ -358,7 +358,7 @@ knownBooks =
         , topics = COMMUNICATION
         , url = "https://www.mann-ivanov-ferber.ru/books/mif/nevereatalone/"
         , coverUrl = "never_eat_alone.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Джон Дорр"
@@ -366,7 +366,7 @@ knownBooks =
         , topics = MANAGEMENT
         , url = "https://www.mann-ivanov-ferber.ru/books/izmeryajte-samoe-vazhnoe/"
         , coverUrl = "measure_what_matters.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Рэй Далио"
@@ -374,7 +374,7 @@ knownBooks =
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/princzipyi/"
         , coverUrl = "dalio_principles.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Ричард Пулин"
@@ -382,7 +382,7 @@ knownBooks =
         , topics = DESIGN
         , url = "https://www.mann-ivanov-ferber.ru/books/shkola-dizajna-maket/"
         , coverUrl = "layout.webp"
-        , favorite = False
+        , rating = Unknown
         }
     , Book
         { author = "Максим Котин"
@@ -390,7 +390,7 @@ knownBooks =
         , topics = ENTREPRENEURSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/i_botaniki_delayut_biznes_2/"
         , coverUrl = "botaniki.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Эмилио Пухоль"
@@ -398,7 +398,7 @@ knownBooks =
         , topics = MUSIC_INSTRUMENTS
         , url = "https://www.chitai-gorod.ru/catalog/book/358478/"
         , coverUrl = "pujol.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "freeCodeCamp"
@@ -406,7 +406,7 @@ knownBooks =
         , topics = JS
         , url = "https://www.freecodecamp.org/"
         , coverUrl = "freecodecamp.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Денис Москвин, Computer Science Center"
@@ -414,7 +414,7 @@ knownBooks =
         , topics = HASKELL
         , url = "https://stepik.org/course/75"
         , coverUrl = "stepik_haskell.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Денис Москвин, Computer Science Center"
@@ -422,7 +422,7 @@ knownBooks =
         , topics = HASKELL
         , url = "https://stepik.org/course/693"
         , coverUrl = "stepik_haskell.webp"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Tinkoff.ru"
@@ -430,7 +430,7 @@ knownBooks =
         , topics = SCALA
         , url = "https://stepik.org/course/16243"
         , coverUrl = "tinkoff_scala.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Samuel Gélineau"
@@ -438,7 +438,7 @@ knownBooks =
         , topics = HASKELL
         , url = "https://www.udemy.com/course/mastering-haskell-programming/"
         , coverUrl = "mastering_haskell_programming.webp"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Бернхард Ретцель"
@@ -446,7 +446,7 @@ knownBooks =
         , topics = FASHION
         , url = "https://www.ozon.ru/context/detail/id/4993260/"
         , coverUrl = "gentleman.webp"
-        , favorite = False
+        , rating = NothingSpecial
         }
     , Book
         { author = "Айн Рэнд"
@@ -454,7 +454,7 @@ knownBooks =
         , topics = FICTION
         , url = "https://ast.ru/book/nochyu-16-yanvarya-ideal-podumay-dvazhdy-028758/"
         , coverUrl = "three_plays.jpg"
-        , favorite = False
+        , rating = Unknown
         }
     , Book
         { author = "Айн Рэнд"
@@ -462,7 +462,7 @@ knownBooks =
         , topics = FICTION
         , url = "https://www.alpinabook.ru/catalog/book-66478/"
         , coverUrl = "the_fountainhead.jpg"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Айн Рэнд"
@@ -470,7 +470,7 @@ knownBooks =
         , topics = FICTION
         , url = "https://www.alpinabook.ru/catalog/book-65392/"
         , coverUrl = "atlas_shrugged.jpg"
-        , favorite = True
+        , rating = Excellent
         }
     , Book
         { author = "Айн Рэнд"
@@ -478,7 +478,7 @@ knownBooks =
         , topics = FICTION
         , url = "https://www.alpinabook.ru/catalog/book-61335/"
         , coverUrl = "anthem.jpg"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Джон Чемберс"
@@ -486,7 +486,7 @@ knownBooks =
         , topics = LEADERSHIP
         , url = "https://www.mann-ivanov-ferber.ru/books/soedinyaya-tochki/"
         , coverUrl = "connecting_dots.png"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Харвилл Хендрикс и Хелен Хант"
@@ -494,7 +494,7 @@ knownBooks =
         , topics = RELATIONS
         , url = "https://www.mann-ivanov-ferber.ru/books/lyubov-na-vsyu-zhizn/"
         , coverUrl = "love_you_want.png"
-        , favorite = False
+        , rating = Excellent
         }
     , Book
         { author = "Рада Агравал"
@@ -502,7 +502,7 @@ knownBooks =
         , topics = COMMUNICATION
         , url = "https://www.mann-ivanov-ferber.ru/books/vmeste/"
         , coverUrl = "together.png"
-        , favorite = False
+        , rating = WorthReading
         }
     , Book
         { author = "Эмбер Рэй"
@@ -510,7 +510,7 @@ knownBooks =
         , topics = COMMUNICATION
         , url = "https://www.mann-ivanov-ferber.ru/books/vsya-pravda-obo-mne/"
         , coverUrl = "truth_about_me.png"
-        , favorite = False
+        , rating = Unknown
         }
     , Book
         { author = "Авинаш Диксит и Барри Нейлбафф"
@@ -518,7 +518,7 @@ knownBooks =
         , topics = MANAGEMENT
         , url = "https://www.mann-ivanov-ferber.ru/books/strategicheskoe_mishlenie/"
         , coverUrl = "game_theory.png"
-        , favorite = False
+        , rating = Unknown
         }
     , Book
         { author = "Энн Джензер"
@@ -526,7 +526,7 @@ knownBooks =
         , topics = TEXT
         , url = "https://www.mann-ivanov-ferber.ru/books/kak-pisat-non-fikshn/"
         , coverUrl = "non_fiction.png"
-        , favorite = False
+        , rating = Unknown
         }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
@@ -545,7 +545,7 @@ libraryState =
         , ( "Эмоциональная смелость", Available )
         , ( "Принципы лидера", GivenToSomeone )
         , ( "Школа дизайна: шрифт", GivenToSomeone )
-        , ( "Никогда не ешьте в одиночку", GivenToSomeone )
+        , ( "Никогда не ешьте в одиночку", Available )
         , ( "Измеряйте самое важное", GivenToSomeone )
         , ( "Принципы", GivenToSomeone )
         , ( "Школа дизайна: макет", GivenToSomeone )
@@ -557,14 +557,14 @@ libraryState =
         , ( "The Gibson Les Paul Handbook", Available )
         , ( "Джентльмен. Путеводитель по стилю и моде для мужчин", Available )
         , ( "И ботаники делают бизнес 1+2", GivenToSomeone )
-        , ( "Школа игры на шестиструнной гитаре", Available )
+        , ( "Школа игры на шестиструнной гитаре", GivenToSomeone )
         , ( "Ночью 16 января; Идеал; Подумай дважды", ComingSoon )
         , ( "Источник", ComingSoon )
-        , ( "Атлант расправил плечи", Available )
+        , ( "Атлант расправил плечи", GivenToSomeone )
         , ( "Гимн", Available )
         , ( "Соединяя точки", GivenToSomeone )
-        , ( "Любовь на всю жизнь", ComingSoon )
-        , ( "Вместе", GivenToSomeone )
+        , ( "Любовь на всю жизнь", GivenToSomeone )
+        , ( "Вместе", Available )
         , ( "Вся правда обо мне", ComingSoon )
         , ( "Теория игр", ComingSoon )
         , ( "Как писать нон-фикшн", ComingSoon )

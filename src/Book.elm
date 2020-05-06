@@ -3,7 +3,7 @@ module Book exposing (..)
 import Colors
 import Css exposing (..)
 import Html.Styled exposing (..)
-import Html.Styled.Attributes as Attributes exposing (alt, css, href, src)
+import Html.Styled.Attributes exposing (alt, css, href, src)
 import Ordering exposing (Ordering)
 import Typography exposing (text__)
 import UiElements exposing (..)
@@ -18,15 +18,24 @@ type Book
         , topics : Topic
         , url : String
         , coverUrl : String
-        , favorite : Bool
+        , rating : Rating
         }
 
 
-favoriteOrdering : Ordering Bool
-favoriteOrdering =
+type Rating
+    = Excellent
+    | WorthReading
+    | NothingSpecial
+    | Unknown
+
+
+ratingOrdering : Ordering Rating
+ratingOrdering =
     Ordering.explicit
-        [ True
-        , False
+        [ Excellent
+        , WorthReading
+        , Unknown
+        , NothingSpecial
         ]
 
 
@@ -115,7 +124,7 @@ personKindFromTopic topic =
 
         COMMUNICATION ->
             GeneralPerson
-        
+
         RELATIONS ->
             GeneralPerson
 
@@ -154,19 +163,19 @@ bookOrdering =
         |> Ordering.breakTiesWith
             (Ordering.byFieldWith personKindOrdering (\( Book { topics }, _ ) -> personKindFromTopic topics))
         |> Ordering.breakTiesWith
-            (Ordering.byFieldWith favoriteOrdering (\( Book { favorite }, _ ) -> favorite))
+            (Ordering.byFieldWith ratingOrdering (\( Book { rating }, _ ) -> rating))
 
 
 view : { sticker : Maybe (Html msg), highlightFavorite : Bool, available : Bool } -> Book -> Html msg
 view { sticker, highlightFavorite, available } (Book book) =
     let
         shadow =
-            ifElse (book.favorite && highlightFavorite && available)
+            ifElse (book.rating == Excellent && highlightFavorite && available)
                 itemHighlightShadow
                 regularShadow
 
         textStyle =
-            ifElse (book.favorite && highlightFavorite && available)
+            ifElse (book.rating == Excellent && highlightFavorite && available)
                 [ css [ itemHighlight, backgroundColor Colors.itemHighlight ] ]
                 []
 

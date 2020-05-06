@@ -17,14 +17,14 @@ secondaryLightGrey =
     hex "D7DBDD"
 
 
-{-| Slightly colored background around favorite books
+{-| Slightly colored background around rating books
 -}
 itemHighlight : Color
 itemHighlight =
     hex itemHighlightHex
 
 
-{-| ... favorite books. also included in shadow style for such books
+{-| ... rating books. also included in shadow style for such books
 -}
 itemHighlightHex : String
 itemHighlightHex =

@@ -46,7 +46,7 @@ view lang { onlyFavorite } books learnPath =
             , learnPath
                 |> List.map (\(BookTitle title) -> title)
                 |> getMany books
-                |> List.filter (\(Book { favorite }) -> ifElse onlyFavorite favorite True)
+                |> List.filter (\(Book { rating }) -> ifElse onlyFavorite (rating == Excellent) True)
                 |> List.map (Book.view { sticker = Nothing, highlightFavorite = not onlyFavorite, available = True })
                 |> div [ css [ displayFlex, flexWrap wrap, alignItems baseline ] ]
             ]
