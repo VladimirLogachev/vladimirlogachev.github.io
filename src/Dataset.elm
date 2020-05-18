@@ -601,7 +601,7 @@ libraryState =
         , ( "Теория игр", ComingSoon )
         , ( "Как писать нон-фикшн", ComingSoon )
         , ( "Черный лебедь. Под знаком непредсказуемости", ComingSoon )
-        , ( "GraphQL: язык запросов для современных веб-приложений", Available )
+        , ( "GraphQL: язык запросов для современных веб-приложений", AlreadyTaken )
         , ( "PostgreSQL. Основы языка SQL", AlreadyTaken )
         , ( "История одного мирового бренда", ComingSoon )
         ]
