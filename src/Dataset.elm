@@ -28,6 +28,7 @@ projects lang =
                 , TeamMate "Vladimir Nizamutdinov" (GitHubUserId 10260495) "https://github.com/astartes91"
                 , TeamMate "BanyRule" (GitHubUserId 14077902) "https://github.com/banyrule"
                 , TeamMate "AntonShtyrkin" (GitHubUserId 15253161) "https://github.com/AntonShtyrkin"
+                , TeamMate "Erdemus" (GitHubUserId 5440901) "https://github.com/Erdemus"
                 , TeamMate (enRu lang "other contributors" "остальные участники") NoPic "https://github.com/fpspecialty/scala-with-cats-ru/graphs/contributors"
                 ]
         }
