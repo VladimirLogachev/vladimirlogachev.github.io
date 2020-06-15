@@ -592,7 +592,7 @@ libraryState =
         , ( "И ботаники делают бизнес 1+2", AlreadyTaken )
         , ( "Школа игры на шестиструнной гитаре", AlreadyTaken )
         , ( "Ночью 16 января; Идеал; Подумай дважды", ComingSoon )
-        , ( "Источник", ComingSoon )
+        , ( "Источник", Available )
         , ( "Атлант расправил плечи", AlreadyTaken )
         , ( "Гимн", Available )
         , ( "Соединяя точки", AlreadyTaken )
