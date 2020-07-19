@@ -597,7 +597,7 @@ libraryState =
         , ( "Гимн", Available )
         , ( "Соединяя точки", Available )
         , ( "Любовь на всю жизнь", AlreadyTaken )
-        , ( "Вместе", AlreadyTaken )
+        , ( "Вместе", Available )
         , ( "Вся правда обо мне", Available )
         , ( "Теория игр", ComingSoon )
         , ( "Как писать нон-фикшн", ComingSoon )
