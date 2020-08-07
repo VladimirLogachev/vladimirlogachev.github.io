@@ -455,7 +455,7 @@ knownBooks =
         , topics = FICTION
         , url = "https://ast.ru/book/nochyu-16-yanvarya-ideal-podumay-dvazhdy-028758/"
         , coverUrl = "three_plays.jpg"
-        , rating = Unknown
+        , rating = WorthReading
         }
     , Book
         { author = "Айн Рэнд"
@@ -511,7 +511,7 @@ knownBooks =
         , topics = COMMUNICATION
         , url = "https://www.mann-ivanov-ferber.ru/books/vsya-pravda-obo-mne/"
         , coverUrl = "truth_about_me.png"
-        , rating = Unknown
+        , rating = WorthReading
         }
     , Book
         { author = "Авинаш Диксит и Барри Нейлбафф"
@@ -559,7 +559,7 @@ knownBooks =
         , topics = ENTREPRENEURSHIP
         , url = "https://topgunbarber.ru/book/"
         , coverUrl = "topgun.jpg"
-        , rating = Unknown
+        , rating = WorthReading
         }
     ]
         |> List.map (\((Book { title }) as book) -> ( title, book ))
@@ -591,7 +591,7 @@ libraryState =
         , ( "Джентльмен. Путеводитель по стилю и моде для мужчин", Available )
         , ( "И ботаники делают бизнес 1+2", AlreadyTaken )
         , ( "Школа игры на шестиструнной гитаре", Available )
-        , ( "Ночью 16 января; Идеал; Подумай дважды", ComingSoon )
+        , ( "Ночью 16 января; Идеал; Подумай дважды", Available )
         , ( "Источник", Available )
         , ( "Атлант расправил плечи", AlreadyTaken )
         , ( "Гимн", Available )
@@ -604,7 +604,7 @@ libraryState =
         , ( "Черный лебедь. Под знаком непредсказуемости", ComingSoon )
         , ( "GraphQL: язык запросов для современных веб-приложений", Available )
         , ( "PostgreSQL. Основы языка SQL", AlreadyTaken )
-        , ( "История одного мирового бренда", ComingSoon )
+        , ( "История одного мирового бренда", AlreadyTaken )
         ]
 
 
