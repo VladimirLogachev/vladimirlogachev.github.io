@@ -577,7 +577,7 @@ libraryState =
         , ( "Открывая организации будущего", AlreadyTaken )
         , ( "Эмоциональная смелость", AlreadyTaken )
         , ( "Принципы лидера", AlreadyTaken )
-        , ( "Школа дизайна: шрифт", Available )
+        , ( "Школа дизайна: шрифт", AlreadyTaken )
         , ( "Никогда не ешьте в одиночку", Available )
         , ( "Измеряйте самое важное", AlreadyTaken )
         , ( "Принципы", Available )
