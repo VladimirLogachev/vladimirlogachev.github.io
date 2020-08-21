@@ -596,7 +596,7 @@ libraryState =
         , ( "Атлант расправил плечи", AlreadyTaken )
         , ( "Гимн", Available )
         , ( "Соединяя точки", Available )
-        , ( "Любовь на всю жизнь", AlreadyTaken )
+        , ( "Любовь на всю жизнь", Available )
         , ( "Вместе", Available )
         , ( "Вся правда обо мне", AlreadyTaken )
         , ( "Теория игр", ComingSoon )
