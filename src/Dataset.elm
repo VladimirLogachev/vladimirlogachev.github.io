@@ -599,12 +599,12 @@ libraryState =
         , ( "Любовь на всю жизнь", Available )
         , ( "Вместе", Available )
         , ( "Вся правда обо мне", AlreadyTaken )
-        , ( "Теория игр", ComingSoon )
+        , ( "Теория игр", AlreadyTaken )
         , ( "Как писать нон-фикшн", ComingSoon )
         , ( "Черный лебедь. Под знаком непредсказуемости", ComingSoon )
         , ( "GraphQL: язык запросов для современных веб-приложений", Available )
         , ( "PostgreSQL. Основы языка SQL", AlreadyTaken )
-        , ( "История одного мирового бренда", AlreadyTaken )
+        , ( "История одного мирового бренда", Available )
         ]
 
 
