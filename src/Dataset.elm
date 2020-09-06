@@ -593,7 +593,7 @@ libraryState =
         , ( "Школа игры на шестиструнной гитаре", Available )
         , ( "Ночью 16 января; Идеал; Подумай дважды", Available )
         , ( "Источник", AlreadyTaken )
-        , ( "Атлант расправил плечи", AlreadyTaken )
+        , ( "Атлант расправил плечи", Available )
         , ( "Гимн", Available )
         , ( "Соединяя точки", Available )
         , ( "Любовь на всю жизнь", AlreadyTaken )
