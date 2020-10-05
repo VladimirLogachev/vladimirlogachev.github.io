@@ -607,7 +607,6 @@ libraryState =
         , ( "История одного мирового бренда", Available )
         ]
 
-
 learningPath : List LearningMaterial
 learningPath =
     [ BookTitle "Scala with Cats"
