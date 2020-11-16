@@ -173,12 +173,7 @@ viewIntro lang =
             , link "https://t.me/vladimirlogachev" "telegram"
             , link "https://twitter.com/v__logachev" "twitter"
             , link "http://www.linkedin.com/in/vladimirlogachev" "linkedin"
-            , link
-                ("https://github.com/VladimirLogachev/cv/raw/master/Vladimir_Logachev_cv_"
-                    ++ enRu lang "en" "ru"
-                    ++ ".pdf"
-                )
-                (enRu lang "cv" "резюме")
+            , link "https://logachev.dev/" (enRu lang "cv" "резюме")
             ]
         ]
 
